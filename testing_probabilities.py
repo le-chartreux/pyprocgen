@@ -65,3 +65,5 @@ print("DsCh : ",T.count("DsCh")/1000)
 print("Voulu : 19.1")
 print("RoEG : ",T.count("RoEG")/1000)
 print("Voulu : 7.6")
+
+print("Fini :)")
