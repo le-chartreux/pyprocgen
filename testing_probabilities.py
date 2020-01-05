@@ -6,20 +6,20 @@ import math
 ############# FONCTIONS DE CREATION ##############
 
 T_Type_Case = []
-T_Type_Case.append(["FTrp",["tempere_tiede","sous-tropical","tropical"],4000,16000])
-T_Type_Case.append(["FPlv",["boreal","tempere_frais"],1000,4000])
-T_Type_Case.append(["FHmd",["boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"],500,8000])
-T_Type_Case.append(["FTpr",["boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"],250,4000])
-T_Type_Case.append(["FSch",["tempere_tiede","sous-tropical","tropical"],1000,2000])
-T_Type_Case.append(["Stpe",["tempere_frais"],250,500])
-T_Type_Case.append(["MaqS",["boreal"],125,250])
-T_Type_Case.append(["FTSc",["tropical"],500,1000])
-T_Type_Case.append(["MaqD",["tempere_frais","tempere_tiede","sous-tropical","tropical"],125,250])
-T_Type_Case.append(["Maqi",["tempere_tiede","sous-tropical","tropical"],250,500])
-T_Type_Case.append(["DsCh",["boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"],0,125])
-T_Type_Case.append(["TndS",["sous-polaire"],0,125])
-T_Type_Case.append(["Toun",["sous-polaire"],0,125,1000])
-T_Type_Case.append(["Taig",["polaire"],0,500])
+T_Type_Case.append(["FTrp",["tempere_tiede","sous-tropical","tropical"],4000,16000,["surhumide"]])
+T_Type_Case.append(["FPlv",["boreal","tempere_frais"],1000,4000,["surhumide"]])
+T_Type_Case.append(["FHmd",["boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"],500,8000,["tres_humide"]])
+T_Type_Case.append(["FTpr",["boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"],250,4000,["humide"]])
+T_Type_Case.append(["FSch",["tempere_tiede","sous-tropical","tropical"],1000,2000,["sous-humide"]])
+T_Type_Case.append(["Stpe",["tempere_frais"],250,500,["sous-humide"]])
+T_Type_Case.append(["MaqS",["boreal"],125,250,["sous-humide"]])
+T_Type_Case.append(["FTSc",["tropical"],500,1000,["mi-aride"]])
+T_Type_Case.append(["Maqi",["tempere_tiede","sous-tropical","tropical"],250,500,["aride","mi-aride"]])
+T_Type_Case.append(["MaqD",["tempere_frais","tempere_tiede","sous-tropical","tropical"],125,250,["mi-aride","aride","tres_aride"]])
+T_Type_Case.append(["DsCh",["boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"],0,125,["mi-aride","aride","tres_aride","suraride"]])
+T_Type_Case.append(["TndS",["sous-polaire"],0,125,["sous-humide"]])
+T_Type_Case.append(["Toun",["sous-polaire"],0,125,1000,["humide","tres_humide","surhumide"]])
+T_Type_Case.append(["Taig",["polaire"],0,500,["humide","tres_humide","surhumide"]])
 T_Type_Case.append(["NULL",[""],0,0])
 
 def Between(val,min,max):
@@ -53,6 +53,8 @@ def Type_Case(T_Type_Case):
 		PlAn = random.choice([random.randint(0,125),random.randint(125,250),random.randint(250,500),random.randint(500,1000),random.randint(1000,2000),random.randint(2000,4000),random.randint(4000,8000),random.randint(8000,16000)])
 
 	#print(PlAn)
+
+	
 
 	i = 0
 
