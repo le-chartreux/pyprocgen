@@ -15,30 +15,32 @@ def Between(val,min,max):
 def Type_Case():
 
 	T_Type_Case = []
-	T_Type_Case.append(["Trop",0.6,1,25,30])
-	T_Type_Case.append(["Feui",0.5,1,10,25])
-	T_Type_Case.append(["Sapn",0.4,0.8,5,10])
-	T_Type_Case.append(["Taig",0.3,0.8,-10,5])
-	T_Type_Case.append(["Toun",0,0.3,-20,0])
-	T_Type_Case.append(["Stpe",0,0.3,0,20])
-	T_Type_Case.append(["Savn",0,0.3,20,30])
-	T_Type_Case.append(["DsCh",0,0.2,30,50])
-	T_Type_Case.append(["RoEG",0.3,0.45,-20,-10])
-	T_Type_Case.append(["None",0,0,0,0])
+	T_Type_Case.append(["FTrp",["tempere_tiede","sous-tropical","tropical"],4000,16000,["surhumide"]])
+	T_Type_Case.append(["FPlv",["boreal","tempere_frais"],1000,4000,["surhumide"]])
+	T_Type_Case.append(["FHmd",["boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"],500,8000,["tres_humide"]])
+	T_Type_Case.append(["Ftpr",["boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"],250,4000,["humide"]])
+	T_Type_Case.append(["FSch",[]])
+	T_Type_Case.append([])
+	T_Type_Case.append([])
+	T_Type_Case.append([])
+	T_Type_Case.append([])
+	T_Type_Case.append([])
 
 	HMin = 0
 	HMax = 1
 	TMin = -20
 	TMax = 50
 
-	temperature = random.uniform(TMin,TMax)
-	print(temperature)
+	latitude = random.choice(["polaire","sous-polaire","boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"])
+	print(latitude)
 
-	PlAn = random.randint(0,8000)
+	PlAn = random.choice([125,250,500,1000,2000,4000,8000])
 	print(PlAn)
 
-	Alti = random.uniform(1,2.5)**10
-	print(Alti)
+	PvEv = random.choice(["suraride","tres_aride","aride","aride","mi-aride","sous-humide","humide","tres_humide","surhumide"])
+	print(PvEv)
+
+
 
 
 
