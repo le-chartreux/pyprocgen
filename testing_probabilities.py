@@ -19,7 +19,8 @@ T_Type_Case.append(["MaqD",["tempere_frais","tempere_tiede","sous-tropical","tro
 T_Type_Case.append(["DsCh",["boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"],0,125,["mi-aride","aride","tres_aride","suraride"]])
 T_Type_Case.append(["TndS",["sous-polaire"],0,125,["sous-humide"]])
 T_Type_Case.append(["Toun",["sous-polaire"],125,1000,["humide","tres_humide","surhumide"]])
-T_Type_Case.append(["Taig",["polaire"],0,500,["humide","tres_humide","surhumide"]])
+T_Type_Case.append(["Taig",["polaire"],0,500,["humide","tres_humide"]])
+T_Type_Case.append(["RoEG",["polaire"],0,500,["surhumide"]])
 T_Type_Case.append(["NULL",[""],0,0,[""]])
 
 def Between(val,min,max):
@@ -31,7 +32,19 @@ def Between(val,min,max):
 
 def Type_Case(T_Type_Case):
 
-	Temperature = random.choice(["polaire","sous-polaire","boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"])
+	aleatTemp = random.randint(0,100)
+
+	if Between(aleatTemp,0,14) :
+		Temperature = "polaire"
+
+	elif Between(aleatTemp,14,24) :
+		Temperature = "sous-polaire"
+
+	else :
+		Temperature = random.choice(["polaire","sous-polaire","boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"])
+
+
+
 	#print(Temperature)
 
 	if Temperature == "polaire":
@@ -107,14 +120,14 @@ print("MaqS : ",T.count("MaqS")/1000)
 print("Voulu : 1")
 print("DsCh : ",T.count("DsCh")/1000)
 print("Voulu : 19.1")
-print("TndS : ",T.count("Tnds")/1000)
+print("TndS : ",T.count("TndS")/1000)
 print("Voulu : 1.5")
 print("Toun : ",T.count("Toun")/1000)
 print("Voulu : 8.0")
 print("Taig : ",T.count("Taig")/1000)
 print("Voulu : 10.3")
 
-"""print("RoEG : ",T.count("RoEG")/1000)
+print("RoEG : ",T.count("RoEG")/1000)
 print("Voulu : 7.6")
 print("NULL : ",T.count("NULL")/1000)
-print("Voulu : 0")"""
+print("Voulu : 0")
