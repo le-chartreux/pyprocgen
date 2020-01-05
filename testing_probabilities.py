@@ -24,6 +24,7 @@ def Type_Case():
 	T_Type_Case.append(["Savn",0,0.3,20,30])
 	T_Type_Case.append(["DsCh",0,0.2,30,50])
 	T_Type_Case.append(["RoEG",0.3,0.45,-20,-10])
+	T_Type_Case.append(["None",0,0,0,0])
 
 	HMin = 0
 	HMax = 1
@@ -36,10 +37,11 @@ def Type_Case():
 	humidite = random.random()
 	#print(humidite)
 
-	for i in range(len(T_Type_Case)):
-		if Between(humidite,T_Type_Case[i][1],T_Type_Case[i][2]) and Between(temperature,T_Type_Case[i][3],T_Type_Case[i][4]) :
-			return T_Type_Case[i][0]
-	return None
+	i = 0
+
+	while i < len(T_Type_Case) - 2 and not (Between(humidite,T_Type_Case[i][1],T_Type_Case[i][2]) and Between(temperature,T_Type_Case[i][3],T_Type_Case[i][4])) :
+		i += 1
+	return T_Type_Case[i][0]
 
 
 
