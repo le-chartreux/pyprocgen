@@ -18,9 +18,9 @@ T_Type_Case.append(["Maqi",["tempere_tiede","sous-tropical","tropical"],250,500,
 T_Type_Case.append(["MaqD",["tempere_frais","tempere_tiede","sous-tropical","tropical"],125,250,["mi-aride","aride","tres_aride"]])
 T_Type_Case.append(["DsCh",["boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"],0,125,["mi-aride","aride","tres_aride","suraride"]])
 T_Type_Case.append(["TndS",["sous-polaire"],0,125,["sous-humide"]])
-T_Type_Case.append(["Toun",["sous-polaire"],0,125,1000,["humide","tres_humide","surhumide"]])
+T_Type_Case.append(["Toun",["sous-polaire"],125,1000,["humide","tres_humide","surhumide"]])
 T_Type_Case.append(["Taig",["polaire"],0,500,["humide","tres_humide","surhumide"]])
-T_Type_Case.append(["NULL",[""],0,0])
+T_Type_Case.append(["NULL",[""],0,0,[""]])
 
 def Between(val,min,max):
 	if val >= min and val <=max :
@@ -53,12 +53,28 @@ def Type_Case(T_Type_Case):
 		PlAn = random.choice([random.randint(0,125),random.randint(125,250),random.randint(250,500),random.randint(500,1000),random.randint(1000,2000),random.randint(2000,4000),random.randint(4000,8000),random.randint(8000,16000)])
 
 	#print(PlAn)
+	if Temperature == "polaire":
+		Ardt = random.choice(["humide","tres_humide","surhumide"])
 
-	
+	elif Temperature == "sous-polaire" :
+		Ardt = random.choice(["sous-humide","humide","tres_humide","surhumide"])
+
+	elif Temperature == "boreal" :
+		Ardt = random.choice(["mi-aride","sous-humide","humide","tres_humide","surhumide"])
+
+	elif Temperature == "tempere_frais" :
+		Ardt = random.choice(["aride","mi-aride","sous-humide","humide","tres_humide","surhumide"])
+
+	elif Temperature == "tempere_tiede" or Temperature == "sous-tropical" :
+		Ardt = random.choice(["tres_aride","aride","mi-aride","sous-humide","humide","tres_humide","surhumide"])
+
+	elif Temperature == "tropical" :
+		Ardt = random.choice(["suraride","tres_aride","aride","mi-aride","sous-humide","humide","tres_humide","surhumide"])
+	#print(Ardt)
 
 	i = 0
 
-	while i < len(T_Type_Case) - 1 and not (Temperature in T_Type_Case[i][1] and Between(PlAn,T_Type_Case[i][2],T_Type_Case[i][3])) :
+	while i < len(T_Type_Case) - 1 and not (Temperature in T_Type_Case[i][1] and Ardt in T_Type_Case[i][4] and Between(PlAn,T_Type_Case[i][2],T_Type_Case[i][3])) :
 		i += 1
 	return T_Type_Case[i][0]
 
