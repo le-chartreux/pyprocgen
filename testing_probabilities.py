@@ -31,21 +31,29 @@ def Type_Case():
 	TMin = -20
 	TMax = 50
 
-	HMin
 	temperature = random.uniform(TMin,TMax)
-	#print(temperature)
-	humidite = random.random()
-	#print(humidite)
+	print(temperature)
 
-	i = 0
+	PlAn = random.randint(0,8000)
+	print(PlAn)
+
+	Alti = random.uniform(1,2.5)**10
+	print(Alti)
+
+
+
+
+
+	"""i = 0
 
 	while i < len(T_Type_Case) - 2 and not (Between(humidite,T_Type_Case[i][1],T_Type_Case[i][2]) and Between(temperature,T_Type_Case[i][3],T_Type_Case[i][4])) :
 		i += 1
-	return T_Type_Case[i][0]
+	return T_Type_Case[i][0]"""
 
 
+Type_Case()
 
-T=[]
+"""T=[]
 for j in range(100000):
 	T.append(Type_Case())
 
@@ -66,4 +74,4 @@ print("Voulu : 13.8")
 print("DsCh : ",T.count("DsCh")/1000)
 print("Voulu : 19.1")
 print("RoEG : ",T.count("RoEG")/1000)
-print("Voulu : 7.6")
+print("Voulu : 7.6")"""
