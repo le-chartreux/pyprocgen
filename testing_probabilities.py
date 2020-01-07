@@ -50,7 +50,7 @@ def Type_Case(T_Type_Case):
 		Temperature = "sous-polaire"
 
 	else :
-		Temperature = random.choice(["polaire","sous-polaire","boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"])
+		Temperature = random.choice(["boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"])
 
 
 
@@ -118,7 +118,6 @@ print("Toun : ",T.count("Toun")/1000)
 print("Voulu : 8.0")
 print("Taig : ",T.count("Taig")/1000)
 print("Voulu : 10.3")
-
 print("RoEG : ",T.count("RoEG")/1000)
 print("Voulu : 7.6")
 print("NULL : ",T.count("NULL")/1000)
