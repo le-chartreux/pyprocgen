@@ -43,11 +43,12 @@ def Type_Case(T_Type_Case):
 
 	aleatTemp = random.randint(0,100)
 
-	if Between(aleatTemp,0,14) :
+	if Between(aleatTemp,0,15) :
 		Temperature = "polaire"
 
-	elif Between(aleatTemp,14,24) :
+	elif Between(aleatTemp,15,25) :
 		Temperature = "sous-polaire"
+
 
 	else :
 		Temperature = random.choice(["boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"])
