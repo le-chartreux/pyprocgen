@@ -1,9 +1,15 @@
 import random
 import math
+
+
+
+
 ###############################################################
 ##################### CONSTANTES DES CASES ####################
 ###############################################################
-# Forme : [NomCase,[Temperatures possibles],Borne inf PlAn,Borne sup PlAn]
+# Forme :
+# [NomCase,[Temperatures possibles],Borne inf PlAn,Borne sup PlAn]
+
 T_Type_Case = []
 T_Type_Case.append(["DsCh",["boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"],0,125])
 T_Type_Case.append(["FHmd",["boreal"],500,1000])
@@ -31,17 +37,25 @@ T_Type_Case.append(["TndS",["sous-polaire"],0,125])
 T_Type_Case.append(["Toun",["sous-polaire"],125,1000])
 
 T_Type_Case.append(["NULL",[""],0,0])
+
+
+
+
 ###############################################################
 ########################## FONCTIONS ##########################
 ###############################################################
 
 ########################## BETWEEN ############################
 # Regarde si val est compris entre min et max
+
 def Between(val,min,max):
 	if val >= min and val <=max :
 		return True
 	else :
 		return False
+
+
+
 
 ###############################################################
 #################### FONCTIONS DE CREATION ####################
@@ -49,6 +63,7 @@ def Between(val,min,max):
 
 #################### CREER_PLATEAU_VIDE #######################
 # Crée un plateau vide de x cases de largeur et y de longueur
+
 def Creer_Plateau_Vide():
 	nbx=eval(input("x = "))
 	nby=eval(input("y = "))
@@ -59,11 +74,13 @@ def Creer_Plateau_Vide():
 			Plateau[i].append(Case(None,None,None))
 	return Plateau
 
+
 #################### PLACER_1ERE_CASE #########################
 # Crée aléatoirement la 1ere case puis la place en (0,0)
-def Placer_1ere_Case(Plateau):
 
-	#Conditionnement pour éviter la sureprésentation des biomes polaires
+def Placer_1ere_Case(Plateau):
+	# Conditionnement pour éviter la sureprésentation des biomes
+	# polaires au spawn
 	aleatTemp = random.randint(0,100)
 
 	if Between(aleatTemp,0,15) :
@@ -75,8 +92,8 @@ def Placer_1ere_Case(Plateau):
 	else :
 		Temperature = random.choice(["boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"])
 
-
-	#Génération de la Pluviometrie Annuelle de manière coordonnée avec la temperature pour éviter les situations impossibles
+	# Génération de la Pluviometrie Annuelle de manière coordonnée
+	# avec la temperature pour éviter les situations impossibles
 	if Temperature == "polaire":
 		PlAn = random.choice([random.randint(0,125),random.randint(125,250),random.randint(250,500)])
 
@@ -95,16 +112,27 @@ def Placer_1ere_Case(Plateau):
 	elif Temperature == "tropical" :
 		PlAn = random.choice([random.randint(0,125),random.randint(125,250),random.randint(250,500),random.randint(500,1000),random.randint(1000,2000),random.randint(2000,4000),random.randint(4000,8000),random.randint(8000,16000)])
 
-	#Placement de la 1ere case
+	# Placement de la 1ere case
 	Plateau[0][0]=Case(Type_Case(Temperature, PlAn),Temperature,PlAn)
 	return Plateau
 
+
+
+
+###############################################################
 ########################## TYPE_CASE ##########################
+###############################################################
+# Détermine le type de case en fonction de la Temperature et
+# de la Pluviometrie Annuelle. Les modèles des cases sont dans
+# la partie CONSTANTES DES CASES
+
 def Type_Case(Temperature, PlAn):
 	i = 0
 	while i < len(T_Type_Case) - 1 and not (Temperature in T_Type_Case[i][1] and Between(PlAn,T_Type_Case[i][2],T_Type_Case[i][3])) :
 		i += 1
 	return T_Type_Case[i][0]
+
+
 
 
 ###############################################################
@@ -116,9 +144,14 @@ def Afficher_Plateau(Plateau):
 		for j in range (len(Plateau[0])):
 			print(Plateau[i][j].type, ' ',end='')
 		print('')
+
+
+
+
 ###############################################################
 ########################## CLASSE #############################
 ###############################################################
+
 class Case:
 	""" Classe définissant une case caractérisée par :
 	- son type
@@ -134,12 +167,11 @@ class Case:
 
 
 
+
 ###############################################################
 ##################### CORPS DU PROGRAMME ######################
 ###############################################################
 
 Plateau=Creer_Plateau_Vide()
-#Afficher_Plateau(Plateau)
-print(len(Plateau))
 Plateau = Placer_1ere_Case(Plateau)
 Afficher_Plateau(Plateau)
