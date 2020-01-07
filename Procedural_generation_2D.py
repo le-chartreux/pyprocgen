@@ -57,7 +57,7 @@ def Creer_Plateau_Vide():
 		Plateau.append([])
 		for j in range (nbx) :
 			Plateau[i].append(Case(None,None,None))
-		return Plateau
+	return Plateau
 
 #################### PLACER_1ERE_CASE #########################
 # Crée aléatoirement la 1ere case puis la place en (0,0)
