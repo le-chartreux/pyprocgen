@@ -57,30 +57,32 @@ def Ajout_Biome(Biomes, Biome):
 ################# CREATION_CONSTANTES_BIOMES ##################
 def Creation_Constantes_Biomes():
 	Biomes = {}
-	Ajout_Biome(Biomes, Biome("DsCh",["boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"],0,125))
-	Ajout_Biome(Biomes, Biome("FHmd",["boreal"],500,1000))
-	Ajout_Biome(Biomes, Biome("FHmd",["tempere_frais"],1000,2000))
-	Ajout_Biome(Biomes, Biome("FHmd",["tempere_tiede","sous-tropical"],2000,4000))
-	Ajout_Biome(Biomes, Biome("FHmd",["tropical"],4000,8000))
-	Ajout_Biome(Biomes, Biome("FPlv",["boreal"],1000,2000))
-	Ajout_Biome(Biomes, Biome("FPlv",["tempere_frais"],2000,4000))
-	Ajout_Biome(Biomes, Biome("FTrp",["tempere_tiede","sous-tropical"],4000,8000))
-	Ajout_Biome(Biomes, Biome("FTrp",["tropical"],8000,16000))
-	Ajout_Biome(Biomes, Biome("FTpr",["boreal"],250,500))
-	Ajout_Biome(Biomes, Biome("FTpr",["tempere_frais"],500,1000))
-	Ajout_Biome(Biomes, Biome("FTpr",["tempere_tiede","sous-tropical"],1000,2000))
-	Ajout_Biome(Biomes, Biome("FTpr",["tropical"],2000,4000))
-	Ajout_Biome(Biomes, Biome("FSch",["tempere_tiede","sous-tropical"],500,1000))
-	Ajout_Biome(Biomes, Biome("FSch",["tropical"],1000,2000))
-	Ajout_Biome(Biomes, Biome("FTSc",["tropical"],500,1000))
-	Ajout_Biome(Biomes, Biome("MaqD",["tempere_frais","tempere_tiede","sous-tropical","tropical"],125,250))
-	Ajout_Biome(Biomes, Biome("Maqi",["tempere_tiede","sous-tropical","tropical"],250,500))
-	Ajout_Biome(Biomes, Biome("MaqS",["boreal"],125,250))
-	Ajout_Biome(Biomes, Biome("Stpe",["tempere_frais"],250,500))
-	Ajout_Biome(Biomes, Biome("RoEG",["polaire"],0,125))
-	Ajout_Biome(Biomes, Biome("Taig",["polaire"],125,500))
-	Ajout_Biome(Biomes, Biome("TndS",["sous-polaire"],0,125))
-	Ajout_Biome(Biomes, Biome("Toun",["sous-polaire"],125,1000))
+	Ajout_Biome(Biomes, Biome("DsCh1",["boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"],0,125))
+	Ajout_Biome(Biomes, Biome("FHmd1",["boreal"],500,1000))
+	Ajout_Biome(Biomes, Biome("FHmd2",["tempere_frais"],1000,2000))
+	Ajout_Biome(Biomes, Biome("FHmd3",["tempere_tiede","sous-tropical"],2000,4000))
+	Ajout_Biome(Biomes, Biome("FHmd4",["tropical"],4000,8000))
+	Ajout_Biome(Biomes, Biome("FPlv1",["boreal"],1000,2000))
+	Ajout_Biome(Biomes, Biome("FPlv2",["tempere_frais"],2000,4000))
+	Ajout_Biome(Biomes, Biome("FTpr1",["boreal"],250,500))
+	Ajout_Biome(Biomes, Biome("FTpr2",["tempere_frais"],500,1000))
+	Ajout_Biome(Biomes, Biome("FTpr3",["tempere_tiede","sous-tropical"],1000,2000))
+	Ajout_Biome(Biomes, Biome("FTpr4",["tropical"],2000,4000))
+	Ajout_Biome(Biomes, Biome("FTrp1",["tempere_tiede","sous-tropical"],4000,8000))
+	Ajout_Biome(Biomes, Biome("FTrp2",["tropical"],8000,16000))
+	Ajout_Biome(Biomes, Biome("FSch1",["tempere_tiede","sous-tropical"],500,1000))
+	Ajout_Biome(Biomes, Biome("FSch2",["tropical"],1000,2000))
+	Ajout_Biome(Biomes, Biome("FTSc1",["tropical"],500,1000))
+	Ajout_Biome(Biomes, Biome("MaqD1",["tempere_frais","tempere_tiede","sous-tropical","tropical"],125,250))
+	Ajout_Biome(Biomes, Biome("Maqi1",["tempere_tiede","sous-tropical","tropical"],250,500))
+	Ajout_Biome(Biomes, Biome("MaqS1",["boreal"],125,250))
+	Ajout_Biome(Biomes, Biome("Stpe1",["tempere_frais"],250,500))
+	Ajout_Biome(Biomes, Biome("RoEG1",["polaire"],0,125))
+	Ajout_Biome(Biomes, Biome("Taig1",["polaire"],125,500))
+	Ajout_Biome(Biomes, Biome("TndS1",["sous-polaire"],0,125))
+	Ajout_Biome(Biomes, Biome("Toun1",["sous-polaire"],125,1000))
+
+	return Biomes
 
 
 
@@ -106,6 +108,16 @@ def Creer_Plateau_Vide():
 # Temperature et PlAn
 def Placer_Case(Plateau, x, y, Temperature, PlAn):
 	return Case(Choix_Biome(Temperature, PlAn), Temperature, PlAn)
+
+#################### AFFICHER_PLATEAU #########################
+def Afficher_Plateau(Plateau):
+	for i in range (len(Plateau)) :
+		for j in range (len(Plateau[0])) :
+			if Plateau[i][j].type == None :
+				print(Plateau[i][j].type, ' ',end='')
+			else :
+				print(Plateau[i][j].type[0:4], ' ',end='')
+		print('')
 
 
 ###############################################################
@@ -158,6 +170,7 @@ def Placer_1ere_Case(Plateau):
 # Renvoit l'id du Biome avec les caracteristiques Temperature
 # et PlAn correspondantes
 def Choix_Biome(Temperature, PlAn):
+	global Biomes
 	for Biome in Biomes.values():
 		if Biome.in_range(Temperature, PlAn):
 			return Case(Biome.id, Temperature, PlAn)
@@ -166,27 +179,9 @@ def Choix_Biome(Temperature, PlAn):
 
 
 
-
-###############################################################
-################## FONCTIONS D AFFICHAGE ######################
-###############################################################
-
-def Afficher_Plateau(Plateau):
-	for i in range (len(Plateau)) :
-		for j in range (len(Plateau[0])):
-			print(Plateau[i][j].type, ' ',end='')
-		print('')
-
-
-
-
-
-
-
 ###############################################################
 ##################### CORPS DU PROGRAMME ######################
 ###############################################################
-
 Biomes = Creation_Constantes_Biomes()
 Plateau = Creer_Plateau_Vide()
 Plateau = Placer_1ere_Case(Plateau)
