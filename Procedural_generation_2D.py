@@ -1,5 +1,6 @@
 import random
 import math
+from noise import pnoise1
 
 ###############################################################
 ########################## CLASSES ############################
@@ -10,7 +11,7 @@ import math
 # - son identifiant (en 4 caractères)
 # - sa temperature
 # - sa Pluviometrie Annuelle Minimale
-# - sa Pluviometrie Annuelle Minimale
+# - sa Pluviometrie Annuelle Maximale
 class Biome:
 
 	def __init__(self, id, Temperature, PlAnMin, PlAnMax):
@@ -19,6 +20,8 @@ class Biome:
 		self.PlAnMin = PlAnMin
 		self.PlAnMax = PlAnMax
 
+	# Renvoit True si la Temperature et les PlAn correspondent
+	# à celles de ce biome
 	def in_range(self, Temperature, PlAn):
 		return Temperature in self.Temperature and self.PlAnMin <= PlAn < self.PlAnMax
 
@@ -125,7 +128,7 @@ def Afficher_Plateau(Plateau):
 ###############################################################
 
 #################### PLACER_1ERE_CASE #########################
-# Crée aléatoirement la 1ere case puis la place en (0,0)
+# Crée aléatoirement la 1ère case puis la place en (0,0)
 
 def Placer_1ere_Case(Plateau):
 	# Conditionnement pour éviter la sureprésentation des biomes
@@ -182,6 +185,7 @@ def Choix_Biome(Temperature, PlAn):
 ###############################################################
 ##################### CORPS DU PROGRAMME ######################
 ###############################################################
+print(pnoise1(0.05))
 Biomes = Creation_Constantes_Biomes()
 Plateau = Creer_Plateau_Vide()
 Plateau = Placer_1ere_Case(Plateau)
