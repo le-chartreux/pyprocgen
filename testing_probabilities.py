@@ -33,6 +33,39 @@ T_Type_Case.append(["Toun",["sous-polaire"],125,1000])
 
 T_Type_Case.append(["NULL",[""],0,0])
 
+
+
+
+class Biome:
+
+	def __init__(self, id, temps, min_hum, max_hum):
+
+		self.id = id
+		self.temps = temps
+		self.min_humidity = min_hum
+		self.max_humidity = max_hum
+
+	def in_range(self, temp, hum):
+		return temp in self.temps and self.min_humidity <= hum <= self.max_humidity
+
+biomes = {}
+
+def add_biome(biome):
+	global biomes
+	biomes[biome.id] = biome
+
+def get_biome(temp, hum):
+
+	for biome in biomes.values():
+		if biome.in_range(temp, hum):
+			return biome
+
+	return None
+
+add_biome(Biome("DsCh", ["boreal","tempere_frais","tempere_tiede","sous-tropical","tropical"], 0, 125))
+add_biome(Biome("FHmd", ["boreal"], 500, 1000))
+
+
 def Between(val,min,max):
 	if val >= min and val <=max :
 		return True
