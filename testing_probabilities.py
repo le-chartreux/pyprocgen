@@ -58,7 +58,7 @@ def get_biome(temp, hum):
 
 	for biome in biomes.values():
 		if biome.in_range(temp, hum):
-			return biome
+			return biome.id
 
 	return None
 
