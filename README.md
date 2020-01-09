@@ -7,7 +7,7 @@ Link to the Perlin noise pluggin for Python3 used (required for now) :
 https://github.com/caseman/noise
 
 Basis of the biome decision model :
-https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Lifezones_Pengo.svg/1200px-Lifezones_Pengo.svg.png
+https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Lifezones_Pengo.svg/1200px-Lifezones_Pengo.svg.png  
 From this Wikipedia page :
 https://en.wikipedia.org/wiki/Biome
 
