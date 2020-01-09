@@ -1,4 +1,3 @@
-from packages.Classes import *
 from packages.Biomes_creation import *
 from packages.Decisional import *
 from packages.Board_functions import *
