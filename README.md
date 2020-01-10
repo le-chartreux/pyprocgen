@@ -3,7 +3,7 @@ Just a 2D procedural generation made in Python3 for fun. /!\ WIP  /!\
 
 Only in french for the time being (maybe an english version will comes when it will be fully functional)
 
-Link to the Perlin noise pluggin for Python3 used (required for now) :
+Link to the Perlin noise program for Python3 used :
 https://github.com/caseman/noise
 
 Basis of the biome decision model :
