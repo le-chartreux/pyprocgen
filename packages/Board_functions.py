@@ -1,9 +1,12 @@
 from .Classes import Case
-###############################################################
-#################### FONCTIONS DU PLATEAU  ####################
-###############################################################
 
+# FONCTIONS DU PLATEAU
+# Créent le plateau et l'affichent
+
+
+###############################################################
 #################### CREER_PLATEAU_VIDE #######################
+###############################################################
 # Crée un plateau vide de x cases de largeur et y de longueur
 
 def Creer_Plateau_Vide():
@@ -16,8 +19,10 @@ def Creer_Plateau_Vide():
 			Plateau[i].append(Case(None,None,None))
 	return Plateau
 
-
+###############################################################
 #################### AFFICHER_PLATEAU #########################
+###############################################################
+# Affiche un plateau de taille len(Plateau[0]) x len(Plateau)
 def Afficher_Plateau(Plateau):
 	for i in range (len(Plateau)) :
 		for j in range (len(Plateau[0])) :

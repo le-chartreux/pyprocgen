@@ -1,51 +1,60 @@
 import random
 from .Biomes_creation import *
 from .Classes import Case
+from packages.Perlin_noise import SimplexNoise
+noise = SimplexNoise()
+
+# FONCTIONS DECISIONNELLES
+# Fonctions qui servent à gérer l'évolution du terrain et
+# à prendre la décisison du type de case à placer en (x,y)
+
 
 ###############################################################
-################# FONCTIONS DECISIONNELLES ####################
+#################### PLACER_CASE #########################
 ###############################################################
+# Génère une case en (x,y)
+def Placer_Case(Plateau, Biomes, x, y):
 
-###############################################################
-#################### PLACER_1ERE_CASE #########################
-###############################################################
-# Crée aléatoirement la 1ère case puis la place en (0,0)
-
-def Placer_1ere_Case(Plateau, Biomes):
-	
-	Temp = random.randint(-10,35)
-
-	# Génération de la Pluviometrie Annuelle de manière coordonnée
-	# avec la temperature pour éviter les situations impossibles
-	if -10 <= Temp <= 1.5 :
-		PlAn = random.choice([random.randint(62,125),random.randint(125,250),random.randint(250,500)])
-
-	elif 1.5 <= Temp <= 3 :
-		PlAn = random.choice([random.randint(62,125),random.randint(125,250),random.randint(250,500),random.randint(500,1000)])
-
-	elif 3 <= Temp <= 6 :
-		PlAn = random.choice([random.randint(62,125),random.randint(125,250),random.randint(250,500),random.randint(500,1000),random.randint(1000,2000)])
-
-	elif 6 <= Temp <= 12 :
-		PlAn = random.choice([random.randint(62,125),random.randint(125,250),random.randint(250,500),random.randint(500,1000),random.randint(1000,2000),random.randint(2000,4000)])
-
-	elif 12 <= Temp <= 24 :
-		PlAn = random.choice([random.randint(62,125),random.randint(125,250),random.randint(250,500),random.randint(500,1000),random.randint(1000,2000),random.randint(2000,4000),random.randint(4000,8000)])
-
-	elif 24 <= Temp <= 35 :
-		PlAn = random.choice([random.randint(62,125),random.randint(125,250),random.randint(250,500),random.randint(500,1000),random.randint(1000,2000),random.randint(2000,4000),random.randint(4000,8000),random.randint(8000,16000)])
-
+	Temp = Temp_xy(x,y)
+	PlAn = PlAn_xy(x,y)
 	# Placement de la 1ere case
-	Plateau[0][0]=Choix_Biome(Biomes, Temp, PlAn, PrlN)
+	Plateau[x][y]=Choix_Biome(Biomes, Temp, PlAn)
 	return Plateau
 
 ###############################################################
 ######################### CHOIX_BIOME #########################
 ###############################################################
 # Renvoit l'id du Biome avec les caracteristiques Temperature
-# et PlAn correspondantes
-def Choix_Biome(Biomes, Temp, PlAn, PrlN):
+# et PlAn correspondantes.
+def Choix_Biome(Biomes, Temp, PlAn):
 	for Biome in Biomes.values():
 		if Biome.in_range(Temp, PlAn):
-			return Case(Biome.id, Temp, PlAn, PrlN)
-	return Case("NULL", Temp, PlAn, PrlN)
+			return Case(Biome.id, Temp, PlAn)
+	return Case("NULL", Temp, PlAn)
+
+###############################################################
+########################## Temp ###############################
+###############################################################
+# Génération de la temperature en utilisant le bruit de Perlin.
+# Bruit ensuite échelonné entre -10 et 35
+def Temp_xy(x,y):
+	return 12 + noise.noise2(x,y) * 22.5
+
+###############################################################
+########################## PlAn ###############################
+###############################################################
+# Génération de la Pluviometrie Annuelle en utilisant le bruit
+# de Perlin, de manière coordonnée avec la temperature pour
+# éviter les situations impossibles.
+# Bruit ensuite  échelonné entre 62 et 16000
+def PlAn_xy(x,y):
+	Temp = Temp_xy(x,y)
+	PlAn_min = 62
+	PlAn_max = 500
+
+	for i in range(6):
+		if Temp <= 1.5 * 2**i :
+			return (PlAn_min + PlAn_max)/2 + noise.noise2(x,y) * ((PlAn_max + PlAn_min) / 2 - PlAn_max)
+		else :
+			PlAn_max = PlAn_max * 2
+	return None
