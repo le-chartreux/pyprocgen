@@ -9,9 +9,7 @@ import random
 seed = {}
 seed['x'] = random.randint(-100000,100000)
 seed['y'] = random.randint(-100000,100000)
-
 print(seed)
-
 
 Biomes = Creation_Constantes_Biomes()
 Plateau = Creer_Plateau_Vide()
