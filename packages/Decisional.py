@@ -12,8 +12,7 @@ from .Classes import Case
 # Crée aléatoirement la 1ère case puis la place en (0,0)
 
 def Placer_1ere_Case(Plateau, Biomes):
-	# Conditionnement pour éviter la sureprésentation des biomes
-	# polaires au spawn
+	
 	Temp = random.randint(-10,35)
 
 	# Génération de la Pluviometrie Annuelle de manière coordonnée
@@ -37,7 +36,7 @@ def Placer_1ere_Case(Plateau, Biomes):
 		PlAn = random.choice([random.randint(62,125),random.randint(125,250),random.randint(250,500),random.randint(500,1000),random.randint(1000,2000),random.randint(2000,4000),random.randint(4000,8000),random.randint(8000,16000)])
 
 	# Placement de la 1ere case
-	Plateau[0][0]=Choix_Biome(Biomes, Temp, PlAn)
+	Plateau[0][0]=Choix_Biome(Biomes, Temp, PlAn, PrlN)
 	return Plateau
 
 ###############################################################
@@ -45,8 +44,8 @@ def Placer_1ere_Case(Plateau, Biomes):
 ###############################################################
 # Renvoit l'id du Biome avec les caracteristiques Temperature
 # et PlAn correspondantes
-def Choix_Biome(Biomes, Temp, PlAn):
+def Choix_Biome(Biomes, Temp, PlAn, PrlN):
 	for Biome in Biomes.values():
 		if Biome.in_range(Temp, PlAn):
-			return Case(Biome.id, Temp, PlAn)
-	return Case("NULL", Temp, PlAn)
+			return Case(Biome.id, Temp, PlAn, PrlN)
+	return Case("NULL", Temp, PlAn, PrlN)
