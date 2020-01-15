@@ -24,10 +24,4 @@ for i in range (len(Plateau)) :
 
 #Afficher_Plateau(Plateau)
 
-Plateau2 = Creer_Plateau_Vide(nbx,nby)
-
-for i in range (len(Plateau)) :
-	for j in range (len(Plateau[0])) :
-			Plateau2[i][j] = str(Plateau[i][j].type[0:4])
-
-image_creation(Plateau2)
+image_creation(Plateau)
