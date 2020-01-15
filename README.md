@@ -17,7 +17,7 @@ For now it only creates a .ppm picture of a map with procedural generation using
 Only in french for the time being (maybe an english version will comes when it will be fully functional)
 
 
-############# LINKS #############  
+############ LINKS ##############
 Link to the Perlin noise program for Python3 used :
 https://github.com/caseman/noise
 
