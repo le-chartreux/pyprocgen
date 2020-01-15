@@ -15,7 +15,7 @@ def Lire_Ligne(Fichier,num_ligne):
 
 
 def image_creation(Plateau):
-	FichierDest = open("Generation_procedurale.ppm","w")
+	FichierDest = open("Procedural_generation_map.ppm","w")
 	FichierDest.write("P3\n")
 	FichierDest.write("# Generation_procedurale.ppm\n")
 	FichierDest.write(str(16 * len(Plateau[0])))
