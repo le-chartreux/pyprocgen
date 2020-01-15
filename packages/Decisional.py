@@ -17,9 +17,7 @@ def Placer_Case(Plateau, Biomes, x, y, seed):
 
 	Temp = Temp_xy(seed['x'] + x/50,seed['y'] + y/50)
 	PlAn = PlAn_xy(seed['x'] + x/50,seed['y'] + y/50)
-	# Placement de la 1ere case
-	Plateau[x][y]=Choix_Biome(Biomes, Temp, PlAn)
-	return Plateau
+	return Choix_Biome(Biomes, Temp, PlAn)
 
 ###############################################################
 ######################### CHOIX_BIOME #########################

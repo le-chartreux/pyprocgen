@@ -9,9 +9,7 @@ from .Classes import Case
 ###############################################################
 # Crée un plateau vide de x cases de largeur et y de longueur
 
-def Creer_Plateau_Vide():
-	nbx=eval(input("x = "))
-	nby=eval(input("y = "))
+def Creer_Plateau_Vide(nbx,nby):
 	Plateau=[]
 	for i in range (nby) :
 		Plateau.append([])
