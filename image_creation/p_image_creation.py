@@ -1,3 +1,6 @@
+import os
+import subprocess
+
 def Lire_Mots_Depuis_Fichier(Fichier):  ###Renvoie le(s) mot(s) d'une ligne sans le \n
 	string=""
 	courant=Fichier.read(1) #Lit le 1er caractère de la ligne
@@ -23,11 +26,6 @@ def image_creation(Plateau):
 	FichierDest.write("255\n")
 	FichierDest.write("\n")
 
-	num_ligne = 0
-
-
-
-
 	for num_ligne_tableau in range(len(Plateau)):
 		for num_ligne in range(16):
 			for i in range(len(Plateau[0])):
@@ -38,3 +36,5 @@ def image_creation(Plateau):
 				FichierDest.write(" ")
 				Fichier.close()
 			FichierDest.write("\n")
+		print("Processing : ",round((num_ligne_tableau + 1)/len(Plateau)*100,2),"%", end = '\r')
+	print("")

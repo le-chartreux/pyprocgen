@@ -1,6 +1,6 @@
-from packages.Biomes_creation import *
-from packages.Decisional import *
-from packages.Board_functions import *
+from packages.p_biomes_creation import *
+from packages.p_decisional import *
+from packages.p_board_functions import *
 from image_creation.p_image_creation import *
 import random
 
@@ -10,8 +10,6 @@ import random
 seed = {}
 seed['x'] = random.randint(-100000,100000)
 seed['y'] = random.randint(-100000,100000)
-print(seed)
-
 
 
 Biomes = Creation_Constantes_Biomes()
