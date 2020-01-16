@@ -8,8 +8,10 @@ import random
 # Appelle les fonctions maitresses.
 
 seed = {}
-seed['x'] = random.randint(-100000,100000)
-seed['y'] = random.randint(-100000,100000)
+seed['Tx'] = random.randint(-100000,100000)
+seed['Ty'] = random.randint(-100000,100000)
+seed['Px'] = random.randint(-100000,100000)
+seed['Py'] = random.randint(-100000,100000)
 
 
 Biomes = Creation_Constantes_Biomes()
@@ -20,7 +22,7 @@ Plateau = Creer_Plateau_Vide(nbx,nby)
 
 for i in range (len(Plateau)) :
 	for j in range (len(Plateau[0])) :
-			Plateau[i][j] = Placer_Case(Plateau, Biomes, i, j, seed)
+			Plateau[i][j] = Placer_Case(Biomes, i, j, seed)
 
 #Afficher_Plateau(Plateau)
 

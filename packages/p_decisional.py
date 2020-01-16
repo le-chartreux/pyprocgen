@@ -13,10 +13,10 @@ noise = SimplexNoise()
 #################### PLACER_CASE #########################
 ###############################################################
 # Génère une case en (x,y)
-def Placer_Case(Plateau, Biomes, x, y, seed):
+def Placer_Case(Biomes, x, y, seed):
 
-	Temp = Temp_xy(seed['x'] + x/50,seed['y'] + y/50)
-	PlAn = PlAn_xy(seed['x'] + x/50,seed['y'] + y/50)
+	Temp = Temp_xy(seed['Tx'] + x/30,seed['Ty'] + y/30)
+	PlAn = PlAn_xy(seed['Px'] + x/30,seed['Py'] + y/30, Temp)
 	return Choix_Biome(Biomes, Temp, PlAn)
 
 ###############################################################
@@ -45,8 +45,7 @@ def Temp_xy(x,y):
 # de Perlin, de manière coordonnée avec la temperature pour
 # éviter les situations impossibles.
 # Bruit ensuite  échelonné entre 62 et 16000
-def PlAn_xy(x,y):
-	Temp = Temp_xy(x,y)
+def PlAn_xy(x,y,Temp):
 	PlAn_min = 62
 	PlAn_max = 500
 
