@@ -28,7 +28,7 @@ def image_creation(Plateau):
 	for num_ligne_tableau in range(len(Plateau)):
 		for num_ligne in range(16):
 			for i in range(len(Plateau[0])):
-				Nom = Plateau[num_ligne_tableau][i].type[0:4]
+				Nom = Plateau[num_ligne_tableau][i].type
 				Fichier=open("biomes_images/" + str(Nom) + ".ppm","r")
 				a = Lire_Ligne(Fichier,num_ligne)
 				FichierDest.write(a)

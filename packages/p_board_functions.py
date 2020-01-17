@@ -27,5 +27,5 @@ def Afficher_Plateau(Plateau):
 			if Plateau[i][j].type == None :
 				print(Plateau[i][j].type, ' ',end='')
 			else :
-				print(Plateau[i][j].type[0:4], ' ',end='')
+				print(Plateau[i][j].type, ' ',end='')
 		print('')
