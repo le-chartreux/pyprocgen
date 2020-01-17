@@ -32,50 +32,50 @@ def Ajout_Biome(Biomes, Biome):
 ###############################################################
 def Creation_Constantes_Biomes():
 	Biomes = {}
-	Ajout_Biome(Biomes, Biome("Desert_Boreal",2,3,0,1))
-	Ajout_Biome(Biomes, Biome("Desert_Cool",3,4,0,1))
-	Ajout_Biome(Biomes, Biome("Desert_Tropical",5,6,0,1))
-	Ajout_Biome(Biomes, Biome("Desert_Warm",4,5,0,1))
+	Ajout_Biome(Biomes, Biome("Desert_Boreal",-1,0,-4,-3))
+	Ajout_Biome(Biomes, Biome("Desert_Cool",0,1,-4,-3))
+	Ajout_Biome(Biomes, Biome("Desert_Tropical",2,3,-4,-3))
+	Ajout_Biome(Biomes, Biome("Desert_Warm",1,2,-4,-3))
 
-	Ajout_Biome(Biomes, Biome("Desert_Scub_Cool",3,4,1,2))
-	Ajout_Biome(Biomes, Biome("Desert_Scub_Tropical",5,6,1,2))
-	Ajout_Biome(Biomes, Biome("Desert_Scub_Warm",4,5,1,2))
+	Ajout_Biome(Biomes, Biome("Desert_Scub_Cool",0,1,-3,-2))
+	Ajout_Biome(Biomes, Biome("Desert_Scub_Tropical",2,3,-3,-2))
+	Ajout_Biome(Biomes, Biome("Desert_Scub_Warm",1,2,-3,-2))
 
-	Ajout_Biome(Biomes, Biome("Dry_Forest_Tropical",5,6,4,5))
-	Ajout_Biome(Biomes, Biome("Dry_Forest_Warm",4,5,3,4))
+	Ajout_Biome(Biomes, Biome("Dry_Forest_Tropical",2,3,0,1))
+	Ajout_Biome(Biomes, Biome("Dry_Forest_Warm",1,2,-1,0))
 
-	Ajout_Biome(Biomes, Biome("Moist_Forest_Cool",3,4,3,4))
-	Ajout_Biome(Biomes, Biome("Moist_Forest_Tropical",5,6,5,6))
-	Ajout_Biome(Biomes, Biome("Moist_Forest_Warm",4,5,4,5))
+	Ajout_Biome(Biomes, Biome("Moist_Forest_Cool",0,1,-1,0))
+	Ajout_Biome(Biomes, Biome("Moist_Forest_Tropical",2,3,1,2))
+	Ajout_Biome(Biomes, Biome("Moist_Forest_Warm",1,2,0,1))
 
-	Ajout_Biome(Biomes, Biome("Rain_Forest",3,4,5,6))
+	Ajout_Biome(Biomes, Biome("Rain_Forest",0,1,1,2))
 
-	Ajout_Biome(Biomes, Biome("Rocks_and_ice",0,1,0,3))
+	Ajout_Biome(Biomes, Biome("Rocks_and_ice",-3,-2,-4,-1))
 
-	Ajout_Biome(Biomes, Biome("Steppe",3,4,2,3))
+	Ajout_Biome(Biomes, Biome("Steppe",0,1,-2,-1))
 
-	Ajout_Biome(Biomes, Biome("Steppe_Woodland_Thorn",4,5,2,3))
+	Ajout_Biome(Biomes, Biome("Steppe_Woodland_Thorn",1,2,-2,-1))
 
-	Ajout_Biome(Biomes, Biome("Taiga_Dry",2,3,1,2))
-	Ajout_Biome(Biomes, Biome("Taiga_Moist",2,3,2,3))
-	Ajout_Biome(Biomes, Biome("Taiga_Rain",2,3,4,5))
-	Ajout_Biome(Biomes, Biome("Taiga_Wet",2,3,3,4))
+	Ajout_Biome(Biomes, Biome("Taiga_Dry",-1,0,-3,-2))
+	Ajout_Biome(Biomes, Biome("Taiga_Moist",-1,0,-2,-1))
+	Ajout_Biome(Biomes, Biome("Taiga_Rain",-1,0,0,1))
+	Ajout_Biome(Biomes, Biome("Taiga_Wet",-1,0,-1,0))
 
-	Ajout_Biome(Biomes, Biome("Toundra_Dry",1,2,0,1))
-	Ajout_Biome(Biomes, Biome("Toundra_Moist",1,2,1,2))
-	Ajout_Biome(Biomes, Biome("Toundra_Rain",1,2,3,4))
-	Ajout_Biome(Biomes, Biome("Toundra_Wet",1,2,2,3))
+	Ajout_Biome(Biomes, Biome("Toundra_Dry",-2,-1,-4,-3))
+	Ajout_Biome(Biomes, Biome("Toundra_Moist",-2,-1,-3,-2))
+	Ajout_Biome(Biomes, Biome("Toundra_Rain",-2,-1,-1,0))
+	Ajout_Biome(Biomes, Biome("Toundra_Wet",-2,-1,-2,-1))
 
-	Ajout_Biome(Biomes, Biome("Tropical_Forest_Tropical",5,6,7,8))
-	Ajout_Biome(Biomes, Biome("Tropical_Forest_Warm",4,5,6,7))
+	Ajout_Biome(Biomes, Biome("Tropical_Forest_Tropical",2,3,3,4))
+	Ajout_Biome(Biomes, Biome("Tropical_Forest_Warm",1,2,2,3))
 
-	Ajout_Biome(Biomes, Biome("Very_Dry_Forest",5,6,3,4))
+	Ajout_Biome(Biomes, Biome("Very_Dry_Forest",2,3,-1,0))
 
-	Ajout_Biome(Biomes, Biome("Wet_Forest_Cool",3,4,4,5))
-	Ajout_Biome(Biomes, Biome("Wet_Forest_Tropical",5,6,6,7))
-	Ajout_Biome(Biomes, Biome("Wet_Forest_Warm",4,5,5,6))
+	Ajout_Biome(Biomes, Biome("Wet_Forest_Cool",0,1,0,1))
+	Ajout_Biome(Biomes, Biome("Wet_Forest_Tropical",2,3,2,3))
+	Ajout_Biome(Biomes, Biome("Wet_Forest_Warm",1,2,1,2))
 
-	Ajout_Biome(Biomes, Biome("Woodland_Thorn",5,6,2,3))
+	Ajout_Biome(Biomes, Biome("Woodland_Thorn",2,3,-2,-1))
 
 
 	return Biomes

@@ -19,6 +19,30 @@ def Placer_Case(Biomes, x, y, seed):
 	PlAn = PlAn_xy(seed['Px'] + x/30,seed['Py'] + y/30, Temp)
 	return Choix_Biome(Biomes, Temp, PlAn)
 
+
+###############################################################
+########################## Temp ###############################
+###############################################################
+# Génération de la temperature en utilisant le bruit de Perlin.
+def Temp_xy(x,y):
+	return noise.noise2(x,y) * 3
+
+###############################################################
+########################## PlAn ###############################
+###############################################################
+# Génération de la Pluviometrie Annuelle en utilisant le bruit
+# de Perlin, de manière coordonnée avec la temperature pour
+# éviter les situations impossibles.
+def PlAn_xy(x,y,Temp):
+	for i in range(7) :
+		if i-3 <= Temp <= i - 2:
+			return noise.noise2(x,y) * 0.5 * (i + 3) + (-2.5 + 0.5 * i)
+
+	return 5
+
+
+
+
 ###############################################################
 ######################### CHOIX_BIOME #########################
 ###############################################################
@@ -28,30 +52,5 @@ def Choix_Biome(Biomes, Temp, PlAn):
 	for Biome in Biomes.values():
 		if Biome.in_range(Temp, PlAn):
 			return Case(Biome.id, Temp, PlAn)
+	print(Temp,PlAn)
 	return Case("NULL", Temp, PlAn)
-
-###############################################################
-########################## Temp ###############################
-###############################################################
-# Génération de la temperature en utilisant le bruit de Perlin.
-# Bruit ensuite échelonné entre -10 et 35
-def Temp_xy(x,y):
-	return 12 + noise.noise2(x,y) * 22.5
-
-###############################################################
-########################## PlAn ###############################
-###############################################################
-# Génération de la Pluviometrie Annuelle en utilisant le bruit
-# de Perlin, de manière coordonnée avec la temperature pour
-# éviter les situations impossibles.
-# Bruit ensuite  échelonné entre 62 et 16000
-def PlAn_xy(x,y,Temp):
-	PlAn_min = 62
-	PlAn_max = 500
-
-	for i in range(6):
-		if Temp <= 1.5 * 2**i :
-			return (PlAn_min + PlAn_max)/2 + noise.noise2(x,y) * ((PlAn_max + PlAn_min) / 2 - PlAn_max)
-		else :
-			PlAn_max = PlAn_max * 2
-	return None
