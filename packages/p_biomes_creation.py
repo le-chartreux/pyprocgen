@@ -32,7 +32,6 @@ def Ajout_Biome(Biomes, Biome):
 ###############################################################
 def Creation_Constantes_Biomes():
 	Biomes = {}
-	Ajout_Biome(Biomes, Biome("Desert_Boreal",-1,0,-4,-3))
 	Ajout_Biome(Biomes, Biome("Desert_Cool",0,1,-4,-3))
 	Ajout_Biome(Biomes, Biome("Desert_Tropical",2,3,-4,-3))
 	Ajout_Biome(Biomes, Biome("Desert_Warm",1,2,-4,-3))
@@ -56,6 +55,7 @@ def Creation_Constantes_Biomes():
 
 	Ajout_Biome(Biomes, Biome("Steppe_Woodland_Thorn",1,2,-2,-1))
 
+	Ajout_Biome(Biomes, Biome("Taiga_Desert",-1,0,-4,-3))
 	Ajout_Biome(Biomes, Biome("Taiga_Dry",-1,0,-3,-2))
 	Ajout_Biome(Biomes, Biome("Taiga_Moist",-1,0,-2,-1))
 	Ajout_Biome(Biomes, Biome("Taiga_Rain",-1,0,0,1))
