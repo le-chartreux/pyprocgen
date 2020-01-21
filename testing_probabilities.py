@@ -1,7 +1,6 @@
 from packages.p_biomes_creation import *
 from packages.p_decisional import *
 from packages.p_board_functions import *
-from packages.p_image_creation import *
 import random
 
 
