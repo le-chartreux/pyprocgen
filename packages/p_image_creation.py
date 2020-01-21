@@ -8,14 +8,14 @@ def Lire_Mots_Depuis_Fichier(Fichier):  ###Renvoie le(s) mot(s) d'une ligne sans
 		courant=Fichier.read(1) #Lit le caractère après le dernier caractère lu
 	return string
 
-def Lire_Ligne(Fichier,num_ligne):
-	for i in range(num_ligne + 6):
+def Lire_Ligne(Fichier,num_ligne): #Lit la ligne de numero numligne et la retourne
+	for i in range(num_ligne + 5):
 		Lire_Mots_Depuis_Fichier(Fichier)
 	return Lire_Mots_Depuis_Fichier(Fichier)
 
 
 def image_creation(Plateau):
-	FichierDest = open("Procedural_generation_map.ppm","w")
+	FichierDest = open("Generated_map.ppm","w")
 	FichierDest.write("P3\n")
 	FichierDest.write("# Generation_procedurale.ppm\n")
 	FichierDest.write(str(16 * len(Plateau[0])))
@@ -29,6 +29,7 @@ def image_creation(Plateau):
 		for num_ligne in range(16):
 			for i in range(len(Plateau[0])):
 				Nom = Plateau[num_ligne_tableau][i].type
+				#Nom = "Taiga_Moist"
 				Fichier=open("biomes_images/" + str(Nom) + ".ppm","r")
 				a = Lire_Ligne(Fichier,num_ligne)
 				FichierDest.write(a)
