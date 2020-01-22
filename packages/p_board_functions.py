@@ -1,4 +1,4 @@
-from .p_classes import Case
+from .p_classes import C_Case
 
 # FONCTIONS DU PLATEAU
 # Créent le plateau et l'affichent
@@ -14,7 +14,7 @@ def Creer_Plateau_Vide(nbx,nby):
 	for i in range (nby) :
 		Plateau.append([])
 		for j in range (nbx) :
-			Plateau[i].append(Case(None,None,None))
+			Plateau[i].append(C_Case(None,None,None))
 	return Plateau
 
 ###############################################################

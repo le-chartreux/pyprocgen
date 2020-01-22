@@ -1,6 +1,6 @@
 import random
 from .p_biomes_creation import *
-from .p_classes import Case
+from .p_classes import C_Case
 from .p_perlin_noise import SimplexNoise
 noise = SimplexNoise()
 
@@ -51,6 +51,6 @@ def PlAn_xy(x,y,Temp):
 def Choix_Biome(Biomes, Temp, PlAn):
 	for Biome in Biomes.values():
 		if Biome.in_range(Temp, PlAn):
-			return Case(Biome.id, Temp, PlAn)
+			return C_Case(Biome.id, Temp, PlAn)
 	print(Temp,PlAn)
-	return Case("NULL", Temp, PlAn)
+	return C_Case("NULL", Temp, PlAn)
