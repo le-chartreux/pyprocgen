@@ -72,7 +72,7 @@ def image_creation(Plateau):
 				FichierDest.write(" ")
 
 			FichierDest.write("\n")
-		print("Processing : ",round((num_ligne_tableau + 1)/len(Plateau)*100,2),"%", end = '\r')
+		print("Creating the map's image : ",round((num_ligne_tableau + 1)/len(Plateau)*100,2),"%", end = '\r')
 	print("")
 
 	FichierDest.close()

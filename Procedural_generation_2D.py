@@ -22,7 +22,9 @@ Plateau = Creer_Plateau_Vide(nbx,nby)
 
 for i in range (len(Plateau)) :
 	for j in range (len(Plateau[0])) :
-			Plateau[i][j] = Placer_Case(Biomes, i, j, seed)
+		Plateau[i][j] = Placer_Case(Biomes, i, j, seed)
+	print("Vectorial creation of the map : ",round((i + 1)/len(Plateau)*100,2),"%", end = '\r')
+print("")
 
 #Afficher_Plateau(Plateau)
 
