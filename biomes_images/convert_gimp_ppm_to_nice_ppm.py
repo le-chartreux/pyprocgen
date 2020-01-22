@@ -127,7 +127,7 @@ def ListeCleanToFichier(LesDonnées, NomFichier, TypeFichier):   ###Transforme l
 
 
 
-NomFichier = input("Entrez le nom du fichier")
+NomFichier = input("Entrez le nom du fichier : ")
 ListeDonnéesPropresFI=Conv_Fichier_Vers_Liste_Propre(NomFichier + ".ppm", "ppm")
 
 fich = open(NomFichier + ".ppm","w")
