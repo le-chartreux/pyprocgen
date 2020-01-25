@@ -6,6 +6,12 @@ import random
 
 # CORPS DU PROGRAMME
 # Appelle les fonctions maitresses.
+Biomes = Creation_Constantes_Biomes()
+
+nbx=eval(input("x = "))
+nby=eval(input("y = "))
+print("")
+Plateau = Creer_Plateau_Vide(nbx,nby)
 
 seed = {}
 seed['Tx'] = random.randint(-100000,100000)
@@ -13,12 +19,10 @@ seed['Ty'] = random.randint(-100000,100000)
 seed['Px'] = random.randint(-100000,100000)
 seed['Py'] = random.randint(-100000,100000)
 
-
-Biomes = Creation_Constantes_Biomes()
-
-nbx=eval(input("x = "))
-nby=eval(input("y = "))
-Plateau = Creer_Plateau_Vide(nbx,nby)
+print("Coordonnées de seed :")
+print("Temperature : x =",seed['Tx'],", y =",seed['Ty'])
+print("Pluviometrie : x =",seed['Px'],", y =",seed['Py'])
+print("")
 
 for i in range (len(Plateau)) :
 	for j in range (len(Plateau[0])) :
