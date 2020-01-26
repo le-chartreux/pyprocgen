@@ -33,3 +33,5 @@ print("")
 #Afficher_Plateau(Plateau)
 
 image_creation(Plateau)
+
+print("Done")
