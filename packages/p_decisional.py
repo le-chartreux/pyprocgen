@@ -15,8 +15,8 @@ noise = SimplexNoise()
 # Génère une case en (x,y)
 def Placer_Case(Biomes, x, y, seed):
 
-	Temp = Temp_xy(seed['Tx'] + x/50,seed['Ty'] + y/50)
-	PlAn = PlAn_xy(seed['Px'] + x/50,seed['Py'] + y/50, Temp)
+	Temp = Temp_xy(seed['Tx'] + x/500,seed['Ty'] + y/500)
+	PlAn = PlAn_xy(seed['Px'] + x/500,seed['Py'] + y/500, Temp)
 	return Choix_Biome(Biomes, Temp, PlAn)
 
 
