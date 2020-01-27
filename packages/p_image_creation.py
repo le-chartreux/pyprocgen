@@ -20,14 +20,13 @@ def Lire_Mots_Depuis_Fichier(Fichier):
 # contenu dans un vecteur de string V, avec V[i] = ligne n°i du
 # body de l'image
 def Mise_En_Vecteur(NomBiome):
-	Fichier = open("biomes_images/" + NomBiome + ".ppm","r")
+	Fichier = open("biomes_grounds/" + NomBiome + ".ppm","r")
 	V = []
 	# Saut du header
 	for i in range(4):
 		Lire_Mots_Depuis_Fichier(Fichier)
 	# Lecture des 16 lignes du fichier
-	for i in range(16):
-		V.append(Lire_Mots_Depuis_Fichier(Fichier))
+	V.append(Lire_Mots_Depuis_Fichier(Fichier))
 	return V
 
 ###############################################################
@@ -44,9 +43,9 @@ def image_creation(Plateau):
 	# Creation du header
 	FichierDest.write("P3\n")
 	FichierDest.write("# Generation_procedurale.ppm\n")
-	FichierDest.write(str(16 * len(Plateau[0])))
+	FichierDest.write(str(len(Plateau[0])))
 	FichierDest.write("\n")
-	FichierDest.write(str(16 * len(Plateau)))
+	FichierDest.write(str(len(Plateau)))
 	FichierDest.write("\n")
 	FichierDest.write("255\n")
 	FichierDest.write("\n")
@@ -55,7 +54,7 @@ def image_creation(Plateau):
 
 	# Creation du body
 	for num_ligne_tableau in range(len(Plateau)):
-		for num_ligne in range(16):
+		for num_ligne in range(1):
 			for i in range(len(Plateau[0])):
 				Nom = Plateau[num_ligne_tableau][i].type
 
