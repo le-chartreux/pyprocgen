@@ -34,11 +34,7 @@ def Temp_xy(x,y):
 # de Perlin, de manière coordonnée avec la temperature pour
 # éviter les situations impossibles.
 def PlAn_xy(x,y,Temp):
-	for i in range(7) :
-		if i-3 <= Temp <= i - 2:
-			return noise.noise2(x,y) * 0.5 * (i + 3) + (-2.5 + 0.5 * i)
-
-	return 5
+	return noise.noise2(x,y) * 4
 
 
 
@@ -52,5 +48,5 @@ def Choix_Biome(Biomes, Temp, PlAn):
 	for Biome in Biomes.values():
 		if Biome.in_range(Temp, PlAn):
 			return C_Case(Biome.id, Temp, PlAn)
-	print(Temp,PlAn)
-	return C_Case("NULL", Temp, PlAn)
+
+	return C_Case("Eau", Temp, PlAn)
