@@ -19,9 +19,9 @@ seed['Ty'] = random.randint(-100000,100000)
 seed['Px'] = random.randint(-100000,100000)
 seed['Py'] = random.randint(-100000,100000)
 
-print("Coordonnées de seed :")
+print("Seed coordinates :")
 print("Temperature : x =",seed['Tx'],", y =",seed['Ty'])
-print("Pluviometrie : x =",seed['Px'],", y =",seed['Py'])
+print("Pluviometry : x =",seed['Px'],", y =",seed['Py'])
 print("")
 
 for i in range (len(Plateau)) :
