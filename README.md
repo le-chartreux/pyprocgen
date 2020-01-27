@@ -19,7 +19,8 @@ HOW TO USE IT ?
 
 LANGUAGE:
 ----------
-Only in french for the time being (maybe an english version will comes later)
+- User Interface is in english.
+- Comments are only in french for the time being (maybe an english version will comes later).
 
 
 LINKS:
@@ -35,4 +36,4 @@ https://en.wikipedia.org/wiki/Biome
 
 SPECIAL THANKS:
 ----------
-To mindstorm38 for his help about classes and Perlin Noise (https://github.com/mindstorm38)
+To mindstorm38 for his help about classes and Perlin Noise (https://github.com/mindstorm38).
