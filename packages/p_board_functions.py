@@ -1,4 +1,4 @@
-from .p_classes import C_Case
+from .p_classes import cl_case
 
 # =============================
 # INFORMATIONS SUR CE PACKAGE :
@@ -8,18 +8,18 @@ from .p_classes import C_Case
 # afficher un plateau dans la console
 # -----------------------------
 # CONTENU :
-# - Creer_Plateau_Vide(nbx,nby)
-# - Afficher_Plateau(Plateau)
+# - f_creer_plateau_vide(nbx,nby)
+# - f_afficher_plateau(Plateau)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
-# - Procedural_generation_2D.py
+# - procedural_generation_2D.py
 
 
 
 ###############################################################
 #################### CREER_PLATEAU_VIDE #######################
 ###############################################################
-def Creer_Plateau_Vide(nbx, nby):
+def f_creer_plateau_vide(nbx, nby):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -30,10 +30,10 @@ def Creer_Plateau_Vide(nbx, nby):
 	# - nbx,nby : integer
 	# -----------------------------
 	# DEPEND DE :
-	# - p_classes.C_Case
+	# - p_classes.cl_case
 	# -----------------------------
 	# UTILISE PAR :
-	# - Procedural_generation_2D.py
+	# - procedural_generation_2D.py
 	# =============================
 
 	Plateau=[]
@@ -42,7 +42,7 @@ def Creer_Plateau_Vide(nbx, nby):
 		Plateau.append([])
 		for j in range(nbx) :
 
-			Plateau[i].append(C_Case(None, None, None))
+			Plateau[i].append(cl_case(None, None, None))
 
 		print("Creation of the empty board's vector : ",round((i + 1) / nby*100, 2), "%", end = "\r")
 
@@ -55,7 +55,7 @@ def Creer_Plateau_Vide(nbx, nby):
 ###############################################################
 #################### AFFICHER_PLATEAU #########################
 ###############################################################
-def Afficher_Plateau(Plateau):
+def f_afficher_plateau(Plateau):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -67,10 +67,10 @@ def Afficher_Plateau(Plateau):
 	# - NONE
 	# -----------------------------
 	# DEPEND DE :
-	# - p_classes.C_Case
+	# - p_classes.cl_case
 	# -----------------------------
 	# UTILISE PAR :
-	# - Procedural_generation_2D.py
+	# - procedural_generation_2D.py
 	# =============================
 
 	for i in range(len(Plateau)) :

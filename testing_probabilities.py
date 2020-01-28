@@ -127,3 +127,8 @@ print("")
 
 print("Woodland_Thorn : ", end = '')
 print(A.count("Woodland_Thorn")/1000)
+
+print("")
+
+print("Water : ", end = '')
+print(A.count("Water")/1000)

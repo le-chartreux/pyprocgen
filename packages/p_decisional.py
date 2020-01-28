@@ -1,7 +1,7 @@
 import random
-from .p_classes import C_Case
+from .p_classes import cl_case
 from .p_perlin_noise import SimplexNoise
-noise = SimplexNoise()
+cl_noise = SimplexNoise()
 
 # =============================
 # INFORMATIONS SUR CE PACKAGE :
@@ -11,19 +11,17 @@ noise = SimplexNoise()
 # prendre la décisison du type de case à placer en (x,y)
 # -----------------------------
 # CONTENU :
-# - Placer_Case(Biomes, x, y, Seed)
-# - Temp_xy(x, y)
-# - PlAn_xy(x, y)
-# - Choix_Biome(Biomes, Temp, PlAn)
+# - f_generer_case(Biomes, x, y, Seed)
+# - f_choix_biome(Biomes, Temp, PlAn)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
-# - Procedural_generation_2D.py
+# - procedural_generation_2D.py
 # =============================
 
 ###############################################################
 ###################### GENERER_CASE ###########################
 ###############################################################
-def Generer_Case(Biomes, x, y, Seed):
+def f_generer_case(Biomes, x, y, Seed):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -37,15 +35,15 @@ def Generer_Case(Biomes, x, y, Seed):
 	# -----------------------------
 	# DEPEND DE :
 	# - p_perlin_noise.py
-	# - Choix_Biome()
+	# - f_choix_biome()
 	# -----------------------------
 	# UTILISE PAR :
-	# - Procedural_generation_2D.py
+	# - procedural_generation_2D.py
 	# =============================
 
-	Temp = noise.noise2(Seed["Tx"] + x/500, Seed["Ty"] + y/500) * 3
-	PlAn = noise.noise2(Seed["Px"] + x/500, Seed["Py"] + y/500) * 4
-	return Choix_Biome(Biomes, Temp, PlAn)
+	Temp = cl_noise.noise2(Seed["Tx"] + x/500, Seed["Ty"] + y/500) * 3
+	PlAn = cl_noise.noise2(Seed["Px"] + x/500, Seed["Py"] + y/500) * 4
+	return f_choix_biome(Biomes, Temp, PlAn)
 
 
 
@@ -53,7 +51,7 @@ def Generer_Case(Biomes, x, y, Seed):
 ######################### CHOIX_BIOME #########################
 ###############################################################
 
-def Choix_Biome(Biomes, Temp, PlAn):
+def f_choix_biome(Biomes, Temp, PlAn):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
@@ -67,13 +65,13 @@ def Choix_Biome(Biomes, Temp, PlAn):
 		# - PlAn : integer not null
 		# -----------------------------
 		# DEPEND DE :
-		# - p_classes.C_Case
+		# - p_classes.cl_case
 		# -----------------------------
 		# UTILISE PAR :
-		# - Procedural_generation_2D.py
+		# - f_generer_case.(Biomes, x, y, Seed)
 		# =============================
 	for Biome in Biomes.values():
 		if Biome.in_range(Temp, PlAn):
-			return C_Case(Biome.id, Temp, PlAn)
+			return cl_case(Biome.id, Temp, PlAn)
 
-	return C_Case("Eau", Temp, PlAn)
+	return cl_case("Water", Temp, PlAn)

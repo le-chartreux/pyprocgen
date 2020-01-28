@@ -1,5 +1,5 @@
 import os
-from .p_classes import C_Image
+from .p_classes import cl_image
 
 # =============================
 # INFORMATIONS SUR CE PACKAGE :
@@ -8,13 +8,13 @@ from .p_classes import C_Image
 # Créer une image à partir du vecteur Plateau
 # -----------------------------
 # CONTENU :
-# - Lire_Mots_Depuis_Fichier(Fichier)
-# - Mise_En_Vecteur(NomBiome)
-# - Ajout_Image(ImagesChargees,Image)
-# - Image_creation(Plateau)
+# - f_lire_mots_depuis_fichier(Fichier)
+# - f_mise_en_vecteur(NomBiome)
+# - f_ajout_image(ImagesChargees,Image)
+# - f_image_creation(Plateau)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
-# - Procedural_generation_2D.py
+# - procedural_generation_2D.py
 # =============================
 
 
@@ -22,7 +22,7 @@ from .p_classes import C_Image
 ###############################################################
 ################# LIRE_MOTS_DEPUIS_FICHIER ####################
 ###############################################################
-def Lire_Mots_Depuis_Fichier(Fichier):
+def f_lire_mots_depuis_fichier(Fichier):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -36,7 +36,7 @@ def Lire_Mots_Depuis_Fichier(Fichier):
 	# - os
 	# -----------------------------
 	# UTILISE PAR :
-	# - Mise_En_Vecteur()
+	# - f_mise_en_vecteur()
 	# =============================
 
 	string=""
@@ -54,7 +54,7 @@ def Lire_Mots_Depuis_Fichier(Fichier):
 ###############################################################
 ##################### MISE_EN_VECTEUR #########################
 ###############################################################
-def Mise_En_Vecteur(NomBiome):
+def f_mise_en_vecteur(NomBiome):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -67,20 +67,20 @@ def Mise_En_Vecteur(NomBiome):
 	# -----------------------------
 	# DEPEND DE :
 	# - os
-	# - p_image_creation.Lire_Mots_Depuis_Fichier()
+	# - p_image_creation.f_lire_mots_depuis_fichier()
 	# -----------------------------
 	# UTILISE PAR :
-	# - Image_creation()
+	# - f_image_creation()
 	# =============================
 
 	Fichier = open("biomes_grounds/" + NomBiome + ".ppm","r")
 
 	# Saut du header
 	for i in range(4):
-		Lire_Mots_Depuis_Fichier(Fichier)
+		f_lire_mots_depuis_fichier(Fichier)
 
 	# Lecture du body du fichier
-	str = Lire_Mots_Depuis_Fichier(Fichier)
+	str = f_lire_mots_depuis_fichier(Fichier)
 
 	return str
 
@@ -89,7 +89,7 @@ def Mise_En_Vecteur(NomBiome):
 ###############################################################
 ####################### AJOUT_IMAGE ###########################
 ###############################################################
-def Ajout_Image(ImagesChargees, Image):
+def f_ajout_image(ImagesChargees, Image):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -98,13 +98,13 @@ def Ajout_Image(ImagesChargees, Image):
 	# -----------------------------
 	# PRECONDITIONS :
 	# - ImagesChargees : dictionnaire
-	# - Image : C_Image
+	# - Image : cl_image
 	# -----------------------------
 	# DEPEND DE :
-	# - p_classes.C_Image
+	# - p_classes.cl_image
 	# -----------------------------
 	# UTILISE PAR :
-	# - Image_creation()
+	# - f_image_creation()
 	# =============================
 	ImagesChargees[Image.NomBiome] = Image
 
@@ -113,7 +113,7 @@ def Ajout_Image(ImagesChargees, Image):
 ###############################################################
 ###################### IMAGE_CREATION #########################
 ###############################################################
-def Image_creation(Plateau, Seed):
+def f_image_creation(Plateau, Seed):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -125,11 +125,11 @@ def Image_creation(Plateau, Seed):
 	# -----------------------------
 	# DEPEND DE :
 	# - os
-	# - p_classes.C_Image
-	# - p_image_creation.Mise_En_Vecteur()
+	# - p_classes.cl_image
+	# - p_image_creation.f_mise_en_vecteur()
 	# -----------------------------
 	# UTILISE PAR :
-	# - Image_creation()
+	# - f_image_creation()
 	# =============================
 
 	FichierDest = open("Generated_map.ppm", "w")
@@ -151,21 +151,20 @@ def Image_creation(Plateau, Seed):
 
 	# Creation du body
 	for num_ligne_tableau in range(len(Plateau)):
-		for num_ligne in range(1):
-			for i in range(len(Plateau[0])):
-				Nom = Plateau[num_ligne_tableau][i].type
+		for i in range(len(Plateau[0])):
+			Nom = Plateau[num_ligne_tableau][i].type
 
-				ImagePresente = False
-				for VarImage in ImagesChargees.values():
-					if Nom == VarImage.NomBiome:
-						ImagePresente = True
+			ImagePresente = False
+			for VarImage in ImagesChargees.values():
+				if Nom == VarImage.NomBiome:
+					ImagePresente = True
 
-				if not ImagePresente :
-					tampon = C_Image(Nom,Mise_En_Vecteur(Nom))
-					Ajout_Image(ImagesChargees,tampon)
+			if not ImagePresente :
+				tampon = cl_image(Nom,f_mise_en_vecteur(Nom))
+				f_ajout_image(ImagesChargees,tampon)
 
-				FichierDest.write(ImagesChargees[Nom].Str)
-				FichierDest.write(" ")
+			FichierDest.write(ImagesChargees[Nom].Str)
+			FichierDest.write(" ")
 
 			FichierDest.write("\n")
 

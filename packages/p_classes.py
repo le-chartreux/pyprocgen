@@ -5,9 +5,9 @@
 # Définir les classes utilisées dans le programme
 # -----------------------------
 # CONTENU :
-# - class C_Case
-# - class C_Biome
-# - class C_Image
+# - class cl_case
+# - class cl_biome
+# - class cl_image
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - p_biomes_creation.py
@@ -19,9 +19,9 @@
 
 
 ##############################################################
-########################## C_CASE ############################
+######################### CL_CASE ############################
 ##############################################################
-class C_Case:
+class cl_case:
 
 	def __init__(self, type, Temp, PlAn):
 		# =============================
@@ -34,9 +34,9 @@ class C_Case:
 		# - sa Pluviometrie Annuelle
 		# -----------------------------
 		# UTILISE PAR :
-		# - p_board_functions.Creer_Plateau_Vide()
-		# - p_board_functions.Afficher_Plateau()
-		# - p_decisional.Choix_Biome()
+		# - p_board_functions.f_creer_plateau_vide()
+		# - p_board_functions.f_afficher_plateau()
+		# - p_decisional.f_choix_biome()
 		# -----------------------------
 		# PRECONDITIONS :
 		# - NONE
@@ -52,9 +52,9 @@ class C_Case:
 
 
 ###############################################################
-########################## C_BIOME ############################
+######################### CL_BIOME ############################
 ###############################################################
-class C_Biome:
+class cl_biome:
 
 	def __init__(self, id, TempMin,TempMax, PlAnMin, PlAnMax):
 		# =============================
@@ -69,7 +69,7 @@ class C_Biome:
 		# - sa Pluviometrie Annuelle Maximale
 		# -----------------------------
 		# UTILISE PAR :
-		# - p_biomes_creation.Creation_Constantes_Biomes()
+		# - p_biomes_creation.f_creation_constantes_biomes()
 		# -----------------------------
 		# PRECONDITIONS :
 		# - NONE
@@ -94,13 +94,13 @@ class C_Biome:
 		# à celles de ce biome
 		# -----------------------------
 		# UTILISE PAR :
-		# - p_decisional.Choix_Biome()
+		# - p_decisional.f_choix_biome()
 		# -----------------------------
 		# PRECONDITIONS :
 		# - NONE
 		# -----------------------------
 		# DEPEND DE :
-		# - p_classes.C_Biome.__init__()
+		# - p_classes.cl_biome.__init__()
 		# =============================
 
 		return self.TempMin <= Temp <= self.TempMax and self.PlAnMin <= PlAn < self.PlAnMax
@@ -108,9 +108,9 @@ class C_Biome:
 
 
 ##############################################################
-######################### C_IMAGE ############################
+######################## CL_IMAGE ############################
 ##############################################################
-class C_Image:
+class cl_image:
 
 	# CONSTRUCTION DE LA CLASSE #
 	def __init__(self, NomBiome, Str):
@@ -123,8 +123,8 @@ class C_Image:
 		# - le vecteur de son body
 		# -----------------------------
 		# UTILISE PAR :
-		# - p_image_creation.Ajout_Image()
-		# - p_image_creation.Image_creation()
+		# - p_image_creation.f_ajout_image()
+		# - p_image_creation.f_image_creation()
 		# -----------------------------
 		# PRECONDITIONS :
 		# - NONE
