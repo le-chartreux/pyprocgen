@@ -10,8 +10,8 @@ For now it only creates a .ppm picture of a map with procedural generation using
 HOW TO USE IT ?
 ----------
 
-- run Procedural_generation_2D with Python3
-- enter the width (x) then the height (y) of the map you want
+- run procedural_generation_2D with Python3
+- enter the width (x) then the height (y) of the map you want, in pixels
 - wait during processing
 - open Generated_map.ppm with your image manager (if it doesn't work then use your Office text editor to open it)
 - enjoy ;)
@@ -21,6 +21,17 @@ LANGUAGE:
 ----------
 - User Interface is in english.
 - Comments are only in french for the time being (maybe an english version will comes later).
+
+
+NAMING STYLE:
+----------
+I didn't use the real Python's naming conventions in this project because I think some of theme aren't compatible with my way of naming, so this is a little alias to clearly understand them if you didn't:
+
+- v_  : variable
+- co_ : constant
+- f_  : function
+- cl_ : class
+- p_  : package
 
 
 LINKS:
