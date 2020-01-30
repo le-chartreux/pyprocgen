@@ -1,18 +1,15 @@
-from packages.p_biomes_creation import *
-from packages.p_decisional import *
+from packages.p_biomes_creation import f_creation_dic_conditions_biomes
 from packages.p_board_functions import *
-import random
+from packages.p_decisional import f_generer_case
 
 
-Biomes = Creation_Constantes_Biomes()
+
+v_dic_conditions_biomes = f_creation_dic_conditions_biomes()
+
 A = []
 for j in range(100000):
-	seed = {}
-	seed['Tx'] = random.randint(-100000,100000)
-	seed['Ty'] = random.randint(-100000,100000)
-	seed['Px'] = random.randint(-100000,100000)
-	seed['Py'] = random.randint(-100000,100000)
-	A.append(Placer_Case(Biomes, 1, 1, seed).type)
+	v_seed = f_generer_seed()
+	A.append(f_generer_case(v_dic_conditions_biomes, 1, 1, v_seed).type)
 
 print("Desert_Cool : ", end = '')
 print(A.count("Desert_Cool")/1000)
