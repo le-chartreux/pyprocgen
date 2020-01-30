@@ -1,5 +1,6 @@
 import random
 from .p_classes import cl_case
+from packages.p_biomes_creation import f_creation_dic_conditions_biomes
 from .p_perlin_noise import SimplexNoise
 cl_noise = SimplexNoise()
 
@@ -11,8 +12,8 @@ cl_noise = SimplexNoise()
 # prendre la décisison du tv_ype de case à placer en (v_x,v_y)
 # -----------------------------
 # CONTENU :
-# - f_generer_case(v_dic_biomes, v_x, v_y, v_seed)
-# - f_choiv_x_biome(v_dic_biomes, v_temp, v_pluv)
+# - f_generer_case(v_dic_conditions_biomes, v_x, v_y, v_seed)
+# - f_choiv_x_biome(v_dic_conditions_biomes, v_temp, v_pluv)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
@@ -21,7 +22,7 @@ cl_noise = SimplexNoise()
 ###############################################################
 ###################### GENERER_CASE ###########################
 ###############################################################
-def f_generer_case(v_dic_biomes, v_x, v_y, v_seed):
+def f_generer_case(v_dic_conditions_biomes, v_x, v_y, v_seed):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -43,7 +44,7 @@ def f_generer_case(v_dic_biomes, v_x, v_y, v_seed):
 
 	v_temp = cl_noise.noise2(v_seed["Tx"] + v_x/500, v_seed["Ty"] + v_y/500) * 3
 	v_pluv = cl_noise.noise2(v_seed["Px"] + v_x/500, v_seed["Py"] + v_y/500) * 4
-	return f_choix_biome(v_dic_biomes, v_temp, v_pluv)
+	return f_choix_biome(v_dic_conditions_biomes, v_temp, v_pluv)
 
 
 
@@ -51,7 +52,7 @@ def f_generer_case(v_dic_biomes, v_x, v_y, v_seed):
 ######################### CHOIX_BIOME #########################
 ###############################################################
 
-def f_choix_biome(v_dic_biomes, v_temp, v_pluv):
+def f_choix_biome(v_dic_conditions_biomes, v_temp, v_pluv):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
@@ -60,7 +61,7 @@ def f_choix_biome(v_dic_biomes, v_temp, v_pluv):
 		# v_temperature et v_pluv correspondantes.
 		# -----------------------------
 		# PRECONDITIONS :
-		# - v_dic_biomes : dicionnaire not null
+		# - v_dic_conditions_biomes : dicionnaire not null
 		# - v_temp : integer not null
 		# - v_pluv : integer not null
 		# -----------------------------
@@ -68,9 +69,9 @@ def f_choix_biome(v_dic_biomes, v_temp, v_pluv):
 		# - p_classes.cl_case
 		# -----------------------------
 		# UTILISE PAR :
-		# - f_generer_case.(v_dic_biomes, v_x, v_y, v_seed)
+		# - f_generer_case.(v_dic_conditions_biomes, v_x, v_y, v_seed)
 		# =============================
-	for v_biome in v_dic_biomes.values():
+	for v_biome in v_dic_conditions_biomes.values():
 		if v_biome.in_range(v_temp, v_pluv):
 			return cl_case(v_biome.nom_biome, v_temp, v_pluv)
 

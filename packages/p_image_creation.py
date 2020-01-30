@@ -1,5 +1,5 @@
 import os
-from .p_classes import cl_image
+from .p_biomes_creation import f_creation_dic_couleurs_biomes
 
 # =============================
 # INFORMATIONS SUR CE PACKAGE :
@@ -21,7 +21,7 @@ from .p_classes import cl_image
 ###############################################################
 ###################### IMAGE_CREATION #########################
 ###############################################################
-def f_image_creation(v_plateau, v_dic_biomes, v_seed):
+def f_image_creation(v_plateau, v_seed):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -33,12 +33,13 @@ def f_image_creation(v_plateau, v_dic_biomes, v_seed):
 	# -----------------------------
 	# DEPEND DE :
 	# - os
-	# - p_classes.cl_image
+	# - p_classes.cl_sol_biome
 	# - p_image_creation.f_mise_en_vecteur()
 	# -----------------------------
 	# UTILISE PAR :
-	# - f_image_creation()
+	# - procedural_generation_2D.py
 	# =============================
+	v_dic_biomes = f_creation_dic_couleurs_biomes()
 
 	fi_fichier_dest = open("Generated_map.ppm", "w")
 
@@ -59,9 +60,10 @@ def f_image_creation(v_plateau, v_dic_biomes, v_seed):
 
 	# Creation du body
 	for v_num_ligne in range(len(v_plateau)):
-		for v_num_colonnes in range(len(v_plateau[0])):
-			v_nom = v_plateau[v_num_ligne][v_num_colonnes].type
 
+		for v_num_colonnes in range(len(v_plateau[0])):
+
+			v_nom = v_plateau[v_num_ligne][v_num_colonnes].type
 			fi_fichier_dest.write(v_dic_biomes[v_nom].coul_sol)
 			fi_fichier_dest.write(" ")
 
