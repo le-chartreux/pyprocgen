@@ -55,7 +55,7 @@ class cl_case:
 ###############################################################
 class cl_biome:
 
-	def __init__(self, v_nom, v_temp_min, v_temp_max, v_pluv_min, v_pluv_max):
+	def __init__(self, v_nom, v_temp_min, v_temp_max, v_pluv_min, v_pluv_max, v_coul_sol):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
@@ -66,6 +66,7 @@ class cl_biome:
 		# - sa température moyenne maximale
 		# - sa pluviometrie annuelle minimale
 		# - sa pluviometrie annuelle maximale
+		# - sa couleur de sol
 		# -----------------------------
 		# UTILISE PAR :
 		# - p_biomes_creation.f_creation_constantes_biomes()
@@ -82,6 +83,7 @@ class cl_biome:
 		self.temp_max = v_temp_max
 		self.pluv_min = v_pluv_min
 		self.pluv_max = v_pluv_max
+		self.coul_sol = v_coul_sol
 
 
 	def in_range(self, v_temp, v_pluv):

@@ -1,4 +1,6 @@
 import random
+import time
+t=time.time()
 from packages.p_biomes_creation import f_creation_constantes_biomes
 from packages.p_board_functions import *
 from packages.p_decisional import f_generer_case
@@ -33,6 +35,7 @@ print("")
 
 #Afficher_Plateau(Plateau)
 
-f_image_creation(v_plateau, v_seed)
+f_image_creation(v_plateau, v_dic_biomes, v_seed)
 
 print("Done")
+print(time.time()-t)
