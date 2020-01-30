@@ -8,8 +8,8 @@ from .p_classes import cl_case
 # afficher un plateau dans la console
 # -----------------------------
 # CONTENU :
-# - f_creer_plateau_vide(nbx,nby)
-# - f_afficher_plateau(Plateau)
+# - f_creer_plateau_vide(co_nbx,co_nby)
+# - f_afficher_plateau(v_plateau)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
@@ -19,7 +19,7 @@ from .p_classes import cl_case
 ###############################################################
 #################### CREER_PLATEAU_VIDE #######################
 ###############################################################
-def f_creer_plateau_vide(nbx, nby):
+def f_creer_plateau_vide(v_nbx, v_nby):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -27,7 +27,7 @@ def f_creer_plateau_vide(nbx, nby):
 	# Crée un plateau vide de x cases de largeur et y de longueur
 	# -----------------------------
 	# PRECONDITIONS :
-	# - nbx,nby : integer
+	# - v_nbx, v_nby : integers
 	# -----------------------------
 	# DEPEND DE :
 	# - p_classes.cl_case
@@ -36,31 +36,31 @@ def f_creer_plateau_vide(nbx, nby):
 	# - procedural_generation_2D.py
 	# =============================
 
-	Plateau=[]
-	for i in range(nby) :
+	v_plateau=[]
+	for v_i in range(v_nby) :
 
-		Plateau.append([])
-		for j in range(nbx) :
+		v_plateau.append([])
+		for v_j in range(v_nbx) :
 
-			Plateau[i].append(cl_case(None, None, None))
+			v_plateau[v_i].append(cl_case(None, None, None))
 
-		print("Creation of the empty board's vector : ",round((i + 1) / nby*100, 2), "%", end = "\r")
+		print("Creation of the empty board's vector : ",round((v_i + 1) / v_nby*100, 2), "%", end = "\r")
 
 	print("")
 
-	return Plateau
+	return v_plateau
 
 
 
 ###############################################################
 #################### AFFICHER_PLATEAU #########################
 ###############################################################
-def f_afficher_plateau(Plateau):
+def f_afficher_plateau(v_plateau):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
 	# UTILITE :
-	# Affiche un plateau de taille len(Plateau[0]) x len(Plateau)
+	# Affiche un plateau de taille len(v_plateau[0]) * len(v_plateau)
 	# dans la console
 	# -----------------------------
 	# PRECONDITIONS :
@@ -73,10 +73,10 @@ def f_afficher_plateau(Plateau):
 	# - procedural_generation_2D.py
 	# =============================
 
-	for i in range(len(Plateau)) :
+	for v_i in range(len(v_plateau)) :
 
-		for j in range(len(Plateau[0])) :
+		for v_j in range(len(v_plateau[0])) :
 
-				print(Plateau[i][j].type, " ", end="")
+				print(v_plateau[v_i][v_j].type, " ", end="")
 
 		print("")

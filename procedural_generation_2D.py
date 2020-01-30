@@ -6,33 +6,33 @@ from packages.p_image_creation import f_image_creation
 
 # CORPS DU PROGRAMME
 # Appelle les fonctions maitresses.
-Biomes = f_creation_constantes_biomes()
+v_dic_biomes = f_creation_constantes_biomes()
 
-nbx=eval(input("x = "))
-nby=eval(input("y = "))
+v_nbx=eval(input("x = "))
+v_nby=eval(input("y = "))
 print("")
 
-Seed = {}
-Seed["Tx"] = random.randint(-100000,100000)
-Seed["Ty"] = random.randint(-100000,100000)
-Seed["Px"] = random.randint(-100000,100000)
-Seed["Py"] = random.randint(-100000,100000)
+v_seed = {}
+v_seed["Tx"] = random.randint(-100000,100000)
+v_seed["Ty"] = random.randint(-100000,100000)
+v_seed["Px"] = random.randint(-100000,100000)
+v_seed["Py"] = random.randint(-100000,100000)
 
 print("Seed coordinates :")
-print("Temperature : x =",Seed["Tx"],", y =",Seed["Ty"])
-print("Pluviometry : x =",Seed["Px"],", y =",Seed["Py"])
+print("Temperature : x =",v_seed["Tx"],", y =",v_seed["Ty"])
+print("Pluviometry : x =",v_seed["Px"],", y =",v_seed["Py"])
 print("")
 
-Plateau = f_creer_plateau_vide(nbx,nby)
+v_plateau = f_creer_plateau_vide(v_nbx,v_nby)
 
-for i in range (len(Plateau)) :
-	for j in range (len(Plateau[0])) :
-		Plateau[i][j] = f_generer_case(Biomes, i, j, Seed)
-	print("Vectorial creation of the map : ",round((i + 1)/len(Plateau)*100,2),"%", end = "\r")
+for v_num_colonnes in range (len(v_plateau)) :
+	for v_num_ligne in range (len(v_plateau[0])) :
+		v_plateau[v_num_colonnes][v_num_ligne] = f_generer_case(v_dic_biomes, v_num_colonnes, v_num_ligne, v_seed)
+	print("Vectorial creation of the map : ",round((v_num_colonnes + 1)/len(v_plateau)*100,2),"%", end = "\r")
 print("")
 
 #Afficher_Plateau(Plateau)
 
-f_image_creation(Plateau, Seed)
+f_image_creation(v_plateau, v_seed)
 
 print("Done")

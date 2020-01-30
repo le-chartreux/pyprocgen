@@ -23,15 +23,15 @@
 ##############################################################
 class cl_case:
 
-	def __init__(self, type, Temp, PlAn):
+	def __init__(self, v_type, v_temp, v_pluv):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
 		# UTILITE :
 		# Crée la classe définissant une case, caractérisée par :
 		# - son type
-		# - sa Température
-		# - sa Pluviometrie Annuelle
+		# - sa température moyenne
+		# - sa pluviométrie annuelle
 		# -----------------------------
 		# UTILISE PAR :
 		# - p_board_functions.f_creer_plateau_vide()
@@ -45,9 +45,9 @@ class cl_case:
 		# - NONE
 		# =============================
 
-		self.type = type
-		self.Temp = Temp
-		self.PlAn = PlAn
+		self.type = v_type
+		self.temp = v_temp
+		self.pluv = v_pluv
 
 
 
@@ -56,17 +56,17 @@ class cl_case:
 ###############################################################
 class cl_biome:
 
-	def __init__(self, id, TempMin,TempMax, PlAnMin, PlAnMax):
+	def __init__(self, v_id, v_temp_min, v_temp_max, v_pluv_min, v_pluv_max):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
 		# UTILITE :
 		# Crée la classe définisant un biome, caractérisé par :
 		# - son identifiant
-		# - sa Température Minimale
-		# - sa Température Maximale
-		# - sa Pluviometrie Annuelle Minimale
-		# - sa Pluviometrie Annuelle Maximale
+		# - sa température moyenne minimale
+		# - sa température moyenne maximale
+		# - sa pluviometrie annuelle minimale
+		# - sa pluviometrie annuelle maximale
 		# -----------------------------
 		# UTILISE PAR :
 		# - p_biomes_creation.f_creation_constantes_biomes()
@@ -78,20 +78,20 @@ class cl_biome:
 		# - NONE
 		# =============================
 
-		self.id = id
-		self.TempMin = TempMin
-		self.TempMax = TempMax
-		self.PlAnMin = PlAnMin
-		self.PlAnMax = PlAnMax
+		self.id = v_id
+		self.temp_min = v_temp_min
+		self.temp_max = v_temp_max
+		self.pluv_min = v_pluv_min
+		self.pluv_max = v_pluv_max
 
 
-	def in_range(self, Temp, PlAn):
+	def in_range(self, v_temp, v_pluv):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
 		# UTILITE :
-		# Renvoit True si la Temperature et les PlAn correspondent
-		# à celles de ce biome
+		# Renvoit True si la temperature et la pluviométrie
+		# correspondent à celles de ce biome
 		# -----------------------------
 		# UTILISE PAR :
 		# - p_decisional.f_choix_biome()
@@ -103,7 +103,7 @@ class cl_biome:
 		# - p_classes.cl_biome.__init__()
 		# =============================
 
-		return self.TempMin <= Temp <= self.TempMax and self.PlAnMin <= PlAn < self.PlAnMax
+		return self.temp_min <= v_temp <= self.temp_max and self.pluv_min <= v_pluv < self.pluv_max
 
 
 
@@ -113,7 +113,7 @@ class cl_biome:
 class cl_image:
 
 	# CONSTRUCTION DE LA CLASSE #
-	def __init__(self, NomBiome, Str):
+	def __init__(self, v_nom_biome, v_body):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
@@ -133,5 +133,5 @@ class cl_image:
 		# - NONE
 		# =============================
 
-		self.NomBiome = NomBiome
-		self.Str = Str
+		self.nom_biome = v_nom_biome
+		self.body = v_body

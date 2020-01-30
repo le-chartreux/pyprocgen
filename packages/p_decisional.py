@@ -8,11 +8,11 @@ cl_noise = SimplexNoise()
 # -----------------------------
 # UTILITE DE SON CONTENU :
 # Gèrer l'évolution du terrain et
-# prendre la décisison du type de case à placer en (x,y)
+# prendre la décisison du tv_ype de case à placer en (v_x,v_y)
 # -----------------------------
 # CONTENU :
-# - f_generer_case(Biomes, x, y, Seed)
-# - f_choix_biome(Biomes, Temp, PlAn)
+# - f_generer_case(v_dic_biomes, v_x, v_y, v_seed)
+# - f_choiv_x_biome(v_dic_biomes, v_temp, v_pluv)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
@@ -21,29 +21,29 @@ cl_noise = SimplexNoise()
 ###############################################################
 ###################### GENERER_CASE ###########################
 ###############################################################
-def f_generer_case(Biomes, x, y, Seed):
+def f_generer_case(v_dic_biomes, v_x, v_y, v_seed):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
 	# UTILITE :
-	# Génère une case en (x,y)
+	# Génère une case en (v_x,v_y)
 	# -----------------------------
 	# PRECONDITIONS :
-	# - x,y : integers not null
-	# - Seed["Tx"], Seed["Ty"] : integers not null
-	# - Seed["Px"], Seed["Py"] : integers not null
+	# - v_x,v_y : integers not null
+	# - v_seed["Tx"], v_seed["Ty"] : integers not null
+	# - v_seed["Py"], v_seed["Py"] : integers not null
 	# -----------------------------
 	# DEPEND DE :
-	# - p_perlin_noise.py
+	# - p_perlin_noise.pv_y
 	# - f_choix_biome()
 	# -----------------------------
 	# UTILISE PAR :
-	# - procedural_generation_2D.py
+	# - procedural_generation_2D.pv_y
 	# =============================
 
-	Temp = cl_noise.noise2(Seed["Tx"] + x/500, Seed["Ty"] + y/500) * 3
-	PlAn = cl_noise.noise2(Seed["Px"] + x/500, Seed["Py"] + y/500) * 4
-	return f_choix_biome(Biomes, Temp, PlAn)
+	v_temp = cl_noise.noise2(v_seed["Tx"] + v_x/500, v_seed["Ty"] + v_y/500) * 3
+	v_pluv = cl_noise.noise2(v_seed["Px"] + v_x/500, v_seed["Py"] + v_y/500) * 4
+	return f_choix_biome(v_dic_biomes, v_temp, v_pluv)
 
 
 
@@ -51,27 +51,27 @@ def f_generer_case(Biomes, x, y, Seed):
 ######################### CHOIX_BIOME #########################
 ###############################################################
 
-def f_choix_biome(Biomes, Temp, PlAn):
+def f_choix_biome(v_dic_biomes, v_temp, v_pluv):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
 		# UTILITE :
 		# Renvoit l'id du Biome qui a les caracteristiques
-		# Temperature et PlAn correspondantes.
+		# v_temperature et v_pluv correspondantes.
 		# -----------------------------
 		# PRECONDITIONS :
-		# - Biomes : dicionnaire not null
-		# - Temp : integer not null
-		# - PlAn : integer not null
+		# - v_dic_biomes : dicionnaire not null
+		# - v_temp : integer not null
+		# - v_pluv : integer not null
 		# -----------------------------
 		# DEPEND DE :
 		# - p_classes.cl_case
 		# -----------------------------
 		# UTILISE PAR :
-		# - f_generer_case.(Biomes, x, y, Seed)
+		# - f_generer_case.(v_dic_biomes, v_x, v_y, v_seed)
 		# =============================
-	for Biome in Biomes.values():
-		if Biome.in_range(Temp, PlAn):
-			return cl_case(Biome.id, Temp, PlAn)
+	for v_biome in v_dic_biomes.values():
+		if v_biome.in_range(v_temp, v_pluv):
+			return cl_case(v_biome.id, v_temp, v_pluv)
 
-	return cl_case("Water", Temp, PlAn)
+	return cl_case("Water", v_temp, v_pluv)
