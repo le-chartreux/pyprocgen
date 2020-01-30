@@ -25,7 +25,7 @@ def f_ajout_biome(v_dic_biomes, v_le_biome):
 	# -----------------------------
 	# UTILITE :
 	# Ajoute v_le_biome dans le dicionnaire v_dic_biomes avec
-	# v_le_biome.id comme référence
+	# v_le_biome.nom_biome comme référence
 	# -----------------------------
 	# PRECONDITIONS :
 	# - v_dic_biomes est un dictionnaire
@@ -37,7 +37,7 @@ def f_ajout_biome(v_dic_biomes, v_le_biome):
 	# - p_biomes_creation.f_creation_constantes_biomes()
 	# =============================
 
-	v_dic_biomes[v_le_biome.id] = v_le_biome
+	v_dic_biomes[v_le_biome.nom_biome] = v_le_biome
 
 
 

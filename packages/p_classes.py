@@ -50,19 +50,18 @@ class cl_case:
 		self.pluv = v_pluv
 
 
-
 ###############################################################
 ######################### CL_BIOME ############################
 ###############################################################
 class cl_biome:
 
-	def __init__(self, v_id, v_temp_min, v_temp_max, v_pluv_min, v_pluv_max):
+	def __init__(self, v_nom, v_temp_min, v_temp_max, v_pluv_min, v_pluv_max):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
 		# UTILITE :
 		# Crée la classe définisant un biome, caractérisé par :
-		# - son identifiant
+		# - son nom
 		# - sa température moyenne minimale
 		# - sa température moyenne maximale
 		# - sa pluviometrie annuelle minimale
@@ -78,7 +77,7 @@ class cl_biome:
 		# - NONE
 		# =============================
 
-		self.id = v_id
+		self.nom_biome = v_nom
 		self.temp_min = v_temp_min
 		self.temp_max = v_temp_max
 		self.pluv_min = v_pluv_min

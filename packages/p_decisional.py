@@ -72,6 +72,6 @@ def f_choix_biome(v_dic_biomes, v_temp, v_pluv):
 		# =============================
 	for v_biome in v_dic_biomes.values():
 		if v_biome.in_range(v_temp, v_pluv):
-			return cl_case(v_biome.id, v_temp, v_pluv)
+			return cl_case(v_biome.nom_biome, v_temp, v_pluv)
 
 	return cl_case("Water", v_temp, v_pluv)
