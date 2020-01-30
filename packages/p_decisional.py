@@ -1,6 +1,5 @@
 import random
 from .p_classes import cl_case
-from packages.p_biomes_creation import f_creation_dic_conditions_biomes
 from .p_perlin_noise import SimplexNoise
 cl_noise = SimplexNoise()
 

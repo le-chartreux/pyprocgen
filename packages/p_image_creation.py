@@ -1,5 +1,5 @@
 import os
-from .p_biomes_creation import f_creation_dic_couleurs_biomes
+from .p_creation_biomes_dic import f_creation_dic_couleurs_biomes
 
 # =============================
 # INFORMATIONS SUR CE PACKAGE :

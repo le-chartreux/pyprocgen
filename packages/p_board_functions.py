@@ -116,6 +116,6 @@ def f_afficher_plateau(v_plateau):
 
 		for v_j in range(len(v_plateau[0])) :
 
-				print(v_plateau[v_i][v_j].type, " ", end="")
+				print(v_plateau[v_i][v_j].type[0:4], " ", end="")
 
 		print("")

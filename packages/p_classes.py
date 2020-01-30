@@ -23,7 +23,7 @@
 ##############################################################
 class cl_case:
 
-	def __init__(self, v_type, v_temp, v_pluv):
+	def __init__(self, v_type, v_temp, v_pluv, v_coul):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
@@ -32,6 +32,7 @@ class cl_case:
 		# - son type
 		# - sa température moyenne
 		# - sa pluviométrie annuelle
+		# - sa couleur de forme "r g b"
 		# -----------------------------
 		# UTILISE PAR :
 		# - p_board_functions.f_creer_plateau_vide()
@@ -48,6 +49,7 @@ class cl_case:
 		self.type = v_type
 		self.temp = v_temp
 		self.pluv = v_pluv
+		self.coul = v_coul
 
 
 ###############################################################
@@ -135,3 +137,32 @@ class cl_sol_biome:
 
 		self.nom_biome = v_nom_biome
 		self.coul_sol = v_coul_sol
+
+
+
+##############################################################
+######################## CL_ARBRE ############################
+##############################################################
+class cl_arbre:
+	def __init__(self, v_nom_biome, v_body):
+		# =============================
+		# INFORMATIONS :
+		# -----------------------------
+		# UTILITE :
+		# Crée la classe définisant les arbres
+		# caractérisés par :
+		# - le nom du biome où ils poussent
+		# - le body de sa représentation ppm
+		# -----------------------------
+		# UTILISE PAR :
+		# - p_trees_generation.
+		# -----------------------------
+		# PRECONDITIONS :
+		# - NONE
+		# -----------------------------
+		# DEPEND DE :
+		# - NONE
+		# =============================
+
+		self.nom_biome = v_nom_biome
+		self.body = v_body

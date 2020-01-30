@@ -38,8 +38,8 @@ def f_ajout_biome(v_dic_biomes, v_le_biome):
 	# - p_classes.cl_coul_biome
 	# -----------------------------
 	# UTILISE PAR :
-	# - p_biomes_creation.f_creation_dic_conditions_biomes()
-	# - p_biomes_creation.f_creation_dic_couleurs_biomes()
+	# - p_biomes_dic_creation.f_creation_dic_conditions_biomes()
+	# - p_biomes_dic_creation.f_creation_dic_couleurs_biomes()
 	# =============================
 
 	v_dic_biomes[v_le_biome.nom_biome] = v_le_biome
@@ -60,7 +60,7 @@ def f_creation_dic_conditions_biomes():
 	# - NONE
 	# -----------------------------
 	# DEPEND DE :
-	# - p_biomes_creation.f_ajout_biome()
+	# - p_creation_biomes_dic.f_ajout_biome()
 	# - p_classes.cl_cond_biome
 	# -----------------------------
 	# UTILISE PAR :
@@ -133,7 +133,7 @@ def f_creation_dic_couleurs_biomes():
 	# - NONE
 	# -----------------------------
 	# DEPEND DE :
-	# - p_biomes_creation.f_ajout_biome()
+	# - p_creation_biomes_dic.f_ajout_biome()
 	# - p_classes.cl_sol_biome
 	# -----------------------------
 	# UTILISE PAR :

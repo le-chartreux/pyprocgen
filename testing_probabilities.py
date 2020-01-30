@@ -1,4 +1,4 @@
-from packages.p_biomes_creation import f_creation_dic_conditions_biomes
+from packages.p_creation_biomes_dic import f_creation_dic_conditions_biomes
 from packages.p_board_functions import *
 from packages.p_decisional import f_generer_case
 
