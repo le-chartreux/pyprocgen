@@ -46,13 +46,24 @@ def f_creation_dic_arbres():
 	# =============================
 
 	v_dic_arbres = {}
+	"""
 	f_ajout_arbre(v_dic_arbres, cl_arbre("Desert_Cool", [
 			["0 0 0", "106 82 18", "0 0 0", "0 0 0", "106 82 18"],
 			["106 82 18", "142 93 60", "0 0 0", "127 85 63", "0 0 0"],
 			["0 0 0", "0 0 0", "142 93 60", "142 93 60", "106 82 18"],
 			["0 0 0", "106 82 18", "142 93 60", "0 0 0", "0 0 0"],
 			["0 0 0", "0 0 0", "142 93 60", "0 0 0", "0 0 0"]
+		]))"""
+
+	f_ajout_arbre(v_dic_arbres, cl_arbre("Desert_Cool", [
+			["12 32 44", "23 67 199"],
+			["56 188 173", "182 103 122"]
 		]))
+
+	f_ajout_arbre(v_dic_arbres, cl_arbre("Arbre", [
+			[]
+		]))
+
 
 	"""
 	f_ajout_biome(v_dic_arbres, cl_arbre("Desert_Tropical", "247 210 165"))

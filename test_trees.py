@@ -10,8 +10,8 @@ from packages.p_trees_dic_creation import f_creation_dic_arbres
 # Appelle les fonctions maitresses.
 v_dic_conditions_biomes = f_creation_dic_conditions_biomes()
 
-v_nbx=30
-v_nby=30
+v_nbx=5
+v_nby=5
 
 v_dic_arbres = f_creation_dic_arbres()
 
@@ -23,6 +23,7 @@ for v_num_colonne in range (v_nby) :
 
 		v_plateau[v_num_colonne][v_num_ligne] = cl_case("Desert_Cool", 0, 0, "193 165 133")
 
+v_plateau[4][1] = cl_case("Arbre", 0, 0, "71 36 12")
 generate_trees(v_plateau, v_dic_arbres, v_nbx, v_nby)
 
 f_afficher_plateau(v_plateau)
