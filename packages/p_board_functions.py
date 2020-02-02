@@ -2,7 +2,7 @@
 # INFORMATIONS SUR CE PACKAGE :
 # -----------------------------
 # UTILITE DE SON CONTENU :
-# Créer un plateau vide et
+# Créer un plateau vide, créer un seed et
 # afficher un plateau dans la console
 # -----------------------------
 # CONTENU :

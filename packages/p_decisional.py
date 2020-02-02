@@ -41,8 +41,8 @@ def f_generer_case(v_dic_conditions_biomes, v_dic_couleurs_biomes, v_x, v_y, v_s
 	# - procedural_generation_2D.pv_y
 	# =============================
 
-	v_temp = cl_noise.noise2(v_seed["Tx"] + v_x/1000, v_seed["Ty"] + v_y/1000) * 3
-	v_pluv = cl_noise.noise2(v_seed["Px"] + v_x/1000, v_seed["Py"] + v_y/1000) * 4
+	v_temp = cl_noise.noise2(v_seed["Tx"] + v_x/500, v_seed["Ty"] + v_y/500) * 3
+	v_pluv = cl_noise.noise2(v_seed["Px"] + v_x/300, v_seed["Py"] + v_y/300) * 4
 	return f_choix_biome(v_dic_conditions_biomes, v_dic_couleurs_biomes, v_temp, v_pluv)
 
 
