@@ -1,8 +1,3 @@
-import random
-from .p_classes import cl_case
-from .p_perlin_noise import SimplexNoise
-cl_noise = SimplexNoise()
-
 # =============================
 # INFORMATIONS SUR CE PACKAGE :
 # -----------------------------
@@ -11,68 +6,74 @@ cl_noise = SimplexNoise()
 # prendre la décisison du tv_ype de case à placer en (v_x,v_y)
 # -----------------------------
 # CONTENU :
-# - f_generer_case(v_dic_conditions_biomes, v_x, v_y, v_seed)
-# - f_choiv_x_biome(v_dic_conditions_biomes, v_temp, v_pluv)
+# - f_genererate_box(v_dic_biomes, v_x, v_y, v_seed)
+# - f_choice_biome(v_dic_biomes, v_temp, v_pluv)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
 # =============================
 
 ###############################################################
-###################### GENERER_CASE ###########################
+###################### F_GENERATE_BOX #########################
 ###############################################################
-def f_generer_case(v_dic_conditions_biomes, v_dic_couleurs_biomes, v_x, v_y, v_seed):
+def f_genererate_box(v_dic_biomes, v_x, v_y, v_seed):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
 	# UTILITE :
-	# Génère une case en (v_x,v_y)
+	# Génère une case en pour la case en (v_y, v_x)
 	# -----------------------------
 	# PRECONDITIONS :
-	# - v_x,v_y : integers not null
+	# - v_x, v_y : integers not null
 	# - v_seed["Tx"], v_seed["Ty"] : integers not null
 	# - v_seed["Py"], v_seed["Py"] : integers not null
 	# -----------------------------
 	# DEPEND DE :
-	# - p_perlin_noise.pv_y
-	# - f_choix_biome()
+	# - p_perlin_noise.py
+	# - f_choice_biome()
 	# -----------------------------
 	# UTILISE PAR :
-	# - procedural_generation_2D.pv_y
+	# - procedural_generation_2D.py
 	# =============================
+	from .p_perlin_noise import SimplexNoise
+	cl_noise = SimplexNoise()
 
 	v_temp = cl_noise.noise2(v_seed["Tx"] + v_x/500, v_seed["Ty"] + v_y/500) * 3
 	v_pluv = cl_noise.noise2(v_seed["Px"] + v_x/300, v_seed["Py"] + v_y/300) * 4
-	return f_choix_biome(v_dic_conditions_biomes, v_dic_couleurs_biomes, v_temp, v_pluv)
+
+	return f_choice_biome(v_dic_biomes, v_temp, v_pluv)
 
 
 
 ###############################################################
-######################### CHOIX_BIOME #########################
+######################## F_CHOICE_BIOME #######################
 ###############################################################
 
-def f_choix_biome(v_dic_conditions_biomes, v_dic_couleurs_biomes, v_temp, v_pluv):
-		# =============================
-		# INFORMATIONS :
-		# -----------------------------
-		# UTILITE :
-		# Renvoit l'id du Biome qui a les caracteristiques
-		# v_temperature et v_pluv correspondantes.
-		# -----------------------------
-		# PRECONDITIONS :
-		# - v_dic_conditions_biomes : dicionnaire not null
-		# - v_temp : integer not null
-		# - v_pluv : integer not null
-		# -----------------------------
-		# DEPEND DE :
-		# - p_classes.cl_case
-		# -----------------------------
-		# UTILISE PAR :
-		# - f_generer_case.(v_dic_conditions_biomes, v_x, v_y, v_seed)
-		# =============================
-	for v_biome in v_dic_conditions_biomes.values():
-		if v_biome.in_range(v_temp, v_pluv):
-			v_couleur = v_dic_couleurs_biomes[v_biome.nom_biome].coul
-			return cl_case(v_biome.nom_biome, v_temp, v_pluv, v_couleur)
+def f_choice_biome(v_dic_biomes, v_temp, v_pluv):
+	# =============================
+	# INFORMATIONS :
+	# -----------------------------
+	# UTILITE :
+	# Renvoit l'id du biome qui a les caracteristiques
+	# v_temp et v_pluv correspondantes.
+	# -----------------------------
+	# PRECONDITIONS :
+	# - v_dic_biomes : dicionnaire not null
+	# - v_temp : integer not null
+	# - v_pluv : integer not null
+	# -----------------------------
+	# DEPEND DE :
+	# - p_classes.cl_box
+	# -----------------------------
+	# UTILISE PAR :
+	# - p_decisional.f_genererate_box(v_dic_biomes, v_x, v_y, v_seed)
+	# =============================
+	from .p_classes import cl_box
 
-	return cl_case("Water", v_temp, v_pluv, v_dic_couleurs_biomes["Water"].coul)
+	for v_biome in v_dic_biomes.values():
+
+		if v_biome.f_in_range(v_temp, v_pluv):
+
+			return cl_box(v_biome.nom_biome, v_temp, v_pluv, v_biome.coul)
+
+	return cl_box("Water", v_temp, v_pluv, v_dic_biomes["Water"].coul)

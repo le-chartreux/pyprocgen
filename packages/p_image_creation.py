@@ -1,5 +1,5 @@
 import os
-
+from .p_classes import cl_box
 # =============================
 # INFORMATIONS SUR CE PACKAGE :
 # -----------------------------
@@ -7,9 +7,6 @@ import os
 # Créer une image à partir du vecteur v_plateau
 # -----------------------------
 # CONTENU :
-# - f_lire_mots_depuis_fichier(fi_fichier)
-# - f_mise_en_vecteur(v_nom_biome)
-# - f_ajout_image(v_images_chargees,v_image)
 # - f_image_creation(v_plateau, v_seed)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
@@ -18,7 +15,7 @@ import os
 
 
 ###############################################################
-###################### IMAGE_CREATION #########################
+##################### F_IMAGE_CREATION ########################
 ###############################################################
 
 def f_image_creation(v_plateau, v_seed):
@@ -33,8 +30,7 @@ def f_image_creation(v_plateau, v_seed):
 	# -----------------------------
 	# DEPEND DE :
 	# - os
-	# - p_classes.cl_sol_biome
-	# - p_image_creation.f_mise_en_vecteur()
+	# - p_classes.cl_box
 	# -----------------------------
 	# UTILISE PAR :
 	# - procedural_generation_2D.py

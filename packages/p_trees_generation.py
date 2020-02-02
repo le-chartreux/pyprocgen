@@ -1,16 +1,15 @@
-from .p_classes import cl_case, cl_arbre
+from .p_classes import cl_box, cl_tree
 
 # =============================
 # INFORMATIONS SUR CE PACKAGE :
 # -----------------------------
 # UTILITE DE SON CONTENU :
-# Créer le dictionnaire v_dic_conditions_biomes
-# et le dicionnaire v_dic_couleurs_biomes
+# Génère les arbres dans le plateau
 # -----------------------------
 # CONTENU :
 # - f_possible_to_place_tree(v_plateau, v_dic_arbres, v_x, v_y)
 # - f_put_tree(v_plateau, v_dic_arbres, v_x, v_y)
-# - f_generate_trees(v_plateau, v_dic_arbres, v_nbx, v_nby)
+# - f_generate_trees(v_plateau)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
@@ -35,14 +34,14 @@ def f_possible_to_place_tree(v_plateau, v_dic_arbres, v_x, v_y):
 	# - v_y : integer, <= len(v_plateau)
 	# -----------------------------
 	# DEPEND DE :
-	# - p_classes.cl_case
+	# - p_classes.cl_box
 	# - p_classes.cl_arbre
 	# -----------------------------
 	# UTILISE PAR :
 	# - p_trees_creation.f_generate_trees()
 	# =============================
 
-	v_type_case_origine = v_plateau[v_y][v_x].type
+	v_type_case_origine = v_plateau[v_y][v_x].nom_biome
 
 	if v_type_case_origine == "Tree" or v_type_case_origine == "Water" or v_type_case_origine == "Rocks_and_ice" or v_type_case_origine == "Toundra_Dry" or v_type_case_origine == "Toundra_Moist" or v_type_case_origine == "Steppe":
 		return False
@@ -62,7 +61,7 @@ def f_possible_to_place_tree(v_plateau, v_dic_arbres, v_x, v_y):
 
 		for v_num_colonne in range(v_larg_arbre):
 
-			if v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].type != v_type_case_origine :
+			if v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_biome != v_type_case_origine :
 				return False
 
 	return True
@@ -86,14 +85,14 @@ def f_put_tree(v_plateau, v_dic_arbres, v_x, v_y):
 	# - v_y : integer, <= len(v_plateau)
 	# -----------------------------
 	# DEPEND DE :
-	# - p_classes.cl_case
+	# - p_classes.cl_box
 	# - p_classes.cl_arbre
 	# -----------------------------
 	# UTILISE PAR :
 	# - p_trees_creation.f_generate_trees()
 	# =============================
 
-	v_type_case_origine = v_plateau[v_y][v_x].type
+	v_type_case_origine = v_plateau[v_y][v_x].nom_biome
 
 	v_vect_arbre = v_dic_arbres[v_type_case_origine].body
 
@@ -114,7 +113,7 @@ def f_put_tree(v_plateau, v_dic_arbres, v_x, v_y):
 
 			if v_vect_arbre[v_num_ligne][v_num_colonne] != None :
 
-				v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].type = "Tree"
+				v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_biome = "Tree"
 
 				v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].coul = v_vect_arbre[v_num_ligne][v_num_colonne]
 
@@ -135,16 +134,17 @@ def f_generate_trees(v_plateau):
 	# - None
 	# -----------------------------
 	# DEPEND DE :
-	# - p_classes.cl_case
+	# - p_classes.cl_box
 	# - p_classes.cl_arbre
+	# - p_dic_creation.f_dic_trees_creation
 	# -----------------------------
 	# UTILISE PAR :
 	# - procedural_generation_2D.py
 	# =============================
 	import random
-	from packages.p_trees_dic_creation import f_creation_dic_arbres
+	from packages.p_dic_creation import f_dic_trees_creation
 
-	v_dic_arbres = f_creation_dic_arbres()
+	v_dic_arbres = f_dic_trees_creation()
 
 	v_nbx = len(v_plateau[0])
 	v_nby = len(v_plateau)

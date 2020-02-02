@@ -16,9 +16,9 @@
 
 
 ###############################################################
-#################### CREER_PLATEAU_VIDE #######################
+#################### F_CREATE_EMPTY_BOARD #####################
 ###############################################################
-def f_creer_plateau_vide(v_nbx, v_nby):
+def f_create_empty_board(v_nbx, v_nby):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -29,17 +29,19 @@ def f_creer_plateau_vide(v_nbx, v_nby):
 	# - v_nbx, v_nby : integers
 	# -----------------------------
 	# DEPEND DE :
-	# - p_classes.cl_case
+	# - p_classes.cl_box
 	# -----------------------------
 	# UTILISE PAR :
 	# - procedural_generation_2D.py
 	# =============================
-	from .p_classes import cl_case
+	from .p_classes import cl_box
 
 	v_plateau=[]
+
 	for v_i in range(v_nby) :
 
 		v_plateau.append([])
+
 		for v_j in range(v_nbx) :
 
 			v_plateau[v_i].append(None)
@@ -52,9 +54,9 @@ def f_creer_plateau_vide(v_nbx, v_nby):
 
 
 ###############################################################
-###################### F_GENERER_SEED #########################
+##################### F_GENERERATE_SEED #######################
 ###############################################################
-def f_generer_seed():
+def f_generate_seed():
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -86,14 +88,15 @@ def f_generer_seed():
 	print("Temperature : x =",v_seed["Tx"],", y =",v_seed["Ty"])
 	print("Pluviometry : x =",v_seed["Px"],", y =",v_seed["Py"])
 	print("")
+
 	return v_seed
 
 
 
 ###############################################################
-#################### AFFICHER_PLATEAU #########################
+##################### F_DISPLAY_BOARD #########################
 ###############################################################
-def f_afficher_plateau(v_plateau):
+def f_display_board(v_plateau):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -105,17 +108,17 @@ def f_afficher_plateau(v_plateau):
 	# - NONE
 	# -----------------------------
 	# DEPEND DE :
-	# - p_classes.cl_case
+	# - p_classes.cl_box
 	# -----------------------------
 	# UTILISE PAR :
-	# - procedural_generation_2D.py
+	# - procedural_generation_2D.py (pour debug)
 	# =============================
-	from .p_classes import cl_case
+	from .p_classes import cl_box
 
 	for v_i in range(len(v_plateau)) :
 
 		for v_j in range(len(v_plateau[0])) :
 
-				print(v_plateau[v_i][v_j].type[0:4], " ", end="")
+				print(v_plateau[v_i][v_j].nom_biome[0:4], " ", end="")
 
 		print("")

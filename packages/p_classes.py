@@ -5,15 +5,16 @@
 # Définir les classes utilisées dans le programme
 # -----------------------------
 # CONTENU :
-# - class cl_case
-# - class cl_cond_biome
-# - class cl_sol_biome
+# - class cl_box
+# - class cl_biome
+# - class cl_tree
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
-# - p_biomes_creation.py
-# - p_board_creation.py
+# - p_board_functions.py
 # - p_decisional.py
+# - p_dic_creation.py
 # - p_image_creation.py
+# - p_decisional.py
 # =============================
 
 
@@ -21,9 +22,9 @@
 ##############################################################
 ######################### CL_CASE ############################
 ##############################################################
-class cl_case:
+class cl_box:
 
-	def __init__(self, v_type, v_temp, v_pluv, v_coul):
+	def __init__(self, v_nom_biome, v_temp, v_pluv, v_coul):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
@@ -38,6 +39,9 @@ class cl_case:
 		# - p_board_functions.f_creer_plateau_vide()
 		# - p_board_functions.f_afficher_plateau()
 		# - p_decisional.f_choix_biome()
+		# - p_image_creation.f_image_creation()
+		# - p_trees_creation.f_possible_to_place_tree
+		# - p_trees_creation.f_put_tree()
 		# -----------------------------
 		# PRECONDITIONS :
 		# - NONE
@@ -46,18 +50,18 @@ class cl_case:
 		# - NONE
 		# =============================
 
-		self.type = v_type
+		self.nom_biome = v_nom_biome
 		self.temp = v_temp
 		self.pluv = v_pluv
 		self.coul = v_coul
 
 
 ###############################################################
-###################### CL_COND_BIOME ##########################
+######################### CL_BIOME ############################
 ###############################################################
-class cl_cond_biome:
+class cl_biome:
 
-	def __init__(self, v_nom, v_temp_min, v_temp_max, v_pluv_min, v_pluv_max):
+	def __init__(self, v_nom, v_temp_min, v_temp_max, v_pluv_min, v_pluv_max, v_coul):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
@@ -68,9 +72,11 @@ class cl_cond_biome:
 		# - sa température moyenne maximale
 		# - sa pluviometrie annuelle minimale
 		# - sa pluviometrie annuelle maximale
+		# - sa couleur
 		# -----------------------------
 		# UTILISE PAR :
-		# - p_biomes_creation.f_creation_dic_conditions_biomes()
+		# - p_biomes_creation.f_dic_biomes_creation()
+		# - p_decisional.f_choix_biome()
 		# -----------------------------
 		# PRECONDITIONS :
 		# - NONE
@@ -84,9 +90,10 @@ class cl_cond_biome:
 		self.temp_max = v_temp_max
 		self.pluv_min = v_pluv_min
 		self.pluv_max = v_pluv_max
+		self.coul = v_coul
 
 
-	def in_range(self, v_temp, v_pluv):
+	def f_in_range(self, v_temp, v_pluv):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
@@ -108,41 +115,10 @@ class cl_cond_biome:
 
 
 
-###############################################################
-###################### CL_COND_BIOME ##########################
-###############################################################
-class cl_sol_biome:
-
-	def __init__(self, v_nom, v_coul):
-		# =============================
-		# INFORMATIONS :
-		# -----------------------------
-		# UTILITE :
-		# Crée la classe définisant un biome, caractérisé par :
-		# - son nom
-		# - sa température moyenne minimale
-		# - sa température moyenne maximale
-		# - sa pluviometrie annuelle minimale
-		# - sa pluviometrie annuelle maximale
-		# -----------------------------
-		# UTILISE PAR :
-		# - p_biomes_creation.f_creation_dic_conditions_biomes()
-		# -----------------------------
-		# PRECONDITIONS :
-		# - NONE
-		# -----------------------------
-		# DEPEND DE :
-		# - NONE
-		# =============================
-
-		self.nom_biome = v_nom
-		self.coul = v_coul
-
-
 ##############################################################
-######################## CL_ARBRE ############################
+######################### CL_TREE ############################
 ##############################################################
-class cl_arbre:
+class cl_tree:
 	def __init__(self, v_nom_biome, v_body):
 		# =============================
 		# INFORMATIONS :
@@ -154,7 +130,9 @@ class cl_arbre:
 		# - le body de sa représentation ppm avec None pour les pixels vides
 		# -----------------------------
 		# UTILISE PAR :
-		# - p_trees_generation.
+		# - p_dic_creation.f_dic_trees_creation()
+		# - p_trees_generation.f_possible_to_place_tree()
+		# - p_trees_generation.f_put_tree()
 		# -----------------------------
 		# PRECONDITIONS :
 		# - NONE
