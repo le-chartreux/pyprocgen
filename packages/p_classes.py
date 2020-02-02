@@ -32,7 +32,7 @@ class cl_case:
 		# - son type
 		# - sa température moyenne
 		# - sa pluviométrie annuelle
-		# - sa couleur de forme "r g b"
+		# - le string de sa couleur rgb de forme r g b
 		# -----------------------------
 		# UTILISE PAR :
 		# - p_board_functions.f_creer_plateau_vide()
@@ -108,25 +108,25 @@ class cl_cond_biome:
 
 
 
-##############################################################
-###################### CL_SOL_BIOME ##########################
-##############################################################
+###############################################################
+###################### CL_COND_BIOME ##########################
+###############################################################
 class cl_sol_biome:
 
-	# CONSTRUCTION DE LA CLASSE #
-	def __init__(self, v_nom_biome, v_coul_sol):
+	def __init__(self, v_nom, v_coul):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
 		# UTILITE :
-		# Crée la classe définisant le sol d'un biome,
-		# caractérisée par :
-		# - le nom du biome representé
-		# - le string de sa couleur rgb de forme r g b
+		# Crée la classe définisant un biome, caractérisé par :
+		# - son nom
+		# - sa température moyenne minimale
+		# - sa température moyenne maximale
+		# - sa pluviometrie annuelle minimale
+		# - sa pluviometrie annuelle maximale
 		# -----------------------------
 		# UTILISE PAR :
-		# - p_biomes_creation.f_creation_dic_couleurs_biomes()
-		# - p_image_creation.f_image_creation(v_plateau, v_seed)
+		# - p_biomes_creation.f_creation_dic_conditions_biomes()
 		# -----------------------------
 		# PRECONDITIONS :
 		# - NONE
@@ -135,9 +135,8 @@ class cl_sol_biome:
 		# - NONE
 		# =============================
 
-		self.nom_biome = v_nom_biome
-		self.coul_sol = v_coul_sol
-
+		self.nom_biome = v_nom
+		self.coul = v_coul
 
 
 ##############################################################
@@ -149,10 +148,10 @@ class cl_arbre:
 		# INFORMATIONS :
 		# -----------------------------
 		# UTILITE :
-		# Crée la classe définisant les arbres
-		# caractérisés par :
-		# - le nom du biome où ils poussent
-		# - le body de sa représentation ppm
+		# Crée la classe définisant l'arbre d'un biome,
+		# caractérisé par :
+		# - le nom du biome
+		# - le body de sa représentation ppm avec None pour les pixels vides
 		# -----------------------------
 		# UTILISE PAR :
 		# - p_trees_generation.

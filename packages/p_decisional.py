@@ -21,7 +21,7 @@ cl_noise = SimplexNoise()
 ###############################################################
 ###################### GENERER_CASE ###########################
 ###############################################################
-def f_generer_case(v_dic_conditions_biomes, v_x, v_y, v_seed):
+def f_generer_case(v_dic_conditions_biomes, v_dic_couleurs_biomes, v_x, v_y, v_seed):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -41,9 +41,9 @@ def f_generer_case(v_dic_conditions_biomes, v_x, v_y, v_seed):
 	# - procedural_generation_2D.pv_y
 	# =============================
 
-	v_temp = cl_noise.noise2(v_seed["Tx"] + v_x/500, v_seed["Ty"] + v_y/500) * 3
-	v_pluv = cl_noise.noise2(v_seed["Px"] + v_x/500, v_seed["Py"] + v_y/500) * 4
-	return f_choix_biome(v_dic_conditions_biomes, v_temp, v_pluv)
+	v_temp = cl_noise.noise2(v_seed["Tx"] + v_x/1000, v_seed["Ty"] + v_y/1000) * 3
+	v_pluv = cl_noise.noise2(v_seed["Px"] + v_x/1000, v_seed["Py"] + v_y/1000) * 4
+	return f_choix_biome(v_dic_conditions_biomes, v_dic_couleurs_biomes, v_temp, v_pluv)
 
 
 
@@ -51,7 +51,7 @@ def f_generer_case(v_dic_conditions_biomes, v_x, v_y, v_seed):
 ######################### CHOIX_BIOME #########################
 ###############################################################
 
-def f_choix_biome(v_dic_conditions_biomes, v_temp, v_pluv):
+def f_choix_biome(v_dic_conditions_biomes, v_dic_couleurs_biomes, v_temp, v_pluv):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
@@ -72,6 +72,7 @@ def f_choix_biome(v_dic_conditions_biomes, v_temp, v_pluv):
 		# =============================
 	for v_biome in v_dic_conditions_biomes.values():
 		if v_biome.in_range(v_temp, v_pluv):
-			return cl_case(v_biome.nom_biome, v_temp, v_pluv)
+			v_couleur = v_dic_couleurs_biomes[v_biome.nom_biome].coul
+			return cl_case(v_biome.nom_biome, v_temp, v_pluv, v_couleur)
 
-	return cl_case("Water", v_temp, v_pluv)
+	return cl_case("Water", v_temp, v_pluv, v_dic_couleurs_biomes["Water"].coul)
