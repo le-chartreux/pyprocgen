@@ -153,7 +153,7 @@ def f_generate_trees(v_plateau):
 
 		for v_num_colonne in range(v_nbx):
 
-			if f_possible_to_place_tree(v_plateau, v_dic_arbres, v_num_colonne, v_num_ligne) and random.randint(1,30) == 1:
+			if f_possible_to_place_tree(v_plateau, v_dic_arbres, v_num_colonne, v_num_ligne) and random.random() < v_dic_arbres[v_plateau[v_num_ligne][v_num_colonne].nom_biome].prob_arbre :
 
 				f_put_tree(v_plateau, v_dic_arbres, v_num_colonne, v_num_ligne)
 

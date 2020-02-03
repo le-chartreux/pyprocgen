@@ -145,7 +145,7 @@ def f_dic_trees_creation():
 
 	v_dic_arbres = {}
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Desert_Cool", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Desert_Cool", 0.005, [
 			[None,          "106 82 18",   None,          None,          "106 82 18"  ],
 
 			["106 82 18",   "142 93 60",   None,          "127 85 63",   None         ],
@@ -157,7 +157,7 @@ def f_dic_trees_creation():
 			[None,          None,          "142 93 60",   None,          None         ]
 		]))
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Desert_Tropical", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Desert_Tropical", 0.001, [
 			[None,          "106 82 18",   None,          None,          "106 82 18"  ],
 
 			["106 82 18",   "142 93 60",   None,          "127 85 63",   None         ],
@@ -169,7 +169,7 @@ def f_dic_trees_creation():
 			[None,          None,          "142 93 60",   None,          None         ]
 		]))
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Desert_Warm", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Desert_Warm", 0.003, [
 			[None,          "106 82 18",   None,          None,          "106 82 18"  ],
 
 			["106 82 18",   "142 93 60",   None,          "127 85 63",   None         ],
@@ -182,12 +182,12 @@ def f_dic_trees_creation():
 		]))
 
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Desert_Scub_Cool", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Desert_Scub_Cool", 0.01, [
 			["156 152 107", "156 152 107", None         ],
 			["156 152 107", "118 115 98",  "156 152 107"],
 			[None         , "118 115 98",  None         ]
 		]))
-	f_add_in_dic(v_dic_arbres, cl_tree("Desert_Scub_Tropical", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Desert_Scub_Tropical", 0.005, [
 			["156 152 107", "156 152 107", None         ],
 
 			["156 152 107", "118 115 98",  "156 152 107"],
@@ -195,7 +195,7 @@ def f_dic_trees_creation():
 			[None,          "118 115 98",  None         ]
 		]))
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Desert_Scub_Warm", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Desert_Scub_Warm", 0.02, [
 			["156 152 107", "156 152 107", None         ],
 
 			["156 152 107", "118 115 98",  "156 152 107"],
@@ -204,7 +204,7 @@ def f_dic_trees_creation():
 		]))
 
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Dry_Forest_Tropical", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Dry_Forest_Tropical", 0.01, [
 
 			[None,          None,          "121 105 56",  None,          None,          None,          None         ],
 
@@ -219,7 +219,7 @@ def f_dic_trees_creation():
 			[None,          None,          None,          "133 103 69",  None,          None,          None         ]
 		]))
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Dry_Forest_Warm", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Dry_Forest_Warm", 0.03, [
 			[None,          None,          "121 105 56",  None,          None,          None,          None         ],
 
 			[None,          None,          None,          "133 103 69",  None,          "133 103 69",  "121 105 56" ],
@@ -234,7 +234,7 @@ def f_dic_trees_creation():
 		]))
 
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Moist_Forest_Cool", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Moist_Forest_Cool", 0.2, [
 			[None,          "54 62 15",    "34 46 10",    "34 46 10",    None         ],
 
 			["65 71 23",    "34 46 10",    "34 46 10",    "34 46 10",    None         ],
@@ -246,7 +246,7 @@ def f_dic_trees_creation():
 			[None,          None,          "58 45 26",    None,          None         ]
 		]))
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Moist_Forest_Tropical", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Moist_Forest_Tropical", 0.3, [
 			[None,          "54 62 15",    "34 46 10",    "34 46 10",    None         ],
 
 			["65 71 23",    "34 46 10",    "34 46 10",    "34 46 10",    None         ],
@@ -258,7 +258,7 @@ def f_dic_trees_creation():
 			[None,          None,          "58 45 26",    None,          None         ]
 		]))
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Moist_Forest_Warm", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Moist_Forest_Warm", 0.25, [
 			[None,          "54 62 15",    "34 46 10",    "34 46 10",    None         ],
 
 			["65 71 23",    "34 46 10",    "34 46 10",    "34 46 10",    None         ],
@@ -271,7 +271,7 @@ def f_dic_trees_creation():
 		]))
 
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Rain_Forest", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Rain_Forest", 0.3, [
 			[None,          "68 88 39",    "68 88 39",    "68 88 39",    None         ],
 
 			["68 88 39",    "68 88 39",    "68 88 39",    "68 88 39",    "68 88 39"   ],
@@ -292,7 +292,7 @@ def f_dic_trees_creation():
 		]))
 
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Steppe_Woodland_Thorn", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Steppe_Woodland_Thorn", 0.05, [
 			[None,          "34 58 26",    None         ],
 
 			["34 58 26",    "34 58 26",    "34 58 26"   ],
@@ -302,7 +302,7 @@ def f_dic_trees_creation():
 			[None,          "88 73 50",    None         ]
 		]))
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Taiga_Desert", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Taiga_Desert", 0.05, [
 			[None,          None,          "34 58 26",    None,          None         ],
 
 			[None,          None,          "34 58 26",    None,          None         ],
@@ -314,7 +314,7 @@ def f_dic_trees_creation():
 			[None,          None,          "88 73 50",    None,          None         ]
 		]))
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Taiga_Dry", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Taiga_Dry", 0.05, [
 			[None,          None,          "34 58 26",    None,          None         ],
 
 			[None,          None,          "34 58 26",    None,          None         ],
@@ -326,7 +326,7 @@ def f_dic_trees_creation():
 			[None,          None,          "88 73 50",    None,          None         ]
 		]))
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Taiga_Moist", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Taiga_Moist", 0.15, [
 			[None,          None,          "34 58 26",    None,          None         ],
 
 			[None,          None,          "34 58 26",    None,          None         ],
@@ -338,7 +338,7 @@ def f_dic_trees_creation():
 			[None,          None,          "88 73 50",    None,          None         ]
 		]))
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Taiga_Rain", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Taiga_Rain", 0.25, [
 			[None,          None,          "34 58 26",    None,          None         ],
 
 			[None,          None,          "34 58 26",    None,          None         ],
@@ -350,7 +350,7 @@ def f_dic_trees_creation():
 			[None,          None,          "88 73 50",    None,          None         ]
 		]))
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Taiga_Wet", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Taiga_Wet", 0.2, [
 			[None,          None,          "34 58 26",    None,          None         ],
 
 			[None,          None,          "34 58 26",    None,          None         ],
@@ -363,16 +363,16 @@ def f_dic_trees_creation():
 		]))
 
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Toundra_Rain", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Toundra_Rain", 0.05, [
 			["34 58 26",    "34 58 26"   ]
 		]))
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Toundra_Wet", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Toundra_Wet", 0.03, [
 			["34 58 26",    "34 58 26"   ]
 		]))
 
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Tropical_Forest_Tropical", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Tropical_Forest_Tropical", 0.5, [
 			[None,          "0 69 41",     "0 69 41",     "0 69 41",     "0 69 41",     "0 69 41",     None         ],
 
 			["0 69 41",     "0 69 41",     "0 69 41",     "0 69 41",     "0 69 41",     "0 69 41",     "0 69 41"    ],
@@ -392,7 +392,7 @@ def f_dic_trees_creation():
 			[None,          None,          None,          None,          "88 73 50",    None,          None         ]
 		]))
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Tropical_Forest_Warm", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Tropical_Forest_Warm", 0.35, [
 			[None,          "0 69 41",     "0 69 41",     "0 69 41",     "0 69 41",     "0 69 41",     None         ],
 
 			["0 69 41",     "0 69 41",     "0 69 41",     "0 69 41",     "0 69 41",     "0 69 41",     "0 69 41"    ],
@@ -412,7 +412,7 @@ def f_dic_trees_creation():
 			[None,          None,          None,          None,          "88 73 50",    None,          None         ]
 		]))
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Very_Dry_Forest", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Very_Dry_Forest", 0.005, [
 			[None,          None,          "121 105 56",  None,          None,          None,          None         ],
 
 			[None,          None,          None,          "133 103 69",  None,          "133 103 69",  "121 105 56" ],
@@ -427,7 +427,7 @@ def f_dic_trees_creation():
 		]))
 
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Wet_Forest_Cool", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Wet_Forest_Cool", 0.2, [
 			[None,          "38 127 0",    "38 127 0",    "38 127 0",    None         ],
 
 			["38 127 0",    "38 127 0",    "38 127 0",    "38 127 0",    "38 127 0"   ],
@@ -445,7 +445,7 @@ def f_dic_trees_creation():
 			[None,          None,          "95 80 51",    None,          None         ]
 		]))
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Wet_Forest_Tropical", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Wet_Forest_Tropical", 0.3, [
 			[None,          "38 127 0",    "38 127 0",    "38 127 0",    None         ],
 
 			["38 127 0",    "38 127 0",    "38 127 0",    "38 127 0",    "38 127 0"   ],
@@ -463,7 +463,7 @@ def f_dic_trees_creation():
 			[None,          None,          "95 80 51",    None,          None         ]
 		]))
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Wet_Forest_Warm", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Wet_Forest_Warm", 0.25, [
 			[None,          "38 127 0",    "38 127 0",    "38 127 0",    None         ],
 
 			["38 127 0",    "38 127 0",    "38 127 0",    "38 127 0",    "38 127 0"   ],
@@ -482,7 +482,7 @@ def f_dic_trees_creation():
 		]))
 
 
-	f_add_in_dic(v_dic_arbres, cl_tree("Woodland_Thorn", [
+	f_add_in_dic(v_dic_arbres, cl_tree("Woodland_Thorn", 0.05, [
 			[None,          "39 67 0",     "39 67 0",     "39 67 0",     "39 67 0",     "39 67 0",     None         ],
 
 			["39 67 0",     "39 67 0",     "39 67 0",     "39 67 0",     "39 67 0",     "39 67 0",     "39 67 0"    ],

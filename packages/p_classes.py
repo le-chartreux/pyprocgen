@@ -119,7 +119,7 @@ class cl_biome:
 ######################### CL_TREE ############################
 ##############################################################
 class cl_tree:
-	def __init__(self, v_nom_biome, v_body):
+	def __init__(self, v_nom_biome, v_prob_arbre, v_body):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
@@ -127,6 +127,7 @@ class cl_tree:
 		# Crée la classe définisant l'arbre d'un biome,
 		# caractérisé par :
 		# - le nom du biome
+		# - la probabilité d'être placé sur une case possible
 		# - le body de sa représentation ppm avec None pour les pixels vides
 		# -----------------------------
 		# UTILISE PAR :
@@ -142,4 +143,5 @@ class cl_tree:
 		# =============================
 
 		self.nom_biome = v_nom_biome
+		self.prob_arbre = v_prob_arbre
 		self.body = v_body
