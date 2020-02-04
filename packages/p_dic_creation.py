@@ -385,9 +385,9 @@ def f_dic_trees_creation():
 
 			[None,          None,          None,          "88 73 50",    None,          None,          None         ],
 
-			[None,          None,          None,          None,          "88 73 50",    None,          None         ],
-
 			[None,          None,          None,          "88 73 50",    "88 73 50",    None,          None         ],
+
+			[None,          None,          None,          None,          "88 73 50",    None,          None         ],
 
 			[None,          None,          None,          None,          "88 73 50",    None,          None         ]
 		]))
@@ -405,9 +405,9 @@ def f_dic_trees_creation():
 
 			[None,          None,          None,          "88 73 50",    None,          None,          None         ],
 
-			[None,          None,          None,          None,          "88 73 50",    None,          None         ],
-
 			[None,          None,          None,          "88 73 50",    "88 73 50",    None,          None         ],
+
+			[None,          None,          None,          None,          "88 73 50",    None,          None         ],
 
 			[None,          None,          None,          None,          "88 73 50",    None,          None         ]
 		]))
