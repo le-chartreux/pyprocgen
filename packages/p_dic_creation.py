@@ -115,7 +115,26 @@ def f_dic_biomes_creation():
 
 	f_add_in_dic(v_dic_conditions_biomes, cl_biome("Woodland_Thorn",           2,  3, -2, -1, "149 163 140"))
 
-	f_add_in_dic(v_dic_conditions_biomes, cl_biome("Water",                    0,  0,  0,  0, "0 0 255"    ))
+
+
+	f_add_in_dic(v_dic_conditions_biomes, cl_biome("Cyan_Water1",              1.85,  2,  3,  4, "64 164 223" ))
+	f_add_in_dic(v_dic_conditions_biomes, cl_biome("Cyan_Water2",              0.85,  1,  2,  3, "64 164 223" ))
+	f_add_in_dic(v_dic_conditions_biomes, cl_biome("Cyan_Water3",              -0.25,  0,  1,  2, "64 164 223" ))
+	f_add_in_dic(v_dic_conditions_biomes, cl_biome("Cyan_Water4",              -1.25,  -1,  0,  1, "64 164 223" ))
+	f_add_in_dic(v_dic_conditions_biomes, cl_biome("Cyan_Water5",              -2.25,  -2,  -1,  0, "64 164 223" ))
+
+
+	f_add_in_dic(v_dic_conditions_biomes, cl_biome("Cyan_Water6",              1,  2,  3,  3.15, "64 164 223" ))
+	f_add_in_dic(v_dic_conditions_biomes, cl_biome("Cyan_Water7",              0,  1,  2,  2.15, "64 164 223" ))
+	f_add_in_dic(v_dic_conditions_biomes, cl_biome("Cyan_Water8",              -1,  0,  1,  1.15, "64 164 223" ))
+	f_add_in_dic(v_dic_conditions_biomes, cl_biome("Cyan_Water9",              -2,  -1,  0,  0.15, "64 164 223" ))
+	f_add_in_dic(v_dic_conditions_biomes, cl_biome("Cyan_Water10",              -3,  -2,  -1,  -0.85, "64 164 223" ))
+
+
+
+
+
+	f_add_in_dic(v_dic_conditions_biomes, cl_biome("Water",                    0,  0,  0,  0, "30 144 235" ))
 
 	return v_dic_conditions_biomes
 

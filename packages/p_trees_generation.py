@@ -44,7 +44,7 @@ def f_possible_to_place_tree(v_plateau, v_dic_arbres, v_x, v_y):
 
 	v_type_case_origine = v_plateau[v_y][v_x].nom_biome
 
-	if v_type_case_origine == "Tree" or v_type_case_origine == "Water" or v_type_case_origine == "Rocks_and_ice" or v_type_case_origine == "Toundra_Dry" or v_type_case_origine == "Toundra_Moist" or v_type_case_origine == "Steppe":
+	if v_type_case_origine == "Tree" or v_type_case_origine in ["Water", "Rocks_and_ice", "Toundra_Dry", "Toundra_Moist", "Steppe", "Cyan_Water1", "Cyan_Water2",  "Cyan_Water3", "Cyan_Water4", "Cyan_Water5", "Cyan_Water6", "Cyan_Water7", "Cyan_Water8", "Cyan_Water9", "Cyan_Water10"] :
 		return False
 
 	v_larg_arbre = len(v_dic_arbres[v_type_case_origine].body[0])

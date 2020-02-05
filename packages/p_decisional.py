@@ -38,8 +38,8 @@ def f_genererate_box(v_dic_biomes, v_x, v_y, v_seed):
 	from .p_perlin_noise import SimplexNoise
 	cl_noise = SimplexNoise()
 
-	v_temp = cl_noise.noise2(v_seed["Tx"] + v_x/500, v_seed["Ty"] + v_y/500) * 3
-	v_pluv = cl_noise.noise2(v_seed["Px"] + v_x/300, v_seed["Py"] + v_y/300) * 4
+	v_temp = cl_noise.noise2(v_seed["Tx"] + v_x/50, v_seed["Ty"] + v_y/50) * 3
+	v_pluv = cl_noise.noise2(v_seed["Px"] + v_x/50, v_seed["Py"] + v_y/50) * 4
 
 	return f_choice_biome(v_dic_biomes, v_temp, v_pluv)
 
