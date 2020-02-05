@@ -9,6 +9,7 @@
 # - f_creer_plateau_vide(co_nbx,co_nby)
 # - f_afficher_plateau(v_plateau)
 # - f_generer_seed()
+# - f_print_progression(v_texte, v_progression)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
@@ -30,6 +31,7 @@ def f_create_empty_board(v_nbx, v_nby):
 	# -----------------------------
 	# DEPEND DE :
 	# - p_classes.cl_box
+	# - p_board_functions.f_print_progression()
 	# -----------------------------
 	# UTILISE PAR :
 	# - procedural_generation_2D.py
@@ -46,7 +48,7 @@ def f_create_empty_board(v_nbx, v_nby):
 
 			v_plateau[v_i].append(None)
 
-		print("Creation of the empty board's vector : ",round((v_i + 1) / v_nby*100, 2), "%", end = "\r")
+		f_print_progression("Creation of the empty board's vector : ", (v_i + 1) / v_nby)
 
 	print("")
 
@@ -122,3 +124,39 @@ def f_display_board(v_plateau):
 				print(v_plateau[v_i][v_j].nom_biome[0:4], " ", end="")
 
 		print("")
+
+
+def f_print_progression(v_texte, v_progression):
+	# =============================
+	# INFORMATIONS :
+	# -----------------------------
+	# UTILITE :
+	# Affiche la progression (de 0 à 1)
+	# dans la console, avec un # par tranche de 0.1
+	# Forme : v_texte + "[####      ]" + (v_progression, en pourcent) + "%"
+	# -----------------------------
+	# PRECONDITIONS :
+	# - v_progression : réel compris entre 0 et 1
+	# -----------------------------
+	# DEPEND DE :
+	# - None
+	# -----------------------------
+	# UTILISE PAR :
+	# - procedural_generation_2D.py
+	# - p_board_functions.f_create_empty_board()
+	# - p_image_creation.f_image_creation()
+	# =============================
+
+	v_progression10 = int(v_progression * 10)
+	v_str_progression = ""
+
+	for i in range(v_progression10):
+		v_str_progression += "#"
+
+	for i in range(10 - v_progression10):
+		v_str_progression += " "
+
+	print(v_texte +
+		"[" + v_str_progression + "]",
+		round(v_progression * 100, 2),"%",
+		end="\r")

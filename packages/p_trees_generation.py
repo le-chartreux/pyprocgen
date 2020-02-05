@@ -1,4 +1,5 @@
 from .p_classes import cl_box, cl_tree
+from .p_board_functions import f_print_progression
 
 # =============================
 # INFORMATIONS SUR CE PACKAGE :
@@ -137,6 +138,7 @@ def f_generate_trees(v_plateau):
 	# - p_classes.cl_box
 	# - p_classes.cl_arbre
 	# - p_dic_creation.f_dic_trees_creation
+	# - p_board_functions.f_print_progression
 	# -----------------------------
 	# UTILISE PAR :
 	# - procedural_generation_2D.py
@@ -157,6 +159,9 @@ def f_generate_trees(v_plateau):
 
 				f_put_tree(v_plateau, v_dic_arbres, v_num_colonne, v_num_ligne)
 
+		f_print_progression("Placing trees :                        ", (v_num_ligne + 1) / v_nby)
+
+	print("")
 
 
 	return v_plateau

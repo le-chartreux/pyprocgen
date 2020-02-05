@@ -1,5 +1,5 @@
 import time
-from packages.p_board_functions import f_generate_seed, f_create_empty_board
+from packages.p_board_functions import f_generate_seed, f_create_empty_board, f_print_progression
 from packages.p_decisional import f_genererate_box
 from packages.p_dic_creation import f_dic_biomes_creation
 from packages.p_image_creation import f_image_creation
@@ -26,7 +26,9 @@ for v_num_ligne in range (v_nby) :
 
 		v_plateau[v_num_ligne][v_num_colonne] = f_genererate_box(v_dic_biomes, v_num_colonne, v_num_ligne, v_seed)
 
-	print("Vectorial creation of the map : ",round((v_num_ligne + 1)/len(v_plateau)*100,2),"%", end = "\r")
+
+	f_print_progression("Vectorial creation of the map :        ", (v_num_ligne + 1) / len(v_plateau))
+
 
 print("")
 

@@ -1,5 +1,7 @@
 import os
 from .p_classes import cl_box
+from .p_board_functions import f_print_progression
+
 # =============================
 # INFORMATIONS SUR CE PACKAGE :
 # -----------------------------
@@ -31,6 +33,7 @@ def f_image_creation(v_plateau, v_seed):
 	# DEPEND DE :
 	# - os
 	# - p_classes.cl_box
+	# - p_board_functions.f_print_progression
 	# -----------------------------
 	# UTILISE PAR :
 	# - procedural_generation_2D.py
@@ -65,7 +68,7 @@ def f_image_creation(v_plateau, v_seed):
 
 		fi_fichier_dest.write("\n")
 
-		print("Creating the map's image : ",round((v_num_ligne + 1)/len(v_plateau)*100,2),"%", end = "\r")
+		f_print_progression("Creating the map's image :             ", (v_num_ligne + 1)/len(v_plateau))
 
 	print("")
 
