@@ -36,8 +36,7 @@ class cl_box:
 		# - le string de sa couleur rgb de forme r g b
 		# -----------------------------
 		# UTILISE PAR :
-		# - p_board_functions.f_creer_plateau_vide()
-		# - p_board_functions.f_afficher_plateau()
+		# - p_board_functions.f_display_board()
 		# - p_decisional.f_choix_biome()
 		# - p_image_creation.f_image_creation()
 		# - p_trees_creation.f_possible_to_place_tree
@@ -75,8 +74,8 @@ class cl_biome:
 		# - sa couleur
 		# -----------------------------
 		# UTILISE PAR :
-		# - p_biomes_creation.f_dic_biomes_creation()
-		# - p_decisional.f_choix_biome()
+		# - p_dic_creation.f_dic_biomes_creation()
+		# - p_decisional.f_choice_biome()
 		# -----------------------------
 		# PRECONDITIONS :
 		# - NONE
@@ -102,7 +101,7 @@ class cl_biome:
 		# correspondent à celles de ce biome
 		# -----------------------------
 		# UTILISE PAR :
-		# - p_decisional.f_choix_biome()
+		# - p_decisional.f_choice_biome()
 		# -----------------------------
 		# PRECONDITIONS :
 		# - NONE

@@ -6,14 +6,13 @@
 # afficher un plateau dans la console
 # -----------------------------
 # CONTENU :
-# - f_creer_plateau_vide(co_nbx,co_nby)
-# - f_afficher_plateau(v_plateau)
-# - f_generer_seed()
+# - f_create_empty_board(co_nbx,co_nby)
+# - f_display_board(v_plateau)
+# - f_generate_seed()
 # - f_print_progression(v_texte, v_progression)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
-
 
 
 ###############################################################

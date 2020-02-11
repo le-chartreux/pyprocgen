@@ -36,7 +36,7 @@ def f_possible_to_place_tree(v_plateau, v_dic_arbres, v_x, v_y):
 	# -----------------------------
 	# DEPEND DE :
 	# - p_classes.cl_box
-	# - p_classes.cl_arbre
+	# - p_classes.cl_tree
 	# -----------------------------
 	# UTILISE PAR :
 	# - p_trees_creation.f_generate_trees()
@@ -44,7 +44,7 @@ def f_possible_to_place_tree(v_plateau, v_dic_arbres, v_x, v_y):
 
 	v_type_case_origine = v_plateau[v_y][v_x].nom_biome
 
-	if v_type_case_origine == "Tree" or v_type_case_origine in ["Water", "Rocks_and_ice", "Toundra_Dry", "Toundra_Moist", "Steppe", "Cyan_Water1", "Cyan_Water2",  "Cyan_Water3", "Cyan_Water4", "Cyan_Water5", "Cyan_Water6", "Cyan_Water7", "Cyan_Water8", "Cyan_Water9", "Cyan_Water10"] :
+	if v_type_case_origine in ["Tree", "Water", "Rocks_and_ice", "Toundra_Dry", "Toundra_Moist", "Steppe", "Cyan_Water1", "Cyan_Water2",  "Cyan_Water3", "Cyan_Water4", "Cyan_Water5", "Cyan_Water6", "Cyan_Water7", "Cyan_Water8", "Cyan_Water9", "Cyan_Water10"] :
 		return False
 
 	v_larg_arbre = len(v_dic_arbres[v_type_case_origine].body[0])
@@ -87,7 +87,7 @@ def f_put_tree(v_plateau, v_dic_arbres, v_x, v_y):
 	# -----------------------------
 	# DEPEND DE :
 	# - p_classes.cl_box
-	# - p_classes.cl_arbre
+	# - p_classes.cl_tree
 	# -----------------------------
 	# UTILISE PAR :
 	# - p_trees_creation.f_generate_trees()
@@ -136,7 +136,7 @@ def f_generate_trees(v_plateau):
 	# -----------------------------
 	# DEPEND DE :
 	# - p_classes.cl_box
-	# - p_classes.cl_arbre
+	# - p_classes.cl_tree
 	# - p_dic_creation.f_dic_trees_creation
 	# - p_board_functions.f_print_progression
 	# -----------------------------
