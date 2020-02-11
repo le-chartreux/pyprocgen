@@ -44,11 +44,14 @@ def f_possible_to_place_tree(v_plateau, v_dic_arbres, v_x, v_y):
 
 	v_type_case_origine = v_plateau[v_y][v_x].nom_biome
 
+
 	if v_type_case_origine in ["Tree", "Water", "Rocks_and_ice", "Toundra_Dry", "Toundra_Moist", "Steppe", "Cyan_Water1", "Cyan_Water2",  "Cyan_Water3", "Cyan_Water4", "Cyan_Water5", "Cyan_Water6", "Cyan_Water7", "Cyan_Water8", "Cyan_Water9", "Cyan_Water10"] :
 		return False
 
-	v_larg_arbre = len(v_dic_arbres[v_type_case_origine].body[0])
-	v_haut_arbre = len(v_dic_arbres[v_type_case_origine].body)
+	v_vect_arbre = v_dic_arbres[v_type_case_origine].body
+
+	v_larg_arbre = len(v_vect_arbre[0])
+	v_haut_arbre = len(v_vect_arbre)
 
 
 	if v_y + v_haut_arbre > len(v_plateau):
@@ -62,7 +65,7 @@ def f_possible_to_place_tree(v_plateau, v_dic_arbres, v_x, v_y):
 
 		for v_num_colonne in range(v_larg_arbre):
 
-			if v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_biome[0:5] != v_type_case_origine[0:5] :
+			if v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_biome[0:5] != v_type_case_origine[0:5] and v_vect_arbre[v_num_ligne][v_num_colonne] :
 				return False
 
 
