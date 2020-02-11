@@ -62,8 +62,9 @@ def f_possible_to_place_tree(v_plateau, v_dic_arbres, v_x, v_y):
 
 		for v_num_colonne in range(v_larg_arbre):
 
-			if v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_biome != v_type_case_origine :
+			if v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_biome[0:5] != v_type_case_origine[0:5] :
 				return False
+
 
 	return True
 
