@@ -144,3 +144,9 @@ class cl_tree:
 		self.nom_biome = v_nom_biome
 		self.prob_arbre = v_prob_arbre
 		self.body = v_body
+
+	def f_get_height(self):
+		return len(self.body)
+
+	def f_get_width(self):
+		return len(self.body[0])
