@@ -1,7 +1,7 @@
 import time
 from packages.p_board_functions import f_generate_seed, f_create_empty_board, f_print_progression
 from packages.p_decisional import f_genererate_box
-from packages.p_dic_creation import f_dic_biomes_creation
+from packages.p_dic_functions import f_dic_biomes_creation, f_hauteur_max_arbre, f_dic_trees_creation
 from packages.p_image_creation import f_image_creation
 from packages.p_trees_generation import f_generate_trees
 
@@ -9,6 +9,10 @@ from packages.p_trees_generation import f_generate_trees
 # Appelle les fonctions maitresses.
 v_dic_biomes = f_dic_biomes_creation()
 
+v_dic_arbres = f_dic_trees_creation()
+v_hauteur_max_arbre = f_hauteur_max_arbre(v_dic_arbres)
+
+print(v_hauteur_max_arbre)
 
 v_nbx=eval(input("x = "))
 v_nby=eval(input("y = "))

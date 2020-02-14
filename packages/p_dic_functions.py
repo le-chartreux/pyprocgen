@@ -543,8 +543,8 @@ def f_hauteur_max_arbre(v_dic_arbres):
 
 	for v_arbre in v_dic_arbres.values():
 
-		if v_arbre.f_hauteur() > v_hauteur_max_actuelle :
+		if v_arbre.f_get_height() > v_hauteur_max_actuelle :
 
-			v_hauteur_max_actuelle = v_arbre.f_hauteur()
+			v_hauteur_max_actuelle = v_arbre.f_get_height()
 
 	return v_hauteur_max_actuelle

@@ -48,10 +48,10 @@ def f_possible_to_place_tree(v_plateau, v_dic_arbres, v_x, v_y):
 	if v_type_case_origine in ["Tree", "Water", "Rocks_and_ice", "Toundra_Dry", "Toundra_Moist", "Steppe", "Cyan_Water1", "Cyan_Water2",  "Cyan_Water3", "Cyan_Water4", "Cyan_Water5", "Cyan_Water6", "Cyan_Water7", "Cyan_Water8", "Cyan_Water9", "Cyan_Water10"] :
 		return False
 
-	v_vect_arbre = v_dic_arbres[v_type_case_origine].body
+	v_vect_arbre = v_dic_arbres[v_type_case_origine]
 
-	v_larg_arbre = len(v_vect_arbre[0])
-	v_haut_arbre = len(v_vect_arbre)
+	v_larg_arbre = v_vect_arbre.f_get_width()
+	v_haut_arbre = v_vect_arbre.f_get_height()
 
 
 	if v_y + v_haut_arbre > len(v_plateau):
@@ -65,7 +65,7 @@ def f_possible_to_place_tree(v_plateau, v_dic_arbres, v_x, v_y):
 
 		for v_num_colonne in range(v_larg_arbre):
 
-			if v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_biome[0:5] != v_type_case_origine[0:5] and v_vect_arbre[v_num_ligne][v_num_colonne] :
+			if v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_biome[0:5] != v_type_case_origine[0:5] and v_vect_arbre.body[v_num_ligne][v_num_colonne] :
 				return False
 
 
@@ -141,14 +141,14 @@ def f_generate_trees(v_plateau):
 	# DEPEND DE :
 	# - p_classes.cl_box
 	# - p_classes.cl_tree
-	# - p_dic_creation.f_dic_trees_creation
+	# - p_dic_functions.f_dic_trees_creation
 	# - p_board_functions.f_print_progression
 	# -----------------------------
 	# UTILISE PAR :
 	# - procedural_generation_2D.py
 	# =============================
 	import random
-	from packages.p_dic_creation import f_dic_trees_creation
+	from packages.p_dic_functions import f_dic_trees_creation
 
 	v_dic_arbres = f_dic_trees_creation()
 
