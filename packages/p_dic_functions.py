@@ -5,12 +5,14 @@ from .p_classes import cl_biome, cl_tree
 # -----------------------------
 # UTILITE DE SON CONTENU :
 # Créer le dictionnaire v_dic_biomes
-# et le dicionnaire v_dic_arbres
+# et le dicionnaire v_dic_arbres,
+# connaitre la hauteur max d'un arbre
 # -----------------------------
 # CONTENU :
 # - f_add_in_dic(v_dic, v_classe)
 # - f_dic_biomes_creation()
 # - f_dic_trees_creation()
+# - f_hauteur_max_arbre()
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
@@ -518,3 +520,31 @@ def f_dic_trees_creation():
 
 
 	return v_dic_arbres
+
+
+def f_hauteur_max_arbre(v_dic_arbres):
+	# =============================
+	# INFORMATIONS :
+	# -----------------------------
+	# UTILITE :
+	# Renvoit la taille de l'arbre le plus haut
+	# -----------------------------
+	# PRECONDITIONS :
+	# - v_dic_arbres : dicionnaire d'objets cl_tree
+	# -----------------------------
+	# DEPEND DE :
+	# - p_classes.cl_tree
+	# -----------------------------
+	# UTILISE PAR :
+	# - procedural_generation_2D.py
+	# =============================
+
+	v_hauteur_max_actuelle = 0
+
+	for v_arbre in v_dic_arbres.values():
+
+		if v_arbre.f_hauteur() > v_hauteur_max_actuelle :
+
+			v_hauteur_max_actuelle = v_arbre.f_hauteur()
+
+	return v_hauteur_max_actuelle
