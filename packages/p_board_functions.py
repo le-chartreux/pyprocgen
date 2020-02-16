@@ -30,7 +30,6 @@ def f_create_empty_board(v_nbx, v_nby):
 	# -----------------------------
 	# DEPEND DE :
 	# - p_classes.cl_box
-	# - p_board_functions.f_print_progression()
 	# -----------------------------
 	# UTILISE PAR :
 	# - procedural_generation_2D.py
@@ -141,8 +140,6 @@ def f_print_progression(v_texte, v_progression):
 	# -----------------------------
 	# UTILISE PAR :
 	# - procedural_generation_2D.py
-	# - p_board_functions.f_create_empty_board()
-	# - p_image_creation.f_image_creation()
 	# =============================
 
 	v_progression10 = int(v_progression * 10)

@@ -128,7 +128,7 @@ def f_put_tree(v_plateau, v_dic_arbres, v_x, v_y):
 ###############################################################
 ###################### F_GENERATE_TREE ########################
 ###############################################################
-def f_generate_trees(v_plateau):
+def f_generate_trees(v_plateau, v_dic_arbres):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -136,21 +136,25 @@ def f_generate_trees(v_plateau):
 	# Place les arbres dans v_plateau
 	# -----------------------------
 	# PRECONDITIONS :
-	# - None
+	# - v_dic_arbres : dictionnaire d'arbres comprenant
+	# un arbre pour tous les biomes qui ne sont pas dans [
+	# 	"Tree", "Water", "Rocks_and_ice",
+	# 	"Toundra_Dry", "Toundra_Moist", "Steppe",
+	# 	"Cyan_Water1", "Cyan_Water2",  "Cyan_Water3",
+	# 	"Cyan_Water4", "Cyan_Water5", "Cyan_Water6",
+	# 	"Cyan_Water7", "Cyan_Water8", "Cyan_Water9",
+	# 	"Cyan_Water10"
+	# ]
 	# -----------------------------
 	# DEPEND DE :
 	# - p_classes.cl_box
 	# - p_classes.cl_tree
-	# - p_dic_functions.f_dic_trees_creation
-	# - p_board_functions.f_print_progression
 	# -----------------------------
 	# UTILISE PAR :
 	# - procedural_generation_2D.py
 	# =============================
 	import random
-	from packages.p_dic_functions import f_dic_trees_creation
 
-	v_dic_arbres = f_dic_trees_creation()
 
 	v_nbx = len(v_plateau[0])
 	v_nby = int(len(v_plateau) / 2)

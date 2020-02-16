@@ -9,7 +9,8 @@ from .p_board_functions import f_print_progression
 # Créer une image à partir du vecteur v_plateau
 # -----------------------------
 # CONTENU :
-# - f_image_creation(v_plateau, v_seed)
+# - f_create_image_body(v_plateau)
+# - f_create_image_header(v_haut, v_larg, v_seed)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
@@ -17,15 +18,16 @@ from .p_board_functions import f_print_progression
 
 
 ###############################################################
-##################### F_IMAGE_CREATION ########################
+##################### F_CREATE_IMAGE_BODY #####################
 ###############################################################
 
-def f_image_creation(v_plateau):
+def f_create_image_body(v_plateau):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
 	# UTILITE :
-	# Crée une image à partir de v_plateau
+	# Place à la suite de Generated_map.ppm la couleur
+	# de chaque case de v_plateau
 	# -----------------------------
 	# PRECONDITIONS :
 	# - v_seed : not null
@@ -33,16 +35,12 @@ def f_image_creation(v_plateau):
 	# DEPEND DE :
 	# - os
 	# - p_classes.cl_box
-	# - p_board_functions.f_print_progression
 	# -----------------------------
 	# UTILISE PAR :
 	# - procedural_generation_2D.py
 	# =============================
 	fi_fichier_dest = open("Generated_map.ppm", "a")
 
-
-
-	# Creation du body
 	for v_num_ligne in range(len(v_plateau)):
 
 		for v_num_colonnes in range(len(v_plateau[0])):
@@ -57,11 +55,31 @@ def f_image_creation(v_plateau):
 
 
 
-
-def f_image_header_creation(v_haut, v_larg, v_seed):
+###############################################################
+################### F_CREATE_IMAGE_HEADER #####################
+###############################################################
+def f_create_image_header(v_haut, v_larg, v_seed):
+	# =============================
+	# INFORMATIONS :
+	# -----------------------------
+	# UTILITE :
+	# Crée le header de Generated_map.ppm
+	# selon le modèle d'un header de fichier ppm.
+	# Si Generated_map.ppm existe déjà, il est
+	# supprimé, sinon il est créé.
+	# -----------------------------
+	# PRECONDITIONS :
+	# - v_seed : dictionnaire comportant un élément
+	# pour les indices "Tx", "Ty", "Px" et "Py".
+	# -----------------------------
+	# DEPEND DE :
+	# - os
+	# -----------------------------
+	# UTILISE PAR :
+	# - procedural_generation_2D.py
+	# =============================
 	fi_fichier_dest = open("Generated_map.ppm", "w")
 
-	# Creation du header
 	fi_fichier_dest.write("P3\n")
 
 	fi_fichier_dest.write("# Tx = " + str(v_seed["Tx"]) + "\n")
