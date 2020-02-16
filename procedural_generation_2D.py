@@ -40,15 +40,28 @@ for v_num_chunk in range (int(v_nby / v_hauteur_max_arbre)) :
 
 	f_generate_trees(v_chunk_fusion)
 
-	v_chunk_actuel = v_chunk_fusion[(v_hauteur_max_arbre):]
+	v_chunk_actuel = v_chunk_fusion[:v_hauteur_max_arbre]
 
 	f_image_creation(v_chunk_actuel)
 
-	v_chunk_actuel = v_chunk_fusion[:(v_hauteur_max_arbre)]
+	v_chunk_actuel = v_chunk_fusion[v_hauteur_max_arbre:]
 
+	f_print_progression("Creation of the map :        ", ((v_num_chunk + 1) * v_hauteur_max_arbre) / v_nby)
 
-	f_print_progression("Vectorial creation of the map :        ", ((v_num_chunk + 1) * v_hauteur_max_arbre) / v_nby)
+# Création du dernier chunk
+v_chunk_dernier = f_create_empty_board(v_nbx, v_nby % v_hauteur_max_arbre)
 
+for v_num_ligne in range(v_nby % v_hauteur_max_arbre):
+
+	for v_num_colonne in range (v_nbx) :
+
+		v_chunk_dernier[v_num_ligne][v_num_colonne] = f_genererate_box(v_dic_biomes, v_num_colonne , v_nby - (v_nby % v_hauteur_max_arbre - v_num_ligne), v_seed)
+
+f_generate_trees(v_chunk_dernier)
+
+f_image_creation(v_chunk_dernier)
+
+f_print_progression("Creation of the map :        ", 1)
 
 print("")
 
