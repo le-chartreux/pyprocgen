@@ -153,7 +153,7 @@ def f_generate_trees(v_plateau):
 	v_dic_arbres = f_dic_trees_creation()
 
 	v_nbx = len(v_plateau[0])
-	v_nby = len(v_plateau)
+	v_nby = int(len(v_plateau) / 2)
 
 	for v_num_ligne in range(v_nby):
 
@@ -163,9 +163,9 @@ def f_generate_trees(v_plateau):
 
 				f_put_tree(v_plateau, v_dic_arbres, v_num_colonne, v_num_ligne)
 
-		f_print_progression("Placing trees :                        ", (v_num_ligne + 1) / v_nby)
+		#f_print_progression("Placing trees :                        ", (v_num_ligne + 1) / v_nby)
 
-	print("")
+	#print("")
 
 
 	return v_plateau

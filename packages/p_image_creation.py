@@ -20,7 +20,7 @@ from .p_board_functions import f_print_progression
 ##################### F_IMAGE_CREATION ########################
 ###############################################################
 
-def f_image_creation(v_plateau, v_seed):
+def f_image_creation(v_plateau):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -38,25 +38,9 @@ def f_image_creation(v_plateau, v_seed):
 	# UTILISE PAR :
 	# - procedural_generation_2D.py
 	# =============================
+	fi_fichier_dest = open("Generated_map.ppm", "a")
 
-	fi_fichier_dest = open("Generated_map.ppm", "w")
 
-	# Creation du header
-	fi_fichier_dest.write("P3\n")
-
-	fi_fichier_dest.write("# Tx = " + str(v_seed["Tx"]) + "\n")
-	fi_fichier_dest.write("# Ty = " + str(v_seed["Ty"]) + "\n")
-	fi_fichier_dest.write("# Px = " + str(v_seed["Px"]) + "\n")
-	fi_fichier_dest.write("# Py = " + str(v_seed["Py"]) + "\n")
-
-	fi_fichier_dest.write(str(len(v_plateau[0])))
-	fi_fichier_dest.write("\n")
-	fi_fichier_dest.write(str(len(v_plateau)))
-	fi_fichier_dest.write("\n")
-	fi_fichier_dest.write("255\n")
-	fi_fichier_dest.write("\n")
-
-	v_images_chargees = {}
 
 	# Creation du body
 	for v_num_ligne in range(len(v_plateau)):
@@ -68,8 +52,31 @@ def f_image_creation(v_plateau, v_seed):
 
 		fi_fichier_dest.write("\n")
 
-		f_print_progression("Creating the map's image :             ", (v_num_ligne + 1)/len(v_plateau))
+		#f_print_progression("Creating the map's image :             ", (v_num_ligne + 1)/len(v_plateau))
 
-	print("")
+	#print("")
+
+	fi_fichier_dest.close()
+
+
+
+
+def f_image_header_creation(v_haut, v_larg, v_seed):
+	fi_fichier_dest = open("Generated_map.ppm", "w")
+
+	# Creation du header
+	fi_fichier_dest.write("P3\n")
+
+	fi_fichier_dest.write("# Tx = " + str(v_seed["Tx"]) + "\n")
+	fi_fichier_dest.write("# Ty = " + str(v_seed["Ty"]) + "\n")
+	fi_fichier_dest.write("# Px = " + str(v_seed["Px"]) + "\n")
+	fi_fichier_dest.write("# Py = " + str(v_seed["Py"]) + "\n")
+
+	fi_fichier_dest.write(str(v_larg))
+	fi_fichier_dest.write("\n")
+	fi_fichier_dest.write(str(v_haut))
+	fi_fichier_dest.write("\n")
+	fi_fichier_dest.write("255\n")
+	fi_fichier_dest.write("\n")
 
 	fi_fichier_dest.close()
