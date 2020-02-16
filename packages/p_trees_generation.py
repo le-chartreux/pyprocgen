@@ -163,9 +163,5 @@ def f_generate_trees(v_plateau):
 
 				f_put_tree(v_plateau, v_dic_arbres, v_num_colonne, v_num_ligne)
 
-		#f_print_progression("Placing trees :                        ", (v_num_ligne + 1) / v_nby)
-
-	#print("")
-
 
 	return v_plateau

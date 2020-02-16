@@ -52,9 +52,6 @@ def f_image_creation(v_plateau):
 
 		fi_fichier_dest.write("\n")
 
-		#f_print_progression("Creating the map's image :             ", (v_num_ligne + 1)/len(v_plateau))
-
-	#print("")
 
 	fi_fichier_dest.close()
 

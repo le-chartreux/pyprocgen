@@ -47,7 +47,6 @@ def f_create_empty_board(v_nbx, v_nby):
 
 			v_plateau[v_i].append(None)
 
-		#f_print_progression("Creation of the empty board's vector : ", (v_i + 1) / v_nby)
 
 	#print("")
 
