@@ -55,7 +55,7 @@ def f_create_image_body(fi_fichier_dest, v_plateau):
 ###############################################################
 ################### F_CREATE_IMAGE_HEADER #####################
 ###############################################################
-def f_create_image_header(v_haut, v_larg, v_seed):
+def f_create_image_header(fi_fichier_dest, v_haut, v_larg, v_seed):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -75,7 +75,6 @@ def f_create_image_header(v_haut, v_larg, v_seed):
 	# UTILISE PAR :
 	# - procedural_generation_2D.py
 	# =============================
-	fi_fichier_dest = open("Generated_map.ppm", "w")
 
 	fi_fichier_dest.write("P3\n")
 
@@ -90,5 +89,3 @@ def f_create_image_header(v_haut, v_larg, v_seed):
 	fi_fichier_dest.write("\n")
 	fi_fichier_dest.write("255\n")
 	fi_fichier_dest.write("\n")
-
-	fi_fichier_dest.close()
