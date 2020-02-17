@@ -21,6 +21,8 @@ v_seed = f_generate_seed()
 
 f_create_image_header(v_nby, v_nbx, v_seed)
 
+fi_fichier_dest = open("Generated_map.ppm", "a")
+
 # Création du chunk initial
 v_chunk_actuel = f_create_empty_board(v_nbx, v_hauteur_max_arbre)
 
@@ -51,7 +53,7 @@ for v_num_chunk in range (int(v_nby / v_hauteur_max_arbre)) :
 
 	v_chunk_actuel = v_chunk_fusion[:v_hauteur_max_arbre]
 
-	f_create_image_body(v_chunk_actuel)
+	f_create_image_body(fi_fichier_dest, v_chunk_actuel)
 
 	v_chunk_actuel = v_chunk_fusion[v_hauteur_max_arbre:]
 
@@ -62,15 +64,16 @@ for v_num_chunk in range (int(v_nby / v_hauteur_max_arbre)) :
 # Création du dernier chunk
 v_chunk_dernier = v_chunk_actuel[0:(v_nby % v_hauteur_max_arbre)]
 
-f_create_image_body(v_chunk_dernier)
+f_create_image_body(fi_fichier_dest, v_chunk_dernier)
 
 f_print_progression("Creation of the map :        ", 1)
 
 print("")
 
+fi_fichier_dest.close()
+
 # Affichage du message de fin
 print("Done")
-
 print("Execution time : ",time.time()-t)
 
 #f_display_board(v_plateau)

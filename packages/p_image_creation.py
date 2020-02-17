@@ -21,7 +21,7 @@ from .p_board_functions import f_print_progression
 ##################### F_CREATE_IMAGE_BODY #####################
 ###############################################################
 
-def f_create_image_body(v_plateau):
+def f_create_image_body(fi_fichier_dest, v_plateau):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -39,7 +39,6 @@ def f_create_image_body(v_plateau):
 	# UTILISE PAR :
 	# - procedural_generation_2D.py
 	# =============================
-	fi_fichier_dest = open("Generated_map.ppm", "a")
 
 	for v_num_ligne in range(len(v_plateau)):
 
@@ -50,8 +49,6 @@ def f_create_image_body(v_plateau):
 
 		fi_fichier_dest.write("\n")
 
-
-	fi_fichier_dest.close()
 
 
 
