@@ -78,15 +78,26 @@ def f_generate_seed():
 	import random
 
 	v_seed = {}
-	v_seed["Tx"] = random.randint(-100000,100000)
-	v_seed["Ty"] = random.randint(-100000,100000)
-	v_seed["Px"] = random.randint(-100000,100000)
-	v_seed["Py"] = random.randint(-100000,100000)
+	v_seed["T1x"] = random.randint(-100000,100000)
+	v_seed["T1y"] = random.randint(-100000,100000)
+	v_seed["T2x"] = random.randint(-100000,100000)
+	v_seed["T2y"] = random.randint(-100000,100000)
+	v_seed["T3x"] = random.randint(-100000,100000)
+	v_seed["T3y"] = random.randint(-100000,100000)
 
+	v_seed["P1x"] = random.randint(-100000,100000)
+	v_seed["P1y"] = random.randint(-100000,100000)
+	v_seed["P2x"] = random.randint(-100000,100000)
+	v_seed["P2y"] = random.randint(-100000,100000)
+	v_seed["P3x"] = random.randint(-100000,100000)
+	v_seed["P3y"] = random.randint(-100000,100000)
+
+	"""
 	print("Seed coordinates :")
 	print("Temperature : x =",v_seed["Tx"],", y =",v_seed["Ty"])
 	print("Pluviometry : x =",v_seed["Px"],", y =",v_seed["Py"])
 	print("")
+	"""
 
 	return v_seed
 
