@@ -60,7 +60,7 @@ class cl_box:
 ###############################################################
 class cl_biome:
 
-	def __init__(self, v_nom, v_temp_min, v_temp_max, v_pluv_min, v_pluv_max, v_coul):
+	def __init__(self, v_nom_biome, v_temp_min, v_temp_max, v_pluv_min, v_pluv_max, v_coul):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
@@ -84,7 +84,7 @@ class cl_biome:
 		# - NONE
 		# =============================
 
-		self.nom_biome = v_nom
+		self.nom_biome = v_nom_biome
 		self.temp_min = v_temp_min
 		self.temp_max = v_temp_max
 		self.pluv_min = v_pluv_min
@@ -92,7 +92,7 @@ class cl_biome:
 		self.coul = v_coul
 
 
-	def f_in_range(self, v_temp, v_pluv):
+	def m_in_range(self, v_temp, v_pluv):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
@@ -145,8 +145,8 @@ class cl_tree:
 		self.prob_arbre = v_prob_arbre
 		self.body = v_body
 
-	def f_get_height(self):
+	def m_get_height(self):
 		return len(self.body)
 
-	def f_get_width(self):
+	def m_get_width(self):
 		return len(self.body[0])

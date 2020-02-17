@@ -40,7 +40,7 @@ def f_genererate_box(v_dic_biomes, v_x, v_y, v_seed):
 
 	v_temp = (
 			cl_noise.noise2(v_seed["T1x"] + v_x/1000, v_seed["T1y"] + v_y/1000) * 10
-			+ cl_noise.noise2(v_seed["T2x"] + v_x/50, v_seed["T2y"] + v_y/50) * 3
+			+ cl_noise.noise2(v_seed["T2x"] + v_x/100, v_seed["T2y"] + v_y/100) * 3
 			+ cl_noise.noise2(v_seed["T3x"] + v_x/10, v_seed["T3y"] + v_y/10)
 	 	) * 3 / 14
 
@@ -81,7 +81,7 @@ def f_choice_biome(v_dic_biomes, v_temp, v_pluv):
 
 	for v_biome in v_dic_biomes.values():
 
-		if v_biome.f_in_range(v_temp, v_pluv):
+		if v_biome.m_in_range(v_temp, v_pluv):
 
 			return cl_box(v_biome.nom_biome, v_temp, v_pluv, v_biome.coul)
 

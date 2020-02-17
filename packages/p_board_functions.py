@@ -154,15 +154,22 @@ def f_print_progression(v_texte, v_progression):
 	# =============================
 
 	v_progression10 = int(v_progression * 10)
-	v_str_progression = ""
+	v_barre_progression = ""
 
 	for i in range(v_progression10):
-		v_str_progression += "#"
+		v_barre_progression += "#"
 
 	for i in range(10 - v_progression10):
-		v_str_progression += " "
+		v_barre_progression += " "
+
+	#v_progression = round(v_progression * 100, 2)
+
+	if round(v_progression, 3) == v_progression:
+		v_progression_str = str(round(v_progression * 100, 2)) + "0"
+
+	else:
+		v_progression_str = str(round(v_progression * 100, 2))
+
 
 	print(v_texte +
-		"[" + v_str_progression + "]",
-		round(v_progression * 100, 2),"%",
-		end="\r")
+		"[" + v_barre_progression + "] " + v_progression_str + " %", end="\r")

@@ -50,8 +50,8 @@ def f_possible_to_place_tree(v_plateau, v_dic_arbres, v_x, v_y):
 
 	v_vect_arbre = v_dic_arbres[v_type_case_origine]
 
-	v_larg_arbre = v_vect_arbre.f_get_width()
-	v_haut_arbre = v_vect_arbre.f_get_height()
+	v_larg_arbre = v_vect_arbre.m_get_width()
+	v_haut_arbre = v_vect_arbre.m_get_height()
 
 
 	if v_y + v_haut_arbre > len(v_plateau):

@@ -28,10 +28,12 @@ NAMING STYLE:
 I didn't use the real Python's naming conventions in this project because I think some of them aren't compatible with my way of naming, so this is a little alias to clearly understand them if you didn't:
 
 - v_  : variable
-- f_  : function
-- cl_ : class
-- p_  : package
 - fi_ : file
+- cl_ : class
+- f_  : function
+- m_  : method
+- p_  : package
+
 
 
 LINKS:

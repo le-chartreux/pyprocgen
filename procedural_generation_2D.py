@@ -87,7 +87,7 @@ v_chunk_dernier = v_chunk_actuel[0:(v_nby % v_hauteur_max_arbre)]
 
 f_create_image_body(fi_fichier_dest, v_chunk_dernier)
 
-f_print_progression("Creation of the map :        ", 1)
+f_print_progression("Creation of the map :        ", 1.0)
 
 print("")
 
