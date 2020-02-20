@@ -25,8 +25,9 @@ def f_genererate_box(v_dic_biomes, v_x, v_y, v_seed):
 	# -----------------------------
 	# PRECONDITIONS :
 	# - v_x, v_y : integers not null
-	# - v_seed["Tx"], v_seed["Ty"] : integers not null
-	# - v_seed["Py"], v_seed["Py"] : integers not null
+	# - v_seed["T" + str(i) +  "x"], v_seed["T" + str(i) +  "y"] : integers not null
+	# - v_seed["P" + str(i) +  "x"], v_seed["P" + str(i) +  "y"] : integers not null
+	#   where i in [1;8]
 	# -----------------------------
 	# DEPEND DE :
 	# - p_perlin_noise.py

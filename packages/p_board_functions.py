@@ -47,8 +47,6 @@ def f_create_empty_board(v_nbx, v_nby):
 			v_plateau[v_i].append(None)
 
 
-	#print("")
-
 	return v_plateau
 
 
@@ -61,10 +59,10 @@ def f_generate_seed():
 	# -----------------------------
 	# UTILITE :
 	# Génère un dictionnaire de seed avec :
-	# - Tx : seed de température axe x
-	# - Ty : seed de température axe y
-	# - Px : seed de pluviométrie axe x
-	# - Py : seed de pluviométrie axe y
+	# - "T" + str(i) + "x" : seed numéro i et d'axe x de la température
+	# - "T" + str(i) + "y" : seed numéro i et d'axe y de la température
+	# - "P" + str(i) + "x" : seed numéro i et d'axe x de la  pluviométrie
+	# - "P" + str(i) + "y" : seed numéro i et d'axe y de la  pluviométrie
 	# -----------------------------
 	# PRECONDITIONS :
 	# - NONE
@@ -182,7 +180,6 @@ def f_print_progression(v_texte, v_progression):
 	for i in range(10 - v_progression10):
 		v_barre_progression += " "
 
-	#v_progression = round(v_progression * 100, 2)
 
 	if round(v_progression, 3) == v_progression:
 		v_progression_str = str(round(v_progression * 100, 2)) + "0"
