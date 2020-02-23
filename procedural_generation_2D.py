@@ -22,8 +22,8 @@ from packages.p_trees_generation 	import f_generate_trees
 # - None
 # =============================
 
-v_nbx=eval(input("x = "))
-v_nby=eval(input("y = "))
+v_nbx = eval(input("x = "))
+v_nby = eval(input("y = "))
 print("")
 
 ###############################################################
