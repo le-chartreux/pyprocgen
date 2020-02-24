@@ -44,11 +44,12 @@ def f_genererate_box(v_dic_biomes, v_x, v_y, v_seed, v_intensite_variation):
 
 
 	for i in range(1,9):
-		v_temp += cl_noise.noise2(v_seed["T" + str(i) + "x"] + v_x/(v_intensite_variation * 2**i) , v_seed["T" + str(i) + "y"] + v_y/(v_intensite_variation * 2**i)) * 2**i
-		v_pluv += cl_noise.noise2(v_seed["P" + str(i) + "x"] + v_x/(v_intensite_variation * 2**i) , v_seed["P" + str(i) + "y"] + v_y/(v_intensite_variation * 2**i)) * 2**i
+		v_puissance = 2**i
+		v_temp += cl_noise.noise2(v_seed["T" + str(i) + "x"] + v_x/(v_intensite_variation * v_puissance) , v_seed["T" + str(i) + "y"] + v_y/(v_intensite_variation * v_puissance)) * v_puissance
+		v_pluv += cl_noise.noise2(v_seed["P" + str(i) + "x"] + v_x/(v_intensite_variation * v_puissance) , v_seed["P" + str(i) + "y"] + v_y/(v_intensite_variation * v_puissance)) * v_puissance
 
-	v_temp = v_temp * 3 / (2**9 - 1)
-	v_pluv = v_pluv * 4 / (2**9 - 1)
+	v_temp *= 0.00587	# v_temp = v_temp * 3 / (2**9 - 1)
+	v_pluv *= 0.00783	# v_pluv = v_pluv * 4 / (2**9 - 1)
 
 	return f_choice_biome(v_dic_biomes, v_temp, v_pluv)
 
