@@ -1,6 +1,3 @@
-from .p_classes import cl_box, cl_tree
-from .p_board_functions import f_print_progression
-
 # =============================
 # INFORMATIONS SUR CE PACKAGE :
 # -----------------------------
@@ -15,6 +12,9 @@ from .p_board_functions import f_print_progression
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
 # =============================
+
+from .p_classes import cl_box, cl_tree
+from .p_board_functions import f_print_progression
 
 ###############################################################
 ################# F_POSSIBLE_TO_PLACE_TREE ####################

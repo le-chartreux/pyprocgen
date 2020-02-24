@@ -1,7 +1,3 @@
-import os
-from .p_classes import cl_box
-from .p_board_functions import f_print_progression
-
 # =============================
 # INFORMATIONS SUR CE PACKAGE :
 # -----------------------------
@@ -16,6 +12,9 @@ from .p_board_functions import f_print_progression
 # - procedural_generation_2D.py
 # =============================
 
+import os
+from .p_classes import cl_box
+from .p_board_functions import f_print_progression
 
 ###############################################################
 ##################### F_CREATE_IMAGE_BODY #####################

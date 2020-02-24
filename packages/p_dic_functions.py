@@ -1,5 +1,3 @@
-from .p_classes import cl_biome, cl_tree
-
 # =============================
 # INFORMATIONS SUR CE PACKAGE :
 # -----------------------------
@@ -20,7 +18,7 @@ from .p_classes import cl_biome, cl_tree
 # - p_trees_generation.py
 # =============================
 
-
+from .p_classes import cl_biome, cl_tree
 
 ###############################################################
 ####################### F_ADD_IN_DIC ##########################
