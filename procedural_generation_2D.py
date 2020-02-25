@@ -16,7 +16,7 @@
 # =============================
 
 import time
-from packages.p_board_functions 	import f_generate_seed, f_create_empty_board, f_print_progression, f_compress_seed, f_decompress_seed, f_is_it_a_seed, f_is_it_an_integer
+from packages.p_board_functions 	import f_generate_seed, f_create_empty_board, f_print_progression, f_seed_to_string, f_string_to_seed, f_is_it_a_seed, f_is_it_an_integer
 from packages.p_decisional 			import f_genererate_box
 from packages.p_dic_functions 		import f_dic_biomes_creation, f_hauteur_max_arbre, f_dic_trees_creation
 from packages.p_image_creation 		import f_create_image_header, f_create_image_body
@@ -100,15 +100,15 @@ elif v_mode == "2":
 	if v_choix == "y":
 		print("  Tip : A seed looks like a:b:c:d where a,b,c,d are integers")
 
-		v_seed_compressed = ""
-		while not f_is_it_a_seed(v_seed_compressed):
+		v_seed_in_string = ""
+		while not f_is_it_a_seed(v_seed_in_string):
 
-			if v_seed_compressed != "":
+			if v_seed_in_string != "":
 				print("  This is not a seed.")
 
-			v_seed_compressed = input("  Enter the seed : ")
+			v_seed_in_string = input("  Enter the seed : ")
 
-		v_seed = f_decompress_seed(v_seed_compressed)
+		v_seed = f_string_to_seed(v_seed_in_string)
 
 	elif v_choix == "n":
 		v_seed = f_generate_seed()
@@ -153,7 +153,7 @@ elif v_mode == "2":
 ######################### CONSTANTES ##########################
 ###############################################################
 v_time = time.time()
-print("Seed of the map : " + f_compress_seed(v_seed) + "\n")
+print("Seed of the map : " + f_seed_to_string(v_seed) + "\n")
 v_dic_biomes = f_dic_biomes_creation()
 v_dic_arbres = f_dic_trees_creation()
 
@@ -161,7 +161,7 @@ v_dic_arbres = f_dic_trees_creation()
 ############### CREATION DU HEADER DE L IMAGE #################
 ###############################################################
 fi_fichier_dest = open("Generated_map.ppm", "w")
-f_create_image_header(fi_fichier_dest, v_nby, v_nbx, f_compress_seed(v_seed))
+f_create_image_header(fi_fichier_dest, v_nby, v_nbx, f_seed_to_string(v_seed))
 
 
 ###############################################################

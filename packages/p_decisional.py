@@ -3,7 +3,7 @@
 # -----------------------------
 # UTILITE DE SON CONTENU :
 # Gèrer l'évolution du terrain et
-# prendre la décisison du tv_ype de case à placer en (v_x,v_y)
+# prendre la décisison du type de case à placer en (v_y, v_x)
 # -----------------------------
 # CONTENU :
 # - f_genererate_box(v_dic_biomes, v_x, v_y, v_seed, v_intensite_variation)
@@ -53,11 +53,9 @@ def f_genererate_box(v_dic_biomes, v_x, v_y, v_seed, v_intensite_variation):
 	return f_choice_biome(v_dic_biomes, v_temp, v_pluv)
 
 
-
 ###############################################################
 ######################## F_CHOICE_BIOME #######################
 ###############################################################
-
 def f_choice_biome(v_dic_biomes, v_temp, v_pluv):
 	# =============================
 	# INFORMATIONS :

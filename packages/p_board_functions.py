@@ -8,12 +8,14 @@
 # CONTENU :
 # - f_create_empty_board(co_nbx,co_nby)
 # - f_display_board(v_plateau)
-# - f_generate_seed()
-# - f_compress_seed(v_seed)
-# - f_is_it_a_seed(v_seed_compressed)
-# - f_decompress_seed(v_seed_compressed)
-# - f_is_it_an_integer(valeur)
 # - f_print_progression(v_texte, v_progression)
+#
+# - f_generate_seed()
+# - f_seed_to_string(v_seed)
+# - f_string_to_seed(v_seed_compressed)
+#
+# - f_is_it_a_seed(v_seed_compressed)
+# - f_is_it_an_integer(valeur)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
@@ -42,16 +44,88 @@ def f_create_empty_board(v_nbx, v_nby):
 
 	v_plateau=[]
 
-	for v_i in range(v_nby) :
+	for v_hauteur in range(v_nby) :
 
 		v_plateau.append([])
 
-		for v_j in range(v_nbx) :
+		for v_largeur in range(v_nbx) :
 
-			v_plateau[v_i].append(None)
-
+			v_plateau[v_hauteur].append(None)
 
 	return v_plateau
+
+
+###############################################################
+##################### F_DISPLAY_BOARD #########################
+###############################################################
+def f_display_board(v_plateau):
+	# =============================
+	# INFORMATIONS :
+	# -----------------------------
+	# UTILITE :
+	# Affiche un plateau de taille len(v_plateau[0]) * len(v_plateau)
+	# dans la console
+	# -----------------------------
+	# PRECONDITIONS :
+	# - NONE
+	# -----------------------------
+	# DEPEND DE :
+	# - p_classes.cl_box
+	# -----------------------------
+	# UTILISE PAR :
+	# - procedural_generation_2D.py (pour debug)
+	# =============================
+	from .p_classes import cl_box
+
+	for v_i in range(len(v_plateau)) :
+
+		for v_j in range(len(v_plateau[0])) :
+
+				print(v_plateau[v_i][v_j].nom_biome[0:4], " ", end="")
+
+		print("")
+
+
+def f_print_progression(v_texte, v_progression):
+	# =============================
+	# INFORMATIONS :
+	# -----------------------------
+	# UTILITE :
+	# Affiche la progression (de 0 à 1)
+	# dans la console, avec un # par tranche de 0.1
+	# Forme : v_texte + "[####      ]" + (v_progression, en pourcent) + "%"
+	# -----------------------------
+	# PRECONDITIONS :
+	# - v_progression : réel compris entre 0 et 1
+	# -----------------------------
+	# DEPEND DE :
+	# - None
+	# -----------------------------
+	# UTILISE PAR :
+	# - procedural_generation_2D.py
+	# =============================
+
+	v_progression10 = int(v_progression * 10)
+	v_barre_progression = ""
+
+	# Remplissage de la barre de progression des '#' :
+	for i in range(v_progression10):
+		v_barre_progression += "#"
+
+	# Remplissage de la barre de progression de ' ' sur la partie restante :
+	for i in range(10 - v_progression10):
+		v_barre_progression += " "
+
+	# Ajout de zeros après la virgule pour les floats trop cours
+	# (sinon le \r ne réécrit pas tout) :
+	if round(v_progression, 3) == v_progression:
+		v_progression_str = str(round(v_progression * 100, 2)) + "0"
+
+	else:
+		v_progression_str = str(round(v_progression * 100, 2))
+
+	# Affichage de la progression :
+	print(v_texte + "[" + v_barre_progression + "] " + v_progression_str + " %", end="\r")
 
 
 ###############################################################
@@ -88,15 +162,16 @@ def f_generate_seed():
 
 	return v_seed
 
+
 ###############################################################
-###################### F_COMPRESS_SEED ########################
+###################### F_SEED_TO_STRING #######################
 ###############################################################
-def f_compress_seed(v_seed):
+def f_seed_to_string(v_seed):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
 	# UTILITE :
-	# Compresse le seed pour l'écrire dans le header
+	# Transforme le seed en string pour l'écrire dans le header
 	# de l'image générée,
 	# de la forme Tx + ":" + Ty + ":" + Px + ":" + Py
 	# -----------------------------
@@ -111,21 +186,21 @@ def f_compress_seed(v_seed):
 	# - procedural_generation_2D.py
 	# =============================
 
-	v_seed_compressed = (
+	v_seed_in_string = (
 		  str(v_seed["Tx"]) + ":"
 		+ str(v_seed["Ty"]) + ":"
 		+ str(v_seed["Px"]) + ":"
 		+ str(v_seed["Py"])
 	)
 
-	return v_seed_compressed
+	return v_seed_in_string
 
 
 
 ###############################################################
-##################### F_DECOMPRESS_SEED #######################
+###################### F_STRING_TO_SEED ########################
 ###############################################################
-def f_decompress_seed(v_seed_compressed):
+def f_string_to_seed(v_seed_in_string):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -153,9 +228,9 @@ def f_decompress_seed(v_seed_compressed):
 
 		v_tampon = ""
 
-		while v_compteur < len(v_seed_compressed) and v_seed_compressed[v_compteur] != ":":
+		while v_compteur < len(v_seed_in_string) and v_seed_in_string[v_compteur] != ":":
 
-			v_tampon += v_seed_compressed[v_compteur]
+			v_tampon += v_seed_in_string[v_compteur]
 			v_compteur += 1
 
 		v_seed[v_noms[i]] = int(v_tampon)
@@ -165,7 +240,7 @@ def f_decompress_seed(v_seed_compressed):
 
 
 ###############################################################
-##################### F_DECOMPRESS_SEED #######################
+####################### F_IS_IT_A_SEED ########################
 ###############################################################
 def f_is_it_a_seed(v_seed_compressed):
 	# =============================
@@ -215,37 +290,6 @@ def f_is_it_a_seed(v_seed_compressed):
 
 
 ###############################################################
-##################### F_DISPLAY_BOARD #########################
-###############################################################
-def f_display_board(v_plateau):
-	# =============================
-	# INFORMATIONS :
-	# -----------------------------
-	# UTILITE :
-	# Affiche un plateau de taille len(v_plateau[0]) * len(v_plateau)
-	# dans la console
-	# -----------------------------
-	# PRECONDITIONS :
-	# - NONE
-	# -----------------------------
-	# DEPEND DE :
-	# - p_classes.cl_box
-	# -----------------------------
-	# UTILISE PAR :
-	# - procedural_generation_2D.py (pour debug)
-	# =============================
-	from .p_classes import cl_box
-
-	for v_i in range(len(v_plateau)) :
-
-		for v_j in range(len(v_plateau[0])) :
-
-				print(v_plateau[v_i][v_j].nom_biome[0:4], " ", end="")
-
-		print("")
-
-
-###############################################################
 ################### F_IS_IT_AN_INTEGER ########################
 ###############################################################
 def f_is_it_an_integer(valeur):
@@ -268,43 +312,3 @@ def f_is_it_an_integer(valeur):
 		return int(valeur) == float(valeur)
 	except:
 		return False
-		
-
-def f_print_progression(v_texte, v_progression):
-	# =============================
-	# INFORMATIONS :
-	# -----------------------------
-	# UTILITE :
-	# Affiche la progression (de 0 à 1)
-	# dans la console, avec un # par tranche de 0.1
-	# Forme : v_texte + "[####      ]" + (v_progression, en pourcent) + "%"
-	# -----------------------------
-	# PRECONDITIONS :
-	# - v_progression : réel compris entre 0 et 1
-	# -----------------------------
-	# DEPEND DE :
-	# - None
-	# -----------------------------
-	# UTILISE PAR :
-	# - procedural_generation_2D.py
-	# =============================
-
-	v_progression10 = int(v_progression * 10)
-	v_barre_progression = ""
-
-	for i in range(v_progression10):
-		v_barre_progression += "#"
-
-	for i in range(10 - v_progression10):
-		v_barre_progression += " "
-
-
-	if round(v_progression, 3) == v_progression:
-		v_progression_str = str(round(v_progression * 100, 2)) + "0"
-
-	else:
-		v_progression_str = str(round(v_progression * 100, 2))
-
-
-	print(v_texte +
-		"[" + v_barre_progression + "] " + v_progression_str + " %", end="\r")

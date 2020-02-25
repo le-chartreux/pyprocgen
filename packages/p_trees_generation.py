@@ -5,9 +5,9 @@
 # Génère les arbres dans le plateau
 # -----------------------------
 # CONTENU :
+# - f_generate_trees(v_plateau)
 # - f_possible_to_place_tree(v_plateau, v_dic_arbres, v_x, v_y)
 # - f_put_tree(v_plateau, v_dic_arbres, v_x, v_y)
-# - f_generate_trees(v_plateau)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
@@ -15,6 +15,53 @@
 
 from .p_classes import cl_box, cl_tree
 from .p_board_functions import f_print_progression
+
+
+###############################################################
+###################### F_GENERATE_TREE ########################
+###############################################################
+def f_generate_trees(v_plateau, v_dic_arbres):
+	# =============================
+	# INFORMATIONS :
+	# -----------------------------
+	# UTILITE :
+	# Place les arbres dans v_plateau
+	# -----------------------------
+	# PRECONDITIONS :
+	# - v_dic_arbres : dictionnaire d'arbres comprenant
+	# un arbre pour tous les biomes qui ne sont pas dans [
+	# 	"Tree", "Water", "Rocks_and_ice",
+	# 	"Toundra_Dry", "Toundra_Moist", "Steppe",
+	# 	"Cyan_Water1", "Cyan_Water2",  "Cyan_Water3",
+	# 	"Cyan_Water4", "Cyan_Water5", "Cyan_Water6",
+	# 	"Cyan_Water7", "Cyan_Water8", "Cyan_Water9",
+	# 	"Cyan_Water10"
+	# ]
+	# -----------------------------
+	# DEPEND DE :
+	# - p_classes.cl_box
+	# - p_classes.cl_tree
+	# -----------------------------
+	# UTILISE PAR :
+	# - procedural_generation_2D.py
+	# =============================
+	import random
+
+
+	v_nbx = len(v_plateau[0])
+	v_nby = int(len(v_plateau) / 2)
+
+	for v_num_ligne in range(v_nby):
+
+		for v_num_colonne in range(v_nbx):
+
+			if f_possible_to_place_tree(v_plateau, v_dic_arbres, v_num_colonne, v_num_ligne) and random.random() < v_dic_arbres[v_plateau[v_num_ligne][v_num_colonne].nom_biome].prob_arbre :
+
+				f_put_tree(v_plateau, v_dic_arbres, v_num_colonne, v_num_ligne)
+
+
+	return v_plateau
+
 
 ###############################################################
 ################# F_POSSIBLE_TO_PLACE_TREE ####################
@@ -121,51 +168,3 @@ def f_put_tree(v_plateau, v_dic_arbres, v_x, v_y):
 				v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_biome = "Tree"
 
 				v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].coul = v_vect_arbre[v_num_ligne][v_num_colonne]
-
-
-
-
-###############################################################
-###################### F_GENERATE_TREE ########################
-###############################################################
-def f_generate_trees(v_plateau, v_dic_arbres):
-	# =============================
-	# INFORMATIONS :
-	# -----------------------------
-	# UTILITE :
-	# Place les arbres dans v_plateau
-	# -----------------------------
-	# PRECONDITIONS :
-	# - v_dic_arbres : dictionnaire d'arbres comprenant
-	# un arbre pour tous les biomes qui ne sont pas dans [
-	# 	"Tree", "Water", "Rocks_and_ice",
-	# 	"Toundra_Dry", "Toundra_Moist", "Steppe",
-	# 	"Cyan_Water1", "Cyan_Water2",  "Cyan_Water3",
-	# 	"Cyan_Water4", "Cyan_Water5", "Cyan_Water6",
-	# 	"Cyan_Water7", "Cyan_Water8", "Cyan_Water9",
-	# 	"Cyan_Water10"
-	# ]
-	# -----------------------------
-	# DEPEND DE :
-	# - p_classes.cl_box
-	# - p_classes.cl_tree
-	# -----------------------------
-	# UTILISE PAR :
-	# - procedural_generation_2D.py
-	# =============================
-	import random
-
-
-	v_nbx = len(v_plateau[0])
-	v_nby = int(len(v_plateau) / 2)
-
-	for v_num_ligne in range(v_nby):
-
-		for v_num_colonne in range(v_nbx):
-
-			if f_possible_to_place_tree(v_plateau, v_dic_arbres, v_num_colonne, v_num_ligne) and random.random() < v_dic_arbres[v_plateau[v_num_ligne][v_num_colonne].nom_biome].prob_arbre :
-
-				f_put_tree(v_plateau, v_dic_arbres, v_num_colonne, v_num_ligne)
-
-
-	return v_plateau
