@@ -25,9 +25,8 @@ def f_genererate_box(v_dic_biomes, v_x, v_y, v_seed, v_intensite_variation):
 	# -----------------------------
 	# PRECONDITIONS :
 	# - v_x, v_y : integers not null
-	# - v_seed["T" + str(i) +  "x"], v_seed["T" + str(i) +  "y"] : integers not null
-	# - v_seed["P" + str(i) +  "x"], v_seed["P" + str(i) +  "y"] : integers not null
-	#   where i in [1;8]
+	# - v_seed["Tx"], v_seed["Ty"] : integers not null
+	# - v_seed["Px"], v_seed["Py"] : integers not null
 	# -----------------------------
 	# DEPEND DE :
 	# - p_perlin_noise.py
@@ -45,8 +44,8 @@ def f_genererate_box(v_dic_biomes, v_x, v_y, v_seed, v_intensite_variation):
 
 	for i in range(1,9):
 		v_puissance = 2**i
-		v_temp += cl_noise.noise2(v_seed["T" + str(i) + "x"] + v_x/(v_intensite_variation * v_puissance) , v_seed["T" + str(i) + "y"] + v_y/(v_intensite_variation * v_puissance)) * v_puissance
-		v_pluv += cl_noise.noise2(v_seed["P" + str(i) + "x"] + v_x/(v_intensite_variation * v_puissance) , v_seed["P" + str(i) + "y"] + v_y/(v_intensite_variation * v_puissance)) * v_puissance
+		v_temp += cl_noise.noise2(v_seed["Tx"] + 100000*i + v_x/(v_intensite_variation * v_puissance) , v_seed["Ty"] + 100000*i +  v_y/(v_intensite_variation * v_puissance)) * v_puissance
+		v_pluv += cl_noise.noise2(v_seed["Px"] + 100000*i + v_x/(v_intensite_variation * v_puissance) , v_seed["Py"] + 100000*i + v_y/(v_intensite_variation * v_puissance)) * v_puissance
 
 	v_temp *= 0.00587	# v_temp = v_temp * 3 / (2**9 - 1)
 	v_pluv *= 0.00783	# v_pluv = v_pluv * 4 / (2**9 - 1)

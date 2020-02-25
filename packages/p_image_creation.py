@@ -65,8 +65,7 @@ def f_create_image_header(fi_fichier_dest, v_haut, v_larg, v_seed):
 	# supprimé, sinon il est créé.
 	# -----------------------------
 	# PRECONDITIONS :
-	# - v_seed : dictionnaire comportant un élément
-	# pour les indices "Tx", "Ty", "Px" et "Py".
+	# - v_seed : string
 	# -----------------------------
 	# DEPEND DE :
 	# - os
@@ -76,12 +75,7 @@ def f_create_image_header(fi_fichier_dest, v_haut, v_larg, v_seed):
 	# =============================
 
 	fi_fichier_dest.write("P3\n")
-	"""
-	fi_fichier_dest.write("# Tx = " + str(v_seed["Tx"]) + "\n")
-	fi_fichier_dest.write("# Ty = " + str(v_seed["Ty"]) + "\n")
-	fi_fichier_dest.write("# Px = " + str(v_seed["Px"]) + "\n")
-	fi_fichier_dest.write("# Py = " + str(v_seed["Py"]) + "\n")
-	"""
+	fi_fichier_dest.write("# Seed : " + v_seed + "\n")
 	fi_fichier_dest.write(str(v_larg))
 	fi_fichier_dest.write("\n")
 	fi_fichier_dest.write(str(v_haut))

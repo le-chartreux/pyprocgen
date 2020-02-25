@@ -9,6 +9,10 @@
 # - f_create_empty_board(co_nbx,co_nby)
 # - f_display_board(v_plateau)
 # - f_generate_seed()
+# - f_compress_seed(v_seed)
+# - f_is_it_a_seed(v_seed_compressed)
+# - f_decompress_seed(v_seed_compressed)
+# - f_is_it_an_integer(valeur)
 # - f_print_progression(v_texte, v_progression)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
@@ -59,10 +63,10 @@ def f_generate_seed():
 	# -----------------------------
 	# UTILITE :
 	# Génère un dictionnaire de seed avec :
-	# - "T" + str(i) + "x" : seed numéro i et d'axe x de la température
-	# - "T" + str(i) + "y" : seed numéro i et d'axe y de la température
-	# - "P" + str(i) + "x" : seed numéro i et d'axe x de la  pluviométrie
-	# - "P" + str(i) + "y" : seed numéro i et d'axe y de la  pluviométrie
+	# - "Tx" : seed de l'axe x de la température
+	# - "Ty" : seed de l'axe y de la température
+	# - "Px" : seed de l'axe x de la  pluviométrie
+	# - "Py" : seed de l'axe y de la  pluviométrie
 	# -----------------------------
 	# PRECONDITIONS :
 	# - NONE
@@ -76,49 +80,138 @@ def f_generate_seed():
 	import random
 
 	v_seed = {}
-	v_seed["T1x"] = random.randint(-100000,100000)
-	v_seed["T1y"] = random.randint(-100000,100000)
-	v_seed["T2x"] = random.randint(-100000,100000)
-	v_seed["T2y"] = random.randint(-100000,100000)
-	v_seed["T3x"] = random.randint(-100000,100000)
-	v_seed["T3y"] = random.randint(-100000,100000)
-	v_seed["T4x"] = random.randint(-100000,100000)
-	v_seed["T4y"] = random.randint(-100000,100000)
-	v_seed["T5x"] = random.randint(-100000,100000)
-	v_seed["T5y"] = random.randint(-100000,100000)
-	v_seed["T6x"] = random.randint(-100000,100000)
-	v_seed["T6y"] = random.randint(-100000,100000)
-	v_seed["T7x"] = random.randint(-100000,100000)
-	v_seed["T7y"] = random.randint(-100000,100000)
-	v_seed["T8x"] = random.randint(-100000,100000)
-	v_seed["T8y"] = random.randint(-100000,100000)
 
-	v_seed["P1x"] = random.randint(-100000,100000)
-	v_seed["P1y"] = random.randint(-100000,100000)
-	v_seed["P2x"] = random.randint(-100000,100000)
-	v_seed["P2y"] = random.randint(-100000,100000)
-	v_seed["P3x"] = random.randint(-100000,100000)
-	v_seed["P3y"] = random.randint(-100000,100000)
-	v_seed["P4x"] = random.randint(-100000,100000)
-	v_seed["P4y"] = random.randint(-100000,100000)
-	v_seed["P5x"] = random.randint(-100000,100000)
-	v_seed["P5y"] = random.randint(-100000,100000)
-	v_seed["P6x"] = random.randint(-100000,100000)
-	v_seed["P6y"] = random.randint(-100000,100000)
-	v_seed["P7x"] = random.randint(-100000,100000)
-	v_seed["P7y"] = random.randint(-100000,100000)
-	v_seed["P8x"] = random.randint(-100000,100000)
-	v_seed["P8y"] = random.randint(-100000,100000)
-
-	"""
-	print("Seed coordinates :")
-	print("Temperature : x =",v_seed["Tx"],", y =",v_seed["Ty"])
-	print("Pluviometry : x =",v_seed["Px"],", y =",v_seed["Py"])
-	print("")
-	"""
+	v_seed["Tx"] = random.randint(-10000,10000)
+	v_seed["Ty"] = random.randint(-10000,10000)
+	v_seed["Px"] = random.randint(-10000,10000)
+	v_seed["Py"] = random.randint(-10000,10000)
 
 	return v_seed
 
+###############################################################
+###################### F_COMPRESS_SEED ########################
+###############################################################
+def f_compress_seed(v_seed):
+	# =============================
+	# INFORMATIONS :
+	# -----------------------------
+	# UTILITE :
+	# Compresse le seed pour l'écrire dans le header
+	# de l'image générée,
+	# de la forme Tx + ":" + Ty + ":" + Px + ":" + Py
+	# -----------------------------
+	# PRECONDITIONS :
+	# - v_seed["Tx"], v_seed["Ty"] : integers not null
+	# - v_seed["Px"], v_seed["Py"] : integers not null
+	# -----------------------------
+	# DEPEND DE :
+	# - None
+	# -----------------------------
+	# UTILISE PAR :
+	# - procedural_generation_2D.py
+	# =============================
+
+	v_seed_compressed = (
+		  str(v_seed["Tx"]) + ":"
+		+ str(v_seed["Ty"]) + ":"
+		+ str(v_seed["Px"]) + ":"
+		+ str(v_seed["Py"])
+	)
+
+	return v_seed_compressed
+
+
+
+###############################################################
+##################### F_DECOMPRESS_SEED #######################
+###############################################################
+def f_decompress_seed(v_seed_compressed):
+	# =============================
+	# INFORMATIONS :
+	# -----------------------------
+	# UTILITE :
+	# Crée un dictionnaire de seed à partir de v_seed_compressed avec :
+	# - "Tx" : seed de l'axe x de la température
+	# - "Ty" : seed de l'axe y de la température
+	# - "Px" : seed de l'axe x de la  pluviométrie
+	# - "Py" : seed de l'axe y de la  pluviométrie
+	# -----------------------------
+	# PRECONDITIONS :
+	# - v_seed_compressed : string
+	# -----------------------------
+	# DEPEND DE :
+	# - None
+	# -----------------------------
+	# UTILISE PAR :
+	# - procedural_generation_2D.py
+	# =============================
+	v_seed = {}
+	v_noms = ("Tx", "Ty", "Px", "Py")
+	v_compteur = 0
+
+	for i in range(4):
+
+		v_tampon = ""
+
+		while v_compteur < len(v_seed_compressed) and v_seed_compressed[v_compteur] != ":":
+
+			v_tampon += v_seed_compressed[v_compteur]
+			v_compteur += 1
+
+		v_seed[v_noms[i]] = int(v_tampon)
+		v_compteur += 1
+
+	return v_seed
+
+
+###############################################################
+##################### F_DECOMPRESS_SEED #######################
+###############################################################
+def f_is_it_a_seed(v_seed_compressed):
+	# =============================
+	# INFORMATIONS :
+	# -----------------------------
+	# UTILITE :
+	# Vérifie que v_seed_compressed est bien
+	# de la forme a + ":" + b + ":" + c + ":" + d
+	# avec a,b,c,d str(integers)
+	# -----------------------------
+	# PRECONDITIONS :
+	# - v_seed_compressed : string
+	# -----------------------------
+	# DEPEND DE :
+	# - None
+	# -----------------------------
+	# UTILISE PAR :
+	# - procedural_generation_2D.py
+	# =============================
+	v_compteur_deux_points = 0
+	v_compteur_position = 0
+	v_nb_deux_points_suite = 1	# Initialisé à 1 pour contrer le cas où v_seed_compressed[0] = ":"
+	v_caracteres_possibles = ("0123456789-:")
+
+	while (
+		v_compteur_position < len(v_seed_compressed)
+		and v_seed_compressed[v_compteur_position] in v_caracteres_possibles
+		and v_nb_deux_points_suite != 2
+		# Pour eviter un - au milieu d'un entier :
+		and not (v_compteur_position != 0 and v_seed_compressed[v_compteur_position] == "-" and v_seed_compressed[v_compteur_position - 1] != ":")
+	):
+
+		if v_seed_compressed[v_compteur_position] == ":":
+			v_compteur_deux_points += 1
+			v_nb_deux_points_suite += 1
+
+		else:
+			v_nb_deux_points_suite = 0
+
+		v_compteur_position += 1
+
+	return (
+		v_compteur_position == len(v_seed_compressed)
+		and v_compteur_deux_points == 3
+		and v_nb_deux_points_suite == 0
+	)
 
 
 ###############################################################
@@ -151,6 +244,31 @@ def f_display_board(v_plateau):
 
 		print("")
 
+
+###############################################################
+################### F_IS_IT_AN_INTEGER ########################
+###############################################################
+def f_is_it_an_integer(valeur):
+	# =============================
+	# INFORMATIONS :
+	# -----------------------------
+	# UTILITE :
+	# Regarde si valeur est un entier
+	# -----------------------------
+	# PRECONDITIONS :
+	# - NONE
+	# -----------------------------
+	# DEPEND DE :
+	# - None
+	# -----------------------------
+	# UTILISE PAR :
+	# - procedural_generation_2D.py
+	# =============================
+	try:
+		return int(valeur) == float(valeur)
+	except:
+		return False
+		
 
 def f_print_progression(v_texte, v_progression):
 	# =============================

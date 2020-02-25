@@ -16,62 +16,114 @@
 # =============================
 
 import time
-from packages.p_board_functions 	import f_generate_seed, f_create_empty_board, f_print_progression
+from packages.p_board_functions 	import f_generate_seed, f_create_empty_board, f_print_progression, f_compress_seed, f_decompress_seed, f_is_it_a_seed, f_is_it_an_integer
 from packages.p_decisional 			import f_genererate_box
 from packages.p_dic_functions 		import f_dic_biomes_creation, f_hauteur_max_arbre, f_dic_trees_creation
 from packages.p_image_creation 		import f_create_image_header, f_create_image_body
 from packages.p_trees_generation 	import f_generate_trees
 
 
-print("Hello, welcome to this 2D procedural map generator.")
+###############################################################
+################## CHOIX DE L UTILISATEUR #####################
+###############################################################
+print("Hello, welcome to this 2D procedural map generator. \n")
 
 
-# Taille de la map
-print("Enter the map's size :")
-print("Tip : enter numbers between 100 and 5000")
-v_nbx = eval(input("Lenght : "))
-v_nby = eval(input("Height : "))
+# ... de la taille de la map :
+print("- Enter the map's size :")
+print("  Tip : enter integers between 100 and 5000")
+
+# Pour la largeur :
+v_nbx = None
+while not f_is_it_an_integer(v_nbx):
+
+	if v_nbx != None:
+		print("  Enter an integer.")
+
+	v_nbx = input("  Lenght : ")
+
+v_nbx = int(v_nbx)
+
+# Pour la hauteur :
+v_nby = None
+while not f_is_it_an_integer(v_nby):
+
+	if v_nby != None:
+		print("  Enter an integer.")
+
+	v_nby = input("  Height : ")
+
+v_nby = int(v_nby)
+
 print("")
 
 
-# Mode d'utilisation
+# ... du mode d'utilisation
+print("- Which mode do you want to use ?")
+print("  1 : Basic")
+print("  2 : Advanced")
 v_mode = None
 while v_mode != "1" and v_mode != "2":
-	print("Which mode do you want to use ?")
-	print("1 : Basic")
-	print("2 : Advanced")
-	v_mode = input("My choice : ")
-	print("")
+
+	if v_mode != None:
+		print("  Enter 1 or 2.")
+
+	v_mode = input("  My choice : ")
+
+print("")
 
 
-# Mode Basique
+###############################################################
+######################## MODE BASIQUE #########################
+###############################################################
 if v_mode == "1":
+
 	v_seed = f_generate_seed()
 	v_intensite_variation = 1
 	v_placer_arbres = True
 
 
-# Mode avancé
+###############################################################
+######################## MODE AVANCE ##########################
+###############################################################
 elif v_mode == "2":
 
-	# Choix seed
+	# ... du seed
 	v_choix = None
 	while v_choix != "y" and v_choix != "n":
-		v_choix = input("Do you want to enter a seed ? (y / n) : ")
+
+		if v_choix != None:
+			print("Enter y or n.")
+
+		v_choix = input("- Do you want to enter a seed ? (y / n) : ")
 
 	if v_choix == "y":
-		print("Not yet possible.")
-		v_seed = f_generate_seed()
+		print("  Tip : A seed looks like a:b:c:d where a,b,c,d are integers")
+
+		v_seed_compressed = ""
+		while not f_is_it_a_seed(v_seed_compressed):
+
+			if v_seed_compressed != "":
+				print("  This is not a seed.")
+
+			v_seed_compressed = input("  Enter the seed : ")
+
+		v_seed = f_decompress_seed(v_seed_compressed)
 
 	elif v_choix == "n":
 		v_seed = f_generate_seed()
+
 	print("")
 
 
-	# Choix intensité variation
+	# ... de l'intensité de la variation
 	v_choix = None
 	while v_choix != "y" and v_choix != "n":
-		v_choix = input("Do you want to change the intensity of the variation between two boxes ? (y / n) : ")
+
+		if v_choix != None:
+			print("Enter y or n.")
+
+		v_choix = input("- Do you want to change the intensity of the variation between two boxes ? (y / n) : ")
 
 	if v_choix == "y":
 		print("Tip : enter a number between 0.1 and 10, 1 is the basic choice.")
@@ -79,30 +131,37 @@ elif v_mode == "2":
 
 	elif v_choix == "n":
 		v_intensite_variation = 1
+
 	print("")
 
 
-	# Choix création des arbres
+	# ... de la présence d'arbres
 	v_choix = None
 	while v_choix != "y" and v_choix != "n":
-		v_choix = input("Do you want trees on the map ? (y / n) : ")
+
+		if v_choix != None:
+			print("Enter y or n.")
+
+		v_choix = input("- Do you want trees on the map ? (y / n) : ")
 
 	v_placer_arbres = (v_choix == "y")
+
+	print("")
 
 
 ###############################################################
 ######################### CONSTANTES ##########################
 ###############################################################
+v_time = time.time()
+print("Seed of the map : " + f_compress_seed(v_seed) + "\n")
 v_dic_biomes = f_dic_biomes_creation()
 v_dic_arbres = f_dic_trees_creation()
-v_time = time.time()
-
 
 ###############################################################
 ############### CREATION DU HEADER DE L IMAGE #################
 ###############################################################
 fi_fichier_dest = open("Generated_map.ppm", "w")
-f_create_image_header(fi_fichier_dest, v_nby, v_nbx, v_seed)
+f_create_image_header(fi_fichier_dest, v_nby, v_nbx, f_compress_seed(v_seed))
 
 
 ###############################################################
@@ -157,9 +216,6 @@ if v_placer_arbres:
 
 	f_print_progression("Creation of the map :        ", 1.0)
 
-	print("")
-
-	fi_fichier_dest.close()
 
 
 ###############################################################
@@ -186,5 +242,7 @@ else:
 ###############################################################
 ################ AFFICHAGE DES MESSAGES DE FIN ################
 ###############################################################
+fi_fichier_dest.close()
+print("")
 print("Done")
 print("Execution time : ",time.time() - v_time)
