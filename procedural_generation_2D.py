@@ -81,6 +81,7 @@ if v_mode == "1":
 	v_seed = f_generate_seed()
 	v_intensite_variation = 1
 	v_placer_arbres = True
+	v_afficher_progression = True
 
 
 ###############################################################
@@ -98,7 +99,7 @@ elif v_mode == "2":
 		v_choix = input("- Do you want to enter a seed ? (y / n) : ")
 
 	if v_choix == "y":
-		print("  Tip : A seed looks like a:b:c:d where a,b,c,d are integers")
+		print("  Tip : a seed looks like a:b:c:d where a,b,c,d are integers")
 
 		v_seed_in_string = ""
 		while not f_is_it_a_seed(v_seed_in_string):
@@ -145,6 +146,20 @@ elif v_mode == "2":
 		v_choix = input("- Do you want trees on the map ? (y / n) : ")
 
 	v_placer_arbres = (v_choix == "y")
+
+	print("")
+
+
+	# ... du support d'utilisation
+	v_choix = None
+	while v_choix != "y" and v_choix != "n":
+
+		if v_choix != None:
+			print("Enter y or n.")
+
+		v_choix = input("- Do you run this program with IDLE ? ")
+
+	v_afficher_progression = (v_choix == "y")
 
 	print("")
 
@@ -204,7 +219,8 @@ if v_placer_arbres:
 
 		v_chunk_actuel = v_chunk_fusion[v_hauteur_chunk:]
 
-		f_print_progression("Creation of the map :        ", ((v_num_chunk + 1) * v_hauteur_chunk) / v_nby)
+		if v_afficher_progression:
+			f_print_progression("Creation of the map :        ", ((v_num_chunk + 1) * v_hauteur_chunk) / v_nby)
 
 		v_num_chunk -= 1
 
@@ -214,7 +230,8 @@ if v_placer_arbres:
 
 	f_create_image_body(fi_fichier_dest, v_chunk_dernier)
 
-	f_print_progression("Creation of the map :        ", 1.0)
+	if v_afficher_progression:
+		f_print_progression("Creation of the map :        ", 1.0)
 
 
 
@@ -234,7 +251,8 @@ else:
 
 		f_create_image_body(fi_fichier_dest, v_chunk)
 
-		f_print_progression("Creation of the map :        ", (v_num_ligne + 1) / v_nby)
+		if v_afficher_progression:
+			f_print_progression("Creation of the map :        ", (v_num_ligne + 1) / v_nby)
 
 
 

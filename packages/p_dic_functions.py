@@ -164,121 +164,362 @@ def f_dic_trees_creation():
 
 	v_dic_arbres = {}
 
-	f_add_in_dic(v_dic_arbres, cl_tree(
+	f_add_in_dic(
+
+		v_dic_arbres,
+		cl_trees_of_the_biome(
+
 			v_nom_biome = "Desert_Cool",
-			v_prob_arbre = 0.005,
-			v_body = [
-				(None,          "106 82 18",   None,          None,          "106 82 18"  ),
+			v_vect_arbres = (
 
-				("106 82 18",   "142 93 60",   None,          "127 85 63",   None         ),
+				cl_tree(
+					v_nom_biome = "Desert_Cool_1",
+					v_prob_arbre = 0.005,
+					v_body = [
+						(None,          "106 82 18",   None,          None,          "106 82 18"  ),
 
-				(None,          None,          "142 93 60",   "142 93 60",   "106 82 18"  ),
+						("106 82 18",   "142 93 60",   None,          "127 85 63",   None         ),
 
-				(None,          "106 82 18",   "142 93 60",   None,          None         ),
+						(None,          None,          "142 93 60",   "142 93 60",   "106 82 18"  ),
 
-				(None,          None,          "142 93 60",   None,          None         )
-			]))
+						(None,          "106 82 18",   "142 93 60",   None,          None         ),
 
-	f_add_in_dic(v_dic_arbres, cl_tree(
+						(None,          None,          "142 93 60",   None,          None         )
+					]
+				)
+
+			)
+		)
+	)
+
+
+
+	f_add_in_dic(
+
+		v_dic_arbres,
+		cl_trees_of_the_biome(
+
 			v_nom_biome = "Desert_Tropical",
-			v_prob_arbre = 0.001,
-			v_body = [
-				(None,          "106 82 18",   None,          None,          "106 82 18"  ),
+			v_vect_arbres = (
 
-				("106 82 18",   "142 93 60",   None,          "127 85 63",   None         ),
+				cl_tree(
+					v_prob_arbre = 0.001,
+					v_body = [
+						(None,          "106 82 18",   None,          None,          "106 82 18"  ),
 
-				(None,          None,          "142 93 60",   "142 93 60",   "106 82 18"  ),
+						("106 82 18",   "142 93 60",   None,          "127 85 63",   None         ),
 
-				(None,          "106 82 18",   "142 93 60",   None,          None         ),
+						(None,          None,          "142 93 60",   "142 93 60",   "106 82 18"  ),
 
-				(None,          None,          "142 93 60",   None,          None         )
-			]))
+						(None,          "106 82 18",   "142 93 60",   None,          None         ),
 
-	f_add_in_dic(v_dic_arbres, cl_tree(
+						(None,          None,          "142 93 60",   None,          None         )
+					]
+				)
+
+			)
+		)
+	)
+
+
+	f_add_in_dic(
+
+		v_dic_arbres,
+		cl_trees_of_the_biome(
+
 			v_nom_biome = "Desert_Warm",
-			v_prob_arbre = 0.003,
-			v_body = [
-				(None,          "106 82 18",   None,          None,          "106 82 18"  ),
+			v_vect_arbres = (
 
-				("106 82 18",   "142 93 60",   None,          "127 85 63",   None         ),
+				cl_tree(
+					v_prob_arbre = 0.001,
+					v_body = [
+						(None,          "106 82 18",   None,          None,          "106 82 18"  ),
 
-				(None,          None,          "142 93 60",   "142 93 60",   "106 82 18"  ),
+						("106 82 18",   "142 93 60",   None,          "127 85 63",   None         ),
 
-				(None,          "106 82 18",   "142 93 60",   None,          None         ),
+						(None,          None,          "142 93 60",   "142 93 60",   "106 82 18"  ),
 
-				(None,          None,          "142 93 60",   None,          None         )
-			]))
+						(None,          "106 82 18",   "142 93 60",   None,          None         ),
+
+						(None,          None,          "142 93 60",   None,          None         )
+					]
+				)
+
+			)
+		)
+	)
 
 
-	f_add_in_dic(v_dic_arbres, cl_tree(
+
+	f_add_in_dic(
+
+		v_dic_arbres,
+		cl_trees_of_the_biome(
+
 			v_nom_biome = "Desert_Scub_Cool",
-			v_prob_arbre = 0.01,
-			v_body = [
-				("156 152 107", "156 152 107", None         ),
-				("156 152 107", "118 115 98",  "156 152 107"),
-				(None         , "118 115 98",  None         )
-			]))
+			v_vect_arbres = (
 
-	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Desert_Scub_Tropical",
-			v_prob_arbre = 0.005,
-			v_body = [
-					("156 152 107", "156 152 107", None         ),
+				cl_tree(
+					v_prob_arbre = 0.005,
+					v_body = [
+						("156 152 107", "156 152 107", None         ),
 
-					("156 152 107", "118 115 98",  "156 152 107"),
+						("156 152 107", "118 115 98",  "156 152 107"),
 
-					(None,          "118 115 98",  None         )
-			]))
+						(None         , "118 115 98",  None         )
+					]
+				),
 
-	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Desert_Scub_Warm",
-			v_prob_arbre = 0.02,
-			v_body = [
-					("156 152 107", "156 152 107", None         ),
+				cl_tree(
+					v_prob_arbre = 0.005,
+					v_body = [
+						("156 152 107", "156 152 107", None         ),
 
-					("156 152 107", "118 115 98",  "156 152 107"),
+						(None         , "118 115 98",  "156 152 107"),
 
-					(None,          "118 115 98",  None         )
-			]))
+						(None         , "118 115 98",  None         )
+					]
+				),
+
+				cl_tree(
+					v_prob_arbre = 0.005,
+					v_body = [
+						("118 115 98")
+					]
+				)
+
+			)
+		)
+	)
 
 
-	f_add_in_dic(v_dic_arbres, cl_tree(
+		f_add_in_dic(
+
+			v_dic_arbres,
+			cl_trees_of_the_biome(
+
+				v_nom_biome = "Desert_Scub_Tropical",
+				v_vect_arbres = (
+
+					cl_tree(
+						v_prob_arbre = 0.005,
+						v_body = [
+							("156 152 107", "156 152 107", None         ),
+
+							("156 152 107", "118 115 98",  "156 152 107"),
+
+							(None         , "118 115 98",  None         )
+						]
+					),
+
+					cl_tree(
+						v_prob_arbre = 0.005,
+						v_body = [
+							("156 152 107", "156 152 107", None         ),
+
+							(None         , "118 115 98",  "156 152 107"),
+
+							(None         , "118 115 98",  None         )
+						]
+					),
+
+					cl_tree(
+						v_prob_arbre = 0.005,
+						v_body = [
+							("118 115 98")
+						]
+					)
+
+				)
+			)
+		)
+
+
+		f_add_in_dic(
+
+			v_dic_arbres,
+			cl_trees_of_the_biome(
+
+				v_nom_biome = "Desert_Scub_Warm",
+				v_vect_arbres = (
+
+					cl_tree(
+						v_prob_arbre = 0.005,
+						v_body = [
+							("156 152 107", "156 152 107", None         ),
+
+							("156 152 107", "118 115 98",  "156 152 107"),
+
+							(None         , "118 115 98",  None         )
+						]
+					),
+
+					cl_tree(
+						v_prob_arbre = 0.005,
+						v_body = [
+							("156 152 107", "156 152 107", None         ),
+
+							(None         , "118 115 98",  "156 152 107"),
+
+							(None         , "118 115 98",  None         )
+						]
+					),
+
+					cl_tree(
+						v_prob_arbre = 0.01,
+						v_body = [
+							("118 115 98")
+						]
+					)
+
+				)
+			)
+		)
+
+
+
+	f_add_in_dic(
+
+		v_dic_arbres,
+		cl_trees_of_the_biome(
+
 			v_nom_biome = "Dry_Forest_Tropical",
-			v_prob_arbre = 0.01,
-			v_body = [
-				(None,          None,          "121 105 56",  None,          None,          None,          None         ),
+			v_vect_arbres = (
 
-				(None,          None,          None,          "133 103 69",  None,          "133 103 69",  "121 105 56" ),
+				cl_tree(
+					v_prob_arbre = 0.005,
+					v_body = [
+						(None,          None,          "121 105 56",  None,          None,          None,          None         ),
 
-				("121 105 56",  "133 103 69",  "133 103 69",  "133 103 69",  "133 103 69",  None,          None         ),
+						(None,          None,          None,          "133 103 69",  None,          "133 103 69",  "121 105 56" ),
 
-				(None,          "121 105 56",  None,          "133 103 69",  None,          None,          None         ),
+						("121 105 56",  "133 103 69",  "133 103 69",  "133 103 69",  "133 103 69",  None,          None         ),
 
-				(None,          None,          None,          "133 103 69",  None,          None,          None         ),
+						(None,          "121 105 56",  None,          "133 103 69",  None,          None,          None         ),
 
-				(None,          None,          None,          "133 103 69",  None,          None,          None         )
-			]))
+						(None,          None,          None,          "133 103 69",  None,          None,          None         ),
 
-	f_add_in_dic(v_dic_arbres, cl_tree(
+						(None,          None,          None,          "133 103 69",  None,          None,          None         )
+					]
+				),
+
+				cl_tree(
+					v_prob_arbre = 0.003,
+					v_body = [
+						(None,          "121 105 56",  None,          "133 103 69",  "121 105 56"  ),
+
+						("121 105 56",  "133 103 69",  None,          "133 103 69",  None          ),
+
+						(None,          None,          "133 103 69",  None,          None,         ),
+
+						(None,          None,          "133 103 69",  None,          None,         )
+					]
+				),
+
+				cl_tree(
+					v_prob_arbre = 0.003,
+					v_body = [
+						(None,          None,          None,          "121 105 56",  None,         ),
+
+						("121 105 56",  None,          None,          "133 103 69",  "121 105 56"  ),
+
+						(None,          "133 103 69",  "133 103 69",  "133 103 69",  None,         ),
+
+						(None,          None,          "133 103 69",  None,          None,         ),
+
+						(None,          None,          "133 103 69",  None,          None,         ),
+
+						(None,          None,          "133 103 69",  None,          None,         )
+					]
+				),
+
+				cl_tree(
+					v_prob_arbre = 0.0005,
+					v_body = [
+						("121 105 56")
+					]
+				)
+			)
+		)
+	)
+
+
+	f_add_in_dic(
+
+		v_dic_arbres,
+		cl_trees_of_the_biome(
+
 			v_nom_biome = "Dry_Forest_Warm",
-			v_prob_arbre = 0.03,
-			v_body = [
-				(None,          None,          "121 105 56",  None,          None,          None,          None         ),
+			v_vect_arbres = (
 
-				(None,          None,          None,          "133 103 69",  None,          "133 103 69",  "121 105 56" ),
+				cl_tree(
+					v_prob_arbre = 0.005,
+					v_body = [
+						(None,          None,          "121 105 56",  None,          None,          None,          None         ),
 
-				("121 105 56",  "133 103 69",  "133 103 69",  "133 103 69",  "133 103 69",  None,          None         ),
+						(None,          None,          None,          "133 103 69",  None,          "133 103 69",  "121 105 56" ),
 
-				(None,          "121 105 56",  None,          "133 103 69",  None,          None,          None         ),
+						("121 105 56",  "133 103 69",  "133 103 69",  "133 103 69",  "133 103 69",  None,          None         ),
 
-				(None,          None,          None,          "133 103 69",  None,          None,          None         ),
+						(None,          "121 105 56",  None,          "133 103 69",  None,          None,          None         ),
 
-				(None,          None,          None,          "133 103 69",  None,          None,          None         )
-			]))
+						(None,          None,          None,          "133 103 69",  None,          None,          None         ),
+
+						(None,          None,          None,          "133 103 69",  None,          None,          None         )
+					]
+				),
+
+				cl_tree(
+					v_prob_arbre = 0.003,
+					v_body = [
+						(None,          "121 105 56",  None,          "133 103 69",  "121 105 56"  ),
+
+						("121 105 56",  "133 103 69",  None,          "133 103 69",  None          ),
+
+						(None,          None,          "133 103 69",  None,          None,         ),
+
+						(None,          None,          "133 103 69",  None,          None,         )
+					]
+				),
+
+				cl_tree(
+					v_prob_arbre = 0.003,
+					v_body = [
+						(None,          None,          None,          "121 105 56",  None,         ),
+
+						("121 105 56",  None,          None,          "133 103 69",  "121 105 56"  ),
+
+						(None,          "133 103 69",  "133 103 69",  "133 103 69",  None,         ),
+
+						(None,          None,          "133 103 69",  None,          None,         ),
+
+						(None,          None,          "133 103 69",  None,          None,         ),
+
+						(None,          None,          "133 103 69",  None,          None,         )
+					]
+				),
+
+				cl_tree(
+					v_prob_arbre = 0.0005,
+					v_body = [
+						("121 105 56")
+					]
+				)
+
+			)
+		)
+	)
 
 
-	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Moist_Forest_Cool",
+	f_add_in_dic(
+
+		v_dic_arbres,
+		cl_trees_of_the_biome(
+
+			v_nom_biome = "Dry_Forest_Warm",
+			v_vect_arbres = (
+			
+			v_nom_biome = "Moist_Forest_Cool_1",
 			v_prob_arbre = 0.2,
 			v_body = [
 				(None,          "54 62 15",    "34 46 10",    "34 46 10",    None         ),
@@ -293,7 +534,7 @@ def f_dic_trees_creation():
 			]))
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Moist_Forest_Tropical",
+			v_nom_biome = "Moist_Forest_Tropical_1",
 			v_prob_arbre = 0.3,
 			v_body = [
 				(None,          "54 62 15",    "34 46 10",    "34 46 10",    None         ),
@@ -308,7 +549,7 @@ def f_dic_trees_creation():
 			]))
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Moist_Forest_Warm",
+			v_nom_biome = "Moist_Forest_Warm_1",
 			v_prob_arbre = 0.25,
 			v_body = [
 				(None,          "54 62 15",    "34 46 10",    "34 46 10",    None         ),
@@ -324,7 +565,7 @@ def f_dic_trees_creation():
 
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Rain_Forest",
+			v_nom_biome = "Rain_Forest_1",
 			v_prob_arbre = 0.3,
 			v_body = [
 				(None,          "68 88 39",    "68 88 39",    "68 88 39",    None         ),
@@ -348,7 +589,7 @@ def f_dic_trees_creation():
 
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Steppe_Woodland_Thorn",
+			v_nom_biome = "Steppe_Woodland_Thorn_1",
 			v_prob_arbre = 0.05,
 			v_body = [
 				(None,          "34 58 26",    None         ),
@@ -361,7 +602,7 @@ def f_dic_trees_creation():
 			]))
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Taiga_Desert",
+			v_nom_biome = "Taiga_Desert_1",
 			v_prob_arbre = 0.05,
 			v_body = [
 				(None,          None,          "34 58 26",    None,          None         ),
@@ -376,7 +617,7 @@ def f_dic_trees_creation():
 			]))
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Taiga_Dry",
+			v_nom_biome = "Taiga_Dry_1",
 			v_prob_arbre = 0.05,
 			v_body = [
 				(None,          None,          "34 58 26",    None,          None         ),
@@ -391,7 +632,7 @@ def f_dic_trees_creation():
 			]))
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Taiga_Moist",
+			v_nom_biome = "Taiga_Moist_1",
 			v_prob_arbre = 0.15,
 			v_body = [
 				(None,          None,          "34 58 26",    None,          None         ),
@@ -406,7 +647,7 @@ def f_dic_trees_creation():
 			]))
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Taiga_Rain",
+			v_nom_biome = "Taiga_Rain_1",
 			v_prob_arbre = 0.25,
 			v_body = [
 				(None,          None,          "34 58 26",    None,          None         ),
@@ -421,7 +662,7 @@ def f_dic_trees_creation():
 			]))
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Taiga_Wet",
+			v_nom_biome = "Taiga_Wet_1",
 			v_prob_arbre = 0.2,
 			v_body = [
 				(None,          None,          "34 58 26",    None,          None         ),
@@ -437,14 +678,14 @@ def f_dic_trees_creation():
 
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Toundra_Rain",
+			v_nom_biome = "Toundra_Rain_1",
 			v_prob_arbre = 0.05,
 			v_body = [
 				("34 58 26",    "34 58 26"   )
 			]))
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Toundra_Wet",
+			v_nom_biome = "Toundra_Wet_1",
 			v_prob_arbre = 0.03,
 			v_body = [
 				("34 58 26",    "34 58 26"   )
@@ -452,7 +693,7 @@ def f_dic_trees_creation():
 
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Tropical_Forest_Tropical",
+			v_nom_biome = "Tropical_Forest_Tropical_1",
 			v_prob_arbre = 0.5,
 			v_body = [
 				(None,          "0 69 41",     "0 69 41",     "0 69 41",     "0 69 41",     "0 69 41",     None         ),
@@ -475,7 +716,7 @@ def f_dic_trees_creation():
 			]))
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Tropical_Forest_Warm",
+			v_nom_biome = "Tropical_Forest_Warm_1",
 			v_prob_arbre = 0.35,
 			v_body = [
 				(None,          "0 69 41",     "0 69 41",     "0 69 41",     "0 69 41",     "0 69 41",     None         ),
@@ -498,7 +739,7 @@ def f_dic_trees_creation():
 			]))
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Very_Dry_Forest",
+			v_nom_biome = "Very_Dry_Forest_1",
 			v_prob_arbre = 0.005,
 			v_body = [
 				(None,          None,          "121 105 56",  None,          None,          None,          None         ),
@@ -516,7 +757,7 @@ def f_dic_trees_creation():
 
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Wet_Forest_Cool",
+			v_nom_biome = "Wet_Forest_Cool_1",
 			v_prob_arbre = 0.2,
 			v_body = [
 				(None,          "38 127 0",    "38 127 0",    "38 127 0",    None         ),
@@ -537,7 +778,7 @@ def f_dic_trees_creation():
 			]))
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Wet_Forest_Tropical",
+			v_nom_biome = "Wet_Forest_Tropical_1",
 			v_prob_arbre = 0.3,
 			v_body = [
 				(None,          "38 127 0",    "38 127 0",    "38 127 0",    None         ),
@@ -558,7 +799,7 @@ def f_dic_trees_creation():
 			]))
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Wet_Forest_Warm",
+			v_nom_biome = "Wet_Forest_Warm_1",
 			v_prob_arbre = 0.25,
 			v_body = [
 				(None,          "38 127 0",    "38 127 0",    "38 127 0",    None         ),
@@ -580,7 +821,7 @@ def f_dic_trees_creation():
 
 
 	f_add_in_dic(v_dic_arbres, cl_tree(
-			v_nom_biome = "Woodland_Thorn",
+			v_nom_biome = "Woodland_Thorn_1",
 			v_prob_arbre = 0.05,
 			v_body = [
 				(None,          "39 67 0",     "39 67 0",     "39 67 0",     "39 67 0",     "39 67 0",     None         ),

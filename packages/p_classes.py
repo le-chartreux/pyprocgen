@@ -7,6 +7,7 @@
 # CONTENU :
 # - class cl_box
 # - class cl_biome
+# - class cl_trees_of_the_biome
 # - class cl_tree
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
@@ -115,17 +116,51 @@ class cl_biome:
 
 
 ##############################################################
-######################### CL_TREE ############################
+################### CL_TREES_OF_THE_BIOME ####################
 ##############################################################
-class cl_tree:
-	def __init__(self, v_nom_biome, v_prob_arbre, v_body):
+class cl_trees_of_the_biome:
+	def __init__(self, v_nom_biome, v_vect_arbres):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
 		# UTILITE :
-		# Crée la classe définisant l'arbre d'un biome,
+		# Crée la classe définisant les arbre d'un biome,
 		# caractérisé par :
 		# - le nom du biome
+		# - un vecteur de cl_tree
+		# -----------------------------
+		# UTILISE PAR :
+		# - p_dic_creation.f_dic_trees_creation()
+		# - p_trees_generation.f_possible_to_place_tree()
+		# - p_trees_generation.f_put_tree()
+		# -----------------------------
+		# PRECONDITIONS :
+		# - NONE
+		# -----------------------------
+		# DEPEND DE :
+		# - NONE
+		# =============================
+
+		self.nom_biome = v_nom_biome
+		self.vect_arbres = v_vect_arbres
+
+
+
+
+
+
+
+##############################################################
+######################### CL_TREE ############################
+##############################################################
+class cl_tree:
+	def __init__(self, v_prob_arbre, v_body):
+		# =============================
+		# INFORMATIONS :
+		# -----------------------------
+		# UTILITE :
+		# Crée la classe définisant un arbre de biome,
+		# caractérisé par :
 		# - la probabilité d'être placé sur une case possible
 		# - le body de sa représentation ppm avec None pour les pixels vides
 		# -----------------------------
@@ -141,7 +176,6 @@ class cl_tree:
 		# - NONE
 		# =============================
 
-		self.nom_biome = v_nom_biome
 		self.prob_arbre = v_prob_arbre
 		self.body = v_body
 
