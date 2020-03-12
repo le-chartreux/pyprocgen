@@ -73,6 +73,7 @@ class cl_biome:
 		# - sa pluviometrie annuelle minimale
 		# - sa pluviometrie annuelle maximale
 		# - sa couleur
+		# - un vecteur de cl_tree
 		# -----------------------------
 		# UTILISE PAR :
 		# - p_dic_creation.f_dic_biomes_creation()
@@ -91,6 +92,8 @@ class cl_biome:
 		self.pluv_min = v_pluv_min
 		self.pluv_max = v_pluv_max
 		self.coul = v_coul
+
+		self.vect_arbres = v_vect_arbres
 
 
 	def m_in_range(self, v_temp, v_pluv):
@@ -114,7 +117,7 @@ class cl_biome:
 		return self.temp_min <= v_temp <= self.temp_max and self.pluv_min <= v_pluv < self.pluv_max
 
 
-
+"""
 ##############################################################
 ################### CL_TREES_OF_THE_BIOME ####################
 ##############################################################
@@ -142,7 +145,7 @@ class cl_trees_of_the_biome:
 		# =============================
 
 		self.nom_biome = v_nom_biome
-		self.vect_arbres = v_vect_arbres
+"""	
 
 
 
