@@ -188,7 +188,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.007,
 					v_body = [
 						["156 152 107", "156 152 107", None         ],
 
@@ -199,11 +199,11 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.015,
 					v_body = [
-						["156 152 107", "156 152 107", None         ],
+						[None,          "156 152 107", None         ],
 
-						[None,          "118 115 98",  "156 152 107"],
+						["156 152 107", "118 115 98",  "156 152 107"],
 
 						[None,          "118 115 98",  None         ]
 					]
@@ -248,18 +248,18 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.01,
 					v_body = [
-						["156 152 107", "156 152 107", None         ],
+						[None,          "156 152 107", None         ],
 
-						[None,          "118 115 98",  "156 152 107"],
+						["156 152 107", "118 115 98",  "156 152 107"],
 
 						[None,          "118 115 98",  None         ]
 					]
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.01,
 					v_body = [
 						["118 115 98"]
 					]
@@ -286,7 +286,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.013,
 					v_body = [
 						["156 152 107", "156 152 107", None         ],
 
@@ -297,11 +297,11 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.015,
 					v_body = [
-						["156 152 107", "156 152 107", None         ],
+						[None,          "156 152 107", None         ],
 
-						[None,          "118 115 98",  "156 152 107"],
+						["156 152 107", "118 115 98",  "156 152 107"],
 
 						[None,          "118 115 98",  None         ]
 					]
@@ -334,7 +334,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.015,
 					v_body = [
 						[None,          None,          "121 105 56",  None,          None,          None,          None         ],
 
@@ -351,7 +351,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.003,
+					v_prob_arbre = 0.01,
 					v_body = [
 						[None,          "121 105 56",  None,          "133 103 69",  "121 105 56" ],
 
@@ -364,7 +364,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.003,
+					v_prob_arbre = 0.005,
 					v_body = [
 						[None,          None,          None,          "121 105 56",  None         ],
 
@@ -406,7 +406,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.02,
 					v_body = [
 						[None,          None,          "121 105 56",  None,          None,          None,          None         ],
 
@@ -423,7 +423,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.003,
+					v_prob_arbre = 0.015,
 					v_body = [
 						[None,          "121 105 56",  None,          "133 103 69",  "121 105 56" ],
 
@@ -453,7 +453,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.0005,
+					v_prob_arbre = 0.005,
 					v_body = [
 						["121 105 56" ]
 					]
@@ -480,7 +480,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.01,
+					v_prob_arbre = 0.1,
 					v_body = [
 						[None,          "54 62 15",    "34 46 10",    "34 46 10",    None         ],
 
@@ -495,7 +495,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.05,
 					v_body = [
 						[None,          "34 46 10",    "34 46 10",    "34 46 10",    None         ],
 
@@ -514,7 +514,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.007,
+					v_prob_arbre = 0.07,
 					v_body = [
 						[None,          "54 62 15",    None         ],
 
@@ -529,7 +529,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.01,
 					v_body = [
 						[None,          None,          "36 49 11",    "34 46 10",    None,          None         ],
 
@@ -546,7 +546,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.007,
+					v_prob_arbre = 0.015,
 					v_body = [
 						[None,          "59 72 30",    None         ],
 
@@ -605,7 +605,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.01,
+					v_prob_arbre = 0.1,
 					v_body = [
 						[None,          "54 62 15",    "34 46 10",    "34 46 10",    None         ],
 
@@ -620,7 +620,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.05,
 					v_body = [
 						[None,          "34 46 10",    "34 46 10",    "34 46 10",    None         ],
 
@@ -639,7 +639,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.007,
+					v_prob_arbre = 0.02,
 					v_body = [
 						[None,          "54 62 15",    None         ],
 
@@ -684,7 +684,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.02,
 					v_body = [
 						[None,          "65 71 23",    None,          None,          None         ],
 
@@ -703,7 +703,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.0005,
+					v_prob_arbre = 0.005,
 					v_body = [
 						["109 153 97" ]
 					]
@@ -730,7 +730,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.01,
+					v_prob_arbre = 0.07,
 					v_body = [
 						[None,          "54 62 15",    "34 46 10",    "34 46 10",    None         ],
 
@@ -745,7 +745,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.03,
 					v_body = [
 						[None,          "34 46 10",    "34 46 10",    "34 46 10",    None         ],
 
@@ -764,7 +764,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.007,
+					v_prob_arbre = 0.01,
 					v_body = [
 						[None,          "54 62 15",    None         ],
 
@@ -779,7 +779,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.05,
 					v_body = [
 						[None,          None,          "36 49 11",    "34 46 10",    None,          None         ],
 
@@ -809,7 +809,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.008,
 					v_body = [
 						[None,          "65 71 23",    None,          None,          None         ],
 
@@ -878,7 +878,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.1,
+					v_prob_arbre = 0.03,
 					v_body = [
 						[None,          "68 88 39",    "68 88 39",    "68 88 39",    None         ],
 
@@ -933,7 +933,14 @@ def f_dic_biomes_creation():
 
 			v_coul = "190 220 255",
 
-			v_vect_arbres = []
+			v_vect_arbres = [
+				cl_tree(
+					v_prob_arbre = 0,
+					v_body = [
+						[]
+					]
+				)
+			]
 		)
 	)
 
@@ -951,7 +958,14 @@ def f_dic_biomes_creation():
 
 			v_coul = "160 173 120",
 
-			v_vect_arbres = []
+			v_vect_arbres = [
+				cl_tree(
+					v_prob_arbre = 0,
+					v_body = [
+						[]
+					]
+				)
+			]
 		)
 	)
 
@@ -970,7 +984,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.05,
 					v_body = [
 						[None,          "34 58 26",    None         ],
 
@@ -983,7 +997,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.05,
 					v_body = [
 						[None,          "34 58 26",    None         ],
 
@@ -1035,7 +1049,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.03,
 					v_body = [
 						[None,          None,          "34 58 26",    None,          None         ],
 
@@ -1050,7 +1064,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.01,
 					v_body = [
 						[None,          None,          "34 58 26",    None,          None         ],
 
@@ -1065,7 +1079,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.03,
 					v_body = [
 						[None,          "34 58 26",    None         ],
 
@@ -1096,7 +1110,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.03,
 					v_body = [
 						[None,          None,          "34 58 26",    None,          None         ],
 
@@ -1111,7 +1125,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.01,
 					v_body = [
 						[None,          None,          "34 58 26",    None,          None         ],
 
@@ -1126,7 +1140,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.03,
 					v_body = [
 						[None,          "34 58 26",    None         ],
 
@@ -1157,7 +1171,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.05,
 					v_body = [
 						[None,          None,          "34 58 26",    None,          None         ],
 
@@ -1172,7 +1186,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.01,
 					v_body = [
 						[None,          None,          "34 58 26",    None,          None         ],
 
@@ -1187,7 +1201,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.05,
 					v_body = [
 						[None,          "34 58 26",    None         ],
 
@@ -1220,7 +1234,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.07,
 					v_body = [
 						[None,          None,          "34 58 26",    None,          None         ],
 
@@ -1235,7 +1249,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.01,
 					v_body = [
 						[None,          None,          "34 58 26",    None,          None         ],
 
@@ -1250,7 +1264,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.06,
 					v_body = [
 						[None,          "34 58 26",    None         ],
 
@@ -1283,7 +1297,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.06,
 					v_body = [
 						[None,          None,          "34 58 26",    None,          None         ],
 
@@ -1298,7 +1312,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.01,
 					v_body = [
 						[None,          None,          "34 58 26",    None,          None         ],
 
@@ -1313,7 +1327,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.05,
 					v_body = [
 						[None,          "34 58 26",    None         ],
 
@@ -1346,21 +1360,21 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.015,
+					v_prob_arbre = 0.005,
 					v_body = [
 						["34 58 26",    "34 58 26"   ]
 					]
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.002,
 					v_body = [
 						["34 58 26",    "34 58 26",    "34 58 26"   ]
 					]
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.001,
 					v_body = [
 						[None,          "34 58 26",    None,          None         ],
 
@@ -1369,7 +1383,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.001,
 					v_body = [
 						[None,          None,          "34 58 26",    None         ],
 
@@ -1398,7 +1412,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.015,
+					v_prob_arbre = 0.01,
 					v_body = [
 						["34 58 26",    "34 58 26"   ]
 					]
@@ -1502,21 +1516,21 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.015,
+					v_prob_arbre = 0.005,
 					v_body = [
 						["34 58 26",    "34 58 26"   ]
 					]
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.003,
 					v_body = [
 						["34 58 26",    "34 58 26",    "34 58 26"   ]
 					]
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.003,
 					v_body = [
 						[None,          "34 58 26",    None,          None         ],
 
@@ -1525,7 +1539,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.005,
+					v_prob_arbre = 0.003,
 					v_body = [
 						[None,          None,          "34 58 26",    None         ],
 
@@ -1720,7 +1734,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.015,
+					v_prob_arbre = 0.055,
 					v_body = [
 						[None,          None,          "121 105 56",  None,          None,          None,          None         ],
 
@@ -1737,7 +1751,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.01,
+					v_prob_arbre = 0.05,
 					v_body = [
 						[None,          "121 105 56",  None,          "133 103 69",  "121 105 56" ],
 
@@ -1794,7 +1808,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.015,
+					v_prob_arbre = 0.07,
 					v_body = [
 						[None,          "38 127 0",    "38 127 0",    "38 127 0",    None         ],
 
@@ -1815,7 +1829,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.01,
+					v_prob_arbre = 0.03,
 					v_body = [
 						[None,          "38 127 0",    None         ],
 
@@ -1852,7 +1866,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.015,
+					v_prob_arbre = 0.1,
 					v_body = [
 						[None,          "96 142 8",    "96 142 8",    "96 142 8",    None         ],
 
@@ -1873,7 +1887,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.01,
+					v_prob_arbre = 0.07,
 					v_body = [
 						[None,          "96 142 8",    None         ],
 
@@ -1910,7 +1924,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.015,
+					v_prob_arbre = 0.08,
 					v_body = [
 						[None,          "38 127 0",    "38 127 0",    "38 127 0",    None         ],
 
@@ -1931,7 +1945,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.01,
+					v_prob_arbre = 0.07,
 					v_body = [
 						[None,          "38 127 0",    None         ],
 
@@ -1966,7 +1980,7 @@ def f_dic_biomes_creation():
 			v_vect_arbres = [
 
 				cl_tree(
-					v_prob_arbre = 0.015,
+					v_prob_arbre = 0.06,
 					v_body = [
 						[None,          "39 67 0",     "39 67 0",     "39 67 0",     "39 67 0",     "39 67 0",     None         ],
 
@@ -1983,7 +1997,7 @@ def f_dic_biomes_creation():
 				),
 
 				cl_tree(
-					v_prob_arbre = 0.015,
+					v_prob_arbre = 0.03,
 					v_body = [
 						[None,          "39 67 0",     "39 67 0",     None         ],
 
@@ -2032,7 +2046,14 @@ def f_dic_biomes_creation():
 
 			v_coul = "30 144 235",
 
-			v_vect_arbres = []
+			v_vect_arbres = [
+				cl_tree(
+					v_prob_arbre = 0,
+					v_body = [
+						[]
+					]
+				)
+			]
 		)
 	)
 
@@ -2053,7 +2074,14 @@ def f_dic_biomes_creation():
 
 			v_coul = "64 164 223",
 
-			v_vect_arbres = []
+			v_vect_arbres = [
+				cl_tree(
+					v_prob_arbre = 0,
+					v_body = [
+						[]
+					]
+				)
+			]
 		)
 	)
 
@@ -2069,7 +2097,14 @@ def f_dic_biomes_creation():
 
 			v_coul = "64 164 223",
 
-			v_vect_arbres = []
+			v_vect_arbres = [
+				cl_tree(
+					v_prob_arbre = 0,
+					v_body = [
+						[]
+					]
+				)
+			]
 		)
 	)
 
@@ -2085,7 +2120,14 @@ def f_dic_biomes_creation():
 
 			v_coul = "64 164 223",
 
-			v_vect_arbres = []
+			v_vect_arbres = [
+				cl_tree(
+					v_prob_arbre = 0,
+					v_body = [
+						[]
+					]
+				)
+			]
 		)
 	)
 
@@ -2101,7 +2143,14 @@ def f_dic_biomes_creation():
 
 			v_coul = "64 164 223",
 
-			v_vect_arbres = []
+			v_vect_arbres = [
+				cl_tree(
+					v_prob_arbre = 0,
+					v_body = [
+						[]
+					]
+				)
+			]
 		)
 	)
 
@@ -2117,7 +2166,14 @@ def f_dic_biomes_creation():
 
 			v_coul = "64 164 223",
 
-			v_vect_arbres = []
+			v_vect_arbres = [
+				cl_tree(
+					v_prob_arbre = 0,
+					v_body = [
+						[]
+					]
+				)
+			]
 		)
 	)
 
@@ -2133,7 +2189,14 @@ def f_dic_biomes_creation():
 
 			v_coul = "64 164 223",
 
-			v_vect_arbres = []
+			v_vect_arbres = [
+				cl_tree(
+					v_prob_arbre = 0,
+					v_body = [
+						[]
+					]
+				)
+			]
 		)
 	)
 
@@ -2149,7 +2212,14 @@ def f_dic_biomes_creation():
 
 			v_coul = "64 164 223",
 
-			v_vect_arbres = []
+			v_vect_arbres = [
+				cl_tree(
+					v_prob_arbre = 0,
+					v_body = [
+						[]
+					]
+				)
+			]
 		)
 	)
 
@@ -2165,7 +2235,14 @@ def f_dic_biomes_creation():
 
 			v_coul = "64 164 223",
 
-			v_vect_arbres = []
+			v_vect_arbres = [
+				cl_tree(
+					v_prob_arbre = 0,
+					v_body = [
+						[]
+					]
+				)
+			]
 		)
 	)
 
@@ -2181,7 +2258,14 @@ def f_dic_biomes_creation():
 
 			v_coul = "64 164 223",
 
-			v_vect_arbres = []
+			v_vect_arbres = [
+				cl_tree(
+					v_prob_arbre = 0,
+					v_body = [
+						[]
+					]
+				)
+			]
 		)
 	)
 
@@ -2197,9 +2281,42 @@ def f_dic_biomes_creation():
 
 			v_coul = "64 164 223",
 
-			v_vect_arbres = []
+			v_vect_arbres = [
+				cl_tree(
+					v_prob_arbre = 0,
+					v_body = [
+						[]
+					]
+				)
+			]
 		)
 	)
+
+
+
+
+	f_add_in_dic(
+		v_dic_conditions_biomes,
+		cl_biome(
+			v_nom_biome = "Tree",
+
+			v_temp_min = 0,
+			v_temp_max = 0,
+			v_pluv_min = 0,
+			v_pluv_max = 0,
+
+			v_coul = "0 0 0",
+			v_vect_arbres = [
+				cl_tree(
+					v_prob_arbre = 0,
+					v_body = [
+						[]
+					]
+				)
+			]
+		)
+	)
+
 
 
 	return v_dic_conditions_biomes
@@ -2235,6 +2352,5 @@ def f_max_height_of_trees(v_dic_biomes):
 			if v_arbre.m_get_height() > v_hauteur_max_actuelle :
 
 				v_hauteur_max_actuelle = v_arbre.m_get_height()
-
 
 	return v_hauteur_max_actuelle
