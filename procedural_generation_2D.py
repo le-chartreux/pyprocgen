@@ -18,7 +18,7 @@
 import time
 from packages.p_board_functions 	import f_generate_seed, f_create_empty_board, f_print_progression, f_seed_to_string, f_string_to_seed, f_is_it_a_seed, f_is_it_an_integer
 from packages.p_decisional 			import f_genererate_box
-from packages.p_dic_functions 		import f_dic_biomes_creation, f_hauteur_max_arbre, f_dic_trees_creation
+from packages.p_dic_functions 		import f_dic_biomes_creation, f_max_height_of_trees
 from packages.p_image_creation 		import f_create_image_header, f_create_image_body
 from packages.p_trees_generation 	import f_generate_trees
 
@@ -157,9 +157,9 @@ elif v_mode == "2":
 		if v_choix != None:
 			print("Enter y or n.")
 
-		v_choix = input("- Do you run this program with IDLE ? ")
+		v_choix = input("- Do you run this program with IDLE ? (y / n)")
 
-	v_afficher_progression = (v_choix == "y")
+	v_afficher_progression = (v_choix == "n")
 
 	print("")
 
@@ -170,7 +170,6 @@ elif v_mode == "2":
 v_time = time.time()
 print("Seed of the map : " + f_seed_to_string(v_seed) + "\n")
 v_dic_biomes = f_dic_biomes_creation()
-v_dic_arbres = f_dic_trees_creation()
 
 ###############################################################
 ############### CREATION DU HEADER DE L IMAGE #################
@@ -184,7 +183,7 @@ f_create_image_header(fi_fichier_dest, v_nby, v_nbx, f_seed_to_string(v_seed))
 ###############################################################
 if v_placer_arbres:
 
-	v_hauteur_chunk = f_hauteur_max_arbre(v_dic_arbres)
+	v_hauteur_chunk = f_max_height_of_trees(v_dic_biomes)
 
 	# Création du chunk initial
 	v_chunk_actuel = f_create_empty_board(v_nbx, v_hauteur_chunk)
