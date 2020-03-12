@@ -210,7 +210,7 @@ if v_placer_arbres:
 
 		v_chunk_fusion = v_chunk_actuel + v_chunk_suivant
 
-		f_generate_trees(v_chunk_fusion, v_dic_arbres)
+		f_generate_trees(v_chunk_fusion, v_dic_biomes)
 
 		v_chunk_actuel = v_chunk_fusion[:v_hauteur_chunk]
 
