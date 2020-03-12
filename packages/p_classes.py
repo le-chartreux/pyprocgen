@@ -61,7 +61,7 @@ class cl_box:
 ###############################################################
 class cl_biome:
 
-	def __init__(self, v_nom_biome, v_temp_min, v_temp_max, v_pluv_min, v_pluv_max, v_coul):
+	def __init__(self, v_nom_biome, v_temp_min, v_temp_max, v_pluv_min, v_pluv_max, v_coul, v_vect_arbres):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
@@ -87,10 +87,12 @@ class cl_biome:
 		# =============================
 
 		self.nom_biome = v_nom_biome
+
 		self.temp_min = v_temp_min
 		self.temp_max = v_temp_max
 		self.pluv_min = v_pluv_min
 		self.pluv_max = v_pluv_max
+
 		self.coul = v_coul
 
 		self.vect_arbres = v_vect_arbres
@@ -117,41 +119,6 @@ class cl_biome:
 		return self.temp_min <= v_temp <= self.temp_max and self.pluv_min <= v_pluv < self.pluv_max
 
 
-"""
-##############################################################
-################### CL_TREES_OF_THE_BIOME ####################
-##############################################################
-class cl_trees_of_the_biome:
-	def __init__(self, v_nom_biome, v_vect_arbres):
-		# =============================
-		# INFORMATIONS :
-		# -----------------------------
-		# UTILITE :
-		# Crée la classe définisant les arbre d'un biome,
-		# caractérisé par :
-		# - le nom du biome
-		# - un vecteur de cl_tree
-		# -----------------------------
-		# UTILISE PAR :
-		# - p_dic_creation.f_dic_trees_creation()
-		# - p_trees_generation.f_possible_to_place_tree()
-		# - p_trees_generation.f_put_tree()
-		# -----------------------------
-		# PRECONDITIONS :
-		# - NONE
-		# -----------------------------
-		# DEPEND DE :
-		# - NONE
-		# =============================
-
-		self.nom_biome = v_nom_biome
-"""	
-
-
-
-
-
-
 
 ##############################################################
 ######################### CL_TREE ############################
@@ -168,7 +135,8 @@ class cl_tree:
 		# - le body de sa représentation ppm avec None pour les pixels vides
 		# -----------------------------
 		# UTILISE PAR :
-		# - p_dic_creation.f_dic_trees_creation()
+		# - p_dic_functions.f_dic_biomes_creation()
+		# - p_dic_functions.f_max_height_of_trees()
 		# - p_trees_generation.f_possible_to_place_tree()
 		# - p_trees_generation.f_put_tree()
 		# -----------------------------
