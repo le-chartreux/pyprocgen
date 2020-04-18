@@ -25,16 +25,14 @@
 ##############################################################
 class cl_box:
 
-	def __init__(self, v_nom_biome, v_temp, v_pluv, v_coul):
+	def __init__(self, v_nom_biome, v_num_arbre = -1, v_position_arbre_x = 0, v_position_arbre_y = 0):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
 		# UTILITE :
 		# Crée la classe définissant une case, caractérisée par :
 		# - son type
-		# - sa température moyenne
-		# - sa pluviométrie annuelle
-		# - le string de sa couleur rgb de forme r g b
+		# - son numéro d'arbre dans le vecteur d'arbres de son biome (-1 si ce n'est pas un arbre)
 		# -----------------------------
 		# UTILISE PAR :
 		# - p_board_functions.f_display_board()
@@ -51,9 +49,17 @@ class cl_box:
 		# =============================
 
 		self.nom_biome = v_nom_biome
-		self.temp = v_temp
-		self.pluv = v_pluv
-		self.coul = v_coul
+		self.num_arbre = v_num_arbre
+		self.position_arbre_x = v_position_arbre_x
+		self.position_arbre_y = v_position_arbre_y
+
+	def m_get_couleur(self, v_dic_biomes):
+		if self.num_arbre == -1 :
+			# ce n'est pas un arbre
+			return v_dic_biomes[self.nom_biome].coul
+		else :
+			# c'est un arbre
+			return v_dic_biomes[self.nom_biome].vect_arbres[self.num_arbre].body[self.position_arbre_y][self.position_arbre_x]
 
 
 ###############################################################

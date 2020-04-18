@@ -54,7 +54,7 @@ def f_create_image_header(fi_fichier_dest, v_haut, v_larg, v_seed):
 ##################### F_CREATE_IMAGE_BODY #####################
 ###############################################################
 
-def f_create_image_body(fi_fichier_dest, v_plateau):
+def f_create_image_body(fi_fichier_dest, v_plateau, v_dic_biomes):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -77,7 +77,7 @@ def f_create_image_body(fi_fichier_dest, v_plateau):
 
 		for v_num_colonnes in range(len(v_plateau[0])):
 
-			fi_fichier_dest.write(v_plateau[v_num_ligne][v_num_colonnes].coul)
+			fi_fichier_dest.write(v_plateau[v_num_ligne][v_num_colonnes].m_get_couleur(v_dic_biomes))
 			fi_fichier_dest.write(" ")
 
 		fi_fichier_dest.write("\n")

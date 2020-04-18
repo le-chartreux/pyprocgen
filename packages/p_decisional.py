@@ -36,6 +36,8 @@ def f_genererate_box(v_dic_biomes, v_x, v_y, v_seed, v_intensite_variation):
 	# - procedural_generation_2D.py
 	# =============================
 	from .p_perlin_noise import SimplexNoise
+
+	# Calcul du bruit de perlin v_pluv et v_temp de la case
 	cl_noise = SimplexNoise()
 
 	v_temp = 0
@@ -49,6 +51,7 @@ def f_genererate_box(v_dic_biomes, v_x, v_y, v_seed, v_intensite_variation):
 
 	v_temp *= 0.00587	# v_temp = v_temp * 3 / (2**9 - 1)
 	v_pluv *= 0.00783	# v_pluv = v_pluv * 4 / (2**9 - 1)
+
 
 	return f_choice_biome(v_dic_biomes, v_temp, v_pluv)
 
@@ -81,6 +84,6 @@ def f_choice_biome(v_dic_biomes, v_temp, v_pluv):
 
 		if v_biome.m_in_range(v_temp, v_pluv):
 
-			return cl_box(v_biome.nom_biome, v_temp, v_pluv, v_biome.coul)
+			return cl_box(v_biome.nom_biome)
 
-	return cl_box("Water", v_temp, v_pluv, v_dic_biomes["Water"].coul)
+	return cl_box("Water")

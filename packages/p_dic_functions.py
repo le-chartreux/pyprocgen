@@ -55,7 +55,7 @@ def f_dic_biomes_creation():
 	# INFORMATIONS :
 	# -----------------------------
 	# UTILITE :
-	# Remplit v_dic_conditions_biomes de classes cl_biome
+	# Remplit v_dic_biomes de classes cl_biome
 	# -----------------------------
 	# PRECONDITIONS :
 	# - NONE
@@ -69,10 +69,10 @@ def f_dic_biomes_creation():
 	# - procedural_generation_2D.py
 	# =============================
 
-	v_dic_conditions_biomes = {}
+	v_dic_biomes = {}
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Desert_Cool",
 
@@ -106,7 +106,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Desert_Tropical",
 
@@ -140,7 +140,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Desert_Warm",
 
@@ -174,7 +174,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Desert_Scub_Cool",
 
@@ -223,7 +223,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Desert_Scub_Tropical",
 
@@ -272,7 +272,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Desert_Scub_Warm",
 
@@ -321,7 +321,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Dry_Forest_Tropical",
 
@@ -394,7 +394,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Dry_Forest_Warm",
 
@@ -466,7 +466,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Moist_Forest_Cool",
 
@@ -591,7 +591,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Moist_Forest_Tropical",
 
@@ -716,7 +716,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Moist_Forest_Warm",
 
@@ -841,7 +841,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Rain_Forest",
 
@@ -922,7 +922,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Rocks_and_ice",
 
@@ -947,7 +947,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Steppe",
 
@@ -972,7 +972,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Steppe_Woodland_Thorn",
 			v_temp_min =  1,
@@ -1036,7 +1036,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Taiga_Desert",
 
@@ -1098,7 +1098,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Taiga_Dry",
 			v_temp_min = -1,
@@ -1157,7 +1157,7 @@ def f_dic_biomes_creation():
 	)
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Taiga_Moist",
 
@@ -1220,7 +1220,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Taiga_Rain",
 
@@ -1283,7 +1283,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Taiga_Wet",
 
@@ -1346,7 +1346,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Toundra_Dry",
 
@@ -1398,7 +1398,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Toundra_Moist",
 
@@ -1450,7 +1450,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Toundra_Rain",
 
@@ -1502,7 +1502,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Toundra_Wet",
 
@@ -1554,7 +1554,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Tropical_Forest_Tropical",
 
@@ -1637,7 +1637,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Tropical_Forest_Warm",
 
@@ -1720,7 +1720,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Very_Dry_Forest",
 
@@ -1794,7 +1794,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Wet_Forest_Cool",
 
@@ -1852,7 +1852,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Wet_Forest_Tropical",
 
@@ -1910,7 +1910,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Wet_Forest_Warm",
 
@@ -1966,7 +1966,7 @@ def f_dic_biomes_creation():
 	)
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Woodland_Thorn",
 
@@ -2035,7 +2035,7 @@ def f_dic_biomes_creation():
 	)
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Water",
 
@@ -2063,7 +2063,7 @@ def f_dic_biomes_creation():
 
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Cyan_Water1",
 
@@ -2086,7 +2086,7 @@ def f_dic_biomes_creation():
 	)
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Cyan_Water2",
 
@@ -2109,7 +2109,7 @@ def f_dic_biomes_creation():
 	)
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Cyan_Water3",
 
@@ -2132,7 +2132,7 @@ def f_dic_biomes_creation():
 	)
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Cyan_Water4",
 
@@ -2155,7 +2155,7 @@ def f_dic_biomes_creation():
 	)
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Cyan_Water5",
 
@@ -2178,7 +2178,7 @@ def f_dic_biomes_creation():
 	)
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Cyan_Water6",
 
@@ -2201,7 +2201,7 @@ def f_dic_biomes_creation():
 	)
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Cyan_Water7",
 
@@ -2224,7 +2224,7 @@ def f_dic_biomes_creation():
 	)
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Cyan_Water8",
 
@@ -2247,7 +2247,7 @@ def f_dic_biomes_creation():
 	)
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Cyan_Water9",
 
@@ -2270,7 +2270,7 @@ def f_dic_biomes_creation():
 	)
 
 	f_add_in_dic(
-		v_dic_conditions_biomes,
+		v_dic_biomes,
 		cl_biome(
 			v_nom_biome = "Cyan_Water10",
 
@@ -2293,33 +2293,7 @@ def f_dic_biomes_creation():
 	)
 
 
-
-
-	f_add_in_dic(
-		v_dic_conditions_biomes,
-		cl_biome(
-			v_nom_biome = "Tree",
-
-			v_temp_min = 0,
-			v_temp_max = 0,
-			v_pluv_min = 0,
-			v_pluv_max = 0,
-
-			v_coul = "0 0 0",
-			v_vect_arbres = [
-				cl_tree(
-					v_prob_arbre = 0,
-					v_body = [
-						[]
-					]
-				)
-			]
-		)
-	)
-
-
-
-	return v_dic_conditions_biomes
+	return v_dic_biomes
 
 
 

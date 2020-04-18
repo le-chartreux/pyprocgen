@@ -214,7 +214,7 @@ if v_placer_arbres:
 
 		v_chunk_actuel = v_chunk_fusion[:v_hauteur_chunk]
 
-		f_create_image_body(fi_fichier_dest, v_chunk_actuel)
+		f_create_image_body(fi_fichier_dest, v_chunk_actuel, v_dic_biomes)
 
 		v_chunk_actuel = v_chunk_fusion[v_hauteur_chunk:]
 
@@ -227,7 +227,7 @@ if v_placer_arbres:
 	# Création du dernier chunk
 	v_chunk_dernier = v_chunk_actuel[0:(v_nby % v_hauteur_chunk)]
 
-	f_create_image_body(fi_fichier_dest, v_chunk_dernier)
+	f_create_image_body(fi_fichier_dest, v_chunk_dernier, v_dic_biomes)
 
 	if v_afficher_progression:
 		f_print_progression("Creation of the map :        ", 1.0)
@@ -248,7 +248,7 @@ else:
 			v_chunk[0][v_num_colonne] = f_genererate_box(v_dic_biomes, v_num_colonne, v_num_ligne, v_seed, v_intensite_variation)
 
 
-		f_create_image_body(fi_fichier_dest, v_chunk)
+		f_create_image_body(fi_fichier_dest, v_chunk, v_dic_biomes)
 
 		if v_afficher_progression:
 			f_print_progression("Creation of the map :        ", (v_num_ligne + 1) / v_nby)
