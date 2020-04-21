@@ -16,11 +16,11 @@
 # =============================
 
 import time
-from packages.p_board_functions 	import f_generate_seed, f_create_empty_board, f_print_progression, f_seed_to_string, f_string_to_seed, f_is_it_a_seed, f_is_it_an_integer
-from packages.p_decisional 			import f_genererate_box
-from packages.p_dic_functions 		import f_dic_biomes_creation, f_max_height_of_trees
-from packages.p_image_creation 		import f_create_image_header, f_create_image_body
-from packages.p_trees_generation 	import f_generate_trees
+from packages.p_board_functions 		import f_generate_seed, f_create_empty_board, f_print_progression, f_seed_to_string, f_string_to_seed, f_is_it_a_seed, f_is_it_an_integer
+from packages.p_decisional 				import f_genererate_box
+from packages.p_encyclopedia_functions	import f_encyclopedia_creation
+from packages.p_image_creation 			import f_create_image_header, f_create_image_body
+from packages.p_trees_generation 		import f_generate_trees
 
 
 ###############################################################
@@ -169,7 +169,7 @@ elif v_mode == "2":
 ###############################################################
 v_time = time.time()
 print("Seed of the map : " + f_seed_to_string(v_seed) + "\n")
-v_dic_biomes = f_dic_biomes_creation()
+v_encyclopedie = f_encyclopedia_creation()
 
 ###############################################################
 ############### CREATION DU HEADER DE L IMAGE #################
@@ -183,16 +183,16 @@ f_create_image_header(fi_fichier_dest, v_nby, v_nbx, f_seed_to_string(v_seed))
 ###############################################################
 if v_placer_arbres:
 
-	v_hauteur_chunk = f_max_height_of_trees(v_dic_biomes)
+	v_hauteur_chunk = v_encyclopedie.m_max_height_of_trees()
 
 	# Création du chunk initial
-	v_chunk_actuel = f_create_empty_board(v_nbx, v_hauteur_chunk)
-
+	v_chunk_actuel = f_create_empty_board(v_nbx, v_hauteur_chunk)	# L'image se crée par chunk de v_nbx*v_hauteur_chunk
+																	# pour économiser la RAM
 	for v_num_ligne in range(v_hauteur_chunk):
 
 		for v_num_colonne in range (v_nbx) :
 
-			v_chunk_actuel[v_num_ligne][v_num_colonne] = f_genererate_box(v_dic_biomes, v_num_colonne, v_num_ligne, v_seed, v_intensite_variation)
+			v_chunk_actuel[v_num_ligne][v_num_colonne] = f_genererate_box(v_encyclopedie, v_num_colonne, v_num_ligne, v_seed, v_intensite_variation)
 
 
 	# Création des chunks intermédiaires
@@ -206,15 +206,15 @@ if v_placer_arbres:
 
 			for v_num_colonne in range (v_nbx) :
 
-				v_chunk_suivant[v_num_ligne][v_num_colonne] = f_genererate_box(v_dic_biomes, v_num_colonne, v_num_chunk * v_hauteur_chunk + v_num_ligne, v_seed, v_intensite_variation)
+				v_chunk_suivant[v_num_ligne][v_num_colonne] = f_genererate_box(v_encyclopedie, v_num_colonne, v_num_chunk * v_hauteur_chunk + v_num_ligne, v_seed, v_intensite_variation)
 
 		v_chunk_fusion = v_chunk_actuel + v_chunk_suivant
 
-		f_generate_trees(v_chunk_fusion, v_dic_biomes)
+		f_generate_trees(v_chunk_fusion, v_encyclopedie)
 
 		v_chunk_actuel = v_chunk_fusion[:v_hauteur_chunk]
 
-		f_create_image_body(fi_fichier_dest, v_chunk_actuel, v_dic_biomes)
+		f_create_image_body(fi_fichier_dest, v_chunk_actuel, v_encyclopedie)
 
 		v_chunk_actuel = v_chunk_fusion[v_hauteur_chunk:]
 
@@ -227,7 +227,7 @@ if v_placer_arbres:
 	# Création du dernier chunk
 	v_chunk_dernier = v_chunk_actuel[0:(v_nby % v_hauteur_chunk)]
 
-	f_create_image_body(fi_fichier_dest, v_chunk_dernier, v_dic_biomes)
+	f_create_image_body(fi_fichier_dest, v_chunk_dernier, v_encyclopedie)
 
 	if v_afficher_progression:
 		f_print_progression("Creation of the map :        ", 1.0)
@@ -239,16 +239,16 @@ if v_placer_arbres:
 ###############################################################
 else:
 
-	for v_num_ligne in range(v_nby):
+	for v_num_ligne in range(v_nby):	# L'image se crée ligne par ligne
 
 		v_chunk = f_create_empty_board(v_nbx, 1)
 
 		for v_num_colonne in range (v_nbx) :
 
-			v_chunk[0][v_num_colonne] = f_genererate_box(v_dic_biomes, v_num_colonne, v_num_ligne, v_seed, v_intensite_variation)
+			v_chunk[0][v_num_colonne] = f_genererate_box(v_encyclopedie, v_num_colonne, v_num_ligne, v_seed, v_intensite_variation)
 
 
-		f_create_image_body(fi_fichier_dest, v_chunk, v_dic_biomes)
+		f_create_image_body(fi_fichier_dest, v_chunk, v_encyclopedie)
 
 		if v_afficher_progression:
 			f_print_progression("Creation of the map :        ", (v_num_ligne + 1) / v_nby)

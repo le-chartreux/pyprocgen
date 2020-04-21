@@ -9,7 +9,6 @@
 # CONTENU :
 # - f_add_in_dic(v_dic, v_classe)
 # - f_dic_biomes_creation()
-# - f_max_height_of_trees(v_dic_biomes)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
@@ -50,18 +49,19 @@ def f_add_in_dic(v_dic, v_classe):
 ###############################################################
 ################### F_DIC_BIOMES_CREATION #####################
 ###############################################################
-def f_dic_biomes_creation():
+def f_encyclopedia_creation():
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
 	# UTILITE :
-	# Remplit v_dic_biomes de classes cl_biome
+	# Remplis le dictionnaire de l'encyclopédie puis la crée
 	# -----------------------------
 	# PRECONDITIONS :
 	# - NONE
 	# -----------------------------
 	# DEPEND DE :
 	# - p_creation_biomes_dic.f_add_in_dic()
+	# - p_classes.cl_encyclopedia
 	# - p_classes.cl_biome
 	# - p_classes.cl_tree
 	# -----------------------------
@@ -2293,38 +2293,4 @@ def f_dic_biomes_creation():
 	)
 
 
-	return v_dic_biomes
-
-
-
-
-
-def f_max_height_of_trees(v_dic_biomes):
-	# =============================
-	# INFORMATIONS :
-	# -----------------------------
-	# UTILITE :
-	# Renvoit la taille de l'arbre le plus haut
-	# -----------------------------
-	# PRECONDITIONS :
-	# - v_dic_biomes : dicionnaire d'objets cl_biome
-	# -----------------------------
-	# DEPEND DE :
-	# - p_classes.cl_biome
-	# - p_classes.cl_tree
-	# -----------------------------
-	# UTILISE PAR :
-	# - procedural_generation_2D.py
-	# =============================
-
-	v_hauteur_max_actuelle = 0
-
-	for v_biome in v_dic_biomes.values():
-
-		for v_arbre in v_biome.vect_arbres:
-
-			if v_arbre.m_get_height() > v_hauteur_max_actuelle :
-
-				v_hauteur_max_actuelle = v_arbre.m_get_height()
-
-	return v_hauteur_max_actuelle
+	return cl_encyclopedia("Classique", v_dic_biomes)

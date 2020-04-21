@@ -6,8 +6,8 @@
 # prendre la décisison du type de case à placer en (v_y, v_x)
 # -----------------------------
 # CONTENU :
-# - f_genererate_box(v_dic_biomes, v_x, v_y, v_seed, v_intensite_variation)
-# - f_choice_biome(v_dic_biomes, v_temp, v_pluv)
+# - f_genererate_box(v_encyclopedie, v_x, v_y, v_seed, v_intensite_variation)
+# - f_choice_biome(v_encyclopedie, v_temp, v_pluv)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
@@ -16,7 +16,7 @@
 ###############################################################
 ###################### F_GENERATE_BOX #########################
 ###############################################################
-def f_genererate_box(v_dic_biomes, v_x, v_y, v_seed, v_intensite_variation):
+def f_genererate_box(v_encyclopedie, v_x, v_y, v_seed, v_intensite_variation):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -53,13 +53,13 @@ def f_genererate_box(v_dic_biomes, v_x, v_y, v_seed, v_intensite_variation):
 	v_pluv *= 0.00783	# v_pluv = v_pluv * 4 / (2**9 - 1)
 
 
-	return f_choice_biome(v_dic_biomes, v_temp, v_pluv)
+	return f_choice_biome(v_encyclopedie, v_temp, v_pluv)
 
 
 ###############################################################
 ######################## F_CHOICE_BIOME #######################
 ###############################################################
-def f_choice_biome(v_dic_biomes, v_temp, v_pluv):
+def f_choice_biome(v_encyclopedie, v_temp, v_pluv):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -68,7 +68,7 @@ def f_choice_biome(v_dic_biomes, v_temp, v_pluv):
 	# v_temp et v_pluv correspondantes.
 	# -----------------------------
 	# PRECONDITIONS :
-	# - v_dic_biomes : dicionnaire not null
+	# - v_encyclopedie : cl_encyclopedia
 	# - v_temp : integer not null
 	# - v_pluv : integer not null
 	# -----------------------------
@@ -76,11 +76,11 @@ def f_choice_biome(v_dic_biomes, v_temp, v_pluv):
 	# - p_classes.cl_box
 	# -----------------------------
 	# UTILISE PAR :
-	# - p_decisional.f_genererate_box(v_dic_biomes, v_x, v_y, v_seed)
+	# - p_decisional.f_genererate_box(v_encyclopedie, v_x, v_y, v_seed)
 	# =============================
 	from .p_classes import cl_box
 
-	for v_biome in v_dic_biomes.values():
+	for v_biome in v_encyclopedie.biomes.values():
 
 		if v_biome.m_in_range(v_temp, v_pluv):
 

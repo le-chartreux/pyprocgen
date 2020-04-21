@@ -6,8 +6,8 @@
 # -----------------------------
 # CONTENU :
 # - f_generate_trees(v_plateau)
-# - f_possible_to_place_tree(v_plateau, v_dic_biomes, v_x, v_y)
-# - f_put_tree(v_plateau, v_dic_biomes, v_x, v_y)
+# - f_possible_to_place_tree(v_plateau, v_encyclopedie, v_x, v_y)
+# - f_put_tree(v_plateau, v_encyclopedie, v_x, v_y)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
@@ -19,7 +19,7 @@ from .p_board_functions import f_print_progression
 ###############################################################
 ###################### F_GENERATE_TREE ########################
 ###############################################################
-def f_generate_trees(v_plateau, v_dic_biomes):
+def f_generate_trees(v_plateau, v_encyclopedie):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -27,9 +27,8 @@ def f_generate_trees(v_plateau, v_dic_biomes):
 	# Place les arbres dans v_plateau
 	# -----------------------------
 	# PRECONDITIONS :
-	# - v_dic_biomes : dictionnaire de biomes comprenant
-	#   au moins un arbre par biome
-	#
+	# - v_encyclopedie : cl_encyclopedia dont le dictionnaire de
+	#   biomes comprend une liste d'au moins un arbre par biome
 	# -----------------------------
 	# DEPEND DE :
 	# - p_classes.cl_box
@@ -51,7 +50,7 @@ def f_generate_trees(v_plateau, v_dic_biomes):
 			if v_plateau[v_num_ligne][v_num_colonne].nom_biome != "Tree":
 
 				# Creation d'une liste à ordre aleatoire des arbres possibles
-				v_liste_arbres = list(v_dic_biomes[v_plateau[v_num_ligne][v_num_colonne].nom_biome].vect_arbres)
+				v_liste_arbres = list(v_encyclopedie.biomes[v_plateau[v_num_ligne][v_num_colonne].nom_biome].vect_arbres)
 
 				random.shuffle(v_liste_arbres)
 
@@ -63,7 +62,7 @@ def f_generate_trees(v_plateau, v_dic_biomes):
 
 					if f_possible_to_place_tree(v_plateau, v_liste_arbres[v_i], v_num_colonne, v_num_ligne) and random.random() < v_liste_arbres[v_i].prob_arbre :
 
-						f_put_tree(v_plateau, v_dic_biomes, v_liste_arbres[v_i], v_num_colonne, v_num_ligne)
+						f_put_tree(v_plateau, v_encyclopedie, v_liste_arbres[v_i], v_num_colonne, v_num_ligne)
 
 						v_pose = True
 
@@ -118,7 +117,7 @@ def f_possible_to_place_tree(v_plateau, v_arbre, v_x, v_y):
 
 		for v_num_colonne in range(v_larg_arbre):
 
-			if v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_biome[0:5] != v_type_case_origine[0:5] or v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].num_arbre != -1:
+			if v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_biome != v_type_case_origine or v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].num_arbre != -1:
 				possible = False
 
 
@@ -128,7 +127,7 @@ def f_possible_to_place_tree(v_plateau, v_arbre, v_x, v_y):
 ###############################################################
 ######################### F_PUT_TREE ##########################
 ###############################################################
-def f_put_tree(v_plateau, v_dic_biomes, v_arbre, v_x, v_y):
+def f_put_tree(v_plateau, v_encyclopedie, v_arbre, v_x, v_y):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -166,6 +165,6 @@ def f_put_tree(v_plateau, v_dic_biomes, v_arbre, v_x, v_y):
 
 			if v_arbre.body[v_num_ligne][v_num_colonne] != None :
 
-				v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].num_arbre = v_dic_biomes[v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_biome].vect_arbres.index(v_arbre)
+				v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_arbre = v_arbre.nom_arbre
 				v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].position_arbre_x = v_num_colonne
 				v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].position_arbre_y = v_num_ligne
