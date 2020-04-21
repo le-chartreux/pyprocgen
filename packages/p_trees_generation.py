@@ -48,24 +48,26 @@ def f_generate_trees(v_plateau, v_dic_biomes):
 
 		for v_num_colonne in range(v_nbx):
 
-			# Creation d'une liste à ordre aleatoire des arbres possibles
-			v_liste_arbres = list(v_dic_biomes[v_plateau[v_num_ligne][v_num_colonne].nom_biome].vect_arbres)
+			if v_plateau[v_num_ligne][v_num_colonne].nom_biome != "Tree":
 
-			random.shuffle(v_liste_arbres)
+				# Creation d'une liste à ordre aleatoire des arbres possibles
+				v_liste_arbres = list(v_dic_biomes[v_plateau[v_num_ligne][v_num_colonne].nom_biome].vect_arbres)
 
-			v_i = 0
+				random.shuffle(v_liste_arbres)
 
-			v_pose = False
+				v_i = 0
 
-			while v_i < len(v_liste_arbres) and not v_pose:
+				v_pose = False
 
-				if f_possible_to_place_tree(v_plateau, v_liste_arbres[v_i], v_num_colonne, v_num_ligne) and random.random() < v_liste_arbres[v_i].prob_arbre :
+				while v_i < len(v_liste_arbres) and not v_pose:
 
-					f_put_tree(v_plateau, v_liste_arbres[v_i], v_num_colonne, v_num_ligne)
+					if f_possible_to_place_tree(v_plateau, v_liste_arbres[v_i], v_num_colonne, v_num_ligne) and random.random() < v_liste_arbres[v_i].prob_arbre :
 
-					v_pose = True
+						f_put_tree(v_plateau, v_dic_biomes, v_liste_arbres[v_i], v_num_colonne, v_num_ligne)
 
-				v_i += 1
+						v_pose = True
+
+					v_i += 1
 
 
 	return v_plateau
@@ -116,7 +118,7 @@ def f_possible_to_place_tree(v_plateau, v_arbre, v_x, v_y):
 
 		for v_num_colonne in range(v_larg_arbre):
 
-			if v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_biome[0:5] != v_type_case_origine[0:5] :
+			if v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_biome[0:5] != v_type_case_origine[0:5] or v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].num_arbre != -1:
 				possible = False
 
 
@@ -126,7 +128,7 @@ def f_possible_to_place_tree(v_plateau, v_arbre, v_x, v_y):
 ###############################################################
 ######################### F_PUT_TREE ##########################
 ###############################################################
-def f_put_tree(v_plateau, v_arbre, v_x, v_y):
+def f_put_tree(v_plateau, v_dic_biomes, v_arbre, v_x, v_y):
 	# =============================
 	# INFORMATIONS :
 	# -----------------------------
@@ -146,23 +148,24 @@ def f_put_tree(v_plateau, v_arbre, v_x, v_y):
 	# - p_trees_creation.f_generate_trees()
 	# =============================
 
-	v_larg_arbre = len(v_arbre.body[0])
-	v_haut_arbre = len(v_arbre.body)
+	v_haut_arbre = v_arbre.m_get_height()
+	v_larg_arbre = v_arbre.m_get_width()
 
-
+	# Traitement des cas où l'arbre est en bordure d'image :
+	# on coupe le modèle à la bordure (pour ne pas placer de case en dehors du tableau)
 	if v_y + v_haut_arbre > len(v_plateau):
 		v_haut_arbre = len(v_plateau) - v_y
 
 	if v_x + v_larg_arbre > len(v_plateau[0]):
 		v_larg_arbre = len(v_plateau[0]) - v_x
 
-
+	# Placement de l'arbre
 	for v_num_ligne in range(v_haut_arbre):
 
 		for v_num_colonne in range(v_larg_arbre):
 
 			if v_arbre.body[v_num_ligne][v_num_colonne] != None :
 
-				v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_biome = "Tree"
-
-				v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].coul = v_arbre.body[v_num_ligne][v_num_colonne]
+				v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].num_arbre = v_dic_biomes[v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_biome].vect_arbres.index(v_arbre)
+				v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].position_arbre_x = v_num_colonne
+				v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].position_arbre_y = v_num_ligne
