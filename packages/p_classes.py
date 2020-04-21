@@ -5,10 +5,10 @@
 # Définir les classes utilisées dans le programme
 # -----------------------------
 # CONTENU :
-# - class cl_box
-# - class cl_biome
-# - class cl_trees_of_the_biome
-# - class cl_tree
+# - cl_box
+# - cl_encyclopedia
+# - cl_biome
+# - cl_tree
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - p_board_functions.py
@@ -25,14 +25,15 @@
 ##############################################################
 class cl_box:
 
-	def __init__(self, v_nom_biome, v_num_arbre = -1, v_position_arbre_x = 0, v_position_arbre_y = 0):
+	def __init__(self, v_nom_biome, v_nom_arbre = "", v_position_arbre_x = -1, v_position_arbre_y = -1):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
 		# UTILITE :
 		# Crée la classe définissant une case, caractérisée par :
 		# - son type
-		# - son numéro d'arbre dans le vecteur d'arbres de son biome (-1 si ce n'est pas un arbre)
+		# - le nom de l'arbre qui est dessus ("" si il n'y a pas d'arbre)
+		# - la position de son pixel d'arbre dans le modèle de l'arbre
 		# -----------------------------
 		# UTILISE PAR :
 		# - p_board_functions.f_display_board()
@@ -49,17 +50,130 @@ class cl_box:
 		# =============================
 
 		self.nom_biome = v_nom_biome
-		self.num_arbre = v_num_arbre
+		self.nom_arbre = v_nom_arbre
 		self.position_arbre_x = v_position_arbre_x
 		self.position_arbre_y = v_position_arbre_y
 
-	def m_get_couleur(self, v_dic_biomes):
-		if self.num_arbre == -1 :
+	def m_get_couleur(self, v_encyclopedie):
+		if self.nom_arbre == "":
 			# ce n'est pas un arbre
-			return v_dic_biomes[self.nom_biome].coul
-		else :
+			return v_encyclopedie.biomes[self.nom_biome].coul
+		else:
 			# c'est un arbre
-			return v_dic_biomes[self.nom_biome].vect_arbres[self.num_arbre].body[self.position_arbre_y][self.position_arbre_x]
+			return v_encyclopedie.m_get_tree_info(self.nom_arbre).body[position_arbre_y][position_arbre_x]
+
+
+##############################################################
+##################### CL_ENCYCLOPEDIA ########################
+##############################################################
+class cl_encyclopedia:
+
+	def __init__(self, v_nom, v_biomes = []):
+		# =============================
+		# INFORMATIONS :
+		# -----------------------------
+		# UTILITE :
+		# Crée la classe définissant une encyclopédie, caractérisée par :
+		# - son nom
+		# - les cl_biome qu'elle répertorie (dictionnaire)
+		# -----------------------------
+		# UTILISE PAR :
+		# - procedural_generation_2D.py
+		# -----------------------------
+		# PRECONDITIONS :
+		# - NONE
+		# -----------------------------
+		# DEPEND DE :
+		# - NONE
+		# =============================
+		self.nom_encyclopedie = v_nom
+		self.biomes = v_biomes
+
+	def m_get_arbres(self):
+		# =============================
+		# INFORMATIONS :
+		# -----------------------------
+		# UTILITE :
+		# Renvoie une liste de tous les arbres présents dans l'encyclopédie
+		# -----------------------------
+		# UTILISE PAR :
+		# - m_get_tree_info()
+		# -----------------------------
+		# PRECONDITIONS :
+		# - NONE
+		# -----------------------------
+		# DEPEND DE :
+		# - p_classes.cl_biome
+		# - p_classes.cl_tree
+		# =============================
+		v_arbres = []
+
+		for v_biome in self.biomes:
+
+			for v_arbre in v_biome.arbres:
+
+				v_arbres.append(v_arbre)
+
+		return v_arbres
+
+
+	def m_get_tree_info(self, v_nom_arbre):
+		# =============================
+		# INFORMATIONS :
+		# -----------------------------
+		# UTILITE :
+		# Renvoie la classe de l'arbre à partir de son nom
+		# -----------------------------
+		# UTILISE PAR :
+		# -----------------------------
+		# PRECONDITIONS :
+		# - NONE
+		# -----------------------------
+		# DEPEND DE :
+		# - self.m_get_arbres()
+		# - p_classes.cl_tree
+		# =============================
+		v_i = 0
+		v_arbres = self.m_get_arbres()
+
+		while i < len(v_arbres) and v_arbres[i].nom_arbre != v_nom_arbre:
+			i += 1
+
+		if i < len(v_arbres):
+			return v_arbres[i]
+
+		else:
+			return None
+
+
+	def m_max_height_of_trees(self):
+		# =============================
+		# INFORMATIONS :
+		# -----------------------------
+		# UTILITE :
+		# Renvoie la hauteur de l'arbre le plus haut
+		# -----------------------------
+		# UTILISE PAR :
+		# - procedural_generation_2D.py
+		# -----------------------------
+		# PRECONDITIONS :
+		# - NONE
+		# -----------------------------
+		# DEPEND DE :
+		# - self.m_get_arbres()
+		# - p_classes.cl_tree
+		# =============================
+		v_arbres = self.m_get_arbres()
+		v_hauteur_max = 0
+
+		for v_arbre in v_arbres:
+
+			if v_abre.m_get_height() > v_hauteur_max:
+
+				v_hauteur_max = v_abre.m_get_height()
+
+		return v_hauteur_max
+
 
 
 ###############################################################
@@ -78,7 +192,7 @@ class cl_biome:
 		# - sa température moyenne maximale
 		# - sa pluviometrie annuelle minimale
 		# - sa pluviometrie annuelle maximale
-		# - sa couleur
+		# - la couleur de son sol
 		# - un vecteur de cl_tree
 		# -----------------------------
 		# UTILISE PAR :
@@ -109,7 +223,7 @@ class cl_biome:
 		# INFORMATIONS :
 		# -----------------------------
 		# UTILITE :
-		# Renvoit True si la temperature et la pluviométrie
+		# Renvoie True si la temperature et la pluviométrie
 		# correspondent à celles de ce biome
 		# -----------------------------
 		# UTILISE PAR :
@@ -130,19 +244,20 @@ class cl_biome:
 ######################### CL_TREE ############################
 ##############################################################
 class cl_tree:
-	def __init__(self, v_prob_arbre, v_body):
+	def __init__(self, v_nom_arbre, v_prob_arbre, v_body):
 		# =============================
 		# INFORMATIONS :
 		# -----------------------------
 		# UTILITE :
 		# Crée la classe définisant un arbre de biome,
 		# caractérisé par :
+		# - son nom
 		# - la probabilité d'être placé sur une case possible
 		# - le body de sa représentation ppm avec None pour les pixels vides
 		# -----------------------------
 		# UTILISE PAR :
 		# - p_dic_functions.f_dic_biomes_creation()
-		# - p_dic_functions.f_max_height_of_trees()
+		# - p_classes.cl_encyclopedia.m_max_height_of_trees()
 		# - p_trees_generation.f_possible_to_place_tree()
 		# - p_trees_generation.f_put_tree()
 		# -----------------------------
@@ -152,7 +267,7 @@ class cl_tree:
 		# DEPEND DE :
 		# - NONE
 		# =============================
-
+		self.nom_arbre = v_nom_arbre
 		self.prob_arbre = v_prob_arbre
 		self.body = v_body
 
