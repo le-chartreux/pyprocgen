@@ -157,7 +157,7 @@ elif v_mode == "2":
 		if v_choix != None:
 			print("Enter y or n.")
 
-		v_choix = input("- Do you run this program with IDLE ? (y / n)")
+		v_choix = input("- Do you run this program with IDLE ? (y / n) : ")
 
 	v_afficher_progression = (v_choix == "n")
 
