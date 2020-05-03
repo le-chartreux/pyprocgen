@@ -60,7 +60,7 @@ class cl_box:
             return v_encyclopedie.biomes[self.nom_biome].coul
         else:
             # c'est un arbre
-            return v_encyclopedie.m_get_tree_info(self.nom_arbre).body[position_arbre_y][position_arbre_x]
+            return v_encyclopedie.m_get_tree_info(self.nom_arbre).body[self.position_arbre_y][self.position_arbre_x]
 
 
 ##############################################################
@@ -108,9 +108,9 @@ class cl_encyclopedia:
         # =============================
         v_arbres = []
 
-        for v_biome in self.biomes:
+        for v_biome in self.biomes.values():
 
-            for v_arbre in v_biome.arbres:
+            for v_arbre in v_biome.vect_arbres:
 
                 v_arbres.append(v_arbre)
 
@@ -136,11 +136,11 @@ class cl_encyclopedia:
         v_i = 0
         v_arbres = self.m_get_arbres()
 
-        while i < len(v_arbres) and v_arbres[i].nom_arbre != v_nom_arbre:
-            i += 1
+        while v_i < len(v_arbres) and v_arbres[v_i].nom_arbre != v_nom_arbre:
+            v_i += 1
 
-        if i < len(v_arbres):
-            return v_arbres[i]
+        if v_i < len(v_arbres):
+            return v_arbres[v_i]
 
         else:
             return None
@@ -168,9 +168,9 @@ class cl_encyclopedia:
 
         for v_arbre in v_arbres:
 
-            if v_abre.m_get_height() > v_hauteur_max:
+            if v_arbre.m_get_height() > v_hauteur_max:
 
-                v_hauteur_max = v_abre.m_get_height()
+                v_hauteur_max = v_arbre.m_get_height()
 
         return v_hauteur_max
 
