@@ -81,7 +81,7 @@ if v_mode == "1":
     v_seed = f_generate_seed()
     v_intensite_variation = 1
     v_placer_arbres = True
-    v_afficher_progression = True
+    v_afficher_progression = ("idlelib" not in sys.modules)
 
 
 ###############################################################
@@ -149,19 +149,6 @@ elif v_mode == "2":
 
     print("")
 
-
-    # ... du support d'utilisation
-    v_choix = None
-    while v_choix != "y" and v_choix != "n":
-
-        if v_choix != None:
-            print("Enter y or n.")
-
-        v_choix = input("- Do you run this program with IDLE ? (y / n) : ")
-
-    v_afficher_progression = (v_choix == "n")
-
-    print("")
 
 
 ###############################################################
