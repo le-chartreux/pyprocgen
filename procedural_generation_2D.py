@@ -16,6 +16,7 @@
 # =============================
 
 import time
+import sys
 from packages.p_board_functions         import f_generate_seed, f_create_empty_board, f_print_progression, f_seed_to_string, f_string_to_seed, f_is_it_a_seed, f_is_it_an_integer
 from packages.p_decisional                 import f_genererate_box
 from packages.p_encyclopedia_functions    import f_encyclopedia_creation
