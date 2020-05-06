@@ -41,7 +41,7 @@ while not f_is_it_an_integer(v_nbx):
     if v_nbx != None:
         print("  Enter an integer.")
 
-    v_nbx = input("  Lenght : ")
+    v_nbx = input("  Length : ")
 
 v_nbx = int(v_nbx)
 
@@ -82,7 +82,6 @@ if v_mode == "1":
     v_seed = f_generate_seed()
     v_intensite_variation = 1
     v_placer_arbres = True
-    v_afficher_progression = ("idlelib" not in sys.modules)
 
 
 ###############################################################
@@ -156,6 +155,7 @@ elif v_mode == "2":
 ######################### CONSTANTES ##########################
 ###############################################################
 v_time = time.time()
+v_afficher_progression = ("idlelib" not in sys.modules)
 print("Seed of the map : " + f_seed_to_string(v_seed) + "\n")
 v_encyclopedie = f_encyclopedia_creation()
 
