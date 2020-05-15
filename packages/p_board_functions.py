@@ -93,7 +93,7 @@ def f_print_progression(v_texte, v_progression):
     # UTILITE :
     # Affiche la progression (de 0 à 1)
     # dans la console, avec un # par tranche de 0.1
-    # Forme : v_texte + "[####      ]" + (v_progression, en pourcent) + "%"
+    # Forme : v_texte + "[####------]" + (v_progression, en pourcent) + "%"
     # -----------------------------
     # PRECONDITIONS :
     # - v_progression : réel compris entre 0 et 1
@@ -105,7 +105,7 @@ def f_print_progression(v_texte, v_progression):
     # - procedural_generation_2D.py
     # =============================
 
-    v_progression10 = int(v_progression * 10)
+    v_progression10 = int(v_progression * 30)
     v_barre_progression = ""
 
     # Remplissage de la barre de progression des '#' :
@@ -113,8 +113,8 @@ def f_print_progression(v_texte, v_progression):
         v_barre_progression += "#"
 
     # Remplissage de la barre de progression de ' ' sur la partie restante :
-    for i in range(10 - v_progression10):
-        v_barre_progression += " "
+    for i in range(30 - v_progression10):
+        v_barre_progression += "."
 
     # Ajout de zeros après la virgule pour les floats trop cours
     # (sinon le \r ne réécrit pas tout) :
