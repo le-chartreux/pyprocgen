@@ -131,7 +131,7 @@ encyclopedia = encyclopedia_creation()
 ###############################################################
 ############### CRÉATION DU HEADER DE L'IMAGE #################
 ###############################################################
-destination_file = open("Generated_map.ppm", "w")
+destination_file = open("generated_map.ppm", "w")
 write_image_header(destination_file, height, width, seed_to_string(seed))
 
 
