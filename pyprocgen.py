@@ -28,7 +28,7 @@ from packages.p_utilities import is_integer, is_float, print_progression
 ###############################################################
 ################## CHOIX DE L'UTILISATEUR #####################
 ###############################################################
-print("Hello, welcome to this 2D procedural map generator. \n")
+print("Hello, welcome to pyprocgen, a 2D procedural map generator. \n")
 
 
 # ... de la taille de la map :
