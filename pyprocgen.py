@@ -17,12 +17,12 @@
 
 import time
 import sys
-from packages.p_board_functions import generate_seed, create_empty_board, seed_to_string, string_to_seed, is_seed
-from packages.p_decisional import genererate_box
-from packages.p_encyclopedia_functions import encyclopedia_creation
-from packages.p_image_creation import write_image_header, write_image_body
-from packages.p_trees_generation import generate_trees
-from packages.p_utilities import is_integer, is_float, print_progression
+from packages.board_functions import generate_seed, create_empty_board, seed_to_string, string_to_seed, is_seed
+from packages.decisional import genererate_box
+from packages.encyclopedia_functions import encyclopedia_creation
+from packages.image_creation import write_image_header, write_image_body
+from packages.trees_generation import generate_trees
+from packages.utilities import is_integer, is_float, print_progress
 
 
 ###############################################################
@@ -124,7 +124,7 @@ else:
 ######################### CONSTANTES ##########################
 ###############################################################
 begin_time = time.time()
-print_progression_opt = ("idlelib" not in sys.modules)
+print_progress_opt = ("idlelib" not in sys.modules)
 print("Seed of the map : " + seed_to_string(seed) + "\n")
 encyclopedia = encyclopedia_creation()
 
@@ -183,9 +183,9 @@ if place_trees:
 
         actual_chunk = chunk_amalgamation[chunk_height:]
 
-        if print_progression_opt:
-            print_progression("Creation of the map :        ",
-                              ((chunk_number + 1) * chunk_height) / height)
+        if print_progress_opt:
+            print_progress("Creation of the map :        ",
+                           ((chunk_number + 1) * chunk_height) / height)
 
         chunk_number -= 1
 
@@ -194,8 +194,8 @@ if place_trees:
 
     write_image_body(destination_file, last_chunk, encyclopedia)
 
-    if print_progression_opt:
-        print_progression("Creation of the map :        ", 1.0)
+    if print_progress_opt:
+        print_progress("Creation of the map :        ", 1.0)
 
 
 ###############################################################
@@ -214,8 +214,8 @@ else:
 
         write_image_body(destination_file, chunk, encyclopedia)
 
-        if print_progression_opt:
-            print_progression(
+        if print_progress_opt:
+            print_progress(
                 "Creation of the map :        ", (line_number + 1) / height)
 
 
