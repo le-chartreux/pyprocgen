@@ -1,218 +1,170 @@
-# =============================
+# ==========================================================
 # INFORMATIONS SUR CE PACKAGE :
 # -----------------------------
-# UTILITE DE SON CONTENU :
-# Créer un plateau vide, créer un seed et
-# afficher un plateau dans la console
+# UTILITÉ DE SON CONTENU :
+# Créer un plateau vide,  afficher un plateau dans la console
+# et gérer les seed
 # -----------------------------
 # CONTENU :
-# - f_create_empty_board(co_nbx,co_nby)
-# - f_display_board(v_plateau)
-# - f_print_progression(v_texte, v_progression)
+# - create_empty_board(co_nbx,co_nby)
+# - display_board(v_plateau)
 #
-# - f_generate_seed()
-# - f_seed_to_string(v_seed)
-# - f_string_to_seed(v_seed_compressed)
-#
-# - f_is_it_a_seed(v_seed_compressed)
-# - f_is_it_an_integer(valeur)
+# - generate_seed()
+# - seed_to_string(v_seed)
+# - string_to_seed(v_seed_compressed)
+# - is_seed(v_seed_compressed)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
-
+# ==========================================================
 
 ###############################################################
-#################### F_CREATE_EMPTY_BOARD #####################
+##################### CREATE_EMPTY_BOARD ######################
 ###############################################################
-def f_create_empty_board(v_nbx, v_nby):
+def create_empty_board(width: int, height: int) -> list:
     # =============================
     # INFORMATIONS :
     # -----------------------------
-    # UTILITE :
-    # Crée un plateau vide de x cases de largeur et y de longueur
+    # UTILITÉ :
+    # Crée un plateau vide de height x width
     # -----------------------------
-    # PRECONDITIONS :
-    # - v_nbx, v_nby : integers
+    # PRÉCONDITIONS :
+    # - None
     # -----------------------------
-    # DEPEND DE :
-    # - p_classes.cl_box
+    # DÉPEND DE :
+    # - None
     # -----------------------------
-    # UTILISE PAR :
+    # UTILISÉ PAR :
     # - procedural_generation_2D.py
     # =============================
-    from .p_classes import cl_box
 
-    v_plateau=[]
+    board = []
 
-    for v_hauteur in range(v_nby) :
+    for line in range(height):
 
-        v_plateau.append([])
+        board.append([])
 
-        for v_largeur in range(v_nbx) :
+        for _ in range(width):
 
-            v_plateau[v_hauteur].append(None)
+            board[line].append(None)
 
-    return v_plateau
+    return board
 
 
 ###############################################################
-##################### F_DISPLAY_BOARD #########################
+####################### DISPLAY_BOARD #########################
 ###############################################################
-def f_display_board(v_plateau):
+def display_board(board):
     # =============================
     # INFORMATIONS :
     # -----------------------------
-    # UTILITE :
-    # Affiche un plateau de taille len(v_plateau[0]) * len(v_plateau)
-    # dans la console
+    # UTILITÉ :
+    # Affiche un plateau de box dans la console en marquant
+    # les 4 premiers caractères du nom de chaque box le composant
     # -----------------------------
-    # PRECONDITIONS :
-    # - NONE
+    # PRÉCONDITIONS :
+    # - None
     # -----------------------------
-    # DEPEND DE :
-    # - p_classes.cl_box
+    # DÉPEND DE :
+    # - None
     # -----------------------------
-    # UTILISE PAR :
+    # UTILISÉ PAR :
     # - procedural_generation_2D.py (pour debug)
     # =============================
-    from .p_classes import cl_box
 
-    for v_i in range(len(v_plateau)) :
+    for line in range(len(board)):
 
-        for v_j in range(len(v_plateau[0])) :
+        for column in range(len(board[0])):
 
-                print(v_plateau[v_i][v_j].nom_biome[0:4], " ", end="")
+            print(board[line][column].nom_biome[0:4], " ", end="")
 
         print("")
 
 
-def f_print_progression(v_texte, v_progression):
+###############################################################
+###################### GENERERATE_SEED ########################
+###############################################################
+def generate_seed() -> str:
     # =============================
     # INFORMATIONS :
     # -----------------------------
-    # UTILITE :
-    # Affiche la progression (de 0 à 1)
-    # dans la console, avec un # par tranche de 0.1
-    # Forme : v_texte + "[####------]" + (v_progression, en pourcent) + "%"
-    # -----------------------------
-    # PRECONDITIONS :
-    # - v_progression : réel compris entre 0 et 1
-    # -----------------------------
-    # DEPEND DE :
-    # - None
-    # -----------------------------
-    # UTILISE PAR :
-    # - procedural_generation_2D.py
-    # =============================
-
-    v_progression10 = int(v_progression * 30)
-    v_barre_progression = ""
-
-    # Remplissage de la barre de progression des '#' :
-    for i in range(v_progression10):
-        v_barre_progression += "#"
-
-    # Remplissage de la barre de progression de ' ' sur la partie restante :
-    for i in range(30 - v_progression10):
-        v_barre_progression += "."
-
-    # Ajout de zeros après la virgule pour les floats trop cours
-    # (sinon le \r ne réécrit pas tout) :
-    if round(v_progression, 3) == v_progression:
-        v_progression_str = str(round(v_progression * 100, 2)) + "0"
-
-    else:
-        v_progression_str = str(round(v_progression * 100, 2))
-
-    # Affichage de la progression :
-    print(v_texte + "[" + v_barre_progression + "] " + v_progression_str + " %", end="\r")
-
-
-###############################################################
-##################### F_GENERERATE_SEED #######################
-###############################################################
-def f_generate_seed():
-    # =============================
-    # INFORMATIONS :
-    # -----------------------------
-    # UTILITE :
+    # UTILITÉ :
     # Génère un dictionnaire de seed avec :
     # - "Tx" : seed de l'axe x de la température
     # - "Ty" : seed de l'axe y de la température
     # - "Px" : seed de l'axe x de la  pluviométrie
     # - "Py" : seed de l'axe y de la  pluviométrie
     # -----------------------------
-    # PRECONDITIONS :
-    # - NONE
+    # PRÉCONDITIONS :
+    # - None
     # -----------------------------
-    # DEPEND DE :
+    # DÉPEND DE :
     # - random
     # -----------------------------
-    # UTILISE PAR :
+    # UTILISÉ PAR :
     # - procedural_generation_2D.py
     # =============================
     import random
 
-    v_seed = {}
+    seed = {}
 
-    v_seed["Tx"] = random.randint(-10000,10000)
-    v_seed["Ty"] = random.randint(-10000,10000)
-    v_seed["Px"] = random.randint(-10000,10000)
-    v_seed["Py"] = random.randint(-10000,10000)
+    seed["Tx"] = random.randint(-10000, 10000)
+    seed["Ty"] = random.randint(-10000, 10000)
+    seed["Px"] = random.randint(-10000, 10000)
+    seed["Py"] = random.randint(-10000, 10000)
 
-    return v_seed
+    return seed
 
 
 ###############################################################
-###################### F_SEED_TO_STRING #######################
+######################## SEED_TO_STRING #######################
 ###############################################################
-def f_seed_to_string(v_seed):
+def seed_to_string(seed: dict) -> str:
     # =============================
     # INFORMATIONS :
     # -----------------------------
-    # UTILITE :
+    # UTILITÉ :
     # Transforme le seed en string pour l'écrire dans le header
-    # de l'image générée,
-    # de la forme Tx + ":" + Ty + ":" + Px + ":" + Py
+    # de l'image générée, de la forme
+    # str(seed["Tx"]) + ":" + str(seed["Ty"]) + ":" + str(seed["Px"]) + ":" + str(seed["Py"])
     # -----------------------------
-    # PRECONDITIONS :
-    # - v_seed["Tx"], v_seed["Ty"] : integers not null
-    # - v_seed["Px"], v_seed["Py"] : integers not null
+    # PRÉCONDITIONS :
+    # - seed["Tx"], seed["Ty"] : integers not null
+    # - seed["Px"], seed["Py"] : integers not null
     # -----------------------------
-    # DEPEND DE :
+    # DÉPEND DE :
     # - None
     # -----------------------------
-    # UTILISE PAR :
+    # UTILISÉ PAR :
     # - procedural_generation_2D.py
     # =============================
 
     v_seed_in_string = (
-          str(v_seed["Tx"]) + ":"
-        + str(v_seed["Ty"]) + ":"
-        + str(v_seed["Px"]) + ":"
-        + str(v_seed["Py"])
+        str(seed["Tx"])
+        + ":" + str(seed["Ty"])
+        + ":" + str(seed["Px"])
+        + ":" + str(seed["Py"])
     )
 
     return v_seed_in_string
 
 
-
 ###############################################################
-###################### F_STRING_TO_SEED ########################
+####################### STRING_TO_SEED ########################
 ###############################################################
-def f_string_to_seed(v_seed_in_string):
+def string_to_seed(seed_in_string: str) -> dict:
     # =============================
     # INFORMATIONS :
     # -----------------------------
-    # UTILITE :
-    # Crée un dictionnaire de seed à partir de v_seed_compressed avec :
+    # UTILITÉ :
+    # Crée un dictionnaire de seed à partir de seed_in_string avec :
     # - "Tx" : seed de l'axe x de la température
     # - "Ty" : seed de l'axe y de la température
     # - "Px" : seed de l'axe x de la  pluviométrie
     # - "Py" : seed de l'axe y de la  pluviométrie
     # -----------------------------
     # PRECONDITIONS :
-    # - v_seed_compressed : string
+    # - None
     # -----------------------------
     # DEPEND DE :
     # - None
@@ -220,39 +172,38 @@ def f_string_to_seed(v_seed_in_string):
     # UTILISE PAR :
     # - procedural_generation_2D.py
     # =============================
-    v_seed = {}
-    v_noms = ("Tx", "Ty", "Px", "Py")
-    v_compteur = 0
+    seed = {}
+    counter = 0
 
-    for i in range(4):
+    for key in ("Tx", "Ty", "Px", "Py"):
 
-        v_tampon = ""
+        buffer = ""
 
-        while v_compteur < len(v_seed_in_string) and v_seed_in_string[v_compteur] != ":":
+        while counter < len(seed_in_string) and seed_in_string[counter] != ":":
 
-            v_tampon += v_seed_in_string[v_compteur]
-            v_compteur += 1
+            buffer += seed_in_string[counter]
+            counter += 1
 
-        v_seed[v_noms[i]] = int(v_tampon)
-        v_compteur += 1
+        seed[key] = int(buffer)
+        counter += 1
 
-    return v_seed
+    return seed
 
 
 ###############################################################
-####################### F_IS_IT_A_SEED ########################
+########################### IS_SEED ###########################
 ###############################################################
-def f_is_it_a_seed(v_seed_compressed):
+def is_seed(seed_in_string: str) -> bool:
     # =============================
     # INFORMATIONS :
     # -----------------------------
-    # UTILITE :
-    # Vérifie que v_seed_compressed est bien
+    # UTILITÉ :
+    # Vérifie que seed_in_string est bien
     # de la forme a + ":" + b + ":" + c + ":" + d
     # avec a,b,c,d str(integers)
     # -----------------------------
     # PRECONDITIONS :
-    # - v_seed_compressed : string
+    # - None
     # -----------------------------
     # DEPEND DE :
     # - None
@@ -260,55 +211,33 @@ def f_is_it_a_seed(v_seed_compressed):
     # UTILISE PAR :
     # - procedural_generation_2D.py
     # =============================
-    v_compteur_deux_points = 0
-    v_compteur_position = 0
-    v_nb_deux_points_suite = 1    # Initialisé à 1 pour contrer le cas où v_seed_compressed[0] = ":"
-    v_caracteres_possibles = ("0123456789-:")
+    colon_counter = 0
+    position_counter = 0
+    # number_of_following_colon est initialisé à 1 pour contrer le cas où seed_in_string[0] == ":"
+    number_of_following_colon = 1
 
     while (
-        v_compteur_position < len(v_seed_compressed)
-        and v_seed_compressed[v_compteur_position] in v_caracteres_possibles
-        and v_nb_deux_points_suite != 2
-        # Pour eviter un - au milieu d'un entier :
-        and not (v_compteur_position != 0 and v_seed_compressed[v_compteur_position] == "-" and v_seed_compressed[v_compteur_position - 1] != ":")
+        position_counter < len(seed_in_string)
+        and seed_in_string[position_counter] in ("0123456789-:")
+        and number_of_following_colon != 2
+        and not (  # Pour éviter un - au milieu d'un entier
+            position_counter != 0
+            and seed_in_string[position_counter] == "-"
+            and seed_in_string[position_counter - 1] != ":"
+        )
     ):
 
-        if v_seed_compressed[v_compteur_position] == ":":
-            v_compteur_deux_points += 1
-            v_nb_deux_points_suite += 1
+        if seed_in_string[position_counter] == ":":
+            colon_counter += 1
+            number_of_following_colon += 1
 
         else:
-            v_nb_deux_points_suite = 0
+            number_of_following_colon = 0
 
-        v_compteur_position += 1
+        position_counter += 1
 
     return (
-        v_compteur_position == len(v_seed_compressed)
-        and v_compteur_deux_points == 3
-        and v_nb_deux_points_suite == 0
+        position_counter == len(seed_in_string)
+        and colon_counter == 3
+        and number_of_following_colon == 0
     )
-
-
-###############################################################
-################### F_IS_IT_AN_INTEGER ########################
-###############################################################
-def f_is_it_an_integer(valeur):
-    # =============================
-    # INFORMATIONS :
-    # -----------------------------
-    # UTILITE :
-    # Regarde si valeur est un entier
-    # -----------------------------
-    # PRECONDITIONS :
-    # - NONE
-    # -----------------------------
-    # DEPEND DE :
-    # - None
-    # -----------------------------
-    # UTILISE PAR :
-    # - procedural_generation_2D.py
-    # =============================
-    try:
-        return int(valeur) == float(valeur)
-    except:
-        return False

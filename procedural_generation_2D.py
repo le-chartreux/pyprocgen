@@ -1,253 +1,228 @@
-# =============================
+# ==========================================================
 # INFORMATIONS :
 # -----------------------------
-# UTILITE :
+# UTILITÉ :
 # Corps du programme de génération
 # procédurale de carte en 2D
 # -----------------------------
-# PRECONDITIONS :
-# - Le reste du programme fonctionne et existe
+# PRÉCONDITIONS :
+# - Le reste du programme existe et fonctionne
 # -----------------------------
-# DEPEND DE :
+# DÉPEND DE :
 # - les packages appelés
 # -----------------------------
-# UTILISE PAR :
+# UTILISÉ PAR :
 # - None
-# =============================
+# ==========================================================
 
 import time
 import sys
-from packages.p_board_functions         import f_generate_seed, f_create_empty_board, f_print_progression, f_seed_to_string, f_string_to_seed, f_is_it_a_seed, f_is_it_an_integer
-from packages.p_decisional                 import f_genererate_box
-from packages.p_encyclopedia_functions    import f_encyclopedia_creation
-from packages.p_image_creation             import f_create_image_header, f_create_image_body
-from packages.p_trees_generation         import f_generate_trees
+from packages.p_board_functions import generate_seed, create_empty_board, seed_to_string, string_to_seed, is_seed
+from packages.p_decisional import genererate_box
+from packages.p_encyclopedia_functions import encyclopedia_creation
+from packages.p_image_creation import write_image_header, write_image_body
+from packages.p_trees_generation import generate_trees
+from packages.p_utilities import is_integer, is_float, print_progression
 
 
 ###############################################################
-################## CHOIX DE L UTILISATEUR #####################
+################## CHOIX DE L'UTILISATEUR #####################
 ###############################################################
 print("Hello, welcome to this 2D procedural map generator. \n")
 
 
 # ... de la taille de la map :
-print("- Enter the map's size :")
+print("- Enter the map's dimensions :")
 print("  Tip : enter integers between 100 and 5000")
 
 # Pour la largeur :
-v_nbx = None
-while not f_is_it_an_integer(v_nbx):
+width = None
+while not is_integer(width):
 
-    if v_nbx != None:
+    if width != None:
         print("  Enter an integer.")
 
-    v_nbx = input("  Length : ")
+    width = input("  Width : ")
 
-v_nbx = int(v_nbx)
+width = int(width)
 
 # Pour la hauteur :
-v_nby = None
-while not f_is_it_an_integer(v_nby):
+height = None
+while not is_integer(height):
 
-    if v_nby != None:
+    if height != None:
         print("  Enter an integer.")
 
-    v_nby = input("  Height : ")
+    height = input("  Height : ")
 
-v_nby = int(v_nby)
+height = int(height)
 
 print("")
 
 
 # ... du mode d'utilisation
-print("- Which mode do you want to use ?")
-print("  1 : Basic")
-print("  2 : Advanced")
-v_mode = None
-while v_mode != "1" and v_mode != "2":
-
-    if v_mode != None:
-        print("  Enter 1 or 2.")
-
-    v_mode = input("  My choice : ")
-
+advanced_mode = input("- Do you want to use advanced mode ? (y - N) : ")
 print("")
 
+###############################################################
+######################## MODE AVANCÉ ##########################
+###############################################################
+if advanced_mode == "y" or advanced_mode == "Y":
+
+    # ... du seed
+    choice = input("- Do you want to enter a seed ? (y / N) : ")
+
+    if choice == "y" or choice == "Y":
+        print("  Tip : a seed looks like a:b:c:d where a,b,c,d are integers")
+
+        seed_in_string = ""
+        while not is_seed(seed_in_string):
+
+            if seed_in_string != "":
+                print("  This is not a seed.")
+
+            seed_in_string = input("  Enter the seed : ")
+
+        seed = string_to_seed(seed_in_string)
+
+    else:
+        seed = generate_seed()
+
+    print("")
+
+    # ... de l'intensité de la variation
+    choice = input(
+        "- Do you want to change the intensity of the variation between two boxes ? (y / N) : ")
+
+    if choice == "y" or choice == "Y":
+        print("Tip : enter a number between 0.1 and 10, 1 is the basic choice.")
+        variation_intensity = None
+        while not is_float(variation_intensity):
+            variation_intensity = float(input("My choice : "))
+    else:
+        variation_intensity = 1.0
+
+    print("")
+
+    # ... de la présence d'arbres
+    choice = input("- Do you want trees on the map ? (Y / n) : ")
+    place_trees = (choice != "n" and choice != "N")
+
+    print("")
 
 ###############################################################
 ######################## MODE BASIQUE #########################
 ###############################################################
-if v_mode == "1":
+else:
 
-    v_seed = f_generate_seed()
-    v_intensite_variation = 1
-    v_placer_arbres = True
-
-
-###############################################################
-######################## MODE AVANCE ##########################
-###############################################################
-elif v_mode == "2":
-
-    # ... du seed
-    v_choix = None
-    while v_choix != "y" and v_choix != "n":
-
-        if v_choix != None:
-            print("Enter y or n.")
-
-        v_choix = input("- Do you want to enter a seed ? (y / n) : ")
-
-    if v_choix == "y":
-        print("  Tip : a seed looks like a:b:c:d where a,b,c,d are integers")
-
-        v_seed_in_string = ""
-        while not f_is_it_a_seed(v_seed_in_string):
-
-            if v_seed_in_string != "":
-                print("  This is not a seed.")
-
-            v_seed_in_string = input("  Enter the seed : ")
-
-        v_seed = f_string_to_seed(v_seed_in_string)
-
-    elif v_choix == "n":
-        v_seed = f_generate_seed()
-
-    print("")
-
-
-    # ... de l'intensité de la variation
-    v_choix = None
-    while v_choix != "y" and v_choix != "n":
-
-        if v_choix != None:
-            print("Enter y or n.")
-
-        v_choix = input("- Do you want to change the intensity of the variation between two boxes ? (y / n) : ")
-
-    if v_choix == "y":
-        print("Tip : enter a number between 0.1 and 10, 1 is the basic choice.")
-        v_intensite_variation = float(input("My choice : "))
-
-    elif v_choix == "n":
-        v_intensite_variation = 1
-
-    print("")
-
-
-    # ... de la présence d'arbres
-    v_choix = None
-    while v_choix != "y" and v_choix != "n":
-
-        if v_choix != None:
-            print("Enter y or n.")
-
-        v_choix = input("- Do you want trees on the map ? (y / n) : ")
-
-    v_placer_arbres = (v_choix == "y")
-
-    print("")
-
+    seed = generate_seed()
+    variation_intensity = 1.0
+    place_trees = True
 
 
 ###############################################################
 ######################### CONSTANTES ##########################
 ###############################################################
-v_time = time.time()
-v_afficher_progression = ("idlelib" not in sys.modules)
-print("Seed of the map : " + f_seed_to_string(v_seed) + "\n")
-v_encyclopedie = f_encyclopedia_creation()
+begin_time = time.time()
+print_progression_opt = ("idlelib" not in sys.modules)
+print("Seed of the map : " + seed_to_string(seed) + "\n")
+encyclopedia = encyclopedia_creation()
 
 ###############################################################
-############### CREATION DU HEADER DE L IMAGE #################
+############### CRÉATION DU HEADER DE L'IMAGE #################
 ###############################################################
-fi_fichier_dest = open("Generated_map.ppm", "w")
-f_create_image_header(fi_fichier_dest, v_nby, v_nbx, f_seed_to_string(v_seed))
+destination_file = open("Generated_map.ppm", "w")
+write_image_header(destination_file, height, width, seed_to_string(seed))
 
 
 ###############################################################
-############### CREATION DE L'IMAGE AVEC ARBRES ###############
+############### CRÉATION DE L'IMAGE AVEC ARBRES ###############
 ###############################################################
-if v_placer_arbres:
+if place_trees:
 
-    v_hauteur_chunk = v_encyclopedie.m_max_height_of_trees()
+    chunk_height = encyclopedia.max_height_of_trees()
 
     # Création du chunk initial
-    v_chunk_actuel = f_create_empty_board(v_nbx, v_hauteur_chunk)   # L'image se crée par chunk de v_nbx*v_hauteur_chunk
-                                                                    # pour économiser la RAM
-    for v_num_ligne in range(v_hauteur_chunk):
+    # L'image se crée par chunk de width*chunk_height
+    # pour économiser la RAM
+    actual_chunk = create_empty_board(width, chunk_height)
 
-        for v_num_colonne in range (v_nbx) :
+    for line_number in range(chunk_height):
 
-            v_chunk_actuel[v_num_ligne][v_num_colonne] = f_genererate_box(v_encyclopedie, v_num_colonne, v_num_ligne, v_seed, v_intensite_variation)
+        for column_number in range(width):
 
+            actual_chunk[line_number][column_number] = genererate_box(
+                encyclopedia, column_number, line_number, seed, variation_intensity)
 
     # Création des chunks intermédiaires
-    for v_num_chunk in range (int(v_nby / v_hauteur_chunk)) :
+    for chunk_number in range(int(height / chunk_height)):
 
-        v_num_chunk += 1
+        chunk_number += 1
 
-        v_chunk_suivant = f_create_empty_board(v_nbx, v_hauteur_chunk)
+        next_chunk = create_empty_board(width, chunk_height)
 
-        for v_num_ligne in range(v_hauteur_chunk):
+        for line_number in range(chunk_height):
 
-            for v_num_colonne in range (v_nbx) :
+            for column_number in range(width):
 
-                v_chunk_suivant[v_num_ligne][v_num_colonne] = f_genererate_box(v_encyclopedie, v_num_colonne, v_num_chunk * v_hauteur_chunk + v_num_ligne, v_seed, v_intensite_variation)
+                next_chunk[line_number][column_number] = genererate_box(
+                    encyclopedia,
+                    column_number,
+                    chunk_number * chunk_height + line_number,
+                    seed,
+                    variation_intensity
+                )
 
-        v_chunk_fusion = v_chunk_actuel + v_chunk_suivant
+        chunk_amalgamation = actual_chunk + next_chunk
 
-        f_generate_trees(v_chunk_fusion, v_encyclopedie)
+        generate_trees(chunk_amalgamation, encyclopedia)
 
-        v_chunk_actuel = v_chunk_fusion[:v_hauteur_chunk]
+        actual_chunk = chunk_amalgamation[:chunk_height]
 
-        f_create_image_body(fi_fichier_dest, v_chunk_actuel, v_encyclopedie)
+        write_image_body(destination_file, actual_chunk, encyclopedia)
 
-        v_chunk_actuel = v_chunk_fusion[v_hauteur_chunk:]
+        actual_chunk = chunk_amalgamation[chunk_height:]
 
-        if v_afficher_progression:
-            f_print_progression("Creation of the map :        ", ((v_num_chunk + 1) * v_hauteur_chunk) / v_nby)
+        if print_progression_opt:
+            print_progression("Creation of the map :        ",
+                              ((chunk_number + 1) * chunk_height) / height)
 
-        v_num_chunk -= 1
-
+        chunk_number -= 1
 
     # Création du dernier chunk
-    v_chunk_dernier = v_chunk_actuel[0:(v_nby % v_hauteur_chunk)]
+    last_chunk = actual_chunk[0:(height % chunk_height)]
 
-    f_create_image_body(fi_fichier_dest, v_chunk_dernier, v_encyclopedie)
+    write_image_body(destination_file, last_chunk, encyclopedia)
 
-    if v_afficher_progression:
-        f_print_progression("Creation of the map :        ", 1.0)
-
+    if print_progression_opt:
+        print_progression("Creation of the map :        ", 1.0)
 
 
 ###############################################################
-############### CREATION DE L'IMAGE SANS ARBRES ###############
+############### CRÉATION DE L'IMAGE SANS ARBRES ###############
 ###############################################################
 else:
 
-    for v_num_ligne in range(v_nby):    # L'image se crée ligne par ligne
+    for line_number in range(height):    # L'image se crée ligne par ligne
 
-        v_chunk = f_create_empty_board(v_nbx, 1)
+        chunk = create_empty_board(width, 1)
 
-        for v_num_colonne in range (v_nbx) :
+        for column_number in range(width):
 
-            v_chunk[0][v_num_colonne] = f_genererate_box(v_encyclopedie, v_num_colonne, v_num_ligne, v_seed, v_intensite_variation)
+            chunk[0][column_number] = genererate_box(
+                encyclopedia, column_number, line_number, seed, variation_intensity)
 
+        write_image_body(destination_file, chunk, encyclopedia)
 
-        f_create_image_body(fi_fichier_dest, v_chunk, v_encyclopedie)
-
-        if v_afficher_progression:
-            f_print_progression("Creation of the map :        ", (v_num_ligne + 1) / v_nby)
-
-
+        if print_progression_opt:
+            print_progression(
+                "Creation of the map :        ", (line_number + 1) / height)
 
 
 ###############################################################
 ################ AFFICHAGE DES MESSAGES DE FIN ################
 ###############################################################
-fi_fichier_dest.close()
+destination_file.close()
 print("")
 print("Done")
-print("Execution time : ",time.time() - v_time)
+print("Execution time : ", time.time() - begin_time)

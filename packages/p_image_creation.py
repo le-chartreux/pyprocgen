@@ -1,38 +1,35 @@
-# =============================
+# ==========================================================
 # INFORMATIONS SUR CE PACKAGE :
 # -----------------------------
-# UTILITE DE SON CONTENU :
-# Créer une image à partir du vecteur v_plateau
+# UTILITÉ DE SON CONTENU :
+# Créer une image à partir d'un tableau de Biomes
 # -----------------------------
 # CONTENU :
-# - f_create_image_header(v_haut, v_larg, v_seed)
-# - f_create_image_body(v_plateau)
+# - write_image_header(destination_file, height, width, seed)
+# - write_image_body(v_plateau)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
-# =============================
+# ==========================================================
 
 import os
-from .p_classes import cl_box
-from .p_board_functions import f_print_progression
+from .p_classes import Box, Encyclopedia
+from .p_utilities import print_progression
 
 
 ###############################################################
-################### F_CREATE_IMAGE_HEADER #####################
+##################### WRITE_IMAGE_HEADER ######################
 ###############################################################
-def f_create_image_header(fi_fichier_dest, v_haut, v_larg, v_seed):
+def write_image_header(destination_file, height: int, width: int, seed: str):
     # =============================
     # INFORMATIONS :
     # -----------------------------
-    # UTILITE :
-    # Crée le header de Generated_map.ppm
+    # UTILITÉ :
+    # Écrit le header de destination_file
     # selon le modèle d'un header de fichier ppm.
     # Si Generated_map.ppm existe déjà, il est
     # supprimé, sinon il est créé.
     # -----------------------------
-    # PRECONDITIONS :
-    # - v_seed : string
-    # -----------------------------
     # DEPEND DE :
     # - os
     # -----------------------------
@@ -40,44 +37,47 @@ def f_create_image_header(fi_fichier_dest, v_haut, v_larg, v_seed):
     # - procedural_generation_2D.py
     # =============================
 
-    fi_fichier_dest.write("P3\n")
-    fi_fichier_dest.write("# Seed : " + v_seed + "\n")
-    fi_fichier_dest.write(str(v_larg))
-    fi_fichier_dest.write("\n")
-    fi_fichier_dest.write(str(v_haut))
-    fi_fichier_dest.write("\n")
-    fi_fichier_dest.write("255\n")
-    fi_fichier_dest.write("\n")
+    destination_file.write("P3\n")
+    destination_file.write("# Seed : " + seed + "\n")
+    destination_file.write(str(width))
+    destination_file.write("\n")
+    destination_file.write(str(height))
+    destination_file.write("\n")
+    destination_file.write("255\n")
+    destination_file.write("\n")
 
 
 ###############################################################
-##################### F_CREATE_IMAGE_BODY #####################
+####################### WRITE_IMAGE_BODY ######################
 ###############################################################
 
-def f_create_image_body(fi_fichier_dest, v_plateau, v_encyclopedie):
+def write_image_body(destination_file, board: list, encyclopedia: Encyclopedia):
     # =============================
     # INFORMATIONS :
     # -----------------------------
-    # UTILITE :
-    # Place à la suite de Generated_map.ppm la couleur
-    # de chaque case de v_plateau
-    # -----------------------------
-    # PRECONDITIONS :
-    # - v_seed : not null
+    # UTILITÉ :
+    # Place à la suite de destination_file la couleur
+    # de chaque case de board
     # -----------------------------
     # DEPEND DE :
     # - os
-    # - p_classes.cl_box
+    # - p_classes.Box
+    # - p_classes.Encyclopedia
     # -----------------------------
     # UTILISE PAR :
     # - procedural_generation_2D.py
     # =============================
 
-    for v_num_ligne in range(len(v_plateau)):
+    for line in range(len(board)):
 
-        for v_num_colonnes in range(len(v_plateau[0])):
+        for column in range(len(board[0])):
 
-            fi_fichier_dest.write(v_plateau[v_num_ligne][v_num_colonnes].m_get_couleur(v_encyclopedie))
-            fi_fichier_dest.write(" ")
+            color = board[line][column].get_color(encyclopedia)
+            if color == None:
+                color = "0 0 0"
+            destination_file.write(
+                color
+            )
+            destination_file.write(" ")
 
-        fi_fichier_dest.write("\n")
+        destination_file.write("\n")

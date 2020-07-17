@@ -1,170 +1,201 @@
-# =============================
+# ==========================================================
 # INFORMATIONS SUR CE PACKAGE :
 # -----------------------------
-# UTILITE DE SON CONTENU :
+# UTILITÉ DE SON CONTENU :
 # Génère les arbres dans le plateau
 # -----------------------------
 # CONTENU :
-# - f_generate_trees(v_plateau)
-# - f_possible_to_place_tree(v_plateau, v_encyclopedie, v_x, v_y)
-# - f_put_tree(v_plateau, v_encyclopedie, v_x, v_y)
+# - generate_trees(board)
+# - possible_to_place_tree(board, encyclopedia, x, y)
+# - put_tree(board, encyclopedia, x, y)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
-# =============================
+# ==========================================================
 
-from .p_classes import cl_box, cl_tree
-from .p_board_functions import f_print_progression
+import random
+from .p_classes import Box, Tree, Encyclopedia
+from .p_utilities import print_progression
+
 
 ###############################################################
-###################### F_GENERATE_TREE ########################
+####################### GENERATE_TREES ########################
 ###############################################################
-def f_generate_trees(v_plateau, v_encyclopedie):
+def generate_trees(board: list, encyclopedia: Encyclopedia) -> list:
     # =============================
     # INFORMATIONS :
     # -----------------------------
-    # UTILITE :
+    # UTILITÉ :
     # Place les arbres dans v_plateau
     # -----------------------------
     # PRECONDITIONS :
-    # - v_encyclopedie : cl_encyclopedia dont le dictionnaire de
+    # - encyclopedia a un dictionnaire de
     #   biomes comprend une liste d'au moins un arbre par biome
     # -----------------------------
-    # DEPEND DE :
-    # - p_classes.cl_box
-    # - p_classes.cl_tree
+    # DÉPEND DE :
+    # - p_classes.Box
+    # - p_classes.Tree
+    # - p_classes.Encyclopedia
+    # - random
+    # - p_trees_generation.possible_to_place_tree()
+    # - p_trees_generation.put_tree()
     # -----------------------------
-    # UTILISE PAR :
+    # UTILISÉ PAR :
     # - procedural_generation_2D.py
     # =============================
-    import random
+    width = len(board[0])
+    # Car on ne traite que les arbres de la premiere partie :
+    height = int(len(board) / 2)
 
+    for line in range(height):
 
-    v_nbx = len(v_plateau[0])
-    v_nby = int(len(v_plateau) / 2)
+        for column in range(width):
 
-    for v_num_ligne in range(v_nby):
+            if board[line][column].biome_name != "tree":
 
-        for v_num_colonne in range(v_nbx):
+                # Creation d'une liste à ordre aléatoire des arbres possibles
+                trees_list = list(
+                    encyclopedia.biomes[board[line][column].biome_name].trees
+                )
 
-            if v_plateau[v_num_ligne][v_num_colonne].nom_biome != "Tree":
+                random.shuffle(trees_list)
 
-                # Creation d'une liste à ordre aleatoire des arbres possibles
-                v_liste_arbres = list(v_encyclopedie.biomes[v_plateau[v_num_ligne][v_num_colonne].nom_biome].vect_arbres)
+                counter = 0
+                placed = False
 
-                random.shuffle(v_liste_arbres)
+                while counter < len(trees_list) and not placed:
 
-                v_i = 0
+                    if (
+                        possible_to_place_tree(
+                            board,
+                            trees_list[counter],
+                            column,
+                            line
+                        )
+                        and random.random() < trees_list[counter].spawn_probability
+                    ):
 
-                v_pose = False
+                        put_tree(
+                            board,
+                            encyclopedia,
+                            trees_list[counter],
+                            column,
+                            line
+                        )
 
-                while v_i < len(v_liste_arbres) and not v_pose:
+                        placed = True
 
-                    if f_possible_to_place_tree(v_plateau, v_liste_arbres[v_i], v_num_colonne, v_num_ligne) and random.random() < v_liste_arbres[v_i].prob_arbre :
+                    counter += 1
 
-                        f_put_tree(v_plateau, v_encyclopedie, v_liste_arbres[v_i], v_num_colonne, v_num_ligne)
-
-                        v_pose = True
-
-                    v_i += 1
-
-
-    return v_plateau
+    return board
 
 
 ###############################################################
-################# F_POSSIBLE_TO_PLACE_TREE ####################
+################### POSSIBLE_TO_PLACE_TREE ####################
 ###############################################################
-def f_possible_to_place_tree(v_plateau, v_arbre, v_x, v_y):
+def possible_to_place_tree(board: list, tree: Tree, x: int, y: int):
     # =============================
     # INFORMATIONS :
     # -----------------------------
-    # UTILITE :
+    # UTILITÉ :
     # Renvoie si il est possible de placer l'arbre
     # -----------------------------
-    # PRECONDITIONS :
-    # - v_arbre : cl_tree
-    # - v_x : integer, <= len(v_plateau[0])
-    # - v_y : integer, <= len(v_plateau)
-    # -----------------------------
     # DEPEND DE :
-    # - p_classes.cl_box
-    # - p_classes.cl_tree
+    # - p_classes.Box
+    # - p_classes.Tree
     # - random
     # -----------------------------
     # UTILISE PAR :
     # - p_trees_creation.f_generate_trees()
     # =============================
-    import random
 
-    v_type_case_origine = v_plateau[v_y][v_x].nom_biome
+    if x >= len(board[0]) or y >= len(board):
+        print("Warning from p_trees_generation.possible_to_place_tree:")
+        print("Attempting to look if a tree can be put outside the board.")
+        return False
 
+    type_of_source_box = board[y][x].biome_name
+
+    tree_height = tree.get_height()
+    tree_width = tree.get_width()
+
+    # Traitement des cas où l'arbre est en bordure d'image :
+    # on coupe le modèle à la bordure (pour ne pas placer de case en dehors du tableau)
+
+    if y + tree_height > len(board):
+        tree_height = len(board) - y
+
+    if x + tree_width > len(board[0]):
+        tree_width = len(board[0]) - x
+
+    line = 0
+    column = 0
     possible = True
 
+    while line < tree_height and possible:
 
-    v_larg_arbre = v_arbre.m_get_width()
-    v_haut_arbre = v_arbre.m_get_height()
+        while column < tree_width and possible:
 
+            possible = (
+                board[y + line][x + column].biome_name == type_of_source_box
+                and board[y + line][x + column].tree_name == ""
+            )
+            column += 1
 
-    if v_y + v_haut_arbre > len(v_plateau):
-        v_haut_arbre = len(v_plateau) - v_y
-
-    if v_x + v_larg_arbre > len(v_plateau[0]):
-        v_larg_arbre = len(v_plateau[0]) - v_x
-
-
-    for v_num_ligne in range(v_haut_arbre):
-
-        for v_num_colonne in range(v_larg_arbre):
-
-            if v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_biome != v_type_case_origine or v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_arbre != "":
-                possible = False
-
+        line += 1
+        column = 0
 
     return possible
 
 
 ###############################################################
-######################### F_PUT_TREE ##########################
+######################### PUT_TREE ############################
 ###############################################################
-def f_put_tree(v_plateau, v_encyclopedie, v_arbre, v_x, v_y):
+def put_tree(board: list, encyclopedia: Encyclopedia, tree: Tree, x, y):
     # =============================
     # INFORMATIONS :
     # -----------------------------
-    # UTILITE :
-    # Place un arbre depuis le point v_plateau[v_y][v_x]
+    # UTILITÉ :
+    # Place un arbre depuis le point board[y][x]
     # -----------------------------
-    # PRECONDITIONS :
-    # - v_arbre est un objet de cl_tree
-    # - v_x : integer, <= len(v_plateau[0])
-    # - v_y : integer, <= len(v_plateau)
+    # DÉPEND DE :
+    # - p_classes.Box
+    # - p_classes.Tree
+    # - p_classes.Encyclopedia
     # -----------------------------
-    # DEPEND DE :
-    # - p_classes.cl_box
-    # - p_classes.cl_tree
-    # -----------------------------
-    # UTILISE PAR :
+    # UTILISÉ PAR :
     # - p_trees_creation.f_generate_trees()
     # =============================
 
-    v_haut_arbre = v_arbre.m_get_height()
-    v_larg_arbre = v_arbre.m_get_width()
+    if x >= len(board[0]) or y >= len(board):
+        print("Warning from p_trees_generation.put_tree:")
+        print("  Attempting to put a tree outside the board: ")
+        print("    X:", x)
+        print("    Y:", y)
+        print("    Width of the board:", len(board[0]))
+        print("    Height of the board:", len(board))
 
-    # Traitement des cas où l'arbre est en bordure d'image :
-    # on coupe le modèle à la bordure (pour ne pas placer de case en dehors du tableau)
-    if v_y + v_haut_arbre > len(v_plateau):
-        v_haut_arbre = len(v_plateau) - v_y
+    else:
 
-    if v_x + v_larg_arbre > len(v_plateau[0]):
-        v_larg_arbre = len(v_plateau[0]) - v_x
+        tree_height = tree.get_height()
+        tree_width = tree.get_width()
 
-    # Placement de l'arbre
-    for v_num_ligne in range(v_haut_arbre):
+        # Traitement des cas où l'arbre est en bordure d'image :
+        # on coupe le modèle à la bordure (pour ne pas placer de case en dehors du tableau)
 
-        for v_num_colonne in range(v_larg_arbre):
+        if y + tree_height > len(board):
+            tree_height = len(board) - y
 
-            if v_arbre.body[v_num_ligne][v_num_colonne] != None :
+        if x + tree_width > len(board[0]):
+            tree_width = len(board[0]) - x
 
-                v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].nom_arbre = v_arbre.nom_arbre
-                v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].position_arbre_x = v_num_colonne
-                v_plateau[v_y + v_num_ligne][v_x + v_num_colonne].position_arbre_y = v_num_ligne
+        # Placement de l'arbre
+        for line in range(tree_height):
+
+            for column in range(tree_width):
+
+                if tree.body[line][column] != None:
+
+                    board[y + line][x + column].tree_name = tree.name
+                    board[y + line][x + column].position_in_tree_x = column
+                    board[y + line][x + column].position_in_tree_y = line
