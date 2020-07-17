@@ -1,6 +1,10 @@
-# Procedural_generation_2D
+# pyprocgen
 
-Just a 2D procedural map generator made in Python3 for fun.
+Just a procedural map generator made in Python3 for fun.
+
+## EXAMPLE OF MAP GENERATED:
+
+![Example of map generated - if not show look at concept-art/example_of_map.png](concept-art/example_of_map.png)
 
 ## WHAT IT DOES:
 
@@ -8,12 +12,13 @@ For now it only creates a .ppm picture of a map with procedural generation using
 
 ## HOW TO USE IT ?
 
-1. Run procedural_generation_2D.py with Python3
-2. Enter the width then the height of the map you want, in pixels
-3. Choose the mode you want to use
-4. Wait during processing
-5. Open Generated_map.ppm with your image manager (if it doesn't work then use your Office editor to open it)
-6. Enjoy :)
+1. Download the code
+2. Run pyprocgen.py with Python3
+3. Enter the width then the height of the map you want, in pixels
+4. Choose the mode you want to use and change options (optional)
+5. Wait during processing
+6. Open generated_map.ppm with your image manager, that will be create on the current folder (if it doesn't open then use your Office editor to open it)
+7. Enjoy :)
 
 ## LANGUAGE:
 
