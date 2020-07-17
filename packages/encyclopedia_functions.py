@@ -12,7 +12,7 @@
 # - procedural_generation_2D.py
 # ==========================================================
 
-from .p_classes import Biome, Tree, Encyclopedia
+from packages.short_class_import import Biome, Tree, Encyclopedia
 
 ###############################################################
 ######################### add_in_dict #########################
@@ -28,10 +28,10 @@ def add_in_dict(biomes_dict: dict, biome: Biome):
     # biome.name comme référence
     # -----------------------------
     # DÉPEND DE :
-    # - p_classes.Biome
+    # - classes.Biome
     # -----------------------------
     # UTILISÉ PAR :
-    # - p_encyclopedia_functions.encyclopedia_creation()
+    # - encyclopedia_functions.encyclopedia_creation()
     # =============================
 
     biomes_dict[biome.name] = biome
@@ -48,10 +48,10 @@ def encyclopedia_creation() -> Encyclopedia:
     # Remplie le dictionnaire de l'encyclopédie puis la crée
     # -----------------------------
     # DÉPEND DE :
-    # - p_encyclopedia_functions.add_in_dict()
-    # - p_classes.Encyclopedia
-    # - p_classes.Biome
-    # - p_classes.Tree
+    # - encyclopedia_functions.add_in_dict()
+    # - classes.Encyclopedia
+    # - classes.Biome
+    # - classes.Tree
     # -----------------------------
     # UTILISÉ PAR :
     # - procedural_generation_2D.py

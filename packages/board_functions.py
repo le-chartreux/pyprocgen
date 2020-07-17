@@ -6,17 +6,20 @@
 # et gérer les seed
 # -----------------------------
 # CONTENU :
-# - create_empty_board(co_nbx,co_nby)
-# - display_board(v_plateau)
+# - create_empty_board(width, height)
+# - display_board(board)
 #
 # - generate_seed()
-# - seed_to_string(v_seed)
-# - string_to_seed(v_seed_compressed)
-# - is_seed(v_seed_compressed)
+# - seed_to_string(seed)
+# - string_to_seed(seed_in_string)
+# - is_seed(seed_in_string)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
 # ==========================================================
+
+import random
+
 
 ###############################################################
 ##################### CREATE_EMPTY_BOARD ######################
@@ -104,7 +107,6 @@ def generate_seed() -> str:
     # UTILISÉ PAR :
     # - procedural_generation_2D.py
     # =============================
-    import random
 
     seed = {}
 
@@ -139,14 +141,14 @@ def seed_to_string(seed: dict) -> str:
     # - procedural_generation_2D.py
     # =============================
 
-    v_seed_in_string = (
+    seed_in_string = (
         str(seed["Tx"])
         + ":" + str(seed["Ty"])
         + ":" + str(seed["Px"])
         + ":" + str(seed["Py"])
     )
 
-    return v_seed_in_string
+    return seed_in_string
 
 
 ###############################################################

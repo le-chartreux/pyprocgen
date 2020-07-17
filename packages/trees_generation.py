@@ -14,8 +14,7 @@
 # ==========================================================
 
 import random
-from .p_classes import Box, Tree, Encyclopedia
-from .p_utilities import print_progression
+from packages.short_class_import import Box, Tree, Encyclopedia
 
 
 ###############################################################
@@ -26,19 +25,19 @@ def generate_trees(board: list, encyclopedia: Encyclopedia) -> list:
     # INFORMATIONS :
     # -----------------------------
     # UTILITÉ :
-    # Place les arbres dans v_plateau
+    # Place les arbres dans board
     # -----------------------------
     # PRECONDITIONS :
     # - encyclopedia a un dictionnaire de
     #   biomes comprend une liste d'au moins un arbre par biome
     # -----------------------------
     # DÉPEND DE :
-    # - p_classes.Box
-    # - p_classes.Tree
-    # - p_classes.Encyclopedia
+    # - classes.Box
+    # - classes.Tree
+    # - classes.Encyclopedia
     # - random
-    # - p_trees_generation.possible_to_place_tree()
-    # - p_trees_generation.put_tree()
+    # - trees_generation.possible_to_place_tree()
+    # - trees_generation.put_tree()
     # -----------------------------
     # UTILISÉ PAR :
     # - procedural_generation_2D.py
@@ -101,12 +100,12 @@ def possible_to_place_tree(board: list, tree: Tree, x: int, y: int):
     # Renvoie si il est possible de placer l'arbre
     # -----------------------------
     # DEPEND DE :
-    # - p_classes.Box
-    # - p_classes.Tree
+    # - classes.Box
+    # - classes.Tree
     # - random
     # -----------------------------
     # UTILISE PAR :
-    # - p_trees_creation.f_generate_trees()
+    # - trees_creation.generate_trees()
     # =============================
 
     if x >= len(board[0]) or y >= len(board):
@@ -159,12 +158,12 @@ def put_tree(board: list, encyclopedia: Encyclopedia, tree: Tree, x, y):
     # Place un arbre depuis le point board[y][x]
     # -----------------------------
     # DÉPEND DE :
-    # - p_classes.Box
-    # - p_classes.Tree
-    # - p_classes.Encyclopedia
+    # - classes.Box
+    # - classes.Tree
+    # - classes.Encyclopedia
     # -----------------------------
     # UTILISÉ PAR :
-    # - p_trees_creation.f_generate_trees()
+    # - trees_creation.generate_trees()
     # =============================
 
     if x >= len(board[0]) or y >= len(board):

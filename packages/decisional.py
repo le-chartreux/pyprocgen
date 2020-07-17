@@ -13,8 +13,8 @@
 # - procedural_generation_2D.py
 # ==========================================================
 
-from .p_classes import Encyclopedia, Box
-from .p_perlin_noise import SimplexNoise
+from packages.short_class_import import Encyclopedia, Box
+from packages.perlin_noise import SimplexNoise
 
 
 ###############################################################
@@ -32,8 +32,8 @@ def genererate_box(encyclopedia: Encyclopedia, x: int, y: int, seed: dict, varia
     # - seed["Px"], seed["Py"] : integers not null
     # -----------------------------
     # DEPEND DE :
-    # - p_perlin_noise.py
-    # - p_decisional.choice_biome()
+    # - perlin_noise.py
+    # - decisional.choice_biome()
     # -----------------------------
     # UTILISE PAR :
     # - procedural_generation_2D.py
@@ -78,11 +78,11 @@ def biome_choice(encyclopedia: Encyclopedia, temperature: float, pluviometry: fl
     # et de pluviométrie correspondantes parmis ceux de l'encyclopédie
     # -----------------------------
     # DEPEND DE :
-    # - p_classes.biome
-    # - p_classes.encyclopedia
+    # - classes.biome
+    # - classes.encyclopedia
     # -----------------------------
     # UTILISÉ PAR :
-    # - p_decisional.generate_box()
+    # - decisional.generate_box()
     # =============================
 
     for biome in encyclopedia.biomes.values():

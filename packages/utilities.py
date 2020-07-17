@@ -23,12 +23,6 @@ def is_integer(value) -> bool:
     # UTILITÉ :
     # Regarde si value est un entier
     # -----------------------------
-    # PRÉCONDITIONS :
-    # - None
-    # -----------------------------
-    # DEPEND DE :
-    # - None
-    # -----------------------------
     # UTILISÉ PAR :
     # - procedural_generation_2D.py
     # =============================
@@ -48,12 +42,6 @@ def is_float(value) -> bool:
     # UTILITÉ :
     # Regarde si value est un float
     # -----------------------------
-    # PRÉCONDITIONS :
-    # - None
-    # -----------------------------
-    # DEPEND DE :
-    # - None
-    # -----------------------------
     # UTILISÉ PAR :
     # - procedural_generation_2D.py
     # =============================
@@ -67,7 +55,7 @@ def is_float(value) -> bool:
 ###############################################################
 ##################### PRINT_PROGRESSION #######################
 ###############################################################
-def print_progression(text: str, progression: float):
+def print_progress(text: str, progression: float):
     # =============================
     # INFORMATIONS :
     # -----------------------------
@@ -78,23 +66,20 @@ def print_progression(text: str, progression: float):
     # PRECONDITIONS :
     # - progression compris entre 0 et 1
     # -----------------------------
-    # DEPEND DE :
-    # - None
-    # -----------------------------
     # UTILISE PAR :
     # - procedural_generation_2D.py
     # =============================
 
-    v_progression10 = int(progression * 30)
-    v_barre_progression = ""
+    progress10 = int(progression * 30)
+    progress_bar = ""
 
     # Remplissage de la barre de progression des "%" :
-    for _ in range(v_progression10):
-        v_barre_progression += "#"
+    for _ in range(progress10):
+        progress_bar += "#"
 
     # Remplissage de la barre de progression de "." sur la partie restante :
-    for _ in range(30 - v_progression10):
-        v_barre_progression += "."
+    for _ in range(30 - progress10):
+        progress_bar += "."
 
     # Ajout de zeros après la virgule pour les floats trop cours
     # (sinon le \r ne réécrit pas tout) :
@@ -105,5 +90,12 @@ def print_progression(text: str, progression: float):
         progression_str = str(round(progression * 100, 2))
 
     # Affichage de la progression :
-    print(text + "[" + v_barre_progression + "] " +
-          progression_str + " %", end="\r")
+    print(
+        text +
+        "[" +
+        progress_bar +
+        "] " +
+        progression_str +
+        " %",
+        end="\r"
+    )

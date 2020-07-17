@@ -6,15 +6,14 @@
 # -----------------------------
 # CONTENU :
 # - write_image_header(destination_file, height, width, seed)
-# - write_image_body(v_plateau)
+# - write_image_body(board)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
 # ==========================================================
 
 import os
-from .p_classes import Box, Encyclopedia
-from .p_utilities import print_progression
+from packages.short_class_import import Box, Encyclopedia
 
 
 ###############################################################
@@ -61,8 +60,8 @@ def write_image_body(destination_file, board: list, encyclopedia: Encyclopedia):
     # -----------------------------
     # DEPEND DE :
     # - os
-    # - p_classes.Box
-    # - p_classes.Encyclopedia
+    # - classes.Box
+    # - classes.Encyclopedia
     # -----------------------------
     # UTILISE PAR :
     # - procedural_generation_2D.py
