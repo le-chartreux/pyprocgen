@@ -29,7 +29,7 @@ For now it only creates a .ppm picture of a map with procedural generation using
 
 -   The [Perlin noise program for Python3 I used](https://github.com/caseman/noise)
 
--   The [origin of my biome decision model](https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Lifezones_Pengo.svg/1200px-Lifezones_Pengo.svg.png,), from [this](https://en.wikipedia.org/wiki/Biome) Wikipedia page
+-   The [origin of my biome decision model](https://en.wikipedia.org/wiki/Biome#/media/File:Lifezones_Pengo.svg), from [this](https://en.wikipedia.org/wiki/Biome) Wikipedia page
 
 ## SPECIAL THANKS:
 
