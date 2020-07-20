@@ -52,5 +52,7 @@ class Biome:
         # UTILISE PAR :
         # - p_decisional.f_choice_biome()
         # =============================
-        return (self.temperature_min <= temperature <= self.temperature_max
-                and self.pluviometry_min <= pluviometry < self.pluviometry_max)
+        return (
+            self.temperature_min <= temperature <= self.temperature_max
+            and self.pluviometry_min <= pluviometry < self.pluviometry_max
+        )
