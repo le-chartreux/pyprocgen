@@ -12,7 +12,7 @@
 # - procedural_generation_2D.py
 # ==========================================================
 
-from packages.short_class_import import Biome, Tree, Encyclopedia
+from packages.short_class_import import Biome, Tree, Encyclopedia, Color
 
 ###############################################################
 ######################### add_in_dict #########################
@@ -77,17 +77,17 @@ def encyclopedia_creation() -> Encyclopedia:
         name="desert_tree_1",
         spawn_probability=0.005,
         body=[
-            [None,          "106 82 18",   None,
-                None,          "106 82 18"],
+            [None, Color(106, 82, 18), None, None, Color(106, 82, 18)],
 
-            ["106 82 18",   "142 93 60",   None,          "127 85 63",   None],
+            [Color(106, 82, 18), Color(106, 82, 18),
+             None, Color(106, 82, 18), None],
 
-            [None,          None,          "142 93 60",
-                "142 93 60",   "106 82 18"],
+            [None, None, Color(142, 93, 60), Color(
+                142, 93, 60), Color(106, 82, 18)],
 
-            [None,          "106 82 18",   "142 93 60",   None,          None],
+            [None, Color(106, 82, 18), Color(142, 93, 60), None, None],
 
-            [None,          None,          "142 93 60",   None,          None]
+            [None, None, Color(142, 93, 60), None, None]
         ]
     )
 
@@ -103,7 +103,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-4,
             pluviometry_max=-3,
 
-            ground_color="193 165 133",
+            ground_color=Color(193, 165, 133),
 
             trees=[
                 desert_tree_1
@@ -121,7 +121,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-4,
             pluviometry_max=-3,
 
-            ground_color="247 210 165",
+            ground_color=Color(247, 210, 165),
 
             trees=[
                 desert_tree_1
@@ -139,7 +139,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-4,
             pluviometry_max=-3,
 
-            ground_color="207 151 100",
+            ground_color=Color(207, 151, 100),
 
             trees=[
                 desert_tree_1
@@ -156,11 +156,11 @@ def encyclopedia_creation() -> Encyclopedia:
         name="desert_scub_tree_1",
         spawn_probability=0.007,
         body=[
-            ["156 152 107", "156 152 107", None],
+            [Color(156, 152, 107), Color(156, 152, 107), None],
 
-            ["156 152 107", "118 115 98",  "156 152 107"],
+            [Color(156, 152, 107), Color(118, 115, 98), Color(156, 152, 107)],
 
-            [None,          "118 115 98",  None]
+            [None, Color(118, 115, 98), None]
         ]
     )
 
@@ -168,11 +168,11 @@ def encyclopedia_creation() -> Encyclopedia:
         name="desert_scub_tree_2",
         spawn_probability=0.015,
         body=[
-            [None,          "156 152 107", None],
+            [None, Color(156, 152, 107), None],
 
-            ["156 152 107", "118 115 98",  "156 152 107"],
+            [Color(156, 152, 107), Color(118, 115, 98), Color(156, 152, 107)],
 
-            [None,          "118 115 98",  None]
+            [None, Color(118, 115, 98), None]
         ]
     )
 
@@ -180,7 +180,7 @@ def encyclopedia_creation() -> Encyclopedia:
         name="desert_scub_bush_1",
         spawn_probability=0.005,
         body=[
-            ["118 115 98"]
+            [Color(118, 115, 98)]
         ]
     )
 
@@ -196,7 +196,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-3,
             pluviometry_max=-2,
 
-            ground_color="187 158 126",
+            ground_color=Color(187, 158, 126),
 
             trees=[
                 desert_scub_tree_1,
@@ -216,7 +216,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-3,
             pluviometry_max=-2,
 
-            ground_color="251 224 181",
+            ground_color=Color(251, 224, 181),
 
             trees=[
                 desert_scub_tree_1,
@@ -236,7 +236,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-3,
             pluviometry_max=-2,
 
-            ground_color="193 161 122",
+            ground_color=Color(193, 161, 122),
 
             trees=[
                 desert_scub_tree_1,
@@ -256,23 +256,20 @@ def encyclopedia_creation() -> Encyclopedia:
         name="dry_forest_tree_1",
         spawn_probability=0.015,
         body=[
-            [None,          None,          "121 105 56",
-                None,          None,          None,          None],
+            [None, None, Color(121, 105, 56), None, None, None, None],
 
-            [None,          None,          None,          "133 103 69",
-                None,          "133 103 69",  "121 105 56"],
+            [None, None, None, Color(133, 103, 69), None, Color(
+                133, 103, 69), Color(121, 105, 56)],
 
-            ["121 105 56",  "133 103 69",  "133 103 69",
-                "133 103 69",  "133 103 69",  None,          None],
+            [Color(121, 105, 56), Color(133, 103, 69), Color(133, 103, 69),
+             Color(133, 103, 69), Color(133, 103, 69), None, None],
 
-            [None,          "121 105 56",  None,
-                "133 103 69",  None,          None,          None],
+            [None, Color(121, 105, 56), None, Color(
+                133, 103, 69), None, None, None],
 
-            [None,          None,          None,
-                "133 103 69",  None,          None,          None],
+            [None, None, None, Color(133, 103, 69), None, None, None],
 
-            [None,          None,          None,
-                "133 103 69",  None,          None,          None]
+            [None, None, None, Color(133, 103, 69), None, None, None]
         ]
     )
 
@@ -280,14 +277,17 @@ def encyclopedia_creation() -> Encyclopedia:
         name="dry_forest_tree_2",
         spawn_probability=0.01,
         body=[
-            [None,          "121 105 56",  None,
-                "133 103 69",  "121 105 56"],
+            [None, Color(121, 105, 56), None, Color(
+                133, 103, 69), Color(121, 105, 56)],
 
-            ["121 105 56",  "133 103 69",  None,          "133 103 69",  None],
+            [Color(121, 105, 56), Color(133, 103, 69),
+             None, Color(133, 103, 69), None],
 
-            [None,          None,          "133 103 69",  None,          None],
+            [None, None, Color(
+                133, 103, 69), None, None],
 
-            [None,          None,          "133 103 69",  None,          None]
+            [None, None, Color(
+                133, 103, 69), None, None]
         ]
     )
 
@@ -295,18 +295,23 @@ def encyclopedia_creation() -> Encyclopedia:
         name="dry_forest_tree_3",
         spawn_probability=0.005,
         body=[
-            [None,          None,          None,          "121 105 56",  None],
+            [None, None, None,
+                Color(121, 105, 56), None],
 
-            ["121 105 56",  None,          None,
-                "133 103 69",  "121 105 56"],
+            [Color(121, 105, 56), None, None,
+                Color(133, 103, 69), Color(121, 105, 56)],
 
-            [None,          "133 103 69",  "133 103 69",  "133 103 69",  None],
+            [None, Color(133, 103, 69), Color(
+                133, 103, 69), Color(133, 103, 69), None],
 
-            [None,          None,          "133 103 69",  None,          None],
+            [None, None, Color(
+                133, 103, 69), None, None],
 
-            [None,          None,          "133 103 69",  None,          None],
+            [None, None, Color(
+                133, 103, 69), None, None],
 
-            [None,          None,          "133 103 69",  None,          None]
+            [None, None, Color(
+                133, 103, 69), None, None]
         ]
     )
 
@@ -314,7 +319,7 @@ def encyclopedia_creation() -> Encyclopedia:
         name="dry_forest_bush_1",
         spawn_probability=0.0005,
         body=[
-            ["121 105 56"]
+            [Color(121, 105, 56)]
         ]
     )
 
@@ -330,7 +335,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=0,
             pluviometry_max=1,
 
-            ground_color="177 148 108",
+            ground_color=Color(177, 148, 108),
 
             trees=[
                 dry_forest_tree_1,
@@ -350,7 +355,7 @@ def encyclopedia_creation() -> Encyclopedia:
             temperature_max=2,
             pluviometry_min=-1,
             pluviometry_max=0,
-            ground_color="167 138 104",
+            ground_color=Color(167, 138, 104),
 
             trees=[
                 dry_forest_tree_1,
@@ -372,15 +377,18 @@ def encyclopedia_creation() -> Encyclopedia:
         name="moist_forest_tree_1",
         spawn_probability=0.1,
         body=[
-            [None,          "54 62 15",    "34 46 10",    "34 46 10",    None],
+            [None, Color(54, 62, 15), Color(34, 46, 10),
+             Color(34, 46, 10), None],
 
-            ["65 71 23",    "34 46 10",    "34 46 10",    "34 46 10",    None],
+            [Color(65, 71, 23), Color(34, 46, 10), Color(
+                34, 46, 10), Color(34, 46, 10), None],
 
-            ["34 46 10",    "34 46 10",    "34 46 10",    "34 46 10",    "34 46 10"],
+            [Color(34, 46, 10), Color(34, 46, 10), Color(
+                34, 46, 10), Color(34, 46, 10), Color(34, 46, 10)],
 
-            [None,          None,          "58 45 26",    None,          None],
+            [None, None, Color(58, 45, 26), None, None],
 
-            [None,          None,          "58 45 26",    None,          None]
+            [None, None, Color(58, 45, 26), None, None]
         ]
     )
 
@@ -388,19 +396,23 @@ def encyclopedia_creation() -> Encyclopedia:
         name="moist_forest_tree_2",
         spawn_probability=0.05,
         body=[
-            [None,          "34 46 10",    "34 46 10",    "34 46 10",    None],
+            [None, Color(34, 46, 10), Color(34, 46, 10),
+             Color(34, 46, 10), None],
 
-            ["65 71 23",    "34 46 10",    "34 46 10",    "34 46 10",    "34 46 10"],
+            [Color(65, 71, 23), Color(34, 46, 10), Color(
+                34, 46, 10), Color(34, 46, 10), Color(34, 46, 10)],
 
-            [None,          "34 46 10",    "34 46 10",    "34 46 10",    None],
+            [None, Color(34, 46, 10), Color(34, 46, 10),
+             Color(34, 46, 10), None],
 
-            [None,          "34 46 10",    "58 45 26",    "34 46 10",    None],
+            [None, Color(34, 46, 10), Color(58, 45, 26),
+             Color(34, 46, 10), None],
 
-            [None,          None,          "58 45 26",    None,          None],
+            [None, None, Color(58, 45, 26), None, None],
 
-            [None,          None,          "58 45 26",    None,          None],
+            [None, None, Color(58, 45, 26), None, None],
 
-            [None,          None,          "58 45 26",    None,          None]
+            [None, None, Color(58, 45, 26), None, None]
         ]
     )
 
@@ -408,15 +420,15 @@ def encyclopedia_creation() -> Encyclopedia:
         name="moist_forest_tree_3",
         spawn_probability=0.07,
         body=[
-            [None,          "54 62 15",    None],
+            [None, Color(54, 62, 15), None],
 
-            ["34 46 10",    "34 46 10",    "34 46 10"],
+            [Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10)],
 
-            ["34 46 10",    "34 46 10",    "34 46 10"],
+            [Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10)],
 
-            [None,          "58 45 26",    None],
+            [None, Color(58, 45, 26), None],
 
-            [None,          "58 45 26",    None]
+            [None, Color(58, 45, 26), None]
         ]
     )
 
@@ -424,23 +436,23 @@ def encyclopedia_creation() -> Encyclopedia:
         name="arbre_moist_forest_4",
         spawn_probability=0.01,
         body=[
-            [None,          None,          "36 49 11",
-                "34 46 10",    None,          None],
+            [None, None, Color(36, 49, 11),
+                Color(34, 46, 10), None, None],
 
-            ["65 71 23",    "34 46 10",    "34 46 10",
-                "54 62 15",    "34 46 10",    None],
+            [Color(65, 71, 23), Color(34, 46, 10), Color(34, 46, 10),
+                Color(54, 62, 15), Color(34, 46, 10), None],
 
-            ["34 46 10",    "59 58 12",    "34 46 10",
-                "34 46 10",    "34 46 10",    "34 46 10"],
+            [Color(34, 46, 10), Color(59, 58, 12), Color(34, 46, 10),
+                Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10)],
 
-            [None,          "48 57 13",    "58 45 26",
-                "58 45 26",    "34 46 10",    "54 62 15"],
+            [None, Color(48, 57, 13), Color(58, 45, 26),
+                Color(58, 45, 26), Color(34, 46, 10), Color(54, 62, 15)],
 
-            [None,          None,          None,
-                "58 45 26",    None,          None],
+            [None, None, None,
+                Color(58, 45, 26), None, None],
 
-            [None,          None,          None,
-                "58 45 26",    None,          None]
+            [None, None, None,
+                Color(58, 45, 26), None, None]
         ]
     )
 
@@ -448,13 +460,13 @@ def encyclopedia_creation() -> Encyclopedia:
         name="arbre_moist_forest_5",
         spawn_probability=0.015,
         body=[
-            [None,          "59 72 30",    None],
+            [None, Color(59, 72, 30), None],
 
-            ["44 57 18",    "34 46 10",    "51 65 23"],
+            [Color(44, 57, 18), Color(34, 46, 10), Color(51, 65, 23)],
 
-            ["46 59 19",    "58 45 26",    "42 54 16"],
+            [Color(46, 59, 19), Color(58, 45, 26), Color(42, 54, 16)],
 
-            [None,          "58 45 26",    None]
+            [None, Color(58, 45, 26), None]
         ]
     )
 
@@ -462,19 +474,23 @@ def encyclopedia_creation() -> Encyclopedia:
         name="moist_forest_tree_6",
         spawn_probability=0.005,
         body=[
-            [None,          "65 71 23",    None,          None,          None],
+            [None, Color(65, 71, 23), None, None, None],
 
-            ["54 62 15",    "34 46 10",    "34 46 10",    "34 46 10",    "54 62 15"],
+            [Color(54, 62, 15), Color(34, 46, 10), Color(
+                34, 46, 10), Color(34, 46, 10), Color(54, 62, 15)],
 
-            ["34 46 10",    "34 46 10",    "34 46 10",    "34 46 10",    "34 46 10"],
+            [Color(34, 46, 10), Color(34, 46, 10), Color(
+                34, 46, 10), Color(34, 46, 10), Color(34, 46, 10)],
 
-            ["34 46 10",    "34 46 10",    "58 45 26",    "34 46 10",    "34 46 10"],
+            [Color(34, 46, 10), Color(34, 46, 10), Color(
+                58, 45, 26), Color(34, 46, 10), Color(34, 46, 10)],
 
-            ["34 46 10",    "34 46 10",    "58 45 26",    "34 46 10",    "34 46 10"],
+            [Color(34, 46, 10), Color(34, 46, 10), Color(
+                58, 45, 26), Color(34, 46, 10), Color(34, 46, 10)],
 
-            [None,          None,          "58 45 26",    None,          None],
+            [None, None, Color(58, 45, 26), None, None],
 
-            [None,          None,          "58 45 26",    None,          None]
+            [None, None, Color(58, 45, 26), None, None]
         ]
     )
 
@@ -498,7 +514,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-1,
             pluviometry_max=0,
 
-            ground_color="78 105 36",
+            ground_color=Color(78, 105, 36),
 
             trees=[
                 moist_forest_tree_1,
@@ -523,7 +539,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=1,
             pluviometry_max=2,
 
-            ground_color="93 84 51",
+            ground_color=Color(93, 84, 51),
 
             trees=[
                 moist_forest_tree_1,
@@ -547,7 +563,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=0,
             pluviometry_max=1,
 
-            ground_color="86 104 56",
+            ground_color=Color(86, 104, 56),
 
             trees=[
                 moist_forest_tree_1,
@@ -571,23 +587,26 @@ def encyclopedia_creation() -> Encyclopedia:
         name="rain_forest_tree_1",
         spawn_probability=0.15,
         body=[
-            [None,          "68 88 39",    "68 88 39",    "68 88 39",    None],
+            [None, Color(68, 88, 39), Color(68, 88, 39),
+             Color(68, 88, 39), None],
 
-            ["68 88 39",    "68 88 39",    "68 88 39",    "68 88 39",    "68 88 39"],
+            [Color(68, 88, 39), Color(68, 88, 39), Color(
+                68, 88, 39), Color(68, 88, 39), Color(68, 88, 39)],
 
-            [None,          "68 88 39",    "88 107 55",   "68 88 39",    "68 88 39"],
+            [None, Color(68, 88, 39), Color(88, 107, 55),
+             Color(68, 88, 39), Color(68, 88, 39)],
 
-            [None,          None,          "111 129 74",  "68 88 39",    None],
+            [None, None, Color(111, 129, 74), Color(68, 88, 39), None],
 
-            [None,          None,          "116 133 78",  None,          None],
+            [None, None, Color(116, 133, 78), None, None],
 
-            [None,          None,          "116 133 78",  None,          None],
+            [None, None, Color(116, 133, 78), None, None],
 
-            [None,          None,          "116 133 78",  None,          None],
+            [None, None, Color(116, 133, 78), None, None],
 
-            [None,          None,          "116 133 78",  None,          None],
+            [None, None, Color(116, 133, 78), None, None],
 
-            [None,          None,          "114 131 77",  None,          None]
+            [None, None, Color(114, 131, 77), None, None]
         ]
     )
 
@@ -595,23 +614,26 @@ def encyclopedia_creation() -> Encyclopedia:
         name="rain_forest_tree_2",
         spawn_probability=0.03,
         body=[
-            [None,          "68 88 39",    "68 88 39",    "68 88 39",    None],
+            [None, Color(68, 88, 39), Color(68, 88, 39),
+             Color(68, 88, 39), None],
 
-            ["68 88 39",    "68 88 39",    "68 88 39",    "68 88 39",    "68 88 39"],
+            [Color(68, 88, 39), Color(68, 88, 39), Color(
+                68, 88, 39), Color(68, 88, 39), Color(68, 88, 39)],
 
-            [None,          "68 88 39",    "88 107 55",   "68 88 39",    "68 88 39"],
+            [None, Color(68, 88, 39), Color(88, 107, 55),
+             Color(68, 88, 39), Color(68, 88, 39)],
 
-            [None,          None,          "111 129 74",  None,          None],
+            [None, None, Color(111, 129, 74), None, None],
 
-            [None,          None,          "116 133 78",  None,          None],
+            [None, None, Color(116, 133, 78), None, None],
 
-            [None,          None,          "116 133 78",  None,          None],
+            [None, None, Color(116, 133, 78), None, None],
 
-            [None,          None,          "116 133 78",  None,          None],
+            [None, None, Color(116, 133, 78), None, None],
 
-            [None,          "114 131 77",  "116 133 78",  None,          None],
+            [None, Color(114, 131, 77), Color(116, 133, 78), None, None],
 
-            [None,          "114 131 77",  None,          None,          None]
+            [None, Color(114, 131, 77), None, None, None]
         ]
     )
 
@@ -619,15 +641,15 @@ def encyclopedia_creation() -> Encyclopedia:
         name="rain_forest_tree_3",
         spawn_probability=0.05,
         body=[
-            ["68 88 39",    "68 88 39",    None],
+            [Color(68, 88, 39), Color(68, 88, 39), None],
 
-            ["68 88 39",    "68 88 39",    "68 88 39"],
+            [Color(68, 88, 39), Color(68, 88, 39), Color(68, 88, 39)],
 
-            ["68 88 39",    "88 107 55",   "68 88 39"],
+            [Color(68, 88, 39), Color(88, 107, 55), Color(68, 88, 39)],
 
-            [None,          "111 129 74",  None],
+            [None, Color(111, 129, 74), None],
 
-            [None,          "116 133 78",  None]
+            [None, Color(116, 133, 78), None]
         ]
     )
 
@@ -643,7 +665,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=1,
             pluviometry_max=2,
 
-            ground_color="89 93 66",
+            ground_color=Color(89, 93, 66),
 
             trees=[
                 rain_forest_tree_1,
@@ -669,7 +691,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-4,
             pluviometry_max=-1,
 
-            ground_color="190 220 255",
+            ground_color=Color(190, 220, 255),
 
             trees=[
                 empty_tree
@@ -693,7 +715,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-2,
             pluviometry_max=-1,
 
-            ground_color="160 173 120",
+            ground_color=Color(160, 173, 120),
 
             trees=[
                 empty_tree
@@ -711,13 +733,13 @@ def encyclopedia_creation() -> Encyclopedia:
         name="steppe_woodland_thorn_tree_1",
         spawn_probability=0.05,
         body=[
-            [None,          "34 58 26",    None],
+            [None, Color(34, 58, 26), None],
 
-            ["34 58 26",    "34 58 26",    "34 58 26"],
+            [Color(34, 58, 26), Color(34, 58, 26), Color(34, 58, 26)],
 
-            ["34 58 26",    "34 58 26",    "34 58 26"],
+            [Color(34, 58, 26), Color(34, 58, 26), Color(34, 58, 26)],
 
-            [None,          "88 73 50",    None]
+            [None, Color(88, 73, 50), None]
         ]
     )
 
@@ -725,11 +747,11 @@ def encyclopedia_creation() -> Encyclopedia:
         name="steppe_woodland_thorn_tree_2",
         spawn_probability=0.05,
         body=[
-            [None,          "34 58 26",    None],
+            [None, Color(34, 58, 26), None],
 
-            ["34 58 26",    "34 58 26",    "34 58 26"],
+            [Color(34, 58, 26), Color(34, 58, 26), Color(34, 58, 26)],
 
-            [None,          "88 73 50",    None]
+            [None, Color(88, 73, 50), None]
         ]
     )
 
@@ -737,11 +759,11 @@ def encyclopedia_creation() -> Encyclopedia:
         name="steppe_woodland_thorn_tree_3",
         spawn_probability=0.005,
         body=[
-            ["34 58 26",    "34 58 26",    None],
+            [Color(34, 58, 26), Color(34, 58, 26), None],
 
-            ["34 58 26",    "34 58 26",    "34 58 26"],
+            [Color(34, 58, 26), Color(34, 58, 26), Color(34, 58, 26)],
 
-            [None,          "88 73 50",    None]
+            [None, Color(88, 73, 50), None]
         ]
     )
 
@@ -749,11 +771,11 @@ def encyclopedia_creation() -> Encyclopedia:
         name="steppe_woodland_thorn_tree_4",
         spawn_probability=0.005,
         body=[
-            [None,          "34 58 26",    "34 58 26"],
+            [None, Color(34, 58, 26), Color(34, 58, 26)],
 
-            ["34 58 26",    "34 58 26",    "34 58 26"],
+            [Color(34, 58, 26), Color(34, 58, 26), Color(34, 58, 26)],
 
-            [None,          "88 73 50",    None]
+            [None, Color(88, 73, 50), None]
         ]
     )
 
@@ -767,7 +789,7 @@ def encyclopedia_creation() -> Encyclopedia:
             temperature_max=2,
             pluviometry_min=-2,
             pluviometry_max=-1,
-            ground_color="160 173 120",
+            ground_color=Color(160, 173, 120),
 
             trees=[
                 steppe_woodland_thorn_tree_1,
@@ -788,15 +810,17 @@ def encyclopedia_creation() -> Encyclopedia:
         name="taiga_tree_1",
         spawn_probability=0.03,
         body=[
-            [None,          None,          "34 58 26",    None,          None],
+            [None, None, Color(34, 58, 26), None, None],
 
-            [None,          None,          "34 58 26",    None,          None],
+            [None, None, Color(34, 58, 26), None, None],
 
-            [None,          "34 58 26",    "34 58 26",    "34 58 26",    None],
+            [None, Color(34, 58, 26), Color(34, 58, 26),
+             Color(34, 58, 26), None],
 
-            ["34 58 26",    "34 58 26",    "88 73 50",    "34 58 26",    "34 58 26"],
+            [Color(34, 58, 26), Color(34, 58, 26), Color(88, 73, 50),
+             Color(34, 58, 26), Color(34, 58, 26)],
 
-            [None,          None,          "88 73 50",    None,          None]
+            [None, None, Color(88, 73, 50), None, None]
         ]
     )
 
@@ -804,15 +828,17 @@ def encyclopedia_creation() -> Encyclopedia:
         name="taiga_tree_2",
         spawn_probability=0.01,
         body=[
-            [None,          None,          "34 58 26",    None,          None],
+            [None, None, Color(34, 58, 26), None, None],
 
-            [None,          None,          "34 58 26",    None,          None],
+            [None, None, Color(34, 58, 26), None, None],
 
-            [None,          "34 58 26",    "34 58 26",    "34 58 26",    None],
+            [None, Color(34, 58, 26), Color(34, 58, 26),
+             Color(34, 58, 26), None],
 
-            ["34 58 26",    "34 58 26",    "88 73 50",    "34 58 26",    None],
+            [Color(34, 58, 26), Color(34, 58, 26),
+             Color(88, 73, 50), Color(34, 58, 26), None],
 
-            [None,          None,          "88 73 50",    None,          None]
+            [None, None, Color(88, 73, 50), None, None]
         ]
     )
 
@@ -820,13 +846,13 @@ def encyclopedia_creation() -> Encyclopedia:
         name="taiga_tree_3",
         spawn_probability=0.03,
         body=[
-            [None,          "34 58 26",    None],
+            [None, Color(34, 58, 26), None],
 
-            [None,          "34 58 26",    None],
+            [None, Color(34, 58, 26), None],
 
-            ["34 58 26",    "34 58 26",    "34 58 26"],
+            [Color(34, 58, 26), Color(34, 58, 26), Color(34, 58, 26)],
 
-            [None,          "88 73 50",    None]
+            [None, Color(88, 73, 50), None]
         ]
     )
 
@@ -841,7 +867,7 @@ def encyclopedia_creation() -> Encyclopedia:
             temperature_max=0,
             pluviometry_min=-4,
             pluviometry_max=-3,
-            ground_color="146 126 101",
+            ground_color=Color(146, 126, 101),
 
             trees=[
                 taiga_tree_1,
@@ -859,7 +885,7 @@ def encyclopedia_creation() -> Encyclopedia:
             temperature_max=0,
             pluviometry_min=-3,
             pluviometry_max=-2,
-            ground_color="167 175 120",
+            ground_color=Color(167, 175, 120),
 
             trees=[
                 taiga_tree_1,
@@ -879,7 +905,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-2,
             pluviometry_max=-1,
 
-            ground_color="86 104 56",
+            ground_color=Color(86, 104, 56),
 
             trees=[
                 taiga_tree_1,
@@ -899,7 +925,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=0,
             pluviometry_max=1,
 
-            ground_color="57 102 21",
+            ground_color=Color(57, 102, 21),
 
             trees=[
                 taiga_tree_1,
@@ -919,7 +945,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-1,
             pluviometry_max=0,
 
-            ground_color="75 102 44",
+            ground_color=Color(75, 102, 44),
 
             trees=[
                 taiga_tree_1,
@@ -939,7 +965,7 @@ def encyclopedia_creation() -> Encyclopedia:
         name="tundra_bush_1",
         spawn_probability=0.005,
         body=[
-            ["34 58 26",    "34 58 26"]
+            [Color(34, 58, 26), Color(34, 58, 26)]
         ]
     )
 
@@ -947,7 +973,7 @@ def encyclopedia_creation() -> Encyclopedia:
         name="tundra_bush_2",
         spawn_probability=0.002,
         body=[
-            ["34 58 26",    "34 58 26",    "34 58 26"]
+            [Color(34, 58, 26), Color(34, 58, 26), Color(34, 58, 26)]
         ]
     )
 
@@ -955,9 +981,10 @@ def encyclopedia_creation() -> Encyclopedia:
         name="tundra_bush_3",
         spawn_probability=0.001,
         body=[
-            [None,          "34 58 26",    None,          None],
+            [None, Color(34, 58, 26), None, None],
 
-            ["34 58 26",    "34 58 26",    "34 58 26",    "34 58 26"]
+            [Color(34, 58, 26), Color(34, 58, 26),
+             Color(34, 58, 26), Color(34, 58, 26)]
         ]
     )
 
@@ -965,9 +992,10 @@ def encyclopedia_creation() -> Encyclopedia:
         name="tundra_bush_4",
         spawn_probability=0.001,
         body=[
-            [None,          None,          "34 58 26",    None],
+            [None, None, Color(34, 58, 26), None],
 
-            ["34 58 26",    "34 58 26",    "34 58 26",    "34 58 26"]
+            [Color(34, 58, 26), Color(34, 58, 26),
+             Color(34, 58, 26), Color(34, 58, 26)]
         ]
     )
 
@@ -983,7 +1011,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-4,
             pluviometry_max=-3,
 
-            ground_color="167 175 120",
+            ground_color=Color(167, 175, 120),
 
             trees=[
                 tundra_bush_1,
@@ -1004,7 +1032,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-3,
             pluviometry_max=-2,
 
-            ground_color="86 104 56",
+            ground_color=Color(167, 175, 120),
 
             trees=[
                 tundra_bush_1,
@@ -1025,7 +1053,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-1,
             pluviometry_max=0,
 
-            ground_color="57 102 21",
+            ground_color=Color(167, 175, 120),
 
             trees=[
                 tundra_bush_1,
@@ -1046,7 +1074,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-2,
             pluviometry_max=-1,
 
-            ground_color="75 102 44",
+            ground_color=Color(75, 102, 44),
 
             trees=[
                 tundra_bush_1,
@@ -1067,32 +1095,32 @@ def encyclopedia_creation() -> Encyclopedia:
         name="tropical_forest_tree_1",
         spawn_probability=0.15,
         body=[
-            [None,          "0 69 41",     "0 69 41",
-                "0 69 41",     "0 69 41",     "0 69 41",     None],
+            [None, Color(0, 69, 41), Color(0, 69, 41),
+                Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41), None],
 
-            ["0 69 41",     "0 69 41",     "0 69 41",     "0 69 41",
-                "0 69 41",     "0 69 41",     "0 69 41"],
+            [Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41),
+                Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41)],
 
-            [None,          None,          None,          "88 73 50",
-                None,          None,          None],
+            [None, None, None, Color(88, 73, 50),
+                None, None, None],
 
-            [None,          None,          None,          "88 73 50",
-                None,          None,          None],
+            [None, None, None, Color(88, 73, 50),
+                None, None, None],
 
-            [None,          None,          None,          "88 73 50",
-                None,          None,          None],
+            [None, None, None, Color(88, 73, 50),
+                None, None, None],
 
-            [None,          None,          None,          "88 73 50",
-                None,          None,          None],
+            [None, None, None, Color(88, 73, 50),
+                None, None, None],
 
-            [None,          None,          None,          "88 73 50",
-                "88 73 50",    None,          None],
+            [None, None, None, Color(88, 73, 50),
+                Color(88, 73, 50), None, None],
 
-            [None,          None,          None,          None,
-                "88 73 50",    None,          None],
+            [None, None, None, None,
+                Color(88, 73, 50), None, None],
 
-            [None,          None,          None,          None,
-                "88 73 50",    None,          None]
+            [None, None, None, None,
+                Color(88, 73, 50), None, None]
         ]
     )
 
@@ -1100,29 +1128,29 @@ def encyclopedia_creation() -> Encyclopedia:
         name="tropical_forest_tree_2",
         spawn_probability=0.1,
         body=[
-            [None,          "124 168 21",  "124 168 21",
-                "124 168 21",  "124 168 21",  None],
+            [None, Color(124, 168, 21), Color(124, 168, 21),
+                Color(124, 168, 21), Color(124, 168, 21), None],
 
-            ["124 168 21",  "124 168 21",  "124 168 21",
-                "124 168 21",  "124 168 21",  "124 168 21"],
+            [Color(124, 168, 21), Color(124, 168, 21), Color(124, 168, 21),
+                Color(124, 168, 21), Color(124, 168, 21), Color(124, 168, 21)],
 
-            [None,          None,          "225 219 185",
-                None,          None,          None],
+            [None, None, Color(225, 219, 185),
+                None, None, None],
 
-            [None,          None,          "225 219 185",
-                None,          None,          None],
+            [None, None, Color(225, 219, 185),
+                None, None, None],
 
-            [None,          None,          "225 219 185",
-                None,          None,          None],
+            [None, None, Color(225, 219, 185),
+                None, None, None],
 
-            [None,          None,          "225 219 185",
-                None,          None,          None],
+            [None, None, Color(225, 219, 185),
+                None, None, None],
 
-            [None,          None,          "225 219 185",
-                None,          None,          None],
+            [None, None, Color(225, 219, 185),
+                None, None, None],
 
-            [None,          None,          "225 219 185",
-                None,          None,          None]
+            [None, None, Color(225, 219, 185),
+                None, None, None]
         ]
     )
 
@@ -1130,19 +1158,21 @@ def encyclopedia_creation() -> Encyclopedia:
         name="tropical_forest_tree_3",
         spawn_probability=0.05,
         body=[
-            [None,          "19 84 20",    "19 84 20",    "19 84 20",    None],
+            [None, Color(19, 84, 20), Color(19, 84, 20),
+             Color(19, 84, 20), None],
 
-            ["19 84 20",    "19 84 20",    "19 84 20",    "19 84 20",    "19 84 20"],
+            [Color(19, 84, 20), Color(19, 84, 20), Color(
+                19, 84, 20), Color(19, 84, 20), Color(19, 84, 20)],
 
-            [None,          None,          "46 27 23",    None,          None],
+            [None, None, Color(46, 27, 23), None, None],
 
-            [None,          None,          "46 27 23",    None,          None],
+            [None, None, Color(46, 27, 23), None, None],
 
-            [None,          None,          "46 27 23",    None,          None],
+            [None, None, Color(46, 27, 23), None, None],
 
-            [None,          None,          "46 27 23",    None,          None],
+            [None, None, Color(46, 27, 23), None, None],
 
-            [None,          None,          "46 27 23",    None,          None]
+            [None, None, Color(46, 27, 23), None, None]
         ]
     )
 
@@ -1158,7 +1188,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=3,
             pluviometry_max=4,
 
-            ground_color="71 94 12",
+            ground_color=Color(71, 94, 12),
 
             trees=[
                 tropical_forest_tree_1,
@@ -1178,7 +1208,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=2,
             pluviometry_max=3,
 
-            ground_color="94 124 16",
+            ground_color=Color(94, 124, 16),
 
             trees=[
                 tropical_forest_tree_1,
@@ -1198,23 +1228,23 @@ def encyclopedia_creation() -> Encyclopedia:
         name="very_dry_forest_tree_1",
         spawn_probability=0.055,
         body=[
-            [None,          None,          "121 105 56",
-                None,          None,          None,          None],
+            [None, None, Color(121, 105, 56),
+                None, None, None, None],
 
-            [None,          None,          None,          "133 103 69",
-                None,          "133 103 69",  "121 105 56"],
+            [None, None, None, Color(133, 103, 69),
+                None, Color(133, 103, 69), Color(121, 105, 56)],
 
-            ["121 105 56",  "133 103 69",  "133 103 69",
-                "133 103 69",  "133 103 69",  None,          None],
+            [Color(121, 105, 56), Color(133, 103, 69), Color(133, 103, 69),
+                Color(133, 103, 69), Color(133, 103, 69), None, None],
 
-            [None,          "121 105 56",  None,
-                "133 103 69",  None,          None,          None],
+            [None, Color(121, 105, 56), None,
+                Color(133, 103, 69), None, None, None],
 
-            [None,          None,          None,
-                "133 103 69",  None,          None,          None],
+            [None, None, None,
+                Color(133, 103, 69), None, None, None],
 
-            [None,          None,          None,
-                "133 103 69",  None,          None,          None]
+            [None, None, None,
+                Color(133, 103, 69), None, None, None]
         ]
     )
 
@@ -1222,14 +1252,17 @@ def encyclopedia_creation() -> Encyclopedia:
         name="very_dry_forest_tree_2",
         spawn_probability=0.05,
         body=[
-            [None,          "121 105 56",  None,
-                "133 103 69",  "121 105 56"],
+            [None, Color(121, 105, 56), None,
+                Color(133, 103, 69), Color(121, 105, 56)],
 
-            ["121 105 56",  "133 103 69",  "133 103 69",  "133 103 69",  None],
+            [Color(121, 105, 56), Color(133, 103, 69), Color(
+                133, 103, 69), Color(133, 103, 69), None],
 
-            [None,          None,          "133 103 69",  None,          None],
+            [None, None, Color(
+                133, 103, 69), None, None],
 
-            [None,          None,          "133 103 69",  None,          None]
+            [None, None, Color(
+                133, 103, 69), None, None]
         ]
     )
 
@@ -1237,18 +1270,23 @@ def encyclopedia_creation() -> Encyclopedia:
         name="very_dry_forest_tree_3",
         spawn_probability=0.05,
         body=[
-            [None,          None,          None,          "121 105 56",  None],
+            [None, None, None,
+                Color(121, 105, 56), None],
 
-            ["121 105 56",  None,          None,
-                "133 103 69",  "121 105 56"],
+            [Color(121, 105, 56), None, None,
+                Color(133, 103, 69), Color(121, 105, 56)],
 
-            [None,          "133 103 69",  "133 103 69",  "133 103 69",  None],
+            [None, Color(133, 103, 69), Color(
+                133, 103, 69), Color(133, 103, 69), None],
 
-            [None,          None,          "133 103 69",  None,          None],
+            [None, None, Color(
+                133, 103, 69), None, None],
 
-            [None,          None,          "133 103 69",  None,          None],
+            [None, None, Color(
+                133, 103, 69), None, None],
 
-            [None,          None,          "133 103 69",  None,          None]
+            [None, None, Color(
+                133, 103, 69), None, None]
         ]
     )
 
@@ -1256,7 +1294,7 @@ def encyclopedia_creation() -> Encyclopedia:
         name="very_dry_forest_bush_1",
         spawn_probability=0.005,
         body=[
-            ["121 105 56"]
+            [Color(121, 105, 56)]
         ]
     )
 
@@ -1272,7 +1310,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-1,
             pluviometry_max=0,
 
-            ground_color="191 168 124",
+            ground_color=Color(191, 168, 124),
 
             trees=[
                 very_dry_forest_tree_1,
@@ -1293,21 +1331,23 @@ def encyclopedia_creation() -> Encyclopedia:
         name="wet_forest_tree_1_v1",
         spawn_probability=0.07,
         body=[
-            [None,          "38 127 0",    "38 127 0",    "38 127 0",    None],
+            [None, Color(38, 127, 0), Color(38, 127, 0),
+             Color(38, 127, 0), None],
 
-            ["38 127 0",    "38 127 0",    "38 127 0",    "38 127 0",    "38 127 0"],
+            [Color(38, 127, 0), Color(38, 127, 0), Color(
+                38, 127, 0), Color(38, 127, 0), Color(38, 127, 0)],
 
-            [None,          None,          "95 80 51",    None,          None],
+            [None, None, Color(95, 80, 51), None, None],
 
-            [None,          None,          "95 80 51",    None,          None],
+            [None, None, Color(95, 80, 51), None, None],
 
-            [None,          None,          "95 80 51",    None,          None],
+            [None, None, Color(95, 80, 51), None, None],
 
-            [None,          None,          "95 80 51",    None,          None],
+            [None, None, Color(95, 80, 51), None, None],
 
-            [None,          None,          "95 80 51",    None,          None],
+            [None, None, Color(95, 80, 51), None, None],
 
-            [None,          None,          "95 80 51",    None,          None]
+            [None, None, Color(95, 80, 51), None, None]
         ]
     )
 
@@ -1315,21 +1355,23 @@ def encyclopedia_creation() -> Encyclopedia:
         name="wet_forest_tree_1_v2",
         spawn_probability=0.1,
         body=[
-            [None,          "96 142 8",    "96 142 8",    "96 142 8",    None],
+            [None, Color(96, 142, 8), Color(96, 142, 8),
+             Color(96, 142, 8), None],
 
-            ["96 142 8",    "96 142 8",    "96 142 8",    "96 142 8",    "96 142 8"],
+            [Color(96, 142, 8), Color(96, 142, 8), Color(
+                96, 142, 8), Color(96, 142, 8), Color(96, 142, 8)],
 
-            [None,          None,          "103 103 17",   None,          None],
+            [None, None, Color(103, 103, 17), None, None],
 
-            [None,          None,          "103 103 17",   None,          None],
+            [None, None, Color(103, 103, 17), None, None],
 
-            [None,          None,          "103 103 17",   None,          None],
+            [None, None, Color(103, 103, 17), None, None],
 
-            [None,          None,          "103 103 17",   None,          None],
+            [None, None, Color(103, 103, 17), None, None],
 
-            [None,          None,          "103 103 17",   None,          None],
+            [None, None, Color(103, 103, 17), None, None],
 
-            [None,          None,          "103 103 17",   None,          None]
+            [None, None, Color(103, 103, 17), None, None]
         ]
     )
 
@@ -1337,21 +1379,23 @@ def encyclopedia_creation() -> Encyclopedia:
         name="wet_forest_tree_1_v3",
         spawn_probability=0.08,
         body=[
-            [None,          "38 127 0",    "38 127 0",    "38 127 0",    None],
+            [None, Color(38, 127, 0), Color(38, 127, 0),
+             Color(38, 127, 0), None],
 
-            ["38 127 0",    "38 127 0",    "38 127 0",    "38 127 0",    "38 127 0"],
+            [Color(38, 127, 0), Color(38, 127, 0), Color(
+                38, 127, 0), Color(38, 127, 0), Color(38, 127, 0)],
 
-            [None,          None,          "132 115 95",  None,          None],
+            [None, None, Color(132, 115, 95), None, None],
 
-            [None,          None,          "132 115 95",  None,          None],
+            [None, None, Color(132, 115, 95), None, None],
 
-            [None,          None,          "132 115 95",  None,          None],
+            [None, None, Color(132, 115, 95), None, None],
 
-            [None,          None,          "132 115 95",  None,          None],
+            [None, None, Color(132, 115, 95), None, None],
 
-            [None,          None,          "132 115 95",  None,          None],
+            [None, None, Color(132, 115, 95), None, None],
 
-            [None,          None,          "132 115 95",  None,          None]
+            [None, None, Color(132, 115, 95), None, None]
         ]
     )
 
@@ -1359,17 +1403,17 @@ def encyclopedia_creation() -> Encyclopedia:
         name="wet_forest_tree_2_v1",
         spawn_probability=0.03,
         body=[
-            [None,          "38 127 0",    None],
+            [None, Color(38, 127, 0), None],
 
-            ["38 127 0",    "38 127 0",    "38 127 0"],
+            [Color(38, 127, 0), Color(38, 127, 0), Color(38, 127, 0)],
 
-            [None,          "95 80 51",    None],
+            [None, Color(95, 80, 51), None],
 
-            [None,          "95 80 51",    None],
+            [None, Color(95, 80, 51), None],
 
-            [None,          "95 80 51",    None],
+            [None, Color(95, 80, 51), None],
 
-            [None,          "95 80 51",    None]
+            [None, Color(95, 80, 51), None]
         ]
     )
 
@@ -1377,17 +1421,17 @@ def encyclopedia_creation() -> Encyclopedia:
         name="wet_forest_tree_2_v2",
         spawn_probability=0.07,
         body=[
-            [None,          "96 142 8",    None],
+            [None, Color(96, 142, 8), None],
 
-            ["96 142 8",    "96 142 8",    "96 142 8"],
+            [Color(96, 142, 8), Color(96, 142, 8), Color(96, 142, 8)],
 
-            [None,          "103 103 17",    None],
+            [None, Color(103, 103, 17), None],
 
-            [None,          "103 103 17",    None],
+            [None, Color(103, 103, 17), None],
 
-            [None,          "103 103 17",    None],
+            [None, Color(103, 103, 17), None],
 
-            [None,          "103 103 17",    None]
+            [None, Color(103, 103, 17), None]
         ]
     )
 
@@ -1395,17 +1439,17 @@ def encyclopedia_creation() -> Encyclopedia:
         name="wet_forest_tree_2_v3",
         spawn_probability=0.07,
         body=[
-            [None,          "38 127 0",    None],
+            [None, Color(38, 127, 0), None],
 
-            ["38 127 0",    "38 127 0",    "38 127 0"],
+            [Color(38, 127, 0), Color(38, 127, 0), Color(38, 127, 0)],
 
-            [None,          "132 115 95",  None],
+            [None, Color(132, 115, 95), None],
 
-            [None,          "132 115 95",  None],
+            [None, Color(132, 115, 95), None],
 
-            [None,          "132 115 95",  None],
+            [None, Color(132, 115, 95), None],
 
-            [None,          "132 115 95",  None]
+            [None, Color(132, 115, 95), None]
         ]
     )
 
@@ -1421,7 +1465,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=0,
             pluviometry_max=1,
 
-            ground_color="128 168 104",
+            ground_color=Color(128, 168, 104),
 
             trees=[
                 wet_forest_tree_1_v1,
@@ -1440,7 +1484,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=2,
             pluviometry_max=3,
 
-            ground_color="128 168 104",
+            ground_color=Color(128, 168, 104),
 
             trees=[
                 wet_forest_tree_1_v2,
@@ -1459,7 +1503,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=1,
             pluviometry_max=2,
 
-            ground_color="128 168 104",
+            ground_color=Color(128, 168, 104),
 
             trees=[
                 wet_forest_tree_1_v3,
@@ -1478,23 +1522,23 @@ def encyclopedia_creation() -> Encyclopedia:
         name="woodland_thorn_tree_1",
         spawn_probability=0.06,
         body=[
-            [None,          "39 67 0",     "39 67 0",
-                "39 67 0",     "39 67 0",     "39 67 0",     None],
+            [None, Color(39, 67, 0), Color(39, 67, 0),
+                Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), None],
 
-            ["39 67 0",     "39 67 0",     "39 67 0",     "39 67 0",
-                "39 67 0",     "39 67 0",     "39 67 0"],
+            [Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0),
+                Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0)],
 
-            [None,          "138 127 99",  None,          "118 98 65",
-                None,          "138 127 99",  None],
+            [None, Color(138, 127, 99), None, Color(118, 98, 65),
+                None, Color(138, 127, 99), None],
 
-            [None,          None,          None,          "118 98 65",
-                None,          "138 127 99",  None],
+            [None, None, None, Color(118, 98, 65),
+                None, Color(138, 127, 99), None],
 
-            [None,          None,          None,          None,
-                "118 98 65",   None,          None],
+            [None, None, None, None,
+                Color(118, 98, 65), None, None],
 
-            [None,          None,          None,          None,
-                "118 98 65",   None,          None]
+            [None, None, None, None,
+                Color(118, 98, 65), None, None]
         ]
     )
 
@@ -1502,15 +1546,16 @@ def encyclopedia_creation() -> Encyclopedia:
         name="woodland_thorn_tree_2",
         spawn_probability=0.03,
         body=[
-            [None,          "39 67 0",     "39 67 0",     None],
+            [None, Color(39, 67, 0), Color(39, 67, 0), None],
 
-            ["39 67 0",     "39 67 0",     "39 67 0",     "39 67 0"],
+            [Color(39, 67, 0), Color(39, 67, 0),
+             Color(39, 67, 0), Color(39, 67, 0)],
 
-            ["138 127 99",  None,          "118 98 65",   None],
+            [Color(138, 127, 99), None, Color(118, 98, 65), None],
 
-            [None,          None,          "118 98 65",   None],
+            [None, None, Color(118, 98, 65), None],
 
-            [None,          None,          "118 98 65",   None]
+            [None, None, Color(118, 98, 65), None]
         ]
     )
 
@@ -1518,26 +1563,26 @@ def encyclopedia_creation() -> Encyclopedia:
         name="woodland_thorn_tree_3",
         spawn_probability=0.01,
         body=[
-            [None,          "39 67 0",     "39 67 0",
-                "39 67 0",     "39 67 0",     None],
+            [None, Color(39, 67, 0), Color(39, 67, 0),
+                Color(39, 67, 0), Color(39, 67, 0), None],
 
-            ["39 67 0",     "39 67 0",     "39 67 0",
-                "39 67 0",     "39 67 0",     "39 67 0"],
+            [Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0),
+                Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0)],
 
-            ["138 127 99",  None,          "118 98 65",
-                None,          "138 127 99",  None],
+            [Color(138, 127, 99), None, Color(118, 98, 65),
+                None, Color(138, 127, 99), None],
 
-            ["138 127 99",  None,          "118 98 65",
-                None,          "138 127 99",  None],
+            [Color(138, 127, 99), None, Color(118, 98, 65),
+                None, Color(138, 127, 99), None],
 
-            [None,          None,          "118 98 65",
-                None,          None,          None],
+            [None, None, Color(118, 98, 65),
+                None, None, None],
 
-            [None,          None,          "118 98 65",
-                None,          None,          None],
+            [None, None, Color(118, 98, 65),
+                None, None, None],
 
-            [None,          "118 98 65",   None,
-                None,          None,          None]
+            [None, Color(118, 98, 65), None,
+                None, None, None]
         ]
     )
 
@@ -1553,7 +1598,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-2,
             pluviometry_max=-1,
 
-            ground_color="149 163 140",
+            ground_color=Color(149, 163, 140),
 
             trees=[
                 woodland_thorn_tree_1,
@@ -1579,7 +1624,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=0,
             pluviometry_max=0,
 
-            ground_color="30 144 235",
+            ground_color=Color(30, 144, 235),
 
             trees=[
                 empty_tree
@@ -1597,7 +1642,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=3,
             pluviometry_max=4,
 
-            ground_color="64 164 223",
+            ground_color=Color(64, 164, 223),
 
             trees=[
                 empty_tree
@@ -1615,7 +1660,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=2,
             pluviometry_max=3,
 
-            ground_color="64 164 223",
+            ground_color=Color(64, 164, 223),
 
             trees=[
                 empty_tree
@@ -1633,7 +1678,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=1,
             pluviometry_max=2,
 
-            ground_color="64 164 223",
+            ground_color=Color(64, 164, 223),
 
             trees=[
                 empty_tree
@@ -1651,7 +1696,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=0,
             pluviometry_max=1,
 
-            ground_color="64 164 223",
+            ground_color=Color(64, 164, 223),
 
             trees=[
                 empty_tree
@@ -1669,7 +1714,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-1,
             pluviometry_max=0,
 
-            ground_color="64 164 223",
+            ground_color=Color(64, 164, 223),
 
             trees=[
                 empty_tree
@@ -1687,7 +1732,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=3,
             pluviometry_max=3.15,
 
-            ground_color="64 164 223",
+            ground_color=Color(64, 164, 223),
 
             trees=[
                 empty_tree
@@ -1705,7 +1750,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=2,
             pluviometry_max=2.15,
 
-            ground_color="64 164 223",
+            ground_color=Color(64, 164, 223),
 
             trees=[
                 empty_tree
@@ -1723,7 +1768,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=1,
             pluviometry_max=1.15,
 
-            ground_color="64 164 223",
+            ground_color=Color(64, 164, 223),
 
             trees=[
                 empty_tree
@@ -1741,7 +1786,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=0,
             pluviometry_max=0.15,
 
-            ground_color="64 164 223",
+            ground_color=Color(64, 164, 223),
 
             trees=[
                 empty_tree
@@ -1759,7 +1804,7 @@ def encyclopedia_creation() -> Encyclopedia:
             pluviometry_min=-1,
             pluviometry_max=-0.85,
 
-            ground_color="64 164 223",
+            ground_color=Color(64, 164, 223),
 
             trees=[
                 empty_tree

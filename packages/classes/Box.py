@@ -1,4 +1,8 @@
 from packages.classes.Encyclopedia import Encyclopedia
+from packages.classes.Biome import Biome
+from packages.classes.Tree import Tree
+from packages.classes.Position import Position
+from packages.classes.Board import Board
 
 ##############################################################
 ########################### BOX ##############################
@@ -7,7 +11,12 @@ from packages.classes.Encyclopedia import Encyclopedia
 
 class Box:
 
-    def __init__(self, biome_name: str, tree_name: str = "", position_in_tree_x: int = -1, position_in_tree_y: int = -1):
+    def __init__(
+        self,
+        biome: Biome,
+        tree: Tree = None,
+        position_in_tree: Position = Position(-1, -1)
+    ):
         # =============================
         # INFORMATIONS :
         # -----------------------------
@@ -26,12 +35,11 @@ class Box:
         # - trees_generation.put_tree()
         # =============================
 
-        self.biome_name = biome_name
-        self.tree_name = tree_name
-        self.position_in_tree_x = position_in_tree_x
-        self.position_in_tree_y = position_in_tree_y
+        self.biome = biome
+        self.tree = tree
+        self.position_in_tree = position_in_tree
 
-    def get_color(self, encyclopedia: Encyclopedia) -> str:
+    def get_color(self) -> str:
         # =============================
         # INFORMATIONS :
         # -----------------------------
@@ -45,9 +53,10 @@ class Box:
         # - Encyclopedia
         # - Tree
         # =============================
-        if self.tree_name == "":
+        if self.tree == None:
             # ce n'est pas un arbre
-            return encyclopedia.biomes[self.biome_name].ground_color
+            return self.biome.ground_color.get_rgb()
         else:
             # c'est un arbre
-            return encyclopedia.get_tree_info(self.tree_name).body[self.position_in_tree_y][self.position_in_tree_x]
+            print("Yaunarbre")
+            return self.tree.body.get_element_with_position(self.position_in_tree).get_rgb()

@@ -1,9 +1,9 @@
-##############################################################
-########################### TREE #############################
-##############################################################
+from packages.classes.Board import Board
+
+
 class Tree:
 
-    def __init__(self, name: str, spawn_probability: int, body: list):
+    def __init__(self, name: str, spawn_probability: int, body: Board):
         # =============================
         # INFORMATIONS :
         # -----------------------------

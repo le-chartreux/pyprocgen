@@ -1,6 +1,6 @@
-###############################################################
-############################ BIOME ############################
-###############################################################
+from packages.classes.Color import Color
+
+
 class Biome:
 
     def __init__(
@@ -10,7 +10,7 @@ class Biome:
         temperature_max: int,
         pluviometry_min: int,
         pluviometry_max: int,
-        ground_color: str,
+        ground_color: Color,
         trees: list
     ):
         # =============================

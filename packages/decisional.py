@@ -89,6 +89,6 @@ def biome_choice(encyclopedia: Encyclopedia, temperature: float, pluviometry: fl
 
         if biome.in_range(temperature, pluviometry):
 
-            return biome.name
+            return biome
 
-    return "water"
+    return encyclopedia.biomes.get("water")
