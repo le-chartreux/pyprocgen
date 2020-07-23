@@ -35,7 +35,7 @@ class Tree:
         # - classes.Encyclopedia.max_height_of_trees()
         # - A COMPLETER
         # =============================
-        return len(self.body)
+        return self.body.get_height()
 
     def get_width(self) -> int:
         # =============================
@@ -47,4 +47,4 @@ class Tree:
         # UTILISÉ PAR :
         # - A COMPLETER
         # =============================
-        return len(self.body[0])
+        return self.body.get_width()

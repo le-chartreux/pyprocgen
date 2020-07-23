@@ -14,7 +14,7 @@
 # ==========================================================
 
 import random
-from packages.short_class_import import Box, Tree, Encyclopedia
+from packages.short_class_import import Box, Tree, Encyclopedia, Position
 
 
 ###############################################################
@@ -50,11 +50,11 @@ def generate_trees(board: list, encyclopedia: Encyclopedia) -> list:
 
         for column in range(width):
 
-            if board[line][column].biome_name != "tree":
+            if board[line][column].biome.name != "tree":
 
                 # Creation d'une liste à ordre aléatoire des arbres possibles
                 trees_list = list(
-                    encyclopedia.biomes[board[line][column].biome_name].trees
+                    encyclopedia.biomes[board[line][column].biome.name].trees
                 )
 
                 random.shuffle(trees_list)
@@ -113,7 +113,7 @@ def possible_to_place_tree(board: list, tree: Tree, x: int, y: int):
         print("Attempting to look if a tree can be put outside the board.")
         return False
 
-    type_of_source_box = board[y][x].biome_name
+    type_of_source_box = board[y][x].biome.name
 
     tree_height = tree.get_height()
     tree_width = tree.get_width()
@@ -136,8 +136,8 @@ def possible_to_place_tree(board: list, tree: Tree, x: int, y: int):
         while column < tree_width and possible:
 
             possible = (
-                board[y + line][x + column].biome_name == type_of_source_box
-                and board[y + line][x + column].tree_name == ""
+                board[y + line][x + column].biome.name == type_of_source_box
+                and board[y + line][x + column].tree == None
             )
             column += 1
 
@@ -193,8 +193,7 @@ def put_tree(board: list, encyclopedia: Encyclopedia, tree: Tree, x, y):
 
             for column in range(tree_width):
 
-                if tree.body[line][column] != None:
-
-                    board[y + line][x + column].tree_name = tree.name
-                    board[y + line][x + column].position_in_tree_x = column
-                    board[y + line][x + column].position_in_tree_y = line
+                if tree.body.get_element(column, line) != None:
+                    board[y + line][x + column].tree = tree
+                    board[y + line][x +
+                                    column].position_in_tree = Position(column, line)

@@ -4,5 +4,6 @@ from packages.classes.Encyclopedia import Encyclopedia
 from packages.classes.Tree import Tree
 from packages.classes.Color import Color
 from packages.classes.Position import Position
+from packages.classes.Board import Board
 
 # Sert juste à pouvoir importer en une ligne plusieurs classes

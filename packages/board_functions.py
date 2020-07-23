@@ -22,69 +22,6 @@ import random
 
 
 ###############################################################
-##################### CREATE_EMPTY_BOARD ######################
-###############################################################
-def create_empty_board(width: int, height: int) -> list:
-    # =============================
-    # INFORMATIONS :
-    # -----------------------------
-    # UTILITÉ :
-    # Crée un plateau vide de height x width
-    # -----------------------------
-    # PRÉCONDITIONS :
-    # - None
-    # -----------------------------
-    # DÉPEND DE :
-    # - None
-    # -----------------------------
-    # UTILISÉ PAR :
-    # - procedural_generation_2D.py
-    # =============================
-
-    board = []
-
-    for line in range(height):
-
-        board.append([])
-
-        for _ in range(width):
-
-            board[line].append(None)
-
-    return board
-
-
-###############################################################
-####################### DISPLAY_BOARD #########################
-###############################################################
-def display_board(board):
-    # =============================
-    # INFORMATIONS :
-    # -----------------------------
-    # UTILITÉ :
-    # Affiche un plateau de box dans la console en marquant
-    # les 4 premiers caractères du nom de chaque box le composant
-    # -----------------------------
-    # PRÉCONDITIONS :
-    # - None
-    # -----------------------------
-    # DÉPEND DE :
-    # - None
-    # -----------------------------
-    # UTILISÉ PAR :
-    # - procedural_generation_2D.py (pour debug)
-    # =============================
-
-    for line in range(len(board)):
-
-        for column in range(len(board[0])):
-
-            print(board[line][column].nom_biome[0:4], " ", end="")
-
-        print("")
-
-
-###############################################################
 ###################### GENERERATE_SEED ########################
 ###############################################################
 def generate_seed() -> str:

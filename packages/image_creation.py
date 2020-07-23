@@ -71,12 +71,8 @@ def write_image_body(destination_file, board: list, encyclopedia: Encyclopedia):
 
         for column in range(len(board[0])):
 
-            color = board[line][column].get_color(encyclopedia)
-            if color == None:
-                color = "0 0 0"
-            destination_file.write(
-                color
-            )
+            color = board[line][column].get_color()
+            destination_file.write(color)
             destination_file.write(" ")
 
         destination_file.write("\n")
