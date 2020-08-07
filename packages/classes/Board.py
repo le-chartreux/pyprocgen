@@ -3,28 +3,38 @@
 # -----------------------------
 # UTILITÉ DE SON CONTENU :
 # Définir la classe Board, un tableau en 2D
+# qui peut utiliser un objet Position
 # -----------------------------
 # CONTENU :
+# - __slots__
 # - __init__()
 # - getters
-# - get_element()
-# - get_element_with_position()
-# - get_width() -> int
-# - get_height() -> int
 # - setters
+# - get_element()
+# - get_width()
+# - get_height()
+# - set_element()
 # - create_empty_board()
 # ==========================================================
 
+from __future__ import annotations
+from typing import List, Optional
 
 from packages.classes.Position import Position
 
 
 class Board:
+    ###############################################################
+    ########################## __SLOTS__ ##########################
+    ###############################################################
+    __slots__ = (
+        "_elements"
+    )
 
     ###############################################################
     ########################### __INIT__ ##########################
     ###############################################################
-    def __init__(self, elements: list = []):
+    def __init__(self, elements: Optional[List[List[object]]] = None) -> None:
         # =============================
         # INFORMATIONS :
         # -----------------------------
@@ -35,33 +45,65 @@ class Board:
         # PRÉCONDITION:
         # elements: liste à au moins deux dimensions
         # =============================
-        if elements != None:
+        self._elements = None
+        if elements is not None:
             self.set_elements(elements)
+        else:
+            self.set_elements([[]])
 
     ###############################################################
     ########################### GETTERS ###########################
     ###############################################################
-    def get_elements(self) -> list:
+    def get_elements(self) -> List[List[object]]:
         return self._elements
 
-    def get_element(self, x: int, y: int):
+    ###############################################################
+    ########################### SETTERS ###########################
+    ###############################################################
+    def set_elements(self, elements: List[List[object]]) -> None:
+        if isinstance(elements, list):
+            if isinstance(elements[0], list):
+                self._elements = elements
+            else:
+                raise Exception(
+                    "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
+                    "\n_elements must be a List[List[object]], but a List[" + type(elements[0]).__name__ +
+                    "] is given."
+                )
+        else:
+            raise Exception(
+                "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
+                "\nit must be a list, and at least two-dimensional."
+            )
+
+    ###############################################################
+    ######################### GET_ELEMENT #########################
+    ###############################################################
+    def get_element(
+            self,
+            x: Optional[int] = None,
+            y: Optional[int] = None,
+            position: Optional[Position] = None
+    ) -> object:
         # =============================
         # INFORMATIONS :
         # -----------------------------
         # UTILITÉ :
-        # Renvoie l'élément de self.elements en (y, x)
+        # Renvoie l'élément de self.elements en (y, x) ou en (position.y, position.x)
         # =============================
-        return self.get_elements()[y][x]
+        if x is not None and y is not None:
+            return self.get_elements()[y][x]
+        elif position is not None:
+            return self.get_elements()[position.y][position.x]
+        else:
+            raise Exception(
+                "Error: trying to get an element from a " + type(self).__name__ + ".elements, " +
+                "but no positional argument is given."
+            )
 
-    def get_element_with_position(self, position: Position):
-        # =============================
-        # INFORMATIONS :
-        # -----------------------------
-        # UTILITÉ :
-        # Renvoie l'élément de self.elements en (position.y, position.x)
-        # =============================
-        return self.get_element(position.x, position.y)
-
+    ###############################################################
+    ########################## GET_WIDTH ##########################
+    ###############################################################
     def get_width(self) -> int:
         # =============================
         # INFORMATIONS :
@@ -71,6 +113,9 @@ class Board:
         # =============================
         return len(self.get_elements()[0])
 
+    ###############################################################
+    ######################### GET_HEIGHT ##########################
+    ###############################################################
     def get_height(self) -> int:
         # =============================
         # INFORMATIONS :
@@ -81,46 +126,59 @@ class Board:
         return len(self.get_elements())
 
     ###############################################################
-    ########################### SETTERS ###########################
+    ######################### SET_ELEMENT #########################
     ###############################################################
-    def set_elements(self, elements: list):
-        try:
-            elements[0][0]
-            self._elements = elements
-        except:
+    def set_element(
+            self,
+            value: object,
+            x: Optional[int] = None,
+            y: Optional[int] = None,
+            position: Optional[Position] = None
+    ) -> None:
+        if x >= self.get_width():
             raise Exception(
-                "Error: impossible to set elements for a Board: it must be at least two-dimensional."
+                "Error: trying to set an element outside of the " + type(self).__name__ + " size limits : " +
+                "\nWidth of the " + type(self).__name__ + " is " + str(self.get_width()) +
+                ", requested " + str(x) + "." +
+                "\n(since lists start at zero in Python, max_index = len(list) - 1)"
             )
-
-    def set_element(self, x: int, y: int, value):
-        try:
-            self.get_elements()[y][x] = value
-        except:
+        elif y >= self.get_height():
             raise Exception(
-                "Error: trying to set an element outside of the Board size limits : " +
-                "\nHeight of the Board is " + self.get_height + ", requested " + x + ";"
-                "\nWidth of the Board is " + self.get_width + ", requested " + y + "."
+                "Error: trying to set an element outside of the " + type(self).__name__ + " size limits : " +
+                "\nHeight of the " + type(self).__name__ + " is " + str(self.get_height()) +
+                ", requested " + str(y) + "." +
+                "\n(since lists start at zero in Python, max_index = len(list) - 1)"
             )
+        else:
+            if x is not None and y is not None:
+                self.get_elements()[y][x] = value
+            elif position is not None:
+                self.get_elements()[y][x] = value
+            else:
+                raise Exception(
+                    "Error: trying to set an element on a " + type(self).__name__ + ".elements, " +
+                    "but no positional argument is given"
+                )
 
     ###############################################################
     ##################### CREATE_EMPTY_BOARD ######################
     ###############################################################
-
-    @staticmethod
-    def create_empty_board(width: int, height: int, board=Board()):
+    @classmethod
+    def create_empty_board(cls, width: int, height: int) -> Board:
         # =============================
         # INFORMATIONS :
         # -----------------------------
         # UTILITÉ :
-        # Crée un plateau vide de height x width
+        # Crée un plateau rempli de None, de dimension height x width
         # =============================
+        board = cls()
+        board._elements = []
 
         for line in range(height):
 
             board.get_elements().append([])
 
             for _ in range(width):
-
                 board.get_elements()[line].append(None)
 
         return board

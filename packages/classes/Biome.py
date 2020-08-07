@@ -9,8 +9,8 @@
 # - __init__()
 # - getters
 # - setters
-# - __str__() -> str
-# - in_range() -> bool
+# - __str__()
+# - in_range()
 # ==========================================================
 
 from typing import List
@@ -20,7 +20,6 @@ from packages.classes.Tree import Tree
 
 
 class Biome:
-
     ###############################################################
     ########################## __SLOTS__ ##########################
     ###############################################################
@@ -39,14 +38,14 @@ class Biome:
     ###############################################################
 
     def __init__(
-        self,
-        name: str,
-        temperature_min: int,
-        temperature_max: int,
-        pluviometry_min: int,
-        pluviometry_max: int,
-        ground_color: Color,
-        trees: List[Tree]
+            self,
+            name: str,
+            temperature_min: int,
+            temperature_max: int,
+            pluviometry_min: int,
+            pluviometry_max: int,
+            ground_color: Color,
+            trees: List[Tree]
     ) -> None:
         # =============================
         # INFORMATIONS :
@@ -62,9 +61,7 @@ class Biome:
         # - une liste des arbres qui y poussent
         # -----------------------------
         # PRÉCONDITIONS :
-        # - trees : liste de Tree
-        # - ground_color : instance de Color
-        # - autres entées convertibles en leur type indiqué
+        # - Les entrées sont de leur type
         # =============================
 
         self._name = None
@@ -118,53 +115,48 @@ class Biome:
     ###############################################################
 
     def set_name(self, name: str) -> None:
-        try:
-            self._name = str(name)
-        except ValueError:
+        if isinstance(name, str):
+            self._name = name
+        else:
             raise Exception(
-                "Error: impossible to set name for a Biome, when trying to convert " +
-                str(name) +
-                " to str."
+                "Error: impossible to set _name for a " + type(self).__name__ + ":" +
+                "\n_name must be a str, but a " + type(name).__name__ + " is given."
             )
 
     def set_temperature_min(self, temperature_min: int) -> None:
-        try:
-            self._temperature_min = int(temperature_min)
-        except ValueError:
+        if isinstance(temperature_min, int):
+            self._temperature_min = temperature_min
+        else:
             raise Exception(
-                "Error: impossible to set minimal_temperature for a Biome, when trying to convert " +
-                str(type(temperature_min)) +
-                "to int."
+                "Error: impossible to set _temperature_min for a " + type(self).__name__ + ": " +
+                "\n_temperature_min must be an int, but a " + type(temperature_min).__name__ + " is given."
             )
 
     def set_temperature_max(self, temperature_max: int) -> None:
-        try:
-            self._temperature_max = int(temperature_max)
-        except ValueError:
+        if isinstance(temperature_max, int):
+            self._temperature_min = temperature_max
+        else:
             raise Exception(
-                "Error: impossible to set maximal_temperature for a Biome, when trying to convert.",
-                type(temperature_max),
-                "to int."
+                "Error: impossible to set _temperature_max for a " + type(self).__name__ + ":" +
+                "\n_temperature_max must be an int, but a " + type(temperature_max).__name__ + " is given."
             )
 
     def set_pluviometry_min(self, pluviometry_min: int) -> None:
-        try:
-            self._pluviometry_min = int(pluviometry_min)
-        except ValueError:
+        if isinstance(pluviometry_min, int):
+            self._pluviometry_min = pluviometry_min
+        else:
             raise Exception(
-                "Error: impossible to set minimal_pluviometry for a Biome, when trying to convert " +
-                str(type(pluviometry_min)) +
-                " to int."
+                "Error: impossible to set _pluviometry_min for a " + type(self).__name__ + ":" +
+                "\n_pluviometry_min must be an int, but a " + type(pluviometry_min).__name__ + " is given."
             )
 
     def set_pluviometry_max(self, pluviometry_max: int) -> None:
-        try:
-            self._pluviometry_max = int(pluviometry_max)
-        except ValueError:
+        if isinstance(pluviometry_max, int):
+            self._pluviometry_max = pluviometry_max
+        else:
             raise Exception(
-                "Error: impossible to set maximal_pluviometry for a Biome, when trying to convert " +
-                str(type(pluviometry_max)) +
-                " to int."
+                "Error: impossible to set _pluviometry_max for a " + type(self).__name__ + ":" +
+                "\n_pluviometry_max must be an int, but a " + type(pluviometry_max).__name__ + " is given."
             )
 
     def set_ground_color(self, ground_color: Color) -> None:
@@ -172,24 +164,24 @@ class Biome:
             self._ground_color = ground_color
         else:
             raise Exception(
-                "Error: impossible to set a ground_color for a Biome: " +
-                str(type(ground_color)) +
-                " is not Color"
+                "Error: impossible to set _ground_color for a " + type(self).__name__ + ":" +
+                "\n_ground_color must be a Color, but a " + type(ground_color).__name__ + " is given."
             )
 
-    def set_trees(self, trees: list) -> None:
+    def set_trees(self, trees: List[Tree]) -> None:
 
-        iterator = iter(trees)
-        tree = next(iterator, None)
+        i = 0
 
-        while tree is not None and isinstance(tree, Tree):
-            tree = next(iterator, None)
+        while i < len(trees) and isinstance(trees[i], Tree):
+            i += 1
 
-        if tree is None:
+        if i == len(trees):
             self._trees = trees
         else:
             raise Exception(
-                "Error: impossible to set trees for a Biome: at least one item in trees is not a tree."
+                "Error: impossible to set _trees for a " + type(self).__name__ + ":" +
+                "\n_trees must be a List[Tree] but element number " + str(i) + " is a " + type(trees[i]).__name__ +
+                "."
             )
 
     ###############################################################
@@ -203,16 +195,16 @@ class Biome:
         # Passe les données du Biome en str. Utilisé pour debug
         # =============================
         return (
-            "name: " +
-            self.get_name() +
-            "\ntemperature_min: " +
-            str(self.get_temperature_min()) +
-            "\ntemperature_max:" +
-            str(self.get_temperature_max()) +
-            "\npluviometry_min: " +
-            str(self.get_pluviometry_min()) +
-            "\npluviometry_max: " +
-            str(self.get_pluviometry_max())
+                "name: " +
+                self.get_name() +
+                "\ntemperature_min: " +
+                str(self.get_temperature_min()) +
+                "\ntemperature_max:" +
+                str(self.get_temperature_max()) +
+                "\npluviometry_min: " +
+                str(self.get_pluviometry_min()) +
+                "\npluviometry_max: " +
+                str(self.get_pluviometry_max())
         )
 
     ###############################################################
@@ -227,9 +219,6 @@ class Biome:
         # correspondent à celles de ce biome
         # =============================
         return (
-
-            self.get_temperature_min() <= float(temperature) <= self.get_temperature_max() and
-            self.get_pluviometry_min() <= float(pluviometry) < self.get_pluviometry_max()
-
+                self.get_temperature_min() <= float(temperature) <= self.get_temperature_max() and
+                self.get_pluviometry_min() <= float(pluviometry) < self.get_pluviometry_max()
         )
-
