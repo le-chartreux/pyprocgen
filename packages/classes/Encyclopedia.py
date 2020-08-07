@@ -1,5 +1,6 @@
 from packages.classes.Tree import Tree
 
+
 ##############################################################
 ####################### ENCYCLOPEDIA #########################
 ##############################################################
@@ -43,7 +44,6 @@ class Encyclopedia:
         for biome in self.biomes.values():
 
             for tree in biome.trees:
-
                 trees.append(tree)
 
         return trees
@@ -93,7 +93,6 @@ class Encyclopedia:
         for tree in self.get_trees():
 
             if tree.get_height() > max_height:
-
                 max_height = tree.get_height()
 
         return max_height

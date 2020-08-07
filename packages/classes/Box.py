@@ -5,33 +5,66 @@
 # Définir la classe Box, une case
 # -----------------------------
 # CONTENU :
+# - __slots__
 # - __init__()
-# - get_color(self) -> str
+# - getters
+# - setters
+# - get_color()
 # ==========================================================
 
-from packages.classes.Board import Board
+from typing import Optional
+
 from packages.classes.Biome import Biome
-from packages.classes.Encyclopedia import Encyclopedia
-from packages.classes.Position import Position
-from packages.classes.Tree import Tree
+from packages.classes.Color import Color
 
 
 class Box:
+    ###############################################################
+    ########################## __SLOTS__ ##########################
+    ###############################################################
+    __slots__ = (
+        "_biome"
+    )
 
+    ###############################################################
+    ########################## __INIT__ ###########################
+    ###############################################################
     def __init__(
-        self,
-        biome: Biome
-    ):
+            self,
+            biome: Biome
+    ) -> None:
         # =============================
         # INFORMATIONS :
         # -----------------------------
         # UTILITÉ :
-        # Crée un objet Box (case), caractérisée par :
+        # Crée un objet Box (case), caractérisé par :
         # - son biome
         # =============================
-        self.biome = biome
+        self._biome = None
+        self.set_biome(biome)
 
-    def get_color(self) -> str:
+    ###############################################################
+    ########################### GETTERS ###########################
+    ###############################################################
+    def get_biome(self) -> Optional[Biome]:
+        return self._biome
+
+    ###############################################################
+    ########################### SETTERS ###########################
+    ###############################################################
+    def set_biome(self, biome: Optional[Biome]) -> None:
+        if isinstance(biome, Biome):
+            self._biome = biome
+        else:
+            raise Exception(
+                "Error: impossible to set _biome for a " + type(self).__name__ + ":" +
+                "\n_biome must be a Biome, but a " + type(biome).__name__ + " is given."
+            )
+
+    ###############################################################
+    ########################## GET_COLOR ##########################
+    ###############################################################
+    def get_color(self) -> Color:
         # =============================
         # INFORMATIONS :
         # -----------------------------
@@ -39,4 +72,7 @@ class Box:
         # Revoie la couleur de la case,
         # donc celle du sol puisque il n'y a pas d'arbre
         # =============================
-        return self.biome.ground_color.get_rgb()
+        if self.get_biome() is None:
+            raise Exception("Error: trying to get the color of a " + type(self).__name__ + " but it biome is None.")
+        else:
+            return self.get_biome().get_ground_color()
