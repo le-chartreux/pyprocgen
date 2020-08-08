@@ -32,9 +32,14 @@ class Board:
     )
 
     ###############################################################
+    ############################ HINTS ############################
+    ###############################################################
+    _elements: List[List[object]]
+
+    ###############################################################
     ########################### __INIT__ ##########################
     ###############################################################
-    def __init__(self, elements: Optional[List[List[object]]] = None) -> None:
+    def __init__(self, elements: List[List[object]]) -> None:
         # =============================
         # INFORMATIONS :
         # -----------------------------
@@ -45,11 +50,7 @@ class Board:
         # PRÉCONDITION:
         # elements: liste à au moins deux dimensions
         # =============================
-        self._elements = None
-        if elements is not None:
-            self.set_elements(elements)
-        else:
-            self.set_elements([[]])
+        self.set_elements(elements)
 
     ###############################################################
     ########################### GETTERS ###########################
@@ -62,7 +63,12 @@ class Board:
     ###############################################################
     def set_elements(self, elements: List[List[object]]) -> None:
         if isinstance(elements, list):
-            if isinstance(elements[0], list):
+            if len(elements) == 0:
+                raise Exception(
+                    "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
+                    "\n it must be a List[List[object]], but an empty list is given."
+                )
+            elif isinstance(elements[0], list):
                 self._elements = elements
             else:
                 raise Exception(
@@ -73,7 +79,7 @@ class Board:
         else:
             raise Exception(
                 "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
-                "\nit must be a list, and at least two-dimensional."
+                "\nit must be a List[List[object]], but a " + type(elements).__name__ + " is given."
             )
 
     ###############################################################
@@ -92,12 +98,40 @@ class Board:
         # Renvoie l'élément de self.elements en (y, x) ou en (position.y, position.x)
         # =============================
         if x is not None and y is not None:
-            return self.get_elements()[y][x]
+            if isinstance(x, int) and isinstance(y, int):
+                if x < self.get_width():
+                    if y < self.get_height():
+                        return self.get_elements()[y][x]
+                    else:
+                        raise Exception(
+                            "Error: trying to get an element outside of the " + type(self).__name__ +
+                            "._elements size size limits : " +
+                            "\nHeight of the " + type(self).__name__ + " is " + str(self.get_height()) +
+                            ", requested " + str(y) + "." +
+                            "\n(since lists start at zero in Python, max_index = len(list) - 1)"
+                        )
+                else:
+                    raise Exception(
+                        "Error: trying to get an element outside of the " + type(self).__name__ +
+                        "._elements size limits: " +
+                        "\nWidth of the " + type(self).__name__ + " is " + str(self.get_width()) +
+                        ", requested " + str(x) + "." +
+                        "\n(since lists start at zero in Python, max_index = len(list) - 1)"
+                    )
+
+            elif not isinstance(x, int):
+                raise Exception(
+                    "Error: trying to get an element but asked x is a " + type(x).__name__ + ", must be an int."
+                )
+            elif not isinstance(y, int):
+                raise Exception(
+                    "Error: trying to get an element but asked y is a " + type(y).__name__ + ", must be an int."
+                )
         elif position is not None:
             return self.get_elements()[position.y][position.x]
         else:
             raise Exception(
-                "Error: trying to get an element from a " + type(self).__name__ + ".elements, " +
+                "Error: trying to get an element from a " + type(self).__name__ + "._elements, " +
                 "but no positional argument is given."
             )
 

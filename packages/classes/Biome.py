@@ -34,9 +34,19 @@ class Biome:
     )
 
     ###############################################################
+    ############################ HINTS ############################
+    ###############################################################
+    _name: str
+    _temperature_min: int
+    _temperature_max: int
+    _pluviometry_min: int
+    _pluviometry_max: int
+    _ground_color: Color
+    _trees: List[Tree]
+
+    ###############################################################
     ########################## __INIT__ ###########################
     ###############################################################
-
     def __init__(
             self,
             name: str,
@@ -63,32 +73,19 @@ class Biome:
         # PRÉCONDITIONS :
         # - Les entrées sont de leur type
         # =============================
-
-        self._name = None
         self.set_name(name)
 
-        self._temperature_min = None
         self.set_temperature_min(temperature_min)
-
-        self._temperature_max = None
         self.set_temperature_max(temperature_max)
-
-        self._pluviometry_min = None
         self.set_pluviometry_min(pluviometry_min)
-
-        self._pluviometry_max = None
         self.set_pluviometry_max(pluviometry_max)
 
-        self._ground_color = None
         self.set_ground_color(ground_color)
-
-        self._trees = None
         self.set_trees(trees)
 
     ###############################################################
     ########################### GETTERS ###########################
     ###############################################################
-
     def get_name(self) -> str:
         return self._name
 
@@ -113,7 +110,6 @@ class Biome:
     ###############################################################
     ########################### SETTERS ###########################
     ###############################################################
-
     def set_name(self, name: str) -> None:
         if isinstance(name, str):
             self._name = name
@@ -185,6 +181,22 @@ class Biome:
             )
 
     ###############################################################
+    ########################## IN_RANGE ###########################
+    ###############################################################
+    def in_range(self, temperature: float, pluviometry: float) -> bool:
+        # =============================
+        # INFORMATIONS :
+        # -----------------------------
+        # UTILITÉ :
+        # Renvoie si la température et la pluviométrie
+        # correspondent à celles de ce biome
+        # =============================
+        return (
+                self.get_temperature_min() <= float(temperature) <= self.get_temperature_max() and
+                self.get_pluviometry_min() <= float(pluviometry) < self.get_pluviometry_max()
+        )
+
+    ###############################################################
     ########################### __STR__ ###########################
     ###############################################################
     def __str__(self) -> str:
@@ -205,20 +217,4 @@ class Biome:
                 str(self.get_pluviometry_min()) +
                 "\npluviometry_max: " +
                 str(self.get_pluviometry_max())
-        )
-
-    ###############################################################
-    ########################## IN_RANGE ###########################
-    ###############################################################
-    def in_range(self, temperature: float, pluviometry: float) -> bool:
-        # =============================
-        # INFORMATIONS :
-        # -----------------------------
-        # UTILITÉ :
-        # Renvoie si la température et la pluviométrie
-        # correspondent à celles de ce biome
-        # =============================
-        return (
-                self.get_temperature_min() <= float(temperature) <= self.get_temperature_max() and
-                self.get_pluviometry_min() <= float(pluviometry) < self.get_pluviometry_max()
         )
