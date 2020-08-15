@@ -1,9 +1,9 @@
-from packages.classes.Board import Board
+from packages.classes.BoardColor import BoardColor
 
 
 class Tree:
 
-    def __init__(self, name: str, spawn_probability: int, body: Board):
+    def __init__(self, name: str, spawn_probability: int, body: BoardColor):
         # =============================
         # INFORMATIONS :
         # -----------------------------
@@ -24,6 +24,9 @@ class Tree:
         self.spawn_probability = spawn_probability
         self.body = body
 
+    def get_body(self) -> BoardColor:
+        return self.body
+    
     def get_height(self) -> int:
         # =============================
         # INFORMATIONS :

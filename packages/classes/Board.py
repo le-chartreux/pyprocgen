@@ -11,9 +11,12 @@
 # - __init__()
 # - getters
 # - setters
+# - add_element()
+# - add_line()
 # - get_element()
-# - get_width()
+# - get_line()
 # - get_height()
+# - get_width()
 # - set_element()
 # - create_empty_board()
 # ==========================================================
@@ -67,7 +70,7 @@ class Board:
             if len(elements) == 0:
                 raise Exception(
                     "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
-                    "\n it must be a List[List[object]], but an empty list is given."
+                    "\n_elements must be a List[List[object]], but an empty list is given."
                 )
             elif isinstance(elements[0], list):
                 self._elements = elements
@@ -80,8 +83,33 @@ class Board:
         else:
             raise Exception(
                 "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
-                "\nit must be a List[List[object]], but a " + type(elements).__name__ + " is given."
+                "\n_elements must be a List[List[object]], but a " + type(elements).__name__ + " is given."
             )
+
+    ###############################################################
+    ######################### ADD_ELEMENT #########################
+    ###############################################################
+    def add_element(
+            self,
+            value: object,
+            line: int
+    ) -> None:
+        self.get_elements()[line].append(value)
+
+    ###############################################################
+    ########################### ADD_LINE ##########################
+    ###############################################################
+    def add_line(self, line: Optional[List[object]] = None) -> None:
+        if line is None:
+            self.get_elements().append([])
+        else:
+            if isinstance(line, list):
+                self.get_elements().append(line)  # Comme ça doit être une List[object], pas besoin de check
+            else:
+                raise Exception(
+                    "Error: trying to add a line in a " + type(self).__name__ + "_elements:" +
+                    "\nline must be a List[object], but a " + type(line).__name__ + " is given."
+                )
 
     ###############################################################
     ######################### GET_ELEMENT #########################
@@ -96,7 +124,7 @@ class Board:
         # INFORMATIONS :
         # -----------------------------
         # UTILITÉ :
-        # Renvoie l'élément de self.elements en (y, x) ou en (position.y, position.x)
+        # Renvoie l'élément de self._elements en (y, x) ou en (position.y, position.x)
         # =============================
         if x is not None and y is not None:
             if isinstance(x, int) and isinstance(y, int):
@@ -129,7 +157,25 @@ class Board:
                     "Error: trying to get an element but asked y is a " + type(y).__name__ + ", must be an int."
                 )
         elif position is not None:
-            return self.get_elements()[position.y][position.x]
+            if position.x < self.get_width():
+                if position.y < self.get_height():
+                    return self.get_elements()[position.y][position.x]
+                else:
+                    raise Exception(
+                        "Error: trying to get an element outside of the " + type(self).__name__ +
+                        "._elements size size limits : " +
+                        "\nHeight of the " + type(self).__name__ + " is " + str(self.get_height()) +
+                        ", requested " + str(position.y) + "." +
+                        "\n(since lists start at zero in Python, max_index = len(list) - 1)"
+                    )
+            else:
+                raise Exception(
+                    "Error: trying to get an element outside of the " + type(self).__name__ +
+                    "._elements size limits: " +
+                    "\nWidth of the " + type(self).__name__ + " is " + str(self.get_width()) +
+                    ", requested " + str(position.x) + "." +
+                    "\n(since lists start at zero in Python, max_index = len(list) - 1)"
+                )
         else:
             raise Exception(
                 "Error: trying to get an element from a " + type(self).__name__ + "._elements, " +
@@ -137,16 +183,18 @@ class Board:
             )
 
     ###############################################################
-    ########################## GET_WIDTH ##########################
+    ########################## GET_LINE ###########################
     ###############################################################
-    def get_width(self) -> int:
-        # =============================
-        # INFORMATIONS :
-        # -----------------------------
-        # UTILITÉ :
-        # Renvoie la largeur du plateau
-        # =============================
-        return len(self.get_elements()[0])
+    def get_line(self, line_number: int) -> List[object]:
+        if isinstance(line_number, int):
+            if line_number <= 0 and line_number < self.get_height():
+                return self.get_elements()[line_number]
+            else:
+                raise Exception(
+                    "Error: trying to get a line from a " + type(self).__name__ +
+                    "._elements but index is out of range:" +
+                    "requested .elements[" + str(line_number) + "] but len(elements) = " + str(self.get_height()) + "."
+                )
 
     ###############################################################
     ######################### GET_HEIGHT ##########################
@@ -159,6 +207,18 @@ class Board:
         # Renvoie la hauteur du plateau
         # =============================
         return len(self.get_elements())
+
+    ###############################################################
+    ########################## GET_WIDTH ##########################
+    ###############################################################
+    def get_width(self) -> int:
+        # =============================
+        # INFORMATIONS :
+        # -----------------------------
+        # UTILITÉ :
+        # Renvoie la largeur du plateau
+        # =============================
+        return len(self.get_elements()[0])
 
     ###############################################################
     ######################### SET_ELEMENT #########################
