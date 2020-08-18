@@ -61,4 +61,3 @@ class BoardBox(Board):
             raise Exception(
                 "Error: WTF how could this error happened ???"
             )
-
