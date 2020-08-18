@@ -40,9 +40,6 @@ class BoardBox(Board):
         # Crée un objet BoardBox, héritant de Board,
         # caractérisé par :
         # - ses éléments (une liste de liste de Box)
-        # -----------------------------
-        # PRÉCONDITION:
-        # elements: liste de Box à au moins deux dimensions
         # =============================
         super().__init__(elements)
 
@@ -65,6 +62,3 @@ class BoardBox(Board):
                 "Error: WTF how could this error happened ???"
             )
 
-
-a = BoardBox.create_empty_board(0, 0)
-print(a.TYPE_OF_ELEMENTS)
