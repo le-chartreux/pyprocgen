@@ -9,8 +9,8 @@
 # - __slots__
 # - hints
 # - __init__()
-# - getters
-# - setters
+# - GETTERS
+# - SETTERS
 # - add_element()
 # - add_line()
 # - get_element()
@@ -376,7 +376,7 @@ class Board:
         # INFORMATIONS :
         # -----------------------------
         # UTILITÉ :
-        # Crée un Board rempli de None, de dimension height x width
+        # Crée un Board (ou un objet d'une classe en héritant) rempli de None, de dimension height x width
         # =============================
         board = cls()
         board._elements = []
