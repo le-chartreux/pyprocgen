@@ -18,6 +18,7 @@
 # - get_height()
 # - get_width()
 # - set_element()
+# - __str__()
 # - create_empty_board()
 # ==========================================================
 
@@ -355,6 +356,16 @@ class Board:
                 "Error: impossible to get an element from a " + type(self).__name__ + "._elements: " +
                 "No positional argument is given."
             )
+
+    ###############################################################
+    ########################### __STR__ ###########################
+    ###############################################################
+    def __str__(self) -> str:
+        string = ""
+        for line in self.get_elements():
+            for element in line:
+                string += str(element)
+        return string
 
     ###############################################################
     ##################### CREATE_EMPTY_BOARD ######################
