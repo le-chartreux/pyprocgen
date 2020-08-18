@@ -12,7 +12,7 @@ For now it only creates a .ppm picture of a map with procedural generation using
 
 ## HOW TO USE IT ?
 
-1. Download the code
+1. Download the project
 2. Run pyprocgen.py with Python3
 3. Enter the width then the height of the map you want, in pixels
 4. Choose the mode you want to use and change options (optional)
