@@ -11,7 +11,7 @@
 # ==========================================================
 
 from __future__ import annotations
-from typing import List, Optional
+from typing import List, Optional, cast
 
 from packages.classes.Board import Board
 from packages.classes.Box import Box
@@ -54,10 +54,4 @@ class BoardBox(Board):
         # UTILITÉ :
         # Crée un BoardBox rempli de None, de dimension height x width
         # =============================
-        bullshit_check = super(BoardBox, cls).create_empty_board(width, height)
-        if isinstance(bullshit_check, BoardBox):
-            return bullshit_check
-        else:
-            raise Exception(
-                "Error: WTF how could this error happened ???"
-            )
+        return cast(BoardBox, super(BoardBox, cls).create_empty_board(width, height))
