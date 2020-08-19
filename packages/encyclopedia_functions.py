@@ -14,6 +14,7 @@
 
 from packages.short_class_import import Biome, Tree, Encyclopedia, Color, Board
 
+
 ###############################################################
 ######################### add_in_dict #########################
 ###############################################################
@@ -313,10 +314,10 @@ def encyclopedia_creation() -> Encyclopedia:
         body=Board(
             [
                 [None, None, None,
-                    Color(121, 105, 56), None],
+                 Color(121, 105, 56), None],
 
                 [Color(121, 105, 56), None, None,
-                    Color(133, 103, 69), Color(121, 105, 56)],
+                 Color(133, 103, 69), Color(121, 105, 56)],
 
                 [None, Color(133, 103, 69), Color(
                     133, 103, 69), Color(133, 103, 69), None],
@@ -464,22 +465,22 @@ def encyclopedia_creation() -> Encyclopedia:
         body=Board(
             [
                 [None, None, Color(36, 49, 11),
-                    Color(34, 46, 10), None, None],
+                 Color(34, 46, 10), None, None],
 
                 [Color(65, 71, 23), Color(34, 46, 10), Color(34, 46, 10),
-                    Color(54, 62, 15), Color(34, 46, 10), None],
+                 Color(54, 62, 15), Color(34, 46, 10), None],
 
                 [Color(34, 46, 10), Color(59, 58, 12), Color(34, 46, 10),
-                    Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10)],
+                 Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10)],
 
                 [None, Color(48, 57, 13), Color(58, 45, 26),
-                    Color(58, 45, 26), Color(34, 46, 10), Color(54, 62, 15)],
+                 Color(58, 45, 26), Color(34, 46, 10), Color(54, 62, 15)],
 
                 [None, None, None,
-                    Color(58, 45, 26), None, None],
+                 Color(58, 45, 26), None, None],
 
                 [None, None, None,
-                    Color(58, 45, 26), None, None]
+                 Color(58, 45, 26), None, None]
             ]
         )
     )
@@ -1159,31 +1160,31 @@ def encyclopedia_creation() -> Encyclopedia:
         body=Board(
             [
                 [None, Color(0, 69, 41), Color(0, 69, 41),
-                    Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41), None],
+                 Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41), None],
 
                 [Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41),
-                    Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41)],
+                 Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41)],
 
                 [None, None, None, Color(88, 73, 50),
-                    None, None, None],
+                 None, None, None],
 
                 [None, None, None, Color(88, 73, 50),
-                    None, None, None],
+                 None, None, None],
 
                 [None, None, None, Color(88, 73, 50),
-                    None, None, None],
+                 None, None, None],
 
                 [None, None, None, Color(88, 73, 50),
-                    None, None, None],
+                 None, None, None],
 
                 [None, None, None, Color(88, 73, 50),
-                    Color(88, 73, 50), None, None],
+                 Color(88, 73, 50), None, None],
 
                 [None, None, None, None,
-                    Color(88, 73, 50), None, None],
+                 Color(88, 73, 50), None, None],
 
                 [None, None, None, None,
-                    Color(88, 73, 50), None, None]
+                 Color(88, 73, 50), None, None]
             ]
         )
     )
@@ -1194,28 +1195,28 @@ def encyclopedia_creation() -> Encyclopedia:
         body=Board(
             [
                 [None, Color(124, 168, 21), Color(124, 168, 21),
-                    Color(124, 168, 21), Color(124, 168, 21), None],
+                 Color(124, 168, 21), Color(124, 168, 21), None],
 
                 [Color(124, 168, 21), Color(124, 168, 21), Color(124, 168, 21),
-                    Color(124, 168, 21), Color(124, 168, 21), Color(124, 168, 21)],
+                 Color(124, 168, 21), Color(124, 168, 21), Color(124, 168, 21)],
 
                 [None, None, Color(225, 219, 185),
-                    None, None, None],
+                 None, None, None],
 
                 [None, None, Color(225, 219, 185),
-                    None, None, None],
+                 None, None, None],
 
                 [None, None, Color(225, 219, 185),
-                    None, None, None],
+                 None, None, None],
 
                 [None, None, Color(225, 219, 185),
-                    None, None, None],
+                 None, None, None],
 
                 [None, None, Color(225, 219, 185),
-                    None, None, None],
+                 None, None, None],
 
                 [None, None, Color(225, 219, 185),
-                    None, None, None]
+                 None, None, None]
             ]
         )
     )
@@ -1298,22 +1299,22 @@ def encyclopedia_creation() -> Encyclopedia:
         body=Board(
             [
                 [None, None, Color(121, 105, 56),
-                    None, None, None, None],
+                 None, None, None, None],
 
                 [None, None, None, Color(133, 103, 69),
-                    None, Color(133, 103, 69), Color(121, 105, 56)],
+                 None, Color(133, 103, 69), Color(121, 105, 56)],
 
                 [Color(121, 105, 56), Color(133, 103, 69), Color(133, 103, 69),
-                    Color(133, 103, 69), Color(133, 103, 69), None, None],
+                 Color(133, 103, 69), Color(133, 103, 69), None, None],
 
                 [None, Color(121, 105, 56), None,
-                    Color(133, 103, 69), None, None, None],
+                 Color(133, 103, 69), None, None, None],
 
                 [None, None, None,
-                    Color(133, 103, 69), None, None, None],
+                 Color(133, 103, 69), None, None, None],
 
                 [None, None, None,
-                    Color(133, 103, 69), None, None, None]
+                 Color(133, 103, 69), None, None, None]
             ]
         )
     )
@@ -1324,7 +1325,7 @@ def encyclopedia_creation() -> Encyclopedia:
         body=Board(
             [
                 [None, Color(121, 105, 56), None,
-                    Color(133, 103, 69), Color(121, 105, 56)],
+                 Color(133, 103, 69), Color(121, 105, 56)],
 
                 [Color(121, 105, 56), Color(133, 103, 69), Color(
                     133, 103, 69), Color(133, 103, 69), None],
@@ -1344,10 +1345,10 @@ def encyclopedia_creation() -> Encyclopedia:
         body=Board(
             [
                 [None, None, None,
-                    Color(121, 105, 56), None],
+                 Color(121, 105, 56), None],
 
                 [Color(121, 105, 56), None, None,
-                    Color(133, 103, 69), Color(121, 105, 56)],
+                 Color(133, 103, 69), Color(121, 105, 56)],
 
                 [None, Color(133, 103, 69), Color(
                     133, 103, 69), Color(133, 103, 69), None],
@@ -1612,22 +1613,22 @@ def encyclopedia_creation() -> Encyclopedia:
         body=Board(
             [
                 [None, Color(39, 67, 0), Color(39, 67, 0),
-                    Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), None],
+                 Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), None],
 
                 [Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0),
-                    Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0)],
+                 Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0)],
 
                 [None, Color(138, 127, 99), None, Color(118, 98, 65),
-                    None, Color(138, 127, 99), None],
+                 None, Color(138, 127, 99), None],
 
                 [None, None, None, Color(118, 98, 65),
-                    None, Color(138, 127, 99), None],
+                 None, Color(138, 127, 99), None],
 
                 [None, None, None, None,
-                    Color(118, 98, 65), None, None],
+                 Color(118, 98, 65), None, None],
 
                 [None, None, None, None,
-                    Color(118, 98, 65), None, None]
+                 Color(118, 98, 65), None, None]
             ]
         )
     )
@@ -1657,25 +1658,25 @@ def encyclopedia_creation() -> Encyclopedia:
         body=Board(
             [
                 [None, Color(39, 67, 0), Color(39, 67, 0),
-                    Color(39, 67, 0), Color(39, 67, 0), None],
+                 Color(39, 67, 0), Color(39, 67, 0), None],
 
                 [Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0),
-                    Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0)],
+                 Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0)],
 
                 [Color(138, 127, 99), None, Color(118, 98, 65),
-                    None, Color(138, 127, 99), None],
+                 None, Color(138, 127, 99), None],
 
                 [Color(138, 127, 99), None, Color(118, 98, 65),
-                    None, Color(138, 127, 99), None],
+                 None, Color(138, 127, 99), None],
 
                 [None, None, Color(118, 98, 65),
-                    None, None, None],
+                 None, None, None],
 
                 [None, None, Color(118, 98, 65),
-                    None, None, None],
+                 None, None, None],
 
                 [None, Color(118, 98, 65), None,
-                    None, None, None]
+                 None, None, None]
             ]
         )
     )

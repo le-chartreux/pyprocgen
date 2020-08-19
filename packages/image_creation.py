@@ -70,7 +70,6 @@ def write_image_body(destination_file, board: list, encyclopedia: Encyclopedia):
     for line in range(len(board)):
 
         for column in range(len(board[0])):
-
             color = board[line][column].get_color()
             destination_file.write(color)
             destination_file.write(" ")

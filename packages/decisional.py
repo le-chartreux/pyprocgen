@@ -46,21 +46,20 @@ def genererate_box(encyclopedia: Encyclopedia, x: int, y: int, seed: dict, varia
     pluviometry = 0
 
     for i in range(1, 9):
-
-        power = 2**i
+        power = 2 ** i
 
         temperature += noise.noise2(
-            seed["Tx"] + 100000*i + x / (variation_intensity * power),
-            seed["Ty"] + 100000*i + y / (variation_intensity * power)
+            seed["Tx"] + 100000 * i + x / (variation_intensity * power),
+            seed["Ty"] + 100000 * i + y / (variation_intensity * power)
         ) * power
 
         pluviometry += noise.noise2(
-            seed["Px"] + 100000*i + x / (variation_intensity * power),
-            seed["Py"] + 100000*i + y / (variation_intensity * power)
+            seed["Px"] + 100000 * i + x / (variation_intensity * power),
+            seed["Py"] + 100000 * i + y / (variation_intensity * power)
         ) * power
 
-    temperature *= 0.00587    # temperature = temperature * 3 / (2**9 - 1)
-    pluviometry *= 0.00783    # pluviometry = pluviometry * 4 / (2**9 - 1)
+    temperature *= 0.00587  # temperature = temperature * 3 / (2**9 - 1)
+    pluviometry *= 0.00783  # pluviometry = pluviometry * 4 / (2**9 - 1)
 
     # Génération
     return Box(biome_choice(encyclopedia, temperature, pluviometry))
@@ -88,7 +87,6 @@ def biome_choice(encyclopedia: Encyclopedia, temperature: float, pluviometry: fl
     for biome in encyclopedia.biomes.values():
 
         if biome.in_range(temperature, pluviometry):
-
             return biome
 
     return encyclopedia.biomes.get("water")

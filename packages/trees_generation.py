@@ -65,15 +65,14 @@ def generate_trees(board: list, encyclopedia: Encyclopedia) -> list:
                 while counter < len(trees_list) and not placed:
 
                     if (
-                        possible_to_place_tree(
-                            board,
-                            trees_list[counter],
-                            column,
-                            line
-                        )
-                        and random.random() < trees_list[counter].spawn_probability
+                            possible_to_place_tree(
+                                board,
+                                trees_list[counter],
+                                column,
+                                line
+                            )
+                            and random.random() < trees_list[counter].spawn_probability
                     ):
-
                         put_tree(
                             board,
                             encyclopedia,
@@ -134,10 +133,9 @@ def possible_to_place_tree(board: list, tree: Tree, x: int, y: int):
     while line < tree_height and possible:
 
         while column < tree_width and possible:
-
             possible = (
-                board[y + line][x + column].biome.name == type_of_source_box
-                and board[y + line][x + column].tree == None
+                    board[y + line][x + column].biome.name == type_of_source_box
+                    and board[y + line][x + column].tree == None
             )
             column += 1
 
