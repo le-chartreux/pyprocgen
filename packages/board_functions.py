@@ -6,9 +6,6 @@
 # et gérer les seed
 # -----------------------------
 # CONTENU :
-# - create_empty_board(width, height)
-# - display_board(board)
-#
 # - generate_seed()
 # - seed_to_string(seed)
 # - string_to_seed(seed_in_string)
@@ -24,7 +21,7 @@ import random
 ###############################################################
 ###################### GENERERATE_SEED ########################
 ###############################################################
-def generate_seed() -> str:
+def generate_seed():
     # =============================
     # INFORMATIONS :
     # -----------------------------
@@ -79,10 +76,10 @@ def seed_to_string(seed: dict) -> str:
     # =============================
 
     seed_in_string = (
-        str(seed["Tx"])
-        + ":" + str(seed["Ty"])
-        + ":" + str(seed["Px"])
-        + ":" + str(seed["Py"])
+            str(seed["Tx"])
+            + ":" + str(seed["Ty"])
+            + ":" + str(seed["Px"])
+            + ":" + str(seed["Py"])
     )
 
     return seed_in_string
@@ -119,7 +116,6 @@ def string_to_seed(seed_in_string: str) -> dict:
         buffer = ""
 
         while counter < len(seed_in_string) and seed_in_string[counter] != ":":
-
             buffer += seed_in_string[counter]
             counter += 1
 
@@ -156,14 +152,14 @@ def is_seed(seed_in_string: str) -> bool:
     number_of_following_colon = 1
 
     while (
-        position_counter < len(seed_in_string)
-        and seed_in_string[position_counter] in ("0123456789-:")
-        and number_of_following_colon != 2
-        and not (  # Pour éviter un - au milieu d'un entier
+            position_counter < len(seed_in_string)
+            and seed_in_string[position_counter] in ("0123456789-:")
+            and number_of_following_colon != 2
+            and not (  # Pour éviter un - au milieu d'un entier
             position_counter != 0
             and seed_in_string[position_counter] == "-"
             and seed_in_string[position_counter - 1] != ":"
-        )
+    )
     ):
 
         if seed_in_string[position_counter] == ":":
@@ -176,7 +172,7 @@ def is_seed(seed_in_string: str) -> bool:
         position_counter += 1
 
     return (
-        position_counter == len(seed_in_string)
-        and colon_counter == 3
-        and number_of_following_colon == 0
+            position_counter == len(seed_in_string)
+            and colon_counter == 3
+            and number_of_following_colon == 0
     )

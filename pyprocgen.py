@@ -5,9 +5,6 @@
 # Corps du programme de génération
 # procédurale de carte en 2D
 # -----------------------------
-# PRÉCONDITIONS :
-# - Le reste du programme existe et fonctionne
-# -----------------------------
 # DÉPEND DE :
 # - les packages appelés
 # -----------------------------
