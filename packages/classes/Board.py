@@ -364,7 +364,8 @@ class Board:
         string = ""
         for line in self.get_elements():
             for element in line:
-                string += str(element)
+                string += str(element) + " "
+            string += "\n"
         return string
 
     ###############################################################
