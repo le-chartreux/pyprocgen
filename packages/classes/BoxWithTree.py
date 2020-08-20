@@ -7,6 +7,7 @@
 # -----------------------------
 # CONTENU :
 # - __slots__
+# - HINTS
 # - __init__()
 # - getters
 # - setters
