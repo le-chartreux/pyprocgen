@@ -10,8 +10,8 @@
 # - __init__()
 # - GETTERS
 # - SETTERS
-# - __str__()
 # - in_range()
+# - __str__()
 # ==========================================================
 
 from typing import List
