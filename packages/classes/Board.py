@@ -298,7 +298,7 @@ class Board:
     ###############################################################
     def set_element(
             self,
-            value: object,
+            value: TYPE_OF_ELEMENTS,
             x: Optional[int] = None,
             y: Optional[int] = None,
             position: Optional[Position] = None

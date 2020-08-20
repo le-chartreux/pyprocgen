@@ -137,7 +137,7 @@ write_image_header(destination_file, height, width, seed_to_string(seed))
 ###############################################################
 if place_trees:
 
-    chunk_height = encyclopedia.max_height_of_trees()
+    chunk_height = encyclopedia.get_max_height_of_trees()
 
     # Création du chunk initial
     # L'image se crée par chunk de width*chunk_height
