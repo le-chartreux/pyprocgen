@@ -40,7 +40,7 @@ class Board:
     ############################ HINTS ############################
     ###############################################################
     _elements: List[List[object]]
-    TYPE_OF_ELEMENTS: Optional = Optional[object]
+    TYPE_OF_ELEMENTS: Optional = Optional[object]  # mit en Optional pour la cohérence des classes filles
 
     ###############################################################
     ########################### __INIT__ ##########################
