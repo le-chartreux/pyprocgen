@@ -10,7 +10,9 @@
 # - __init__()
 # - GETTERS
 # - SETTERS
-# - get_color(self)
+# - get_color()
+# - get_hexadecimal()
+# - __str__()
 # ==========================================================
 
 
@@ -40,36 +42,23 @@ class Color:
         # PRÉCONDITION:
         # - 0 < (red, green & blue) < 255
         # =============================
-        if Color.is_part_of_color(red) and Color.is_part_of_color(green) and Color.is_part_of_color(blue):
-            self.red = red
-            self.green = green
-            self.blue = blue
-        else:
-            raise Exception(
-                "Error: impossible to set element for a Color, inputs are " +
-                str(red) + str(green) + str(blue) +
-                ", they must be between 0 and 255."
-            )
 
-    ###############################################################
-    ##################### IS_PART_OF_COLOR ########################
-    ###############################################################
-    @staticmethod
-    def is_part_of_color(number: int) -> bool:
-        # =============================
-        # INFORMATIONS :
-        # -----------------------------
-        # UTILITÉ :
-        # Vérifie si number est un int et renvoi True si 0 < number < 255
-        # =============================
-        if isinstance(number, int):
-            return 0 <= number <= 255
-        else:
-            raise Exception(
-                "Error: impossible to set element for a Color, an input is a " +
-                str(type(number)) +
-                ", must be an int."
-            )
+        for color in (red, green, blue):
+            if isinstance(color, int):
+                if not (0 <= color <= 255):
+                    raise Exception(
+                        "Error: impossible to set an element for a " + type(self).__name__ + ":"
+                        "\nan input's value is not between 0 and 255."
+                    )
+            else:
+                raise Exception(
+                    "Error: impossible to set an element for a " + type(self).__name__ + ":" +
+                    "\nan input is a " + str(type(color)) + ", must be an int."
+                )
+
+        self.red = red
+        self.green = green
+        self.blue = blue
 
     ###############################################################
     ###################### GET_HEXADECIMAL ########################
@@ -100,4 +89,3 @@ class Color:
     ###############################################################
     def __str__(self):
         return self.get_rgb()
-

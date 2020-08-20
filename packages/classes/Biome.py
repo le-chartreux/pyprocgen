@@ -125,7 +125,7 @@ class Biome:
             self._temperature_min = temperature_min
         else:
             raise Exception(
-                "Error: impossible to set _temperature_min for a " + type(self).__name__ + ": " +
+                "Error: impossible to set _temperature_min for a " + type(self).__name__ + ":" +
                 "\n_temperature_min must be an int, but a " + type(temperature_min).__name__ + " is given."
             )
 
