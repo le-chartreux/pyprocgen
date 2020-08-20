@@ -13,8 +13,6 @@
 # - get_color()
 # ==========================================================
 
-from typing import Optional
-
 from packages.classes.Biome import Biome
 from packages.classes.Color import Color
 
