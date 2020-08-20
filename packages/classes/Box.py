@@ -27,6 +27,11 @@ class Box:
     )
 
     ###############################################################
+    ############################ HINTS ############################
+    ###############################################################
+    _biome: Biome
+
+    ###############################################################
     ########################## __INIT__ ###########################
     ###############################################################
     def __init__(
@@ -40,19 +45,18 @@ class Box:
         # Crée un objet Box (case), caractérisé par :
         # - son biome
         # =============================
-        self._biome = None
         self.set_biome(biome)
 
     ###############################################################
     ########################### GETTERS ###########################
     ###############################################################
-    def get_biome(self) -> Optional[Biome]:
+    def get_biome(self) -> Biome:
         return self._biome
 
     ###############################################################
     ########################### SETTERS ###########################
     ###############################################################
-    def set_biome(self, biome: Optional[Biome]) -> None:
+    def set_biome(self, biome: Biome) -> None:
         if isinstance(biome, Biome):
             self._biome = biome
         else:
@@ -72,7 +76,4 @@ class Box:
         # Revoie la couleur de la case,
         # donc celle du sol puisque il n'y a pas d'arbre
         # =============================
-        if self.get_biome() is None:
-            raise Exception("Error: trying to get the color of a " + type(self).__name__ + " but it biome is None.")
-        else:
-            return self.get_biome().get_ground_color()
+        return self.get_biome().get_ground_color()
