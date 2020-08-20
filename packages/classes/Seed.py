@@ -7,6 +7,8 @@
 # CONTENU :
 # - __slots__
 # - __init__()
+# - is_seed()
+# - __str__()
 # ==========================================================
 from __future__ import annotations
 from typing import Optional
@@ -33,7 +35,7 @@ class Seed:
             pluviometry_y: Optional[int] = None,
             temperature_x: Optional[int] = None,
             temperature_y: Optional[int] = None,
-            string: Optional[str] = None
+            seed_in_string: Optional[str] = None
     ):
         # =============================
         # INFORMATIONS :
@@ -46,10 +48,10 @@ class Seed:
         # - sa pluviometry_y
         # -----------------------------
         # PRÉCONDITION:
-        # - Soit toutes les entrées sont des int, soit elles sont toutes None
+        # - Soit toutes les entrées sont des int, soit elles sont toutes None (à part seed_in_string)
         # =============================
-        if isinstance(string, str) and Seed.is_seed(string):
-            splitted_string = string.split(":")
+        if isinstance(seed_in_string, str) and Seed.is_seed(seed_in_string):
+            splitted_string = seed_in_string.split(":")
             self.pluviometry_x = int(splitted_string[0])
             self.pluviometry_y = int(splitted_string[1])
             self.temperature_x = int(splitted_string[2])
@@ -86,16 +88,22 @@ class Seed:
     ###############################################################
     ########################### IS_SEED ###########################
     ###############################################################
-    # =============================
-    # INFORMATIONS :
-    # -----------------------------
-    # UTILITÉ :
-    # Vérifie que seed_in_string est bien
-    # de la forme a + ":" + b + ":" + c + ":" + d
-    # avec a,b,c,d str(integers)
-    # =============================
     @staticmethod
     def is_seed(string: str) -> bool:
+        # =============================
+        # INFORMATIONS :
+        # -----------------------------
+        # UTILITÉ :
+        # Vérifie que seed_in_string est bien
+        # de la forme a + ":" + b + ":" + c + ":" + d
+        # avec a,b,c,d str(integers)
+        # =============================
+        if not isinstance(string, str):
+            raise Exception(
+                "Error: impossible to check if a string is a Seed:" +
+                "\nstring must be str, but a " + type(string).__name__ + " is given."
+            )
+
         colon_counter = 0
         position_counter = 0
         # number_of_following_colon est initialisé à 1 pour contrer le cas où seed_in_string[0] == ":"
