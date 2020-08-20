@@ -9,8 +9,8 @@
 # - __slots__
 # - HINTS
 # - __init__()
-# - getters
-# - setters
+# - GETTERS
+# - SETTERS
 # - get_color(self)
 # ==========================================================
 
@@ -22,16 +22,6 @@ from packages.classes.Tree import Tree
 
 
 class BoxWithTree(Box):
-    # =============================
-    # INFORMATIONS :
-    # -----------------------------
-    # UTILITÉ :
-    # Crée un objet BoxWithTree qui hérite de Box, caractérisée par :
-    # - son biome
-    # - l'arbre qui est dessus
-    # - la position de son pixel d'arbre dans le modèle de l'arbre
-    # =============================
-
     ###############################################################
     ########################## __SLOTS__ ##########################
     ###############################################################
@@ -41,15 +31,27 @@ class BoxWithTree(Box):
     )
 
     ###############################################################
+    ############################ HINTS ############################
+    ###############################################################
+    _tree: Tree
+    _position_in_tree: Position
+
+    ###############################################################
     ########################## __INIT__ ###########################
     ###############################################################
-    def __init__(self, biome: Biome, tree: Tree, position_in_tree: Position):
+    def __init__(self, biome: Biome, tree: Tree, position_in_tree: Position) -> None:
+        # =============================
+        # INFORMATIONS :
+        # -----------------------------
+        # UTILITÉ :
+        # Crée un objet BoxWithTree qui hérite de Box, caractérisée par :
+        # - son biome
+        # - l'arbre qui est dessus
+        # - la position de son pixel d'arbre dans le modèle de l'arbre
+        # =============================
+
         super().__init__(biome)
-
-        self._tree = None
         self.set_tree(tree)
-
-        self._position_in_tree = None
         self.set_position_in_tree(position_in_tree)
 
     ###############################################################
@@ -64,7 +66,7 @@ class BoxWithTree(Box):
     ###############################################################
     ########################### SETTERS ###########################
     ###############################################################
-    def set_tree(self, tree: Tree):
+    def set_tree(self, tree: Tree) -> None:
         if isinstance(tree, Tree):
             self._tree = tree
         else:
@@ -73,7 +75,7 @@ class BoxWithTree(Box):
                 "\n_tree must be a Tree, but a " + type(tree).__name__ + " is given."
             )
 
-    def set_position_in_tree(self, position_in_tree: Position):
+    def set_position_in_tree(self, position_in_tree: Position) -> None:
         if isinstance(position_in_tree, Position):
             self._position_in_tree = position_in_tree
         else:
@@ -93,4 +95,4 @@ class BoxWithTree(Box):
         # Revoie la couleur de la case,
         # donc celle de l'arbre à la position_in_tree puisqu'il y a un arbre
         # =============================
-        return self.get_tree().body.get_element(position=self.get_position_in_tree())
+        return self.get_tree().get_body().get_element(position=self.get_position_in_tree())
