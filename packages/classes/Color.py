@@ -5,14 +5,14 @@
 # Définir la classe Color, une couleur au format rgb
 # -----------------------------
 # CONTENU :
-# - __slots__
-# - HINTS
-# - __init__()
-# - GETTERS
-# - SETTERS
-# - get_color()
-# - get_hexadecimal()
-# - __str__()
+# + __slots__
+# + HINTS
+# + __init__()
+# + GETTERS
+# + SETTERS
+# + get_color()
+# + get_hexadecimal()
+# + __str__()
 # ==========================================================
 
 

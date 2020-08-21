@@ -5,12 +5,12 @@
 # Définir la classe Box, une case
 # -----------------------------
 # CONTENU :
-# - __slots__
-# - HINTS
-# - __init__()
-# - getters
-# - setters
-# - get_color()
+# + __slots__
+# + HINTS
+# + __init__()
+# + getters
+# + setters
+# + get_color()
 # ==========================================================
 
 from packages.classes.Biome import Biome

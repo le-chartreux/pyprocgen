@@ -5,14 +5,14 @@
 # Définir la classe Encyclopedia
 # -----------------------------
 # CONTENU :
-# - __slots__
-# - HINTS
-# - __init__()
-# - GETTERS
-# - SETTERS
-# - get_color()
-# - get_hexadecimal()
-# - __str__()
+# + __slots__
+# + HINTS
+# + __init__()
+# + GETTERS
+# + SETTERS
+# + get_color()
+# + get_hexadecimal()
+# + __str__()
 # ==========================================================
 
 from typing import Dict, List

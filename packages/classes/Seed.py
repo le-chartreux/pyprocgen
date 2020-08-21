@@ -5,10 +5,10 @@
 # Définir la classe Seed
 # -----------------------------
 # CONTENU :
-# - __slots__
-# - __init__()
-# - is_seed()
-# - __str__()
+# + __slots__
+# + __init__()
+# + is_seed()
+# + __str__()
 # ==========================================================
 from __future__ import annotations
 from typing import Optional

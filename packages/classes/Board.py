@@ -6,20 +6,20 @@
 # qui peut utiliser un objet Position
 # -----------------------------
 # CONTENU :
-# - __slots__
-# - HINTS
-# - __init__()
-# - GETTERS
-# - SETTERS
-# - add_element()
-# - add_line()
-# - get_element()
-# - get_line()
-# - get_height()
-# - get_width()
-# - set_element()
-# - __str__()
-# - create_empty_board()
+# + __slots__
+# + HINTS
+# + __init__()
+# + GETTERS
+# + SETTERS
+# + add_element()
+# + add_line()
+# + get_element()
+# + get_line()
+# + get_height()
+# + get_width()
+# + set_element()
+# + __str__()
+# + create_empty_board()
 # ==========================================================
 
 from __future__ import annotations

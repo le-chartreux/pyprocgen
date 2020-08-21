@@ -6,12 +6,12 @@
 # quand cette dernière se fait poser un arbre dessus
 # -----------------------------
 # CONTENU :
-# - __slots__
-# - HINTS
-# - __init__()
-# - GETTERS
-# - SETTERS
-# - get_color(self)
+# + __slots__
+# + HINTS
+# + __init__()
+# + GETTERS
+# + SETTERS
+# + get_color(self)
 # ==========================================================
 
 from packages.classes.Biome import Biome

@@ -5,13 +5,13 @@
 # Définir la classe Biome, qui sert à avoir les infos sur un biome
 # -----------------------------
 # CONTENU :
-# - __slots__
-# - HINTS
-# - __init__()
-# - GETTERS
-# - SETTERS
-# - in_range()
-# - __str__()
+# + __slots__
+# + HINTS
+# + __init__()
+# + GETTERS
+# + SETTERS
+# + in_range()
+# + __str__()
 # ==========================================================
 
 from typing import List

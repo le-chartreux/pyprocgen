@@ -5,10 +5,10 @@
 # Définir la classe BoardBox, un tableau de Box en 2D
 # -----------------------------
 # CONTENU :
-# - __slots__
-# - HINTS
-# - __init__()
-# - create_empty_board()
+# + __slots__
+# + HINTS
+# + __init__()
+# + create_empty_board()
 # ==========================================================
 
 from __future__ import annotations
