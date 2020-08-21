@@ -78,7 +78,8 @@ class Color:
                 raise Exception(
                     "Error: impossible to set _red for a " + type(self).__name__ + ":" +
                     "\n_red must be between " + str(COLOR_RGB_MIN) + " and " + str(COLOR_RGB_MAX) +
-                    " but input's value equals " + str(red) + "."
+                    " but input's value equals " + str(red) + "." +
+                    "\nChange the relative constant in packages/constants.py to allow."
                 )
         else:
             raise Exception(
@@ -94,7 +95,8 @@ class Color:
                 raise Exception(
                     "Error: impossible to set _green for a " + type(self).__name__ + ":" +
                     "\n_green must be between " + str(COLOR_RGB_MIN) + " and " + str(COLOR_RGB_MAX) +
-                    " but input's value equals " + str(green) + "."
+                    " but input's value equals " + str(green) + "." +
+                    "\nChange the relative constant in packages/constants.py to allow."
                 )
         else:
             raise Exception(
@@ -110,7 +112,8 @@ class Color:
                 raise Exception(
                     "Error: impossible to set _blue for a " + type(self).__name__ + ":" +
                     "\n_blue must be between " + str(COLOR_RGB_MIN) + " and " + str(COLOR_RGB_MAX) +
-                    " but input's value equals " + str(blue) + "."
+                    " but input's value equals " + str(blue) + "." +
+                    "\nChange the relative constant in packages/constants.py to allow."
                 )
         else:
             raise Exception(

@@ -6,7 +6,10 @@
 # -----------------------------
 # CONTENU :
 # + __slots__
+# + HINTS
 # + __init__()
+# + GETTERS
+# + SETTERS
 # + is_seed()
 # + __str__()
 # ==========================================================
@@ -14,17 +17,27 @@ from __future__ import annotations
 from typing import Optional
 import random
 
+from packages.constants import SEED_ELEMENT_MIN, SEED_ELEMENT_MAX
+
 
 class Seed:
     ###############################################################
     ########################## __SLOTS__ ##########################
     ###############################################################
     __slots__ = (
-        "temperature_x",
-        "temperature_y",
-        "pluviometry_x",
-        "pluviometry_y"
+        "_temperature_x",
+        "_temperature_y",
+        "_pluviometry_x",
+        "_pluviometry_y"
     )
+
+    ###############################################################
+    ########################### HINTS #############################
+    ###############################################################
+    _temperature_x: int
+    _temperature_y: int
+    _pluviometry_x: int
+    _pluviometry_y: int
 
     ###############################################################
     ########################## __INIT__ ###########################
@@ -48,41 +61,118 @@ class Seed:
         # - sa pluviometry_y
         # -----------------------------
         # PRÉCONDITION:
-        # - Soit toutes les entrées sont des int, soit elles sont toutes None (à part seed_in_string)
+        # - seed_in_string valide is_seed()
         # =============================
-        if isinstance(seed_in_string, str) and Seed.is_seed(seed_in_string):
-            splitted_string = seed_in_string.split(":")
-            self.pluviometry_x = int(splitted_string[0])
-            self.pluviometry_y = int(splitted_string[1])
-            self.temperature_x = int(splitted_string[2])
-            self.temperature_y = int(splitted_string[3])
+        if isinstance(seed_in_string, str):
+            if Seed.is_seed(seed_in_string):
+                splitted_string = seed_in_string.split(":")
+                pluviometry_x = int(splitted_string[0])
+                pluviometry_y = int(splitted_string[1])
+                temperature_x = int(splitted_string[2])
+                temperature_y = int(splitted_string[3])
+            else:
+                raise Exception(
+                    "Error: trying to set a " + type(self).__name__ +
+                    " from a str, but the str hasn't shape of a str(Seed)."
+                )
 
-        elif (
-                isinstance(pluviometry_x, int) and
-                isinstance(pluviometry_y, int) and
-                isinstance(temperature_x, int) and
-                isinstance(temperature_y, int)
-        ):
-            self.pluviometry_x = pluviometry_x
-            self.pluviometry_y = pluviometry_y
-            self.temperature_x = temperature_x
-            self.temperature_y = temperature_y
+        self.set_pluviometry_x(pluviometry_x)
+        self.set_pluviometry_y(pluviometry_y)
+        self.set_temperature_x(temperature_x)
+        self.set_temperature_y(temperature_y)
 
-        elif (
-                pluviometry_x is None and
-                pluviometry_y is None and
-                temperature_x is None and
-                temperature_y is None
-        ):
-            self.pluviometry_x = random.randint(-10000, 10000)
-            self.pluviometry_y = random.randint(-10000, 10000)
-            self.temperature_x = random.randint(-10000, 10000)
-            self.temperature_y = random.randint(-10000, 10000)
+    ###############################################################
+    ########################### GETTERS ###########################
+    ###############################################################
+    def get_pluviometry_x(self) -> int:
+        return self._pluviometry_x
 
+    def get_pluviometry_y(self) -> int:
+        return self._pluviometry_y
+
+    def get_temperature_x(self) -> int:
+        return self._temperature_x
+
+    def get_temperature_y(self) -> int:
+        return self._temperature_y
+
+    ###############################################################
+    ########################### SETTERS ###########################
+    ###############################################################
+    def set_pluviometry_x(self, pluviometry_x: Optional[int]) -> None:
+        if pluviometry_x is None:
+            self._pluviometry_x = random.randint(SEED_ELEMENT_MIN, SEED_ELEMENT_MAX)
+        elif isinstance(pluviometry_x, int):
+            if SEED_ELEMENT_MIN <= pluviometry_x <= SEED_ELEMENT_MAX:
+                self._pluviometry_x = pluviometry_x
+            else:
+                raise Exception(
+                    "Error: impossible to set _pluviometry_x for a " + type(self).__name__ + ":" +
+                    "\n_pluviometry_x must be between " + str(SEED_ELEMENT_MIN) + " and " + str(SEED_ELEMENT_MAX) +
+                    " but given argument's value is " + str(pluviometry_x) +
+                    "\nChange the relative constant in packages/constants.py to allow."
+                )
         else:
             raise Exception(
-                "Error: impossible to set an element in a " + type(self).__name__ + ":" +
-                "\ninputs must all be int or all None"
+                "Error: impossible to set _pluviometry_x for a " + type(self).__name__ + ":" +
+                "\n_pluviometry_x must be an int, but a " + type(pluviometry_x).__name__ + " is given."
+            )
+
+    def set_pluviometry_y(self, pluviometry_y: Optional[int]) -> None:
+        if pluviometry_y is None:
+            self._pluviometry_y = random.randint(SEED_ELEMENT_MIN, SEED_ELEMENT_MAX)
+        elif isinstance(pluviometry_y, int):
+            if SEED_ELEMENT_MIN <= pluviometry_y <= SEED_ELEMENT_MAX:
+                self._pluviometry_y = pluviometry_y
+            else:
+                raise Exception(
+                    "Error: impossible to set _pluviometry_y for a " + type(self).__name__ + ":" +
+                    "\n_pluviometry_y must be between " + str(SEED_ELEMENT_MIN) + " and " + str(SEED_ELEMENT_MAX) +
+                    " but given argument's value is " + str(pluviometry_y) +
+                    "\nChange the relative constant in packages/constants.py to allow."
+                )
+        else:
+            raise Exception(
+                "Error: impossible to set _pluviometry_y for a " + type(self).__name__ + ":" +
+                "\n_pluviometry_y must be an int, but a " + type(pluviometry_y).__name__ + " is given."
+            )
+
+    def set_temperature_x(self, temperature_x: Optional[int]) -> None:
+        if temperature_x is None:
+            self._temperature_x = random.randint(SEED_ELEMENT_MIN, SEED_ELEMENT_MAX)
+        elif isinstance(temperature_x, int):
+            if SEED_ELEMENT_MIN <= temperature_x <= SEED_ELEMENT_MAX:
+                self._temperature_x = temperature_x
+            else:
+                raise Exception(
+                    "Error: impossible to set _temperature_x for a " + type(self).__name__ + ":" +
+                    "\n_temperature_x must be between " + str(SEED_ELEMENT_MIN) + " and " + str(SEED_ELEMENT_MAX) +
+                    " but given argument's value is " + str(temperature_x) +
+                    "\nChange the relative constant in packages/constants.py to allow."
+                )
+        else:
+            raise Exception(
+                "Error: impossible to set _temperature_x for a " + type(self).__name__ + ":" +
+                "\n_temperature_x must be an int, but a " + type(temperature_x).__name__ + " is given."
+            )
+
+    def set_temperature_y(self, temperature_y: Optional[int]) -> None:
+        if temperature_y is None:
+            self._temperature_y = random.randint(SEED_ELEMENT_MIN, SEED_ELEMENT_MAX)
+        elif isinstance(temperature_y, int):
+            if SEED_ELEMENT_MIN <= temperature_y <= SEED_ELEMENT_MAX:
+                self._temperature_y = temperature_y
+            else:
+                raise Exception(
+                    "Error: impossible to set _temperature_y for a " + type(self).__name__ + ":" +
+                    "\n_temperature_y must be between " + str(SEED_ELEMENT_MIN) + " and " + str(SEED_ELEMENT_MAX) +
+                    " but given argument's value is " + str(temperature_y) +
+                    "\nChange the relative constant in packages/constants.py to allow."
+                )
+        else:
+            raise Exception(
+                "Error: impossible to set _temperature_y for a " + type(self).__name__ + ":" +
+                "\n_temperature_y must be an int, but a " + type(temperature_y).__name__ + " is given."
             )
 
     ###############################################################
@@ -140,8 +230,8 @@ class Seed:
     ###############################################################
     def __str__(self) -> str:
         return (
-                str(self.pluviometry_x) + ":" +
-                str(self.pluviometry_y) + ":" +
-                str(self.temperature_x) + ":" +
-                str(self.temperature_y)
+                str(self.get_pluviometry_x()) + ":" +
+                str(self.get_pluviometry_y()) + ":" +
+                str(self.get_temperature_x()) + ":" +
+                str(self.get_temperature_y())
         )
