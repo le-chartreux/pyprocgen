@@ -33,12 +33,12 @@ class Tree:
     ###############################################################
     _body: BoardColor
     _name: str
-    _spawn_probability: int
+    _spawn_probability: float
 
     ###############################################################
     ########################### __INIT__ ##########################
     ###############################################################
-    def __init__(self, name: str, spawn_probability: int, body: BoardColor):
+    def __init__(self, name: str, spawn_probability: float, body: BoardColor):
         # =============================
         # INFORMATIONS :
         # -----------------------------
@@ -65,7 +65,7 @@ class Tree:
     def get_name(self) -> str:
         return self._name
 
-    def get_spawn_probability(self) -> int:
+    def get_spawn_probability(self) -> float:
         return self._spawn_probability
 
     ###############################################################
@@ -89,9 +89,9 @@ class Tree:
                 "\n_name must be a str, but a " + type(name).__name__ + " is given."
             )
 
-    def set_spawn_probability(self, spawn_probability: int) -> None:
-        if isinstance(spawn_probability, int):
-            if 0 <= spawn_probability <= 1:
+    def set_spawn_probability(self, spawn_probability: float) -> None:
+        if isinstance(spawn_probability, float):
+            if 0.0 <= spawn_probability <= 1.0:
                 self._spawn_probability = spawn_probability
             else:
                 raise Exception(
