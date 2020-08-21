@@ -7,6 +7,7 @@ from packages.classes.BoxWithTree import BoxWithTree
 from packages.classes.Color import Color
 from packages.classes.Encyclopedia import Encyclopedia
 from packages.classes.Position import Position
+from packages.classes.Seed import Seed
 from packages.classes.Tree import Tree
 
 # Sert juste à pouvoir importer en une ligne plusieurs classes
