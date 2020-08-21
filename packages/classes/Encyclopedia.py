@@ -34,12 +34,12 @@ class Encyclopedia:
     ############################ HINTS ############################
     ###############################################################
     _name: str
-    _biomes: Dict[Biome]
+    _biomes: Dict[str, Biome]
 
     ###############################################################
     ########################## __INIT__ ###########################
     ###############################################################
-    def __init__(self, name: str, biomes: Dict[Biome]) -> None:
+    def __init__(self, name: str, biomes: Dict[str, Biome]) -> None:
         # =============================
         # INFORMATIONS :
         # -----------------------------
@@ -57,7 +57,7 @@ class Encyclopedia:
     def get_name(self) -> str:
         return self._name
 
-    def get_biomes(self) -> Dict[Biome]:
+    def get_biomes(self) -> Dict[str, Biome]:
         return self._biomes
 
     ###############################################################
@@ -72,13 +72,13 @@ class Encyclopedia:
                 "\n_name must be a str, but a " + type(name).__name__ + "is given."
             )
 
-    def set_biomes(self, biomes: Dict[Biome]):
+    def set_biomes(self, biomes: Dict[str, Biome]):
         if isinstance(biomes, dict):
             #  Vérification que tous les éléments de biomes sont instance de Biome
             iterator = iter(biomes)
             value = next(iterator, None)
 
-            while value is not None and isinstance(value, Biome):
+            while value is not None and isinstance(biomes[value], Biome):
                 value = next(iterator, None)
 
             if value is None:
@@ -86,12 +86,30 @@ class Encyclopedia:
             else:
                 raise Exception(
                     "Error: impossible to set biomes for a " + type(self).__name__ + ":" +
-                    "\n_biomes must be a Dict[Biome] but at least one item is a " + type(value).__name__ + "."
+                    "\n_biomes must be a Dict[str, Biome] but at least one item is a " + type(value).__name__ + "."
                 )
         else:
             raise Exception(
                 "Error: impossible to se biomes for a " + type(self).__name__ + ":" +
                 "\n_biomes must be a Dict[Biome] but a " + type(biomes).__name__ + " is given."
+            )
+
+    ###############################################################
+    ########################### GET_BIOME #########################
+    ###############################################################
+    def get_biome(self, name: str) -> Biome:
+        # =============================
+        # INFORMATIONS :
+        # -----------------------------
+        # UTILITÉ :
+        # Renvoie le biome correspondant
+        # =============================
+        try:
+            return self.get_biomes()[name]
+        except KeyError:
+            raise Exception(
+                "Error: impossible to get a biome from a " + type(self).__name__ + "._biomes: " +
+                "\nno biome machs with the given name (" + name + ")."
             )
 
     ###############################################################
@@ -108,7 +126,7 @@ class Encyclopedia:
 
         for biome in self.get_biomes().values():
 
-            for tree in biome.trees:
+            for tree in biome.get_trees():
                 trees.append(tree)
 
         return trees
