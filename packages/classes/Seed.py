@@ -17,7 +17,7 @@ from __future__ import annotations
 from typing import Optional
 import random
 
-from packages.constants import SEED_ELEMENT_MIN, SEED_ELEMENT_MAX
+from packages.settings import SEED_ELEMENT_MIN, SEED_ELEMENT_MAX
 
 
 class Seed:
@@ -112,7 +112,7 @@ class Seed:
                     "Error: impossible to set _pluviometry_x for a " + type(self).__name__ + ":" +
                     "\n_pluviometry_x must be between " + str(SEED_ELEMENT_MIN) + " and " + str(SEED_ELEMENT_MAX) +
                     " but given argument's value is " + str(pluviometry_x) +
-                    "\nChange the relative constant in packages/constants.py to allow."
+                    "\nChange the relative constant in packages/settings.py to allow."
                 )
         else:
             raise Exception(
@@ -131,7 +131,7 @@ class Seed:
                     "Error: impossible to set _pluviometry_y for a " + type(self).__name__ + ":" +
                     "\n_pluviometry_y must be between " + str(SEED_ELEMENT_MIN) + " and " + str(SEED_ELEMENT_MAX) +
                     " but given argument's value is " + str(pluviometry_y) +
-                    "\nChange the relative constant in packages/constants.py to allow."
+                    "\nChange the relative constant in packages/settings.py to allow."
                 )
         else:
             raise Exception(
@@ -150,7 +150,7 @@ class Seed:
                     "Error: impossible to set _temperature_x for a " + type(self).__name__ + ":" +
                     "\n_temperature_x must be between " + str(SEED_ELEMENT_MIN) + " and " + str(SEED_ELEMENT_MAX) +
                     " but given argument's value is " + str(temperature_x) +
-                    "\nChange the relative constant in packages/constants.py to allow."
+                    "\nChange the relative constant in packages/settings.py to allow."
                 )
         else:
             raise Exception(
@@ -169,7 +169,7 @@ class Seed:
                     "Error: impossible to set _temperature_y for a " + type(self).__name__ + ":" +
                     "\n_temperature_y must be between " + str(SEED_ELEMENT_MIN) + " and " + str(SEED_ELEMENT_MAX) +
                     " but given argument's value is " + str(temperature_y) +
-                    "\nChange the relative constant in packages/constants.py to allow."
+                    "\nChange the relative constant in packages/settings.py to allow."
                 )
         else:
             raise Exception(

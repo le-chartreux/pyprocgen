@@ -18,7 +18,7 @@ from typing import List
 
 from packages.classes.Color import Color
 from packages.classes.Tree import Tree
-from packages.constants import (
+from packages.settings import (
     BIOME_NAME_LEN_MIN,
     BIOME_NAME_LEN_MAX,
     BIOME_PLUVIOMETRY_MIN,
@@ -140,7 +140,7 @@ class Biome:
                     "Error: impossible to set _name for a " + type(self).__name__ + ":" +
                     "\nlen(_name) must be between " + str(BIOME_NAME_LEN_MIN) + " and " +
                     str(BIOME_NAME_LEN_MAX) + " but input's len is " + str(len(name)) + "." +
-                    "\nChange the relative constant in packages/constants.py to allow."
+                    "\nChange the relative constant in packages/settings.py to allow."
                 )
         else:
             raise Exception(
@@ -166,7 +166,7 @@ class Biome:
                     "Error: impossible to set _pluviometry_min for a " + type(self).__name__ + ":" +
                     "\n_pluviometry_min must be between " + str(BIOME_PLUVIOMETRY_MAX) + " and " +
                     str(BIOME_PLUVIOMETRY_MAX) + " but input's value is " + str(pluviometry_min) + "." +
-                    "\nChange the relative constant in packages/constants.py to allow."
+                    "\nChange the relative constant in packages/settings.py to allow."
                 )
         else:
             raise Exception(
@@ -192,7 +192,7 @@ class Biome:
                     "Error: impossible to set _pluviometry_max for a " + type(self).__name__ + ":" +
                     "\n_pluviometry_max must be between " + str(BIOME_PLUVIOMETRY_MAX) + " and " +
                     str(BIOME_PLUVIOMETRY_MAX) + " but input's value is " + str(pluviometry_max) + "." +
-                    "\nChange the relative constant in packages/constants.py to allow."
+                    "\nChange the relative constant in packages/settings.py to allow."
                 )
         else:
             raise Exception(
@@ -218,7 +218,7 @@ class Biome:
                     "Error: impossible to set _temperature_min for a " + type(self).__name__ + ":" +
                     "\n_temperature_min must be between " + str(BIOME_TEMPERATURE_MIN) + " and " +
                     str(BIOME_TEMPERATURE_MAX) + " but input's value is " + str(temperature_min) + "." +
-                    "\nChange the relative constant in packages/constants.py to allow."
+                    "\nChange the relative constant in packages/settings.py to allow."
                 )
         else:
             raise Exception(
@@ -244,7 +244,7 @@ class Biome:
                     "Error: impossible to set _temperature_max for a " + type(self).__name__ + ":" +
                     "\n_temperature_max must be between " + str(BIOME_TEMPERATURE_MIN) + " and " +
                     str(BIOME_TEMPERATURE_MAX) + " but input's value is " + str(temperature_max) + "." +
-                    "\nChange the relative constant in packages/constants.py to allow."
+                    "\nChange the relative constant in packages/settings.py to allow."
                 )
         else:
             raise Exception(
@@ -298,7 +298,7 @@ class Biome:
                     "Error: impossible to set _trees for a " + type(self).__name__ + ":" +
                     "\nlen(_trees) must be between " + str(BIOME_TREES_LEN_MIN) + " and " +
                     str(BIOME_TREES_LEN_MAX) + " but input's len is " + str(len(trees)) + "." +
-                    "\nChange the relative constant in packages/constants.py to allow."
+                    "\nChange the relative constant in packages/settings.py to allow."
                 )
         else:
             raise Exception(

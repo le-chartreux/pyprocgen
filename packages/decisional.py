@@ -16,7 +16,7 @@
 from packages.short_class_import import Box, Biome, Encyclopedia, Seed
 from packages.perlin_noise import SimplexNoise
 
-from packages.constants import (
+from packages.settings import (
     BIOME_PLUVIOMETRY_MAX,
     BIOME_TEMPERATURE_MAX,
     DECISIONAL_NUMBER_OF_ITERATIONS_NOISE,

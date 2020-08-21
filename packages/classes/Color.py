@@ -15,7 +15,7 @@
 # + __str__()
 # ==========================================================
 
-from packages.constants import COLOR_RGB_MIN, COLOR_RGB_MAX
+from packages.settings import COLOR_RGB_MIN, COLOR_RGB_MAX
 
 
 class Color:
@@ -79,7 +79,7 @@ class Color:
                     "Error: impossible to set _red for a " + type(self).__name__ + ":" +
                     "\n_red must be between " + str(COLOR_RGB_MIN) + " and " + str(COLOR_RGB_MAX) +
                     " but input's value equals " + str(red) + "." +
-                    "\nChange the relative constant in packages/constants.py to allow."
+                    "\nChange the relative constant in packages/settings.py to allow."
                 )
         else:
             raise Exception(
@@ -96,7 +96,7 @@ class Color:
                     "Error: impossible to set _green for a " + type(self).__name__ + ":" +
                     "\n_green must be between " + str(COLOR_RGB_MIN) + " and " + str(COLOR_RGB_MAX) +
                     " but input's value equals " + str(green) + "." +
-                    "\nChange the relative constant in packages/constants.py to allow."
+                    "\nChange the relative constant in packages/settings.py to allow."
                 )
         else:
             raise Exception(
@@ -113,7 +113,7 @@ class Color:
                     "Error: impossible to set _blue for a " + type(self).__name__ + ":" +
                     "\n_blue must be between " + str(COLOR_RGB_MIN) + " and " + str(COLOR_RGB_MAX) +
                     " but input's value equals " + str(blue) + "." +
-                    "\nChange the relative constant in packages/constants.py to allow."
+                    "\nChange the relative constant in packages/settings.py to allow."
                 )
         else:
             raise Exception(
