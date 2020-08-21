@@ -13,6 +13,7 @@
 # - procedural_generation_2D.py
 # ==========================================================
 
+
 ###############################################################
 ######################### IS_INTEGER ##########################
 ###############################################################
@@ -27,8 +28,9 @@ def is_integer(value) -> bool:
     # - procedural_generation_2D.py
     # =============================
     try:
-        return int(value) == float(value)
-    except:
+        int(value)
+        return True
+    except ValueError:
         return False
 
 
@@ -48,7 +50,7 @@ def is_float(value) -> bool:
     try:
         float(value)
         return True
-    except:
+    except ValueError:
         return False
 
 
