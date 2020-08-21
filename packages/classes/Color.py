@@ -15,16 +15,25 @@
 # + __str__()
 # ==========================================================
 
+from packages.constants import COLOR_RGB_MIN, COLOR_RGB_MAX
+
 
 class Color:
     ###############################################################
     ########################## __SLOTS__ ##########################
     ###############################################################
     __slots__ = (
-        "red",
-        "green",
-        "blue"
+        "_red",
+        "_green",
+        "_blue"
     )
+
+    ###############################################################
+    ############################ HINTS ############################
+    ###############################################################
+    _red: int
+    _green: int
+    _blue: int
 
     ###############################################################
     ########################## __INIT__ ###########################
@@ -40,25 +49,74 @@ class Color:
         # - blue
         # -----------------------------
         # PRÉCONDITION:
-        # - 0 < (red, green & blue) < 255
+        # - COLOR_RGB_MIN <= (red, green & blue) <= COLOR_RGB_MAX
         # =============================
+        self.set_red(red)
+        self.set_green(green)
+        self.set_blue(blue)
 
-        for color in (red, green, blue):
-            if isinstance(color, int):
-                if not (0 <= color <= 255):
-                    raise Exception(
-                        "Error: impossible to set an element for a " + type(self).__name__ + ":"
-                        "\nan input's value is not between 0 and 255."
-                    )
+    ###############################################################
+    ########################### GETTERS ###########################
+    ###############################################################
+    def get_red(self) -> int:
+        return self._red
+
+    def get_green(self) -> int:
+        return self._green
+
+    def get_blue(self) -> int:
+        return self._blue
+
+    ###############################################################
+    ########################### SETTERS ###########################
+    ###############################################################
+    def set_red(self, red: int) -> None:
+        if isinstance(red, int):
+            if COLOR_RGB_MIN <= red <= COLOR_RGB_MAX:
+                self._red = red
             else:
                 raise Exception(
-                    "Error: impossible to set an element for a " + type(self).__name__ + ":" +
-                    "\nan input is a " + str(type(color)) + ", must be an int."
+                    "Error: impossible to set _red for a " + type(self).__name__ + ":" +
+                    "\n_red must be between " + str(COLOR_RGB_MIN) + " and " + str(COLOR_RGB_MAX) +
+                    " but input's value equals " + str(red) + "."
                 )
+        else:
+            raise Exception(
+                "Error: impossible to set _red for a " + type(self).__name__ + ":" +
+                "\n_red must be an int, but a " + str(type(red)) + " is given."
+            )
 
-        self.red = red
-        self.green = green
-        self.blue = blue
+    def set_green(self, green: int) -> None:
+        if isinstance(green, int):
+            if COLOR_RGB_MIN <= green <= COLOR_RGB_MAX:
+                self._green = green
+            else:
+                raise Exception(
+                    "Error: impossible to set _green for a " + type(self).__name__ + ":" +
+                    "\n_green must be between " + str(COLOR_RGB_MIN) + " and " + str(COLOR_RGB_MAX) +
+                    " but input's value equals " + str(green) + "."
+                )
+        else:
+            raise Exception(
+                "Error: impossible to set _green for a " + type(self).__name__ + ":" +
+                "\n_green must be an int, but a " + str(type(green)) + " is given."
+            )
+
+    def set_blue(self, blue: int) -> None:
+        if isinstance(blue, int):
+            if COLOR_RGB_MIN <= blue <= COLOR_RGB_MAX:
+                self._blue = blue
+            else:
+                raise Exception(
+                    "Error: impossible to set _blue for a " + type(self).__name__ + ":" +
+                    "\n_blue must be between " + str(COLOR_RGB_MIN) + " and " + str(COLOR_RGB_MAX) +
+                    " but input's value equals " + str(blue) + "."
+                )
+        else:
+            raise Exception(
+                "Error: impossible to set _blue for a " + type(self).__name__ + ":" +
+                "\n_blue must be an int, but a " + str(type(blue)) + " is given."
+            )
 
     ###############################################################
     ###################### GET_HEXADECIMAL ########################
@@ -70,7 +128,7 @@ class Color:
         # UTILITÉ :
         # Renvoi la couleur en hexadecimal
         # =============================
-        return hex(self.red) + hex(self.green)[2:] + hex(self.blue)[2:]
+        return hex(self.get_red()) + hex(self.get_green())[2:] + hex(self.get_blue())[2:]  # [2:] pour enlever le 0x
 
     ###############################################################
     ########################### GET_RGB ###########################
@@ -82,7 +140,7 @@ class Color:
         # UTILITÉ :
         # Renvoi la couleur en rgb
         # =============================
-        return str(self.red) + " " + str(self.green) + " " + str(self.blue)
+        return str(self.get_red()) + " " + str(self.get_green()) + " " + str(self.get_blue())
 
     ###############################################################
     ########################### __STR__ ###########################
