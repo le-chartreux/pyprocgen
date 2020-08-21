@@ -74,6 +74,7 @@ class Encyclopedia:
 
     def set_biomes(self, biomes: Dict[Biome]):
         if isinstance(biomes, dict):
+            #  Vérification que tous les éléments de biomes sont instance de Biome
             iterator = iter(biomes)
             value = next(iterator, None)
 

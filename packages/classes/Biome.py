@@ -200,7 +200,6 @@ class Biome:
                 "\n_pluviometry_max must be an int, but a " + type(pluviometry_max).__name__ + " is given."
             )
 
-
     def set_temperature_min(self, temperature_min: int) -> None:
         # =============================
         # INFORMATIONS :
@@ -280,6 +279,7 @@ class Biome:
         # =============================
         if isinstance(trees, list):
             if BIOME_TREES_LEN_MIN <= len(trees) <= BIOME_TREES_LEN_MAX:
+                # Vérification que tous les éléments sont instance de Tree :
                 i = 0
 
                 while i < len(trees) and isinstance(trees[i], Tree):

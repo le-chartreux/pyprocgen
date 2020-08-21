@@ -61,25 +61,27 @@ class Seed:
         # - sa pluviometry_y
         # -----------------------------
         # PRÉCONDITION:
-        # - seed_in_string valide is_seed()
+        # - si seed_in_string != None, il valide is_seed()
+        # - SEED_ELEMENT_MIN <= (pluviometry_x, pluviometry_y, temperature_x, temperature_y) <= SEED_ELEMENT_MAX
         # =============================
         if isinstance(seed_in_string, str):
             if Seed.is_seed(seed_in_string):
                 splitted_string = seed_in_string.split(":")
-                pluviometry_x = int(splitted_string[0])
-                pluviometry_y = int(splitted_string[1])
-                temperature_x = int(splitted_string[2])
-                temperature_y = int(splitted_string[3])
+                self._pluviometry_x = int(splitted_string[0])  # Pas besoin d'utiliser les SETTERS puisque tout est
+                self._pluviometry_y = int(splitted_string[1])  # déjà check avec is_seed
+                self._temperature_x = int(splitted_string[2])
+                self._temperature_y = int(splitted_string[3])
             else:
                 raise Exception(
                     "Error: trying to set a " + type(self).__name__ +
                     " from a str, but the str hasn't shape of a str(Seed)."
                 )
 
-        self.set_pluviometry_x(pluviometry_x)
-        self.set_pluviometry_y(pluviometry_y)
-        self.set_temperature_x(temperature_x)
-        self.set_temperature_y(temperature_y)
+        else:
+            self.set_pluviometry_x(pluviometry_x)
+            self.set_pluviometry_y(pluviometry_y)
+            self.set_temperature_x(temperature_x)
+            self.set_temperature_y(temperature_y)
 
     ###############################################################
     ########################### GETTERS ###########################
@@ -199,6 +201,7 @@ class Seed:
         # number_of_following_colon est initialisé à 1 pour contrer le cas où seed_in_string[0] == ":"
         number_of_following_colon = 1
 
+        # Parcours de string pour s'assurer qu'il a la forme d'un str(Seed)
         while (
                 position_counter < len(string)
                 and string[position_counter] in "0123456789-:"
@@ -219,11 +222,20 @@ class Seed:
 
             position_counter += 1
 
-        return (
+        if (
                 position_counter == len(string)
                 and colon_counter == 3
                 and number_of_following_colon == 0
-        )
+        ):  # Il a la forme d'un str(Seed) mais il faut vérifier qu'il respecte les conditions des valeurs de Seed
+            splitted_string = string.split(":")
+            return (
+                SEED_ELEMENT_MIN <= int(splitted_string[0]) <= SEED_ELEMENT_MAX and  # pluviometry_x
+                SEED_ELEMENT_MIN <= int(splitted_string[1]) <= SEED_ELEMENT_MAX and  # pluviometry_y
+                SEED_ELEMENT_MIN <= int(splitted_string[2]) <= SEED_ELEMENT_MAX and  # temperature_x
+                SEED_ELEMENT_MIN <= int(splitted_string[3]) <= SEED_ELEMENT_MAX  # temperature_y
+            )
+        else:
+            return False
 
     ###############################################################
     ########################### __STR__ ###########################
