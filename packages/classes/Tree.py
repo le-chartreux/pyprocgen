@@ -6,6 +6,7 @@
 # -----------------------------
 # CONTENU :
 # + __slots__
+# + HINTS
 # + __init__()
 # + GETTERS
 # + SETTERS
@@ -28,6 +29,13 @@ class Tree:
     )
 
     ###############################################################
+    ############################ HINTS ############################
+    ###############################################################
+    _body: BoardColor
+    _name: str
+    _spawn_probability: int
+
+    ###############################################################
     ########################### __INIT__ ##########################
     ###############################################################
     def __init__(self, name: str, spawn_probability: int, body: BoardColor):
@@ -41,15 +49,12 @@ class Tree:
         # - la probabilité d'être placé sur une case possible
         # - le body de sa représentation ppm avec None pour les pixels vides
         # -----------------------------
-        # UTILISÉ PAR :
-        # - dic_functions.dic_biomes_creation()
-        # - classes.Encyclopedia.max_height_of_trees()
-        # - trees_generation.possible_to_place_tree()
-        # - trees_generation.put_tree()
+        # PRÉCONDITION :
+        # - 0 <= spawn_probability <= 1
         # =============================
-        self._body = body
-        self._name = name
-        self._spawn_probability = spawn_probability
+        self.set_body(body)
+        self.set_name(name)
+        self.set_spawn_probability(spawn_probability)
 
     ###############################################################
     ############################ GETTERS ##########################
@@ -66,7 +71,40 @@ class Tree:
     ###############################################################
     ############################ SETTERS ##########################
     ###############################################################
-    "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ A COMPLETER ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"
+    def set_body(self, body: BoardColor) -> None:
+        if isinstance(body, BoardColor):
+            self._body = body
+        else:
+            raise Exception(
+                "Error: impossible to set _body for a " + type(self).__name__ + ":" +
+                "\n_body must be a BoardColor, but a " + type(body).__name__ + " is given."
+            )
+
+    def set_name(self, name: str) -> None:
+        if isinstance(name, str):
+            self._name = name
+        else:
+            raise Exception(
+                "Error: impossible to set _name for a " + type(self).__name__ + ":" +
+                "\n_name must be a str, but a " + type(name).__name__ + " is given."
+            )
+
+    def set_spawn_probability(self, spawn_probability: int) -> None:
+        if isinstance(spawn_probability, int):
+            if 0 <= spawn_probability <= 1:
+                self._spawn_probability = spawn_probability
+            else:
+                raise Exception(
+                    "Error: impossible to set _spawn_probability for a " + type(self).__name__ + ":" +
+                    "\n_spawn_probability must be an int between 0 and 1, but input's value equals "
+                    + str(spawn_probability) + "."
+                )
+        else:
+            raise Exception(
+                "Error: impossible to set _spawn_probability for a " + type(self).__name__ + ":" +
+                "\n_spawn_probability must be an int between 0 and 1, but a " + type(spawn_probability).__name__ +
+                " is given."
+            )
 
     ###############################################################
     ########################## GET_HEIGHT #########################
@@ -77,12 +115,8 @@ class Tree:
         # -----------------------------
         # UTILITÉ :
         # Retourne la hauteur de l'arbre
-        # -----------------------------
-        # UTILISÉ PAR :
-        # - classes.Encyclopedia.max_height_of_trees()
-        # - A COMPLETER
         # =============================
-        return self.body.get_height()
+        return self.get_body().get_height()
 
     ###############################################################
     ########################## GET_WIDTH ##########################
@@ -93,8 +127,5 @@ class Tree:
         # -----------------------------
         # UTILITÉ :
         # Retourne la largeur de l'arbre
-        # -----------------------------
-        # UTILISÉ PAR :
-        # - A COMPLETER
         # =============================
-        return self.body.get_width()
+        return self.get_body().get_width()
