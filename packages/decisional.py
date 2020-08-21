@@ -6,60 +6,67 @@
 # prendre la décision du type de case à placer en (y, x)
 # -----------------------------
 # CONTENU :
-# - genererate_box(encyclopedia, x, y, seed, variation_intensity)
+# - generate_box(encyclopedia, x, y, seed, variation_intensity)
 # - choice_biome(encyclopedia, temperature, pluviometry)
 # -----------------------------
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
 # ==========================================================
 
-from packages.short_class_import import Encyclopedia, Box
+from packages.short_class_import import Box, Biome, Encyclopedia, Seed
 from packages.perlin_noise import SimplexNoise
+
+from packages.constants import (
+    BIOME_PLUVIOMETRY_MAX,
+    BIOME_TEMPERATURE_MAX,
+    DECISIONAL_NUMBER_OF_ITERATIONS_NOISE,
+    DECISIONAL_DISTANCE_BETWEEN_NOISES,
+    DECISIONAL_VARIATION_INTENSITY
+)
 
 
 ###############################################################
 ######################## GENERATE_BOX #########################
 ###############################################################
-def genererate_box(encyclopedia: Encyclopedia, x: int, y: int, seed: dict, variation_intensity: float) -> Box:
+def generate_box(encyclopedia: Encyclopedia, x: int, y: int, seed: Seed) -> Box:
     # =============================
     # INFORMATIONS :
     # -----------------------------
     # UTILITÉ :
     # Génère une case en pour la case en (y, x)
-    # -----------------------------
-    # PRECONDITIONS :
-    # - seed["Tx"], seed["Ty"] : integers not null
-    # - seed["Px"], seed["Py"] : integers not null
-    # -----------------------------
-    # DEPEND DE :
-    # - perlin_noise.py
-    # - decisional.choice_biome()
-    # -----------------------------
-    # UTILISE PAR :
-    # - procedural_generation_2D.py
     # =============================
 
-    # Calcul de la température et de la pluviométrie de la case avec le bruit de perlin
+    # Calcul de la température et de la pluviométrie de la case avec le bruit de Perlin
     noise = SimplexNoise()
 
     temperature = 0
     pluviometry = 0
 
-    for i in range(1, 9):
+    for i in range(1, DECISIONAL_NUMBER_OF_ITERATIONS_NOISE):
         power = 2 ** i
 
         temperature += noise.noise2(
-            seed["Tx"] + 100000 * i + x / (variation_intensity * power),
-            seed["Ty"] + 100000 * i + y / (variation_intensity * power)
+            seed.get_temperature_x() +
+            DECISIONAL_DISTANCE_BETWEEN_NOISES * i +
+            x / (DECISIONAL_VARIATION_INTENSITY * power),
+
+            seed.get_temperature_y() +
+            DECISIONAL_DISTANCE_BETWEEN_NOISES * i +
+            y / (DECISIONAL_VARIATION_INTENSITY * power)
         ) * power
 
         pluviometry += noise.noise2(
-            seed["Px"] + 100000 * i + x / (variation_intensity * power),
-            seed["Py"] + 100000 * i + y / (variation_intensity * power)
+            seed.get_pluviometry_x() +
+            DECISIONAL_DISTANCE_BETWEEN_NOISES * i +
+            x / (DECISIONAL_VARIATION_INTENSITY * power),
+
+            seed.get_pluviometry_y() +
+            DECISIONAL_DISTANCE_BETWEEN_NOISES * i +
+            y / (DECISIONAL_VARIATION_INTENSITY * power)
         ) * power
 
-    temperature *= 0.00587  # temperature = temperature * 3 / (2**9 - 1)
-    pluviometry *= 0.00783  # pluviometry = pluviometry * 4 / (2**9 - 1)
+    temperature = temperature * BIOME_TEMPERATURE_MAX / (2**DECISIONAL_NUMBER_OF_ITERATIONS_NOISE - 1)
+    pluviometry = pluviometry * BIOME_PLUVIOMETRY_MAX / (2**DECISIONAL_NUMBER_OF_ITERATIONS_NOISE - 1)
 
     # Génération
     return Box(biome_choice(encyclopedia, temperature, pluviometry))
@@ -68,25 +75,18 @@ def genererate_box(encyclopedia: Encyclopedia, x: int, y: int, seed: dict, varia
 ###############################################################
 ######################## CHOICE_BIOME #########################
 ###############################################################
-def biome_choice(encyclopedia: Encyclopedia, temperature: float, pluviometry: float) -> str:
+def biome_choice(encyclopedia: Encyclopedia, temperature: float, pluviometry: float) -> Biome:
     # =============================
     # INFORMATIONS :
     # -----------------------------
     # UTILITÉ :
-    # Renvoie le nom du biome qui a les caracteristiques de température
-    # et de pluviométrie correspondantes parmis ceux de l'encyclopédie
-    # -----------------------------
-    # DEPEND DE :
-    # - classes.biome
-    # - classes.encyclopedia
-    # -----------------------------
-    # UTILISÉ PAR :
-    # - decisional.generate_box()
+    # Renvoie le nom du biome qui a les caractéristiques de température
+    # et de pluviométrie correspondantes parmi ceux de l'encyclopédie
     # =============================
 
-    for biome in encyclopedia.biomes.values():
+    for biome in encyclopedia.get_biomes().values():
 
         if biome.in_range(temperature, pluviometry):
             return biome
 
-    return encyclopedia.biomes.get("water")
+    return encyclopedia.get_biome("water")
