@@ -56,4 +56,3 @@ class BoardColor(Board):
         # Crée un BoardColor rempli de None, de dimension height x width
         # =============================
         return cast(BoardColor, super(BoardColor, cls).create_empty_board(width, height))
-
