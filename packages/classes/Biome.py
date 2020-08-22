@@ -323,14 +323,11 @@ class Biome:
         # Passe les données du Biome en str. Utilisé pour debug
         # =============================
         return (
-                "name: " +
-                self.get_name() +
-                "\ntemperature_min: " +
-                str(self.get_temperature_min()) +
-                "\ntemperature_max:" +
-                str(self.get_temperature_max()) +
-                "\npluviometry_min: " +
-                str(self.get_pluviometry_min()) +
-                "\npluviometry_max: " +
-                str(self.get_pluviometry_max())
+                "name: " + self.get_name() +
+                "\ntemperature_min: " + str(self.get_temperature_min()) +
+                "\ntemperature_max: " + str(self.get_temperature_max()) +
+                "\npluviometry_min: " + str(self.get_pluviometry_min()) +
+                "\npluviometry_max: " + str(self.get_pluviometry_max()) +
+                "\nground_color: " + str(self.get_ground_color()) +
+                "\ntrees: " + str(self.get_trees())
         )
