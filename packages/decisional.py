@@ -6,11 +6,8 @@
 # prendre la décision du type de case à placer en (y, x)
 # -----------------------------
 # CONTENU :
-# - generate_box(encyclopedia, x, y, seed, variation_intensity)
-# - choice_biome(encyclopedia, temperature, pluviometry)
-# -----------------------------
-# PROGRAMMES UTILISATEURS :
-# - procedural_generation_2D.py
+# - generate_box()
+# - choice_biome()
 # ==========================================================
 
 from packages.short_class_import import Box, Biome, Encyclopedia, Seed
