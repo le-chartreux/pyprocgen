@@ -20,6 +20,8 @@ from typing import Dict, List
 from packages.classes.Tree import Tree
 from packages.classes.Biome import Biome
 
+from packages.utilities import check_attribute_type_set
+
 
 class Encyclopedia:
     ###############################################################
@@ -64,34 +66,33 @@ class Encyclopedia:
     ########################### SETTERS ###########################
     ###############################################################
     def set_name(self, name: str) -> None:
-        if isinstance(name, str):
-            self._name = name
-        else:
-            raise Exception(
-                "Error: impossible to set name for a " + type(self).__name__ + ":" +
-                "\n_name must be a str, but a " + type(name).__name__ + "is given."
-            )
+        check_attribute_type_set(
+            attribute_to_check=name,
+            type_to_check=str,
+            name_of_attribute_to_check="_name",
+            object_destination=self
+        )
+        self._name = name
 
     def set_biomes(self, biomes: Dict[str, Biome]):
-        if isinstance(biomes, dict):
-            #  Vérification que tous les éléments de biomes sont instance de Biome
-            iterator = iter(biomes)
+        check_attribute_type_set(
+            attribute_to_check=biomes,
+            type_to_check=dict,
+            name_of_attribute_to_check="_biomes",
+            object_destination=self
+        )
+        #  Vérification que tous les éléments de biomes sont instance de Biome
+        iterator = iter(biomes)
+        value = next(iterator, None)
+        while value is not None and isinstance(biomes[value], Biome):
             value = next(iterator, None)
 
-            while value is not None and isinstance(biomes[value], Biome):
-                value = next(iterator, None)
-
-            if value is None:
-                self._biomes = biomes
-            else:
-                raise Exception(
-                    "Error: impossible to set biomes for a " + type(self).__name__ + ":" +
-                    "\n_biomes must be a Dict[str, Biome] but at least one item is a " + type(value).__name__ + "."
-                )
+        if value is None:
+            self._biomes = biomes
         else:
             raise Exception(
-                "Error: impossible to se biomes for a " + type(self).__name__ + ":" +
-                "\n_biomes must be a Dict[Biome] but a " + type(biomes).__name__ + " is given."
+                "Error: impossible to set _biomes for a " + type(self).__name__ + ":" +
+                "\n_biomes must be a Dict[str, Biome] but at least one item is a " + type(value).__name__ + "."
             )
 
     ###############################################################
@@ -123,7 +124,6 @@ class Encyclopedia:
         # Renvoie une liste de tous les arbres présents dans l'encyclopédie
         # =============================
         trees = []
-
         for biome in self.get_biomes().values():
 
             for tree in biome.get_trees():

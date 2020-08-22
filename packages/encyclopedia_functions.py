@@ -11,8 +11,9 @@
 # PROGRAMMES UTILISATEURS :
 # - procedural_generation_2D.py
 # ==========================================================
+from typing import Dict
 
-from packages.short_class_import import Biome, Tree, Encyclopedia, Color, Board
+from packages.short_class_import import Biome, Board, BoardColor, Color, Encyclopedia, Tree
 
 
 ###############################################################
@@ -20,22 +21,16 @@ from packages.short_class_import import Biome, Tree, Encyclopedia, Color, Board
 ###############################################################
 
 
-def add_in_dict(biomes_dict: dict, biome: Biome):
+def add_in_dict(biomes_dict: Dict[str, Biome], biome: Biome) -> None:
     # =============================
     # INFORMATIONS :
     # -----------------------------
     # UTILITÉ :
     # Ajoute biome dans le dictionnaire biomes_dict avec
     # biome.name comme référence
-    # -----------------------------
-    # DÉPEND DE :
-    # - classes.Biome
-    # -----------------------------
-    # UTILISÉ PAR :
-    # - encyclopedia_functions.encyclopedia_creation()
     # =============================
 
-    biomes_dict[biome.name] = biome
+    biomes_dict[biome.get_name()] = biome
 
 
 ###############################################################
@@ -63,7 +58,7 @@ def encyclopedia_creation() -> Encyclopedia:
     empty_tree = Tree(
         name="empty_tree",
         spawn_probability=0,
-        body=Board(
+        body=BoardColor(
             [
                 []
             ]
@@ -79,7 +74,7 @@ def encyclopedia_creation() -> Encyclopedia:
     desert_tree_1 = Tree(
         name="desert_tree_1",
         spawn_probability=0.005,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(106, 82, 18), None, None, Color(106, 82, 18)],
 
@@ -160,7 +155,7 @@ def encyclopedia_creation() -> Encyclopedia:
     desert_scub_tree_1 = Tree(
         name="desert_scub_tree_1",
         spawn_probability=0.007,
-        body=Board(
+        body=BoardColor(
             [
                 [Color(156, 152, 107), Color(156, 152, 107), None],
 
@@ -175,7 +170,7 @@ def encyclopedia_creation() -> Encyclopedia:
     desert_scub_tree_2 = Tree(
         name="desert_scub_tree_2",
         spawn_probability=0.015,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(156, 152, 107), None],
 
@@ -190,7 +185,7 @@ def encyclopedia_creation() -> Encyclopedia:
     desert_scub_bush_1 = Tree(
         name="desert_scub_bush_1",
         spawn_probability=0.005,
-        body=Board(
+        body=BoardColor(
             [
                 [Color(118, 115, 98)]
             ]
@@ -268,7 +263,7 @@ def encyclopedia_creation() -> Encyclopedia:
     dry_forest_tree_1 = Tree(
         name="dry_forest_tree_1",
         spawn_probability=0.015,
-        body=Board(
+        body=BoardColor(
             [
                 [None, None, Color(121, 105, 56), None, None, None, None],
 
@@ -291,7 +286,7 @@ def encyclopedia_creation() -> Encyclopedia:
     dry_forest_tree_2 = Tree(
         name="dry_forest_tree_2",
         spawn_probability=0.01,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(121, 105, 56), None, Color(
                     133, 103, 69), Color(121, 105, 56)],
@@ -311,7 +306,7 @@ def encyclopedia_creation() -> Encyclopedia:
     dry_forest_tree_3 = Tree(
         name="dry_forest_tree_3",
         spawn_probability=0.005,
-        body=Board(
+        body=BoardColor(
             [
                 [None, None, None,
                  Color(121, 105, 56), None],
@@ -337,7 +332,7 @@ def encyclopedia_creation() -> Encyclopedia:
     dry_forest_bush_1 = Tree(
         name="dry_forest_bush_1",
         spawn_probability=0.0005,
-        body=Board(
+        body=BoardColor(
             [
                 [Color(121, 105, 56)]
             ]
@@ -397,7 +392,7 @@ def encyclopedia_creation() -> Encyclopedia:
     moist_forest_tree_1 = Tree(
         name="moist_forest_tree_1",
         spawn_probability=0.1,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(54, 62, 15), Color(34, 46, 10),
                  Color(34, 46, 10), None],
@@ -418,7 +413,7 @@ def encyclopedia_creation() -> Encyclopedia:
     moist_forest_tree_2 = Tree(
         name="moist_forest_tree_2",
         spawn_probability=0.05,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(34, 46, 10), Color(34, 46, 10),
                  Color(34, 46, 10), None],
@@ -444,7 +439,7 @@ def encyclopedia_creation() -> Encyclopedia:
     moist_forest_tree_3 = Tree(
         name="moist_forest_tree_3",
         spawn_probability=0.07,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(54, 62, 15), None],
 
@@ -462,7 +457,7 @@ def encyclopedia_creation() -> Encyclopedia:
     moist_forest_tree_4 = Tree(
         name="arbre_moist_forest_4",
         spawn_probability=0.01,
-        body=Board(
+        body=BoardColor(
             [
                 [None, None, Color(36, 49, 11),
                  Color(34, 46, 10), None, None],
@@ -488,7 +483,7 @@ def encyclopedia_creation() -> Encyclopedia:
     moist_forest_tree_5 = Tree(
         name="arbre_moist_forest_5",
         spawn_probability=0.015,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(59, 72, 30), None],
 
@@ -504,7 +499,7 @@ def encyclopedia_creation() -> Encyclopedia:
     moist_forest_tree_6 = Tree(
         name="moist_forest_tree_6",
         spawn_probability=0.005,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(65, 71, 23), None, None, None],
 
@@ -530,7 +525,7 @@ def encyclopedia_creation() -> Encyclopedia:
     moist_forest_bush_1 = Tree(
         name="moist_forest_bush_1",
         spawn_probability=0.0005,
-        body=Board(
+        body=BoardColor(
             [
                 [Color(109, 153, 97)]
             ]
@@ -621,7 +616,7 @@ def encyclopedia_creation() -> Encyclopedia:
     rain_forest_tree_1 = Tree(
         name="rain_forest_tree_1",
         spawn_probability=0.15,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(68, 88, 39), Color(68, 88, 39),
                  Color(68, 88, 39), None],
@@ -650,7 +645,7 @@ def encyclopedia_creation() -> Encyclopedia:
     rain_forest_tree_2 = Tree(
         name="rain_forest_tree_2",
         spawn_probability=0.03,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(68, 88, 39), Color(68, 88, 39),
                  Color(68, 88, 39), None],
@@ -679,7 +674,7 @@ def encyclopedia_creation() -> Encyclopedia:
     rain_forest_tree_3 = Tree(
         name="rain_forest_tree_3",
         spawn_probability=0.05,
-        body=Board(
+        body=BoardColor(
             [
                 [Color(68, 88, 39), Color(68, 88, 39), None],
 
@@ -773,7 +768,7 @@ def encyclopedia_creation() -> Encyclopedia:
     steppe_woodland_thorn_tree_1 = Tree(
         name="steppe_woodland_thorn_tree_1",
         spawn_probability=0.05,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(34, 58, 26), None],
 
@@ -789,7 +784,7 @@ def encyclopedia_creation() -> Encyclopedia:
     steppe_woodland_thorn_tree_2 = Tree(
         name="steppe_woodland_thorn_tree_2",
         spawn_probability=0.05,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(34, 58, 26), None],
 
@@ -803,7 +798,7 @@ def encyclopedia_creation() -> Encyclopedia:
     steppe_woodland_thorn_tree_3 = Tree(
         name="steppe_woodland_thorn_tree_3",
         spawn_probability=0.005,
-        body=Board(
+        body=BoardColor(
             [
                 [Color(34, 58, 26), Color(34, 58, 26), None],
 
@@ -817,7 +812,7 @@ def encyclopedia_creation() -> Encyclopedia:
     steppe_woodland_thorn_tree_4 = Tree(
         name="steppe_woodland_thorn_tree_4",
         spawn_probability=0.005,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(34, 58, 26), Color(34, 58, 26)],
 
@@ -858,7 +853,7 @@ def encyclopedia_creation() -> Encyclopedia:
     taiga_tree_1 = Tree(
         name="taiga_tree_1",
         spawn_probability=0.03,
-        body=Board(
+        body=BoardColor(
             [
                 [None, None, Color(34, 58, 26), None, None],
 
@@ -878,7 +873,7 @@ def encyclopedia_creation() -> Encyclopedia:
     taiga_tree_2 = Tree(
         name="taiga_tree_2",
         spawn_probability=0.01,
-        body=Board(
+        body=BoardColor(
             [
                 [None, None, Color(34, 58, 26), None, None],
 
@@ -898,7 +893,7 @@ def encyclopedia_creation() -> Encyclopedia:
     taiga_tree_3 = Tree(
         name="taiga_tree_3",
         spawn_probability=0.03,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(34, 58, 26), None],
 
@@ -1019,7 +1014,7 @@ def encyclopedia_creation() -> Encyclopedia:
     tundra_bush_1 = Tree(
         name="tundra_bush_1",
         spawn_probability=0.005,
-        body=Board(
+        body=BoardColor(
             [
                 [Color(34, 58, 26), Color(34, 58, 26)]
             ]
@@ -1029,7 +1024,7 @@ def encyclopedia_creation() -> Encyclopedia:
     tundra_bush_2 = Tree(
         name="tundra_bush_2",
         spawn_probability=0.002,
-        body=Board(
+        body=BoardColor(
             [
                 [Color(34, 58, 26), Color(34, 58, 26), Color(34, 58, 26)]
             ]
@@ -1039,7 +1034,7 @@ def encyclopedia_creation() -> Encyclopedia:
     tundra_bush_3 = Tree(
         name="tundra_bush_3",
         spawn_probability=0.001,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(34, 58, 26), None, None],
 
@@ -1052,7 +1047,7 @@ def encyclopedia_creation() -> Encyclopedia:
     tundra_bush_4 = Tree(
         name="tundra_bush_4",
         spawn_probability=0.001,
-        body=Board(
+        body=BoardColor(
             [
                 [None, None, Color(34, 58, 26), None],
 
@@ -1157,7 +1152,7 @@ def encyclopedia_creation() -> Encyclopedia:
     tropical_forest_tree_1 = Tree(
         name="tropical_forest_tree_1",
         spawn_probability=0.15,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(0, 69, 41), Color(0, 69, 41),
                  Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41), None],
@@ -1192,7 +1187,7 @@ def encyclopedia_creation() -> Encyclopedia:
     tropical_forest_tree_2 = Tree(
         name="tropical_forest_tree_2",
         spawn_probability=0.1,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(124, 168, 21), Color(124, 168, 21),
                  Color(124, 168, 21), Color(124, 168, 21), None],
@@ -1224,7 +1219,7 @@ def encyclopedia_creation() -> Encyclopedia:
     tropical_forest_tree_3 = Tree(
         name="tropical_forest_tree_3",
         spawn_probability=0.05,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(19, 84, 20), Color(19, 84, 20),
                  Color(19, 84, 20), None],
@@ -1296,7 +1291,7 @@ def encyclopedia_creation() -> Encyclopedia:
     very_dry_forest_tree_1 = Tree(
         name="very_dry_forest_tree_1",
         spawn_probability=0.055,
-        body=Board(
+        body=BoardColor(
             [
                 [None, None, Color(121, 105, 56),
                  None, None, None, None],
@@ -1322,7 +1317,7 @@ def encyclopedia_creation() -> Encyclopedia:
     very_dry_forest_tree_2 = Tree(
         name="very_dry_forest_tree_2",
         spawn_probability=0.05,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(121, 105, 56), None,
                  Color(133, 103, 69), Color(121, 105, 56)],
@@ -1342,7 +1337,7 @@ def encyclopedia_creation() -> Encyclopedia:
     very_dry_forest_tree_3 = Tree(
         name="very_dry_forest_tree_3",
         spawn_probability=0.05,
-        body=Board(
+        body=BoardColor(
             [
                 [None, None, None,
                  Color(121, 105, 56), None],
@@ -1368,7 +1363,7 @@ def encyclopedia_creation() -> Encyclopedia:
     very_dry_forest_bush_1 = Tree(
         name="very_dry_forest_bush_1",
         spawn_probability=0.005,
-        body=Board(
+        body=BoardColor(
             [
                 [Color(121, 105, 56)]
             ]
@@ -1407,7 +1402,7 @@ def encyclopedia_creation() -> Encyclopedia:
     wet_forest_tree_1_v1 = Tree(
         name="wet_forest_tree_1_v1",
         spawn_probability=0.07,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(38, 127, 0), Color(38, 127, 0),
                  Color(38, 127, 0), None],
@@ -1433,7 +1428,7 @@ def encyclopedia_creation() -> Encyclopedia:
     wet_forest_tree_1_v2 = Tree(
         name="wet_forest_tree_1_v2",
         spawn_probability=0.1,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(96, 142, 8), Color(96, 142, 8),
                  Color(96, 142, 8), None],
@@ -1459,7 +1454,7 @@ def encyclopedia_creation() -> Encyclopedia:
     wet_forest_tree_1_v3 = Tree(
         name="wet_forest_tree_1_v3",
         spawn_probability=0.08,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(38, 127, 0), Color(38, 127, 0),
                  Color(38, 127, 0), None],
@@ -1485,7 +1480,7 @@ def encyclopedia_creation() -> Encyclopedia:
     wet_forest_tree_2_v1 = Tree(
         name="wet_forest_tree_2_v1",
         spawn_probability=0.03,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(38, 127, 0), None],
 
@@ -1505,7 +1500,7 @@ def encyclopedia_creation() -> Encyclopedia:
     wet_forest_tree_2_v2 = Tree(
         name="wet_forest_tree_2_v2",
         spawn_probability=0.07,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(96, 142, 8), None],
 
@@ -1525,7 +1520,7 @@ def encyclopedia_creation() -> Encyclopedia:
     wet_forest_tree_2_v3 = Tree(
         name="wet_forest_tree_2_v3",
         spawn_probability=0.07,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(38, 127, 0), None],
 
@@ -1610,7 +1605,7 @@ def encyclopedia_creation() -> Encyclopedia:
     woodland_thorn_tree_1 = Tree(
         name="woodland_thorn_tree_1",
         spawn_probability=0.06,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(39, 67, 0), Color(39, 67, 0),
                  Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), None],
@@ -1636,7 +1631,7 @@ def encyclopedia_creation() -> Encyclopedia:
     woodland_thorn_tree_2 = Tree(
         name="woodland_thorn_tree_2",
         spawn_probability=0.03,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(39, 67, 0), Color(39, 67, 0), None],
 
@@ -1655,7 +1650,7 @@ def encyclopedia_creation() -> Encyclopedia:
     woodland_thorn_tree_3 = Tree(
         name="woodland_thorn_tree_3",
         spawn_probability=0.01,
-        body=Board(
+        body=BoardColor(
             [
                 [None, Color(39, 67, 0), Color(39, 67, 0),
                  Color(39, 67, 0), Color(39, 67, 0), None],

@@ -16,6 +16,8 @@
 from packages.classes.Biome import Biome
 from packages.classes.Color import Color
 
+from packages.utilities import check_attribute_type_set
+
 
 class Box:
     ###############################################################
@@ -56,13 +58,13 @@ class Box:
     ########################### SETTERS ###########################
     ###############################################################
     def set_biome(self, biome: Biome) -> None:
-        if isinstance(biome, Biome):
-            self._biome = biome
-        else:
-            raise Exception(
-                "Error: impossible to set _biome for a " + type(self).__name__ + ":" +
-                "\n_biome must be a Biome, but a " + type(biome).__name__ + " is given."
-            )
+        check_attribute_type_set(
+            attribute_to_check=biome,
+            type_to_check=Biome,
+            name_of_attribute_to_check="_biome",
+            object_destination=self
+        )
+        self._biome = biome
 
     ###############################################################
     ########################## GET_COLOR ##########################

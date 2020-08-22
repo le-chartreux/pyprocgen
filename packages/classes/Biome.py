@@ -18,6 +18,7 @@ from typing import List
 
 from packages.classes.Color import Color
 from packages.classes.Tree import Tree
+
 from packages.settings import (
     BIOME_NAME_LEN_MIN,
     BIOME_NAME_LEN_MAX,
@@ -28,6 +29,7 @@ from packages.settings import (
     BIOME_TREES_LEN_MIN,
     BIOME_TREES_LEN_MAX
 )
+from packages.utilities import check_attribute_type_set, check_number_between_to_set
 
 
 class Biome:
@@ -48,10 +50,10 @@ class Biome:
     ############################ HINTS ############################
     ###############################################################
     _name: str
-    _pluviometry_min: int
-    _pluviometry_max: int
-    _temperature_min: int
-    _temperature_max: int
+    _pluviometry_min: float
+    _pluviometry_max: float
+    _temperature_min: float
+    _temperature_max: float
     _ground_color: Color
     _trees: List[Tree]
 
@@ -61,10 +63,10 @@ class Biome:
     def __init__(
             self,
             name: str,
-            pluviometry_min: int,
-            pluviometry_max: int,
-            temperature_min: int,
-            temperature_max: int,
+            pluviometry_min: float,
+            pluviometry_max: float,
+            temperature_min: float,
+            temperature_max: float,
             ground_color: Color,
             trees: List[Tree]
     ) -> None:
@@ -101,16 +103,16 @@ class Biome:
     def get_name(self) -> str:
         return self._name
 
-    def get_pluviometry_min(self) -> int:
+    def get_pluviometry_min(self) -> float:
         return self._pluviometry_min
 
-    def get_pluviometry_max(self) -> int:
+    def get_pluviometry_max(self) -> float:
         return self._pluviometry_max
 
-    def get_temperature_min(self) -> int:
+    def get_temperature_min(self) -> float:
         return self._temperature_min
 
-    def get_temperature_max(self) -> int:
+    def get_temperature_max(self) -> float:
         return self._temperature_max
 
     def get_ground_color(self) -> Color:
@@ -132,23 +134,22 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_NAME_LEN_MIN <= len(name) <= BIOME_NAME_LEN_MAX
         # =============================
-        if isinstance(name, str):
-            if BIOME_NAME_LEN_MIN <= len(name) <= BIOME_NAME_LEN_MAX:
-                self._name = name
-            else:
-                raise Exception(
-                    "Error: impossible to set _name for a " + type(self).__name__ + ":" +
-                    "\nlen(_name) must be between " + str(BIOME_NAME_LEN_MIN) + " and " +
-                    str(BIOME_NAME_LEN_MAX) + " but input's len is " + str(len(name)) + "." +
-                    "\nChange the relative constant in packages/settings.py to allow."
-                )
-        else:
-            raise Exception(
-                "Error: impossible to set _name for a " + type(self).__name__ + ":" +
-                "\n_name must be a str, but a " + type(name).__name__ + " is given."
-            )
+        check_attribute_type_set(
+            attribute_to_check=name,
+            type_to_check=str,
+            name_of_attribute_to_check="_name",
+            object_destination=self
+        )
+        check_number_between_to_set(
+            number_to_check=len(name),
+            min_value=BIOME_NAME_LEN_MIN,
+            max_value=BIOME_NAME_LEN_MAX,
+            name_of_attribute_to_check="len(_name)",
+            object_to_set=self
+        )
+        self._name = name
 
-    def set_pluviometry_min(self, pluviometry_min: int) -> None:
+    def set_pluviometry_min(self, pluviometry_min: float) -> None:
         # =============================
         # INFORMATIONS :
         # -----------------------------
@@ -158,23 +159,22 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_PLUVIOMETRY_MIN <= pluviometry_min <= BIOME_PLUVIOMETRY_MAX
         # =============================
-        if isinstance(pluviometry_min, int):
-            if BIOME_PLUVIOMETRY_MIN <= pluviometry_min <= BIOME_PLUVIOMETRY_MAX:
-                self._pluviometry_min = pluviometry_min
-            else:
-                raise Exception(
-                    "Error: impossible to set _pluviometry_min for a " + type(self).__name__ + ":" +
-                    "\n_pluviometry_min must be between " + str(BIOME_PLUVIOMETRY_MAX) + " and " +
-                    str(BIOME_PLUVIOMETRY_MAX) + " but input's value is " + str(pluviometry_min) + "." +
-                    "\nChange the relative constant in packages/settings.py to allow."
-                )
-        else:
-            raise Exception(
-                "Error: impossible to set _pluviometry_min for a " + type(self).__name__ + ":" +
-                "\n_pluviometry_min must be an int, but a " + type(pluviometry_min).__name__ + " is given."
-            )
+        check_attribute_type_set(
+            attribute_to_check=pluviometry_min,
+            type_to_check=float,
+            name_of_attribute_to_check="_pluviometry_min",
+            object_destination=self
+        )
+        check_number_between_to_set(
+            number_to_check=pluviometry_min,
+            min_value=BIOME_PLUVIOMETRY_MIN,
+            max_value=BIOME_PLUVIOMETRY_MAX,
+            name_of_attribute_to_check="_pluviometry_min",
+            object_to_set=self
+        )
+        self._pluviometry_min = pluviometry_min
 
-    def set_pluviometry_max(self, pluviometry_max: int) -> None:
+    def set_pluviometry_max(self, pluviometry_max: float) -> None:
         # =============================
         # INFORMATIONS :
         # -----------------------------
@@ -184,23 +184,22 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_PLUVIOMETRY_MIN <= pluviometry_max <= BIOME_PLUVIOMETRY_MAX
         # =============================
-        if isinstance(pluviometry_max, int):
-            if BIOME_PLUVIOMETRY_MIN <= pluviometry_max <= BIOME_PLUVIOMETRY_MAX:
-                self._pluviometry_max = pluviometry_max
-            else:
-                raise Exception(
-                    "Error: impossible to set _pluviometry_max for a " + type(self).__name__ + ":" +
-                    "\n_pluviometry_max must be between " + str(BIOME_PLUVIOMETRY_MAX) + " and " +
-                    str(BIOME_PLUVIOMETRY_MAX) + " but input's value is " + str(pluviometry_max) + "." +
-                    "\nChange the relative constant in packages/settings.py to allow."
-                )
-        else:
-            raise Exception(
-                "Error: impossible to set _pluviometry_max for a " + type(self).__name__ + ":" +
-                "\n_pluviometry_max must be an int, but a " + type(pluviometry_max).__name__ + " is given."
-            )
+        check_attribute_type_set(
+            attribute_to_check=pluviometry_max,
+            type_to_check=float,
+            name_of_attribute_to_check="_pluviometry_max",
+            object_destination=self
+        )
+        check_number_between_to_set(
+            number_to_check=pluviometry_max,
+            min_value=BIOME_PLUVIOMETRY_MIN,
+            max_value=BIOME_PLUVIOMETRY_MAX,
+            name_of_attribute_to_check="_pluviometry_max",
+            object_to_set=self
+        )
+        self._pluviometry_max = pluviometry_max
 
-    def set_temperature_min(self, temperature_min: int) -> None:
+    def set_temperature_min(self, temperature_min: float) -> None:
         # =============================
         # INFORMATIONS :
         # -----------------------------
@@ -210,23 +209,22 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_TEMPERATURE_MIN <= temperature_min <= BIOME_TEMPERATURE_MAX
         # =============================
-        if isinstance(temperature_min, int):
-            if BIOME_TEMPERATURE_MIN <= temperature_min <= BIOME_TEMPERATURE_MAX:
-                self._temperature_min = temperature_min
-            else:
-                raise Exception(
-                    "Error: impossible to set _temperature_min for a " + type(self).__name__ + ":" +
-                    "\n_temperature_min must be between " + str(BIOME_TEMPERATURE_MIN) + " and " +
-                    str(BIOME_TEMPERATURE_MAX) + " but input's value is " + str(temperature_min) + "." +
-                    "\nChange the relative constant in packages/settings.py to allow."
-                )
-        else:
-            raise Exception(
-                "Error: impossible to set _temperature_min for a " + type(self).__name__ + ":" +
-                "\n_temperature_min must be an int, but a " + type(temperature_min).__name__ + " is given."
-            )
+        check_attribute_type_set(
+            attribute_to_check=temperature_min,
+            type_to_check=float,
+            name_of_attribute_to_check="_temperature_min",
+            object_destination=self
+        )
+        check_number_between_to_set(
+            number_to_check=temperature_min,
+            min_value=BIOME_TEMPERATURE_MIN,
+            max_value=BIOME_TEMPERATURE_MAX,
+            name_of_attribute_to_check="_temperature_min",
+            object_to_set=self
+        )
+        self._temperature_min = temperature_min
 
-    def set_temperature_max(self, temperature_max: int) -> None:
+    def set_temperature_max(self, temperature_max: float) -> None:
         # =============================
         # INFORMATIONS :
         # -----------------------------
@@ -236,21 +234,20 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_TEMPERATURE_MIN <= temperature_max <= BIOME_TEMPERATURE_MAX
         # =============================
-        if isinstance(temperature_max, int):
-            if BIOME_TEMPERATURE_MIN <= temperature_max <= BIOME_TEMPERATURE_MAX:
-                self._temperature_max = temperature_max
-            else:
-                raise Exception(
-                    "Error: impossible to set _temperature_max for a " + type(self).__name__ + ":" +
-                    "\n_temperature_max must be between " + str(BIOME_TEMPERATURE_MIN) + " and " +
-                    str(BIOME_TEMPERATURE_MAX) + " but input's value is " + str(temperature_max) + "." +
-                    "\nChange the relative constant in packages/settings.py to allow."
-                )
-        else:
-            raise Exception(
-                "Error: impossible to set _temperature_max for a " + type(self).__name__ + ":" +
-                "\n_temperature_max must be an int, but a " + type(temperature_max).__name__ + " is given."
-            )
+        check_attribute_type_set(
+            attribute_to_check=temperature_max,
+            type_to_check=float,
+            name_of_attribute_to_check="_temperature_max",
+            object_destination=self
+        )
+        check_number_between_to_set(
+            number_to_check=temperature_max,
+            min_value=BIOME_TEMPERATURE_MIN,
+            max_value=BIOME_TEMPERATURE_MAX,
+            name_of_attribute_to_check="_temperature_max",
+            object_to_set=self
+        )
+        self._temperature_max = temperature_max
 
     def set_ground_color(self, ground_color: Color) -> None:
         # =============================
@@ -259,13 +256,8 @@ class Biome:
         # UTILITÉ :
         # Vérifie la cohérence de ground_color puis la set
         # =============================
-        if isinstance(ground_color, Color):
-            self._ground_color = ground_color
-        else:
-            raise Exception(
-                "Error: impossible to set _ground_color for a " + type(self).__name__ + ":" +
-                "\n_ground_color must be a Color, but a " + type(ground_color).__name__ + " is given."
-            )
+        check_attribute_type_set(ground_color, Color, "_ground_color", self)
+        self._ground_color = ground_color
 
     def set_trees(self, trees: List[Tree]) -> None:
         # =============================
@@ -277,33 +269,31 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_PLUVIOMETRY_MIN <= pluviometry_max <= BIOME_PLUVIOMETRY_MAX
         # =============================
-        if isinstance(trees, list):
-            if BIOME_TREES_LEN_MIN <= len(trees) <= BIOME_TREES_LEN_MAX:
-                # Vérification que tous les éléments sont instance de Tree :
-                i = 0
+        check_attribute_type_set(
+            attribute_to_check=trees,
+            type_to_check=list,
+            name_of_attribute_to_check="_trees",
+            object_destination=self
+        )
+        check_number_between_to_set(
+            number_to_check=len(trees),
+            min_value=BIOME_TREES_LEN_MIN,
+            max_value=BIOME_TREES_LEN_MAX,
+            name_of_attribute_to_check="len(_trees)",
+            object_to_set=self
+        )
+        # Vérification que tous les éléments sont instance de Tree :
+        i = 0
+        while i < len(trees) and isinstance(trees[i], Tree):
+            i += 1
 
-                while i < len(trees) and isinstance(trees[i], Tree):
-                    i += 1
-
-                if i == len(trees):
-                    self._trees = trees
-                else:
-                    raise Exception(
-                        "Error: impossible to set _trees for a " + type(self).__name__ + ":" +
-                        "\n_trees must be a List[Tree] but element number " + str(i) + " is a " +
-                        type(trees[i]).__name__ + "."
-                    )
-            else:
-                raise Exception(
-                    "Error: impossible to set _trees for a " + type(self).__name__ + ":" +
-                    "\nlen(_trees) must be between " + str(BIOME_TREES_LEN_MIN) + " and " +
-                    str(BIOME_TREES_LEN_MAX) + " but input's len is " + str(len(trees)) + "." +
-                    "\nChange the relative constant in packages/settings.py to allow."
-                )
+        if i == len(trees):
+            self._trees = trees
         else:
             raise Exception(
                 "Error: impossible to set _trees for a " + type(self).__name__ + ":" +
-                "\n_trees must be a List[Tree] but a " + type(trees).__name__ + " is given."
+                "\n_trees must be a List[Tree] but element number " + str(i) + " is a " +
+                type(trees[i]).__name__ + "."
             )
 
     ###############################################################

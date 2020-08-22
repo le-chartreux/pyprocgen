@@ -26,6 +26,7 @@ from __future__ import annotations
 from typing import List, Optional
 
 from packages.classes.Position import Position
+from packages.utilities import check_attribute_type_set
 
 
 class Board:
@@ -70,54 +71,54 @@ class Board:
     def set_elements(self, elements: List[List[TYPE_OF_ELEMENTS]]) -> None:
         # Vérification que éléments est bien un List[List[TYPE_OF_ELEMENTS]]
         # Vérification que éléments est bien un List
-        if isinstance(elements, list):
-            # Vérification que elements est bien un List de quelque chose
-            if len(elements) == 0:
-                raise Exception(
-                    "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
-                    "\n_elements must be a List[List[" + str(self.TYPE_OF_ELEMENTS) + "]], but an empty list is given."
-                )
-            # Vérification que elements est bien un List[List]
-            i = 0
-            while i < len(elements) and isinstance(elements[i], list):
-                i += 1
-            if i == len(elements):
-                # Vérification que elements est bien un List[List[self.TYPE_OF_ELEMENTS]
-                line = 0
-                column = 0
-                while (
-                        line < len(elements) and
-                        isinstance(elements[line], list) and
-                        column == 0
-                ):
-                    while (
-                            column < len(elements[line])
-                            and isinstance(elements[line][column], self.TYPE_OF_ELEMENTS.__args__)
-                    ):
-                        column += 1
-                    if column == len(elements[line]):
-                        column = 0
-                        line += 1
+        check_attribute_type_set(
+            attribute_to_check=elements,
+            type_to_check=list,
+            name_of_attribute_to_check="_elements",
+            object_destination=self
+        )
 
-                if line == len(elements):
-                    self._elements = elements
-                else:
-                    raise Exception(
-                        "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
-                        "\n_elements must be a List[List[" + str(self.TYPE_OF_ELEMENTS) + "]] " +
-                        "but at least one List[List]'s element is a " + type(elements[line][column]).__name__ + "."
-                    )
+        # Vérification que elements est bien un List de quelque chose
+        if len(elements) == 0:
+            raise Exception(
+                "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
+                "\n_elements must be a List[List[" + str(self.TYPE_OF_ELEMENTS) + "]], but an empty list is given."
+            )
+        # Vérification que elements est bien un List[List]
+        i = 0
+        while i < len(elements) and isinstance(elements[i], list):
+            i += 1
+        if i == len(elements):
+            # Vérification que elements est bien un List[List[self.TYPE_OF_ELEMENTS]
+            line = 0
+            column = 0
+            while (
+                    line < len(elements) and
+                    isinstance(elements[line], list) and
+                    column == 0
+            ):
+                while (
+                        column < len(elements[line])
+                        and isinstance(elements[line][column], self.TYPE_OF_ELEMENTS.__args__)
+                ):
+                    column += 1
+                if column == len(elements[line]):
+                    column = 0
+                    line += 1
+
+            if line == len(elements):
+                self._elements = elements
             else:
                 raise Exception(
                     "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
                     "\n_elements must be a List[List[" + str(self.TYPE_OF_ELEMENTS) + "]] " +
-                    "but at least one List's element is not a List."
+                    "but at least one List[List]'s element is a " + type(elements[line][column]).__name__ + "."
                 )
         else:
             raise Exception(
                 "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
-                "\n_elements must be a List[List[" + str(self.TYPE_OF_ELEMENTS) + "]], but a " +
-                type(elements).__name__ + " is given."
+                "\n_elements must be a List[List[" + str(self.TYPE_OF_ELEMENTS) + "]] " +
+                "but at least one List's element is not a List."
             )
 
     ###############################################################

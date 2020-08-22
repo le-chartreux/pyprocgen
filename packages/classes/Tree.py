@@ -14,8 +14,9 @@
 # + get_width
 # ==========================================================
 
-
 from packages.classes.BoardColor import BoardColor
+
+from packages.utilities import check_attribute_type_set, check_number_between_to_set
 
 
 class Tree:
@@ -72,39 +73,38 @@ class Tree:
     ############################ SETTERS ##########################
     ###############################################################
     def set_body(self, body: BoardColor) -> None:
-        if isinstance(body, BoardColor):
-            self._body = body
-        else:
-            raise Exception(
-                "Error: impossible to set _body for a " + type(self).__name__ + ":" +
-                "\n_body must be a BoardColor, but a " + type(body).__name__ + " is given."
-            )
+        check_attribute_type_set(
+            attribute_to_check=body,
+            type_to_check=BoardColor,
+            name_of_attribute_to_check="_body",
+            object_destination=self
+        )
+        self._body = body
 
     def set_name(self, name: str) -> None:
-        if isinstance(name, str):
-            self._name = name
-        else:
-            raise Exception(
-                "Error: impossible to set _name for a " + type(self).__name__ + ":" +
-                "\n_name must be a str, but a " + type(name).__name__ + " is given."
-            )
+        check_attribute_type_set(
+            attribute_to_check=name,
+            type_to_check=str,
+            name_of_attribute_to_check="_name",
+            object_destination=self
+        )
+        self._name = name
 
     def set_spawn_probability(self, spawn_probability: float) -> None:
-        if isinstance(spawn_probability, float):
-            if 0.0 <= spawn_probability <= 1.0:
-                self._spawn_probability = spawn_probability
-            else:
-                raise Exception(
-                    "Error: impossible to set _spawn_probability for a " + type(self).__name__ + ":" +
-                    "\n_spawn_probability must be an int between 0 and 1, but input's value equals "
-                    + str(spawn_probability) + "."
-                )
-        else:
-            raise Exception(
-                "Error: impossible to set _spawn_probability for a " + type(self).__name__ + ":" +
-                "\n_spawn_probability must be an int between 0 and 1, but a " + type(spawn_probability).__name__ +
-                " is given."
-            )
+        check_attribute_type_set(
+            attribute_to_check=spawn_probability,
+            type_to_check=float,
+            name_of_attribute_to_check="_spawn_probability",
+            object_destination=self
+        )
+        check_number_between_to_set(
+            number_to_check=spawn_probability,
+            min_value=0.0,
+            max_value=1.0,
+            name_of_attribute_to_check="_spawn_probability",
+            object_to_set=self
+        )
+        self._spawn_probability = spawn_probability
 
     ###############################################################
     ########################## GET_HEIGHT #########################

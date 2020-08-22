@@ -13,11 +13,13 @@
 # + is_seed()
 # + __str__()
 # ==========================================================
+
 from __future__ import annotations
 from typing import Optional
 import random
 
 from packages.settings import SEED_ELEMENT_MIN, SEED_ELEMENT_MAX
+from packages.utilities import check_attribute_type_set, check_number_between_to_set
 
 
 class Seed:
@@ -104,78 +106,78 @@ class Seed:
     def set_pluviometry_x(self, pluviometry_x: Optional[int]) -> None:
         if pluviometry_x is None:
             self._pluviometry_x = random.randint(SEED_ELEMENT_MIN, SEED_ELEMENT_MAX)
-        elif isinstance(pluviometry_x, int):
-            if SEED_ELEMENT_MIN <= pluviometry_x <= SEED_ELEMENT_MAX:
-                self._pluviometry_x = pluviometry_x
-            else:
-                raise Exception(
-                    "Error: impossible to set _pluviometry_x for a " + type(self).__name__ + ":" +
-                    "\n_pluviometry_x must be between " + str(SEED_ELEMENT_MIN) + " and " + str(SEED_ELEMENT_MAX) +
-                    " but given argument's value is " + str(pluviometry_x) +
-                    "\nChange the relative constant in packages/settings.py to allow."
-                )
         else:
-            raise Exception(
-                "Error: impossible to set _pluviometry_x for a " + type(self).__name__ + ":" +
-                "\n_pluviometry_x must be an int, but a " + type(pluviometry_x).__name__ + " is given."
+            check_attribute_type_set(
+                attribute_to_check=pluviometry_x,
+                type_to_check=int,
+                name_of_attribute_to_check="_pluviometry_x",
+                object_destination=self
             )
+            check_number_between_to_set(
+                number_to_check=pluviometry_x,
+                min_value=SEED_ELEMENT_MIN,
+                max_value=SEED_ELEMENT_MAX,
+                name_of_attribute_to_check="_pluviometry_x",
+                object_to_set=self
+            )
+            self._pluviometry_x = pluviometry_x
 
     def set_pluviometry_y(self, pluviometry_y: Optional[int]) -> None:
         if pluviometry_y is None:
             self._pluviometry_y = random.randint(SEED_ELEMENT_MIN, SEED_ELEMENT_MAX)
-        elif isinstance(pluviometry_y, int):
-            if SEED_ELEMENT_MIN <= pluviometry_y <= SEED_ELEMENT_MAX:
-                self._pluviometry_y = pluviometry_y
-            else:
-                raise Exception(
-                    "Error: impossible to set _pluviometry_y for a " + type(self).__name__ + ":" +
-                    "\n_pluviometry_y must be between " + str(SEED_ELEMENT_MIN) + " and " + str(SEED_ELEMENT_MAX) +
-                    " but given argument's value is " + str(pluviometry_y) +
-                    "\nChange the relative constant in packages/settings.py to allow."
-                )
         else:
-            raise Exception(
-                "Error: impossible to set _pluviometry_y for a " + type(self).__name__ + ":" +
-                "\n_pluviometry_y must be an int, but a " + type(pluviometry_y).__name__ + " is given."
+            check_attribute_type_set(
+                attribute_to_check=pluviometry_y,
+                type_to_check=int,
+                name_of_attribute_to_check="_pluviometry_y",
+                object_destination=self
             )
+            check_number_between_to_set(
+                number_to_check=pluviometry_y,
+                min_value=SEED_ELEMENT_MIN,
+                max_value=SEED_ELEMENT_MAX,
+                name_of_attribute_to_check="_pluviometry_y",
+                object_to_set=self
+            )
+            self._pluviometry_y = pluviometry_y
 
     def set_temperature_x(self, temperature_x: Optional[int]) -> None:
         if temperature_x is None:
             self._temperature_x = random.randint(SEED_ELEMENT_MIN, SEED_ELEMENT_MAX)
-        elif isinstance(temperature_x, int):
-            if SEED_ELEMENT_MIN <= temperature_x <= SEED_ELEMENT_MAX:
-                self._temperature_x = temperature_x
-            else:
-                raise Exception(
-                    "Error: impossible to set _temperature_x for a " + type(self).__name__ + ":" +
-                    "\n_temperature_x must be between " + str(SEED_ELEMENT_MIN) + " and " + str(SEED_ELEMENT_MAX) +
-                    " but given argument's value is " + str(temperature_x) +
-                    "\nChange the relative constant in packages/settings.py to allow."
-                )
         else:
-            raise Exception(
-                "Error: impossible to set _temperature_x for a " + type(self).__name__ + ":" +
-                "\n_temperature_x must be an int, but a " + type(temperature_x).__name__ + " is given."
+            check_attribute_type_set(
+                attribute_to_check=temperature_x,
+                type_to_check=int,
+                name_of_attribute_to_check="_temperature_x",
+                object_destination=self
             )
+            check_number_between_to_set(
+                number_to_check=temperature_x,
+                min_value=SEED_ELEMENT_MIN,
+                max_value=SEED_ELEMENT_MAX,
+                name_of_attribute_to_check="_temperature_x",
+                object_to_set=self
+            )
+            self._temperature_x = temperature_x
 
     def set_temperature_y(self, temperature_y: Optional[int]) -> None:
         if temperature_y is None:
             self._temperature_y = random.randint(SEED_ELEMENT_MIN, SEED_ELEMENT_MAX)
-        elif isinstance(temperature_y, int):
-            if SEED_ELEMENT_MIN <= temperature_y <= SEED_ELEMENT_MAX:
-                self._temperature_y = temperature_y
-            else:
-                raise Exception(
-                    "Error: impossible to set _temperature_y for a " + type(self).__name__ + ":" +
-                    "\n_temperature_y must be between " + str(SEED_ELEMENT_MIN) + " and " + str(SEED_ELEMENT_MAX) +
-                    " but given argument's value is " + str(temperature_y) +
-                    "\nChange the relative constant in packages/settings.py to allow."
-                )
         else:
-            raise Exception(
-                "Error: impossible to set _temperature_y for a " + type(self).__name__ + ":" +
-                "\n_temperature_y must be an int, but a " + type(temperature_y).__name__ + " is given."
+            check_attribute_type_set(
+                attribute_to_check=temperature_y,
+                type_to_check=int,
+                name_of_attribute_to_check="_temperature_y",
+                object_destination=self
             )
+            check_number_between_to_set(
+                number_to_check=temperature_y,
+                min_value=SEED_ELEMENT_MIN,
+                max_value=SEED_ELEMENT_MAX,
+                name_of_attribute_to_check="_temperature_y",
+                object_to_set=self
+            )
+        self._temperature_y = temperature_y
 
     ###############################################################
     ########################### IS_SEED ###########################

@@ -16,6 +16,7 @@
 # ==========================================================
 
 from packages.settings import COLOR_RGB_MIN, COLOR_RGB_MAX
+from packages.utilities import check_attribute_type_set, check_number_between_to_set
 
 
 class Color:
@@ -71,55 +72,52 @@ class Color:
     ########################### SETTERS ###########################
     ###############################################################
     def set_red(self, red: int) -> None:
-        if isinstance(red, int):
-            if COLOR_RGB_MIN <= red <= COLOR_RGB_MAX:
-                self._red = red
-            else:
-                raise Exception(
-                    "Error: impossible to set _red for a " + type(self).__name__ + ":" +
-                    "\n_red must be between " + str(COLOR_RGB_MIN) + " and " + str(COLOR_RGB_MAX) +
-                    " but input's value equals " + str(red) + "." +
-                    "\nChange the relative constant in packages/settings.py to allow."
-                )
-        else:
-            raise Exception(
-                "Error: impossible to set _red for a " + type(self).__name__ + ":" +
-                "\n_red must be an int, but a " + str(type(red)) + " is given."
-            )
+        check_attribute_type_set(
+            attribute_to_check=red,
+            type_to_check=int,
+            name_of_attribute_to_check="_red",
+            object_destination=self
+        )
+        check_number_between_to_set(
+            number_to_check=red,
+            min_value=COLOR_RGB_MIN,
+            max_value=COLOR_RGB_MAX,
+            name_of_attribute_to_check="_red",
+            object_to_set=self
+        )
+        self._red = red
 
     def set_green(self, green: int) -> None:
-        if isinstance(green, int):
-            if COLOR_RGB_MIN <= green <= COLOR_RGB_MAX:
-                self._green = green
-            else:
-                raise Exception(
-                    "Error: impossible to set _green for a " + type(self).__name__ + ":" +
-                    "\n_green must be between " + str(COLOR_RGB_MIN) + " and " + str(COLOR_RGB_MAX) +
-                    " but input's value equals " + str(green) + "." +
-                    "\nChange the relative constant in packages/settings.py to allow."
-                )
-        else:
-            raise Exception(
-                "Error: impossible to set _green for a " + type(self).__name__ + ":" +
-                "\n_green must be an int, but a " + str(type(green)) + " is given."
-            )
+        check_attribute_type_set(
+            attribute_to_check=green,
+            type_to_check=int,
+            name_of_attribute_to_check="_green",
+            object_destination=self
+        )
+        check_number_between_to_set(
+            number_to_check=green,
+            min_value=COLOR_RGB_MIN,
+            max_value=COLOR_RGB_MAX,
+            name_of_attribute_to_check="_green",
+            object_to_set=self
+        )
+        self._green = green
 
     def set_blue(self, blue: int) -> None:
-        if isinstance(blue, int):
-            if COLOR_RGB_MIN <= blue <= COLOR_RGB_MAX:
-                self._blue = blue
-            else:
-                raise Exception(
-                    "Error: impossible to set _blue for a " + type(self).__name__ + ":" +
-                    "\n_blue must be between " + str(COLOR_RGB_MIN) + " and " + str(COLOR_RGB_MAX) +
-                    " but input's value equals " + str(blue) + "." +
-                    "\nChange the relative constant in packages/settings.py to allow."
-                )
-        else:
-            raise Exception(
-                "Error: impossible to set _blue for a " + type(self).__name__ + ":" +
-                "\n_blue must be an int, but a " + str(type(blue)) + " is given."
-            )
+        check_attribute_type_set(
+            attribute_to_check=blue,
+            type_to_check=int,
+            name_of_attribute_to_check="_blue",
+            object_destination=self
+        )
+        check_number_between_to_set(
+            number_to_check=blue,
+            min_value=COLOR_RGB_MIN,
+            max_value=COLOR_RGB_MAX,
+            name_of_attribute_to_check="_blue",
+            object_to_set=self
+        )
+        self._blue = blue
 
     ###############################################################
     ###################### GET_HEXADECIMAL ########################

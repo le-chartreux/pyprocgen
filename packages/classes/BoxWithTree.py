@@ -20,6 +20,8 @@ from packages.classes.Color import Color
 from packages.classes.Position import Position
 from packages.classes.Tree import Tree
 
+from packages.utilities import check_attribute_type_set
+
 
 class BoxWithTree(Box):
     ###############################################################
@@ -49,7 +51,6 @@ class BoxWithTree(Box):
         # - l'arbre qui est dessus
         # - la position de son pixel d'arbre dans le modèle de l'arbre
         # =============================
-
         super().__init__(biome)
         self.set_tree(tree)
         self.set_position_in_tree(position_in_tree)
@@ -67,22 +68,22 @@ class BoxWithTree(Box):
     ########################### SETTERS ###########################
     ###############################################################
     def set_tree(self, tree: Tree) -> None:
-        if isinstance(tree, Tree):
-            self._tree = tree
-        else:
-            raise Exception(
-                "Error: impossible to set _tree for a " + type(self).__name__ + ":" +
-                "\n_tree must be a Tree, but a " + type(tree).__name__ + " is given."
-            )
+        check_attribute_type_set(
+            attribute_to_check=tree,
+            type_to_check=Tree,
+            name_of_attribute_to_check="_tree",
+            object_destination=self
+        )
+        self._tree = tree
 
     def set_position_in_tree(self, position_in_tree: Position) -> None:
-        if isinstance(position_in_tree, Position):
-            self._position_in_tree = position_in_tree
-        else:
-            raise Exception(
-                "Error: impossible to set _position_in_tree for a " + type(self).__name__ + ":" +
-                "\n_position_in_tree must be a Position, but a " + type(position_in_tree).__name__ + " is given."
-            )
+        check_attribute_type_set(
+            attribute_to_check=position_in_tree,
+            type_to_check=Position,
+            name_of_attribute_to_check="_position_in_tree",
+            object_destination=self
+        )
+        self._position_in_tree = position_in_tree
 
     ###############################################################
     ########################## GET_COLOR ##########################

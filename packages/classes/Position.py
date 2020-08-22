@@ -14,6 +14,8 @@
 # + __str__()
 # ==========================================================
 
+from packages.utilities import check_attribute_type_set
+
 
 class Position:
     ###############################################################
@@ -50,22 +52,22 @@ class Position:
     ########################### SETTERS ###########################
     ###############################################################
     def set_x(self, x: int) -> None:
-        if isinstance(x, int):
-            self._x = x
-        else:
-            raise Exception(
-                "Error: Impossible to set x for a " + type(self).__name__ + ":" +
-                "\nx is an int, but a " + type(x).__name__ + " is given."
-            )
+        check_attribute_type_set(
+            attribute_to_check=x,
+            type_to_check=int,
+            name_of_attribute_to_check="_x",
+            object_destination=self
+        )
+        self._x = x
 
     def set_y(self, y: int) -> None:
-        if isinstance(y, int):
-            self._y = y
-        else:
-            raise Exception(
-                "Error: Impossible to set y for a " + type(self).__name__ + ":" +
-                "\ny is an int, but a " + type(y).__name__ + " is given."
-            )
+        check_attribute_type_set(
+            attribute_to_check=y,
+            type_to_check=int,
+            name_of_attribute_to_check="_y",
+            object_destination=self
+        )
+        self._y = y
 
     ###############################################################
     ########################### __STR__ ###########################
