@@ -229,16 +229,16 @@ class Board:
                 )
         elif position is not None:  # La position est demandée avec position
             # Vérification que position est un index valide
-            if 0 <= position.x < self.get_width() and 0 <= position.y < self.get_height():
-                return self.get_elements()[position.y][position.x]
+            if 0 <= position.get_x() < self.get_width() and 0 <= position.get_y() < self.get_height():
+                return self.get_elements()[position.get_y()][position.get_x()]
             else:
                 raise Exception(
                     "Error: impossible to get an element of a " + type(self).__name__ + "._elements:" +
                     "\nIndex out of range:" +
                     "\nWidth of the " + type(self).__name__ + " is " + str(self.get_width()) +
-                    ", requested " + str(position.x) + "." +
+                    ", requested " + str(position.get_x()) + "." +
                     "\nHeight of the " + type(self).__name__ + " is " + str(self.get_height()) +
-                    ", requested " + str(position.y) + "." +
+                    ", requested " + str(position.get_y()) + "." +
                     "\n(since lists start at zero in Python, max_index = len(list) - 1)"
                 )
         else:  # La position n'est pas demandée
@@ -340,16 +340,16 @@ class Board:
                 )
         elif position is not None:  # La position est demandée avec position
             # Vérification que position est un index valide
-            if 0 <= position.x < self.get_width() and 0 <= position.y < self.get_height():
-                self.get_elements()[position.y][position.x] = value
+            if 0 <= position.get_x() < self.get_width() and 0 <= position.get_y() < self.get_height():
+                self.get_elements()[position.get_y()][position.get_x()] = value
             else:
                 raise Exception(
                     "Error: impossible to set an element of a " + type(self).__name__ + "._elements: " +
                     "\nIndex out of range:" +
                     "\nWidth of the " + type(self).__name__ + " is " + str(self.get_width()) +
-                    ", requested " + str(position.x) + "." +
+                    ", requested " + str(position.get_x()) + "." +
                     "\nHeight of the " + type(self).__name__ + " is " + str(self.get_height()) +
-                    ", requested " + str(position.y) + "." +
+                    ", requested " + str(position.get_y()) + "." +
                     "\n(since lists start at zero in Python, max_index = len(list) - 1)"
                 )
         else:  # La position n'est pas demandée

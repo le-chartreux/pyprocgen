@@ -16,6 +16,7 @@ from typing import List, Optional, cast
 
 from packages.classes.Board import Board
 from packages.classes.Box import Box
+from packages.classes.Position import Position
 
 
 class BoardBox(Board):
@@ -43,6 +44,110 @@ class BoardBox(Board):
         # - ses éléments (une liste de liste de Box)
         # =============================
         super().__init__(elements)
+        
+    ###############################################################
+    ########################### GETTERS ###########################
+    ###############################################################
+    def get_elements(self) -> List[List[TYPE_OF_ELEMENTS]]:
+        return cast(List[List[self.TYPE_OF_ELEMENTS]], super(BoardBox, self).get_elements())
+
+    ###############################################################
+    ########################### SETTERS ###########################
+    ###############################################################
+    def set_elements(self, elements: List[List[TYPE_OF_ELEMENTS]]) -> None:
+        super(BoardBox, self).set_elements(elements)
+
+    ###############################################################
+    ######################### ADD_ELEMENT #########################
+    ###############################################################
+    def add_element(
+            self,
+            element: TYPE_OF_ELEMENTS,
+            line: int
+    ) -> None:
+        # =============================
+        # INFORMATIONS :
+        # -----------------------------
+        # UTILITÉ :
+        # Ajoute element à la fin de _elements[line]
+        # -----------------------------
+        # PRÉCONDITIONS :
+        # - 0 < line < len(elements)
+        # =============================
+        super(BoardBox, self).add_element(element, line)
+
+    ###############################################################
+    ########################### ADD_LINE ##########################
+    ###############################################################
+    def add_line(self, line: Optional[List[TYPE_OF_ELEMENTS]] = None) -> None:
+        # =============================
+        # INFORMATIONS :
+        # -----------------------------
+        # UTILITÉ :
+        # Ajoute line à la fin de _elements
+        # (si line is None, ajoute [] à la fin de _elements)
+        # =============================
+        super(BoardBox, self).add_line(line)
+
+    ###############################################################
+    ######################### GET_ELEMENT #########################
+    ###############################################################
+    def get_element(
+            self,
+            x: Optional[int] = None,
+            y: Optional[int] = None,
+            position: Optional[Position] = None
+    ) -> TYPE_OF_ELEMENTS:
+        # =============================
+        # INFORMATIONS :
+        # -----------------------------
+        # UTILITÉ :
+        # Renvoie l'élément de self._elements en (y, x) ou en (position.y, position.x)
+        # -----------------------------
+        # PRÉCONDITIONS :
+        # - x et y non None et sont des index valides
+        # OU
+        # - position non None et est un index valide
+        # =============================
+        return cast(self.TYPE_OF_ELEMENTS, super(BoardBox, self).get_element())
+
+    ###############################################################
+    ########################## GET_LINE ###########################
+    ###############################################################
+    # =============================
+    # INFORMATIONS :
+    # -----------------------------
+    # UTILITÉ :
+    # Renvoie l'élément en self._elements[line_number]
+    # -----------------------------
+    # PRÉCONDITIONS :
+    # - 0 <= line_number < len(self._elements)
+    # =============================
+    def get_line(self, line_number: int) -> List[TYPE_OF_ELEMENTS]:
+        return cast(List[self.TYPE_OF_ELEMENTS], super(BoardBox, self).get_line(line_number))
+
+    ###############################################################
+    ######################### SET_ELEMENT #########################
+    ###############################################################
+    def set_element(
+            self,
+            value: TYPE_OF_ELEMENTS,
+            x: Optional[int] = None,
+            y: Optional[int] = None,
+            position: Optional[Position] = None
+    ) -> None:
+        # =============================
+        # INFORMATIONS :
+        # -----------------------------
+        # UTILITÉ :
+        # Set l'élément de self._elements en (y, x) ou (position.y, position.x) à value
+        # -----------------------------
+        # PRÉCONDITIONS :
+        # - x et y non None et sont des index valides
+        # OU
+        # - position non None et est un index valide
+        # =============================
+        super(BoardBox, self).set_element(value, x, y, position)
 
     ###############################################################
     ##################### CREATE_EMPTY_BOARD ######################
