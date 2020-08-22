@@ -63,7 +63,7 @@ def check_number_between_to_set(
         raise Exception(
             "Error: impossible to set " + name_of_attribute_to_check + " for a " + type(object_to_set).__name__ + ":" +
             "\n " + name_of_attribute_to_check + " must be between " + str(min_value) + " and " +
-            str(min_value) + " but " + str(number_to_check) + " is given." +
+            str(max_value) + " but " + str(number_to_check) + " is given." +
             "\nChange the relative constant in packages/settings.py to allow."
         )
 
