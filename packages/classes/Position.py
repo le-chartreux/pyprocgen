@@ -14,6 +14,7 @@
 # + __str__()
 # ==========================================================
 
+from packages.settings import DEV_MOD
 from packages.utilities import check_attribute_type_set
 
 
@@ -52,21 +53,23 @@ class Position:
     ########################### SETTERS ###########################
     ###############################################################
     def set_x(self, x: int) -> None:
-        check_attribute_type_set(
-            attribute_to_check=x,
-            type_to_check=int,
-            name_of_attribute_to_check="_x",
-            object_destination=self
-        )
+        if DEV_MOD:
+            check_attribute_type_set(
+                attribute_to_check=x,
+                type_to_check=int,
+                name_of_attribute_to_check="_x",
+                object_destination=self
+            )
         self._x = x
 
     def set_y(self, y: int) -> None:
-        check_attribute_type_set(
-            attribute_to_check=y,
-            type_to_check=int,
-            name_of_attribute_to_check="_y",
-            object_destination=self
-        )
+        if DEV_MOD:
+            check_attribute_type_set(
+                attribute_to_check=y,
+                type_to_check=int,
+                name_of_attribute_to_check="_y",
+                object_destination=self
+            )
         self._y = y
 
     ###############################################################

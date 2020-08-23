@@ -18,7 +18,7 @@ from __future__ import annotations
 from typing import Optional
 import random
 
-from packages.settings import SEED_ELEMENT_MIN, SEED_ELEMENT_MAX
+from packages.settings import DEV_MOD, SEED_ELEMENT_MIN, SEED_ELEMENT_MAX
 from packages.utilities import check_attribute_type_set, check_number_between_to_set
 
 
@@ -67,18 +67,17 @@ class Seed:
         # - SEED_ELEMENT_MIN <= (pluviometry_x, pluviometry_y, temperature_x, temperature_y) <= SEED_ELEMENT_MAX
         # =============================
         if isinstance(seed_in_string, str):
-            if Seed.is_seed(seed_in_string):
-                splitted_string = seed_in_string.split(":")
-                self._pluviometry_x = int(splitted_string[0])  # Pas besoin d'utiliser les SETTERS puisque tout est
-                self._pluviometry_y = int(splitted_string[1])  # déjà check avec is_seed
-                self._temperature_x = int(splitted_string[2])
-                self._temperature_y = int(splitted_string[3])
-            else:
-                raise Exception(
-                    "Error: trying to set a " + type(self).__name__ +
-                    " from a str, but the str hasn't shape of a str(Seed)."
-                )
-
+            if DEV_MOD:
+                if not Seed.is_seed(seed_in_string):
+                    raise Exception(
+                        "Error: trying to set a " + type(self).__name__ +
+                        " from a str, but the str hasn't shape of a str(Seed)."
+                    )
+            splitted_string = seed_in_string.split(":")
+            self._pluviometry_x = int(splitted_string[0])  # Pas besoin d'utiliser les SETTERS puisque tout est
+            self._pluviometry_y = int(splitted_string[1])  # déjà check avec is_seed
+            self._temperature_x = int(splitted_string[2])
+            self._temperature_y = int(splitted_string[3])
         else:
             self.set_pluviometry_x(pluviometry_x)
             self.set_pluviometry_y(pluviometry_y)
@@ -107,76 +106,80 @@ class Seed:
         if pluviometry_x is None:
             self._pluviometry_x = random.randint(SEED_ELEMENT_MIN, SEED_ELEMENT_MAX)
         else:
-            check_attribute_type_set(
-                attribute_to_check=pluviometry_x,
-                type_to_check=int,
-                name_of_attribute_to_check="_pluviometry_x",
-                object_destination=self
-            )
-            check_number_between_to_set(
-                number_to_check=pluviometry_x,
-                min_value=SEED_ELEMENT_MIN,
-                max_value=SEED_ELEMENT_MAX,
-                name_of_attribute_to_check="_pluviometry_x",
-                object_to_set=self
-            )
+            if DEV_MOD:
+                check_attribute_type_set(
+                    attribute_to_check=pluviometry_x,
+                    type_to_check=int,
+                    name_of_attribute_to_check="_pluviometry_x",
+                    object_destination=self
+                )
+                check_number_between_to_set(
+                    number_to_check=pluviometry_x,
+                    min_value=SEED_ELEMENT_MIN,
+                    max_value=SEED_ELEMENT_MAX,
+                    name_of_attribute_to_check="_pluviometry_x",
+                    object_to_set=self
+                )
             self._pluviometry_x = pluviometry_x
 
     def set_pluviometry_y(self, pluviometry_y: Optional[int]) -> None:
         if pluviometry_y is None:
             self._pluviometry_y = random.randint(SEED_ELEMENT_MIN, SEED_ELEMENT_MAX)
         else:
-            check_attribute_type_set(
-                attribute_to_check=pluviometry_y,
-                type_to_check=int,
-                name_of_attribute_to_check="_pluviometry_y",
-                object_destination=self
-            )
-            check_number_between_to_set(
-                number_to_check=pluviometry_y,
-                min_value=SEED_ELEMENT_MIN,
-                max_value=SEED_ELEMENT_MAX,
-                name_of_attribute_to_check="_pluviometry_y",
-                object_to_set=self
-            )
+            if DEV_MOD:
+                check_attribute_type_set(
+                    attribute_to_check=pluviometry_y,
+                    type_to_check=int,
+                    name_of_attribute_to_check="_pluviometry_y",
+                    object_destination=self
+                )
+                check_number_between_to_set(
+                    number_to_check=pluviometry_y,
+                    min_value=SEED_ELEMENT_MIN,
+                    max_value=SEED_ELEMENT_MAX,
+                    name_of_attribute_to_check="_pluviometry_y",
+                    object_to_set=self
+                )
             self._pluviometry_y = pluviometry_y
 
     def set_temperature_x(self, temperature_x: Optional[int]) -> None:
         if temperature_x is None:
             self._temperature_x = random.randint(SEED_ELEMENT_MIN, SEED_ELEMENT_MAX)
         else:
-            check_attribute_type_set(
-                attribute_to_check=temperature_x,
-                type_to_check=int,
-                name_of_attribute_to_check="_temperature_x",
-                object_destination=self
-            )
-            check_number_between_to_set(
-                number_to_check=temperature_x,
-                min_value=SEED_ELEMENT_MIN,
-                max_value=SEED_ELEMENT_MAX,
-                name_of_attribute_to_check="_temperature_x",
-                object_to_set=self
-            )
+            if DEV_MOD:
+                check_attribute_type_set(
+                    attribute_to_check=temperature_x,
+                    type_to_check=int,
+                    name_of_attribute_to_check="_temperature_x",
+                    object_destination=self
+                )
+                check_number_between_to_set(
+                    number_to_check=temperature_x,
+                    min_value=SEED_ELEMENT_MIN,
+                    max_value=SEED_ELEMENT_MAX,
+                    name_of_attribute_to_check="_temperature_x",
+                    object_to_set=self
+                )
             self._temperature_x = temperature_x
 
     def set_temperature_y(self, temperature_y: Optional[int]) -> None:
         if temperature_y is None:
             self._temperature_y = random.randint(SEED_ELEMENT_MIN, SEED_ELEMENT_MAX)
         else:
-            check_attribute_type_set(
-                attribute_to_check=temperature_y,
-                type_to_check=int,
-                name_of_attribute_to_check="_temperature_y",
-                object_destination=self
-            )
-            check_number_between_to_set(
-                number_to_check=temperature_y,
-                min_value=SEED_ELEMENT_MIN,
-                max_value=SEED_ELEMENT_MAX,
-                name_of_attribute_to_check="_temperature_y",
-                object_to_set=self
-            )
+            if DEV_MOD:
+                check_attribute_type_set(
+                    attribute_to_check=temperature_y,
+                    type_to_check=int,
+                    name_of_attribute_to_check="_temperature_y",
+                    object_destination=self
+                )
+                check_number_between_to_set(
+                    number_to_check=temperature_y,
+                    min_value=SEED_ELEMENT_MIN,
+                    max_value=SEED_ELEMENT_MAX,
+                    name_of_attribute_to_check="_temperature_y",
+                    object_to_set=self
+                )
             self._temperature_y = temperature_y
 
     ###############################################################
@@ -192,11 +195,12 @@ class Seed:
         # de la forme a + ":" + b + ":" + c + ":" + d
         # avec a,b,c,d str(integers)
         # =============================
-        if not isinstance(string, str):
-            raise Exception(
-                "Error: impossible to check if a string is a Seed:" +
-                "\nstring must be str, but a " + type(string).__name__ + " is given."
-            )
+        if DEV_MOD:
+            if not isinstance(string, str):
+                raise Exception(
+                    "Error: impossible to check if a string is a Seed:" +
+                    "\nstring must be str, but a " + type(string).__name__ + " is given."
+                )
 
         colon_counter = 0
         position_counter = 0

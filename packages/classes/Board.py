@@ -26,6 +26,7 @@ from __future__ import annotations
 from typing import List, Optional
 
 from packages.classes.Position import Position
+from packages.settings import DEV_MOD
 from packages.utilities import check_attribute_type_set
 
 
@@ -71,55 +72,55 @@ class Board:
     def set_elements(self, elements: List[List[TYPE_OF_ELEMENTS]]) -> None:
         # Vérification que éléments est bien un List[List[TYPE_OF_ELEMENTS]]
         # Vérification que éléments est bien un List
-        check_attribute_type_set(
-            attribute_to_check=elements,
-            type_to_check=list,
-            name_of_attribute_to_check="_elements",
-            object_destination=self
-        )
-
-        # Vérification que elements est bien un List de quelque chose
-        if len(elements) == 0:
-            raise Exception(
-                "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
-                "\n_elements must be a List[List[" + str(self.TYPE_OF_ELEMENTS) + "]], but an empty list is given."
+        if DEV_MOD:
+            check_attribute_type_set(
+                attribute_to_check=elements,
+                type_to_check=list,
+                name_of_attribute_to_check="_elements",
+                object_destination=self
             )
-        # Vérification que elements est bien un List[List]
-        i = 0
-        while i < len(elements) and isinstance(elements[i], list):
-            i += 1
-        if i == len(elements):
-            # Vérification que elements est bien un List[List[self.TYPE_OF_ELEMENTS]
-            line = 0
-            column = 0
-            while (
-                    line < len(elements) and
-                    isinstance(elements[line], list) and
-                    column == 0
-            ):
-                while (
-                        column < len(elements[line])
-                        and isinstance(elements[line][column], self.TYPE_OF_ELEMENTS.__args__)
-                ):
-                    column += 1
-                if column == len(elements[line]):
-                    column = 0
-                    line += 1
 
-            if line == len(elements):
-                self._elements = elements
+            # Vérification que elements est bien un List de quelque chose
+            if len(elements) == 0:
+                raise Exception(
+                    "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
+                    "\n_elements must be a List[List[" + str(self.TYPE_OF_ELEMENTS) + "]], but an empty list is given."
+                )
+            # Vérification que elements est bien un List[List]
+            i = 0
+            while i < len(elements) and isinstance(elements[i], list):
+                i += 1
+            if i == len(elements):
+                # Vérification que elements est bien un List[List[self.TYPE_OF_ELEMENTS]
+                line = 0
+                column = 0
+                while (
+                        line < len(elements) and
+                        isinstance(elements[line], list) and
+                        column == 0
+                ):
+                    while (
+                            column < len(elements[line])
+                            and isinstance(elements[line][column], self.TYPE_OF_ELEMENTS.__args__)
+                    ):
+                        column += 1
+                    if column == len(elements[line]):
+                        column = 0
+                        line += 1
+
+                if line != len(elements):
+                    raise Exception(
+                        "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
+                        "\n_elements must be a List[List[" + str(self.TYPE_OF_ELEMENTS) + "]] " +
+                        "but at least one List[List]'s element is a " + type(elements[line][column]).__name__ + "."
+                    )
             else:
                 raise Exception(
                     "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
                     "\n_elements must be a List[List[" + str(self.TYPE_OF_ELEMENTS) + "]] " +
-                    "but at least one List[List]'s element is a " + type(elements[line][column]).__name__ + "."
+                    "but at least one List's element is not a List."
                 )
-        else:
-            raise Exception(
-                "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
-                "\n_elements must be a List[List[" + str(self.TYPE_OF_ELEMENTS) + "]] " +
-                "but at least one List's element is not a List."
-            )
+        self._elements = elements
 
     ###############################################################
     ######################### ADD_ELEMENT #########################
@@ -138,14 +139,14 @@ class Board:
         # PRÉCONDITIONS :
         # - 0 < line < len(elements)
         # =============================
-        if isinstance(element, self.TYPE_OF_ELEMENTS.__args__):
-            self.get_line(line).append(element)
-        else:
-            raise Exception(
-                "Error: impossible to add an element in a " + type(self).__name__ + "._elements:" +
-                "\n_elements is a List[List[" + str(self.TYPE_OF_ELEMENTS) + "]], but a " +
-                type(element).__name__ + " is given."
-            )
+        if DEV_MOD:
+            if not isinstance(element, self.TYPE_OF_ELEMENTS.__args__):
+                raise Exception(
+                    "Error: impossible to add an element in a " + type(self).__name__ + "._elements:" +
+                    "\n_elements is a List[List[" + str(self.TYPE_OF_ELEMENTS) + "]], but a " +
+                    type(element).__name__ + " is given."
+                )
+        self.get_line(line).append(element)
 
     ###############################################################
     ########################### ADD_LINE ##########################
@@ -161,28 +162,29 @@ class Board:
         if line is None:
             self.get_elements().append([])
         else:
-            # Vérification que line: List[TYPE_OF_ELEMENTS]
-            # Vérification que line: List
-            if isinstance(line, list):
+            if DEV_MOD:
                 # Vérification que line: List[TYPE_OF_ELEMENTS]
-                i = 0
-                while i < len(line) and isinstance(line[i], self.TYPE_OF_ELEMENTS.__args__):
-                    i += 1
-                if i == len(line):  # line: List[TYPE_OF_ELEMENTS]
-                    self.get_elements().append(line)
-                else:  # line n'est pas un List[TYPE_OF_ELEMENTS]
+                # Vérification que line: List
+                if isinstance(line, list):
+                    # Vérification que line: List[TYPE_OF_ELEMENTS]
+                    i = 0
+                    while i < len(line) and isinstance(line[i], self.TYPE_OF_ELEMENTS.__args__):
+                        i += 1
+                    if i != len(line):  # line n'est pas un List[TYPE_OF_ELEMENTS]
+                        raise Exception(
+                            "Error: impossible to add a line in a " + type(self).__name__ + "_elements:" +
+                            "\nlines must be List[" + type(self.TYPE_OF_ELEMENTS).__name__ +
+                            "] but at least one element is a " + type(line[i]).__name__ + "."
+                        )
+
+                else:  # line n'est pas un List
                     raise Exception(
                         "Error: impossible to add a line in a " + type(self).__name__ + "_elements:" +
-                        "\nlines must be List[" + type(self.TYPE_OF_ELEMENTS).__name__ +
-                        "] but at least one element is a " + type(line[i]).__name__ + "."
+                        "\nline must be a List[" + str(self.TYPE_OF_ELEMENTS) + "], but a " +
+                        type(line).__name__ + " is given."
                     )
-
-            else:  # line n'est pas un List
-                raise Exception(
-                    "Error: impossible to add a line in a " + type(self).__name__ + "_elements:" +
-                    "\nline must be a List[" + str(self.TYPE_OF_ELEMENTS) + "], but a " +
-                    type(line).__name__ + " is given."
-                )
+            else:
+                self.get_elements().append(line)
 
     ###############################################################
     ######################### GET_ELEMENT #########################
@@ -205,42 +207,43 @@ class Board:
         # - position non None et est un index valide
         # =============================
         if x is not None and y is not None:  # La position est demandée avec x et y
-            if isinstance(x, int) and isinstance(y, int):  # Vérification que x et y sont des int
-                # Vérification que x et y sont des index valides
-                if 0 <= x < self.get_width() and 0 <= y < self.get_height():  # x et y sont des index valide
-                    return self.get_elements()[y][x]
-                else:  # x et/ou y ne sont pas des index valide
+            if DEV_MOD:
+                if isinstance(x, int) and isinstance(y, int):  # Vérification que x et y sont des int
+                    # Vérification que x et y sont des index valides
+                    if not (0 <= x < self.get_width() and 0 <= y < self.get_height()):
+                        # x et/ou y ne sont pas des index valide
+                        raise Exception(
+                            "Error: impossible to get an element of a " + type(self).__name__ + "._elements:" +
+                            "\nIndex out of range:" +
+                            "\nWidth of the " + type(self).__name__ + " is " + str(self.get_width()) +
+                            ", requested " + str(x) + "." +
+                            "\nHeight of the " + type(self).__name__ + " is " + str(self.get_height()) +
+                            ", requested " + str(y) + "." +
+                            "\n(since lists start at zero in Python, max_index = len(list) - 1)"
+                        )
+                elif not isinstance(x, int):
+                    raise Exception(
+                        "Error: trying to get an element but asked x is a " + type(x).__name__ + ", must be an int."
+                    )
+                elif not isinstance(y, int):
+                    raise Exception(
+                        "Error: trying to get an element but asked y is a " + type(y).__name__ + ", must be an int."
+                    )
+            return self.get_elements()[y][x]
+        elif position is not None:  # La position est demandée avec position
+            if DEV_MOD:
+                # Vérification que position est un index valide
+                if not (0 <= position.get_x() < self.get_width() and 0 <= position.get_y() < self.get_height()):
                     raise Exception(
                         "Error: impossible to get an element of a " + type(self).__name__ + "._elements:" +
                         "\nIndex out of range:" +
                         "\nWidth of the " + type(self).__name__ + " is " + str(self.get_width()) +
-                        ", requested " + str(x) + "." +
+                        ", requested " + str(position.get_x()) + "." +
                         "\nHeight of the " + type(self).__name__ + " is " + str(self.get_height()) +
-                        ", requested " + str(y) + "." +
+                        ", requested " + str(position.get_y()) + "." +
                         "\n(since lists start at zero in Python, max_index = len(list) - 1)"
                     )
-            elif not isinstance(x, int):
-                raise Exception(
-                    "Error: trying to get an element but asked x is a " + type(x).__name__ + ", must be an int."
-                )
-            elif not isinstance(y, int):
-                raise Exception(
-                    "Error: trying to get an element but asked y is a " + type(y).__name__ + ", must be an int."
-                )
-        elif position is not None:  # La position est demandée avec position
-            # Vérification que position est un index valide
-            if 0 <= position.get_x() < self.get_width() and 0 <= position.get_y() < self.get_height():
-                return self.get_elements()[position.get_y()][position.get_x()]
-            else:
-                raise Exception(
-                    "Error: impossible to get an element of a " + type(self).__name__ + "._elements:" +
-                    "\nIndex out of range:" +
-                    "\nWidth of the " + type(self).__name__ + " is " + str(self.get_width()) +
-                    ", requested " + str(position.get_x()) + "." +
-                    "\nHeight of the " + type(self).__name__ + " is " + str(self.get_height()) +
-                    ", requested " + str(position.get_y()) + "." +
-                    "\n(since lists start at zero in Python, max_index = len(list) - 1)"
-                )
+            return self.get_elements()[position.get_y()][position.get_x()]
         else:  # La position n'est pas demandée
             raise Exception(
                 "Error: trying to get an element from a " + type(self).__name__ + "._elements, " +
@@ -260,15 +263,16 @@ class Board:
     # - 0 <= line_number < len(self._elements)
     # =============================
     def get_line(self, line_number: int) -> List[TYPE_OF_ELEMENTS]:
-        if isinstance(line_number, int):
-            if 0 <= line_number < self.get_height():
-                return self.get_elements()[line_number]
-            else:
-                raise Exception(
-                    "Error: trying to get a line from a " + type(self).__name__ +
-                    "._elements but index is out of range:" +
-                    "requested .elements[" + str(line_number) + "] but len(elements) = " + str(self.get_height()) + "."
-                )
+        if DEV_MOD:
+            if isinstance(line_number, int):
+                if not (0 <= line_number < self.get_height()):
+                    raise Exception(
+                        "Error: trying to get a line from a " + type(self).__name__ +
+                        "._elements but index is out of range:" +
+                        "requested .elements[" + str(line_number) + "] but len(elements) = " + str(self.get_height()) +
+                        "."
+                    )
+        return self.get_elements()[line_number]
 
     ###############################################################
     ######################### GET_HEIGHT ##########################
@@ -316,42 +320,43 @@ class Board:
         # - position non None et est un index valide
         # =============================
         if x is not None and y is not None:  # La position est demandée avec x et y
-            if isinstance(x, int) and isinstance(y, int):  # Vérification que x et y sont des int
-                # Vérification que x et y sont des index valides
-                if 0 <= x < self.get_width() and 0 <= y < self.get_height():  # x et y sont des index valide
-                    self.get_elements()[y][x] = value
-                else:  # x et/ou y ne sont pas des index valide
+            if DEV_MOD:
+                if isinstance(x, int) and isinstance(y, int):  # Vérification que x et y sont des int
+                    # Vérification que x et y sont des index valides
+                    if not (0 <= x < self.get_width() and 0 <= y < self.get_height()):
+                        # x et/ou y ne sont pas des index valide
+                        raise Exception(
+                            "Error: impossible to set an element of a " + type(self).__name__ + "._elements:" +
+                            "\nIndex out of range:" +
+                            "\nWidth of the " + type(self).__name__ + " is " + str(self.get_width()) +
+                            ", requested " + str(x) + "." +
+                            "\nHeight of the " + type(self).__name__ + " is " + str(self.get_height()) +
+                            ", requested " + str(y) + "." +
+                            "\n(since lists start at zero in Python, max_index = len(list) - 1)"
+                        )
+                elif not isinstance(x, int):
                     raise Exception(
-                        "Error: impossible to set an element of a " + type(self).__name__ + "._elements:" +
+                        "Error: trying to get an element but asked x is a " + type(x).__name__ + ", must be an int."
+                    )
+                elif not isinstance(y, int):
+                    raise Exception(
+                        "Error: trying to get an element but asked y is a " + type(y).__name__ + ", must be an int."
+                    )
+            self.get_elements()[y][x] = value
+        elif position is not None:  # La position est demandée avec position
+            if DEV_MOD:
+                # Vérification que position est un index valide
+                if not (0 <= position.get_x() < self.get_width() and 0 <= position.get_y() < self.get_height()):
+                    raise Exception(
+                        "Error: impossible to set an element of a " + type(self).__name__ + "._elements: " +
                         "\nIndex out of range:" +
                         "\nWidth of the " + type(self).__name__ + " is " + str(self.get_width()) +
-                        ", requested " + str(x) + "." +
+                        ", requested " + str(position.get_x()) + "." +
                         "\nHeight of the " + type(self).__name__ + " is " + str(self.get_height()) +
-                        ", requested " + str(y) + "." +
+                        ", requested " + str(position.get_y()) + "." +
                         "\n(since lists start at zero in Python, max_index = len(list) - 1)"
                     )
-            elif not isinstance(x, int):
-                raise Exception(
-                    "Error: trying to get an element but asked x is a " + type(x).__name__ + ", must be an int."
-                )
-            elif not isinstance(y, int):
-                raise Exception(
-                    "Error: trying to get an element but asked y is a " + type(y).__name__ + ", must be an int."
-                )
-        elif position is not None:  # La position est demandée avec position
-            # Vérification que position est un index valide
-            if 0 <= position.get_x() < self.get_width() and 0 <= position.get_y() < self.get_height():
-                self.get_elements()[position.get_y()][position.get_x()] = value
-            else:
-                raise Exception(
-                    "Error: impossible to set an element of a " + type(self).__name__ + "._elements: " +
-                    "\nIndex out of range:" +
-                    "\nWidth of the " + type(self).__name__ + " is " + str(self.get_width()) +
-                    ", requested " + str(position.get_x()) + "." +
-                    "\nHeight of the " + type(self).__name__ + " is " + str(self.get_height()) +
-                    ", requested " + str(position.get_y()) + "." +
-                    "\n(since lists start at zero in Python, max_index = len(list) - 1)"
-                )
+            self.get_elements()[position.get_y()][position.get_x()] = value
         else:  # La position n'est pas demandée
             raise Exception(
                 "Error: impossible to get an element from a " + type(self).__name__ + "._elements: " +

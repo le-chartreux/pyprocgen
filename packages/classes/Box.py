@@ -16,6 +16,7 @@
 from packages.classes.Biome import Biome
 from packages.classes.Color import Color
 
+from packages.settings import DEV_MOD
 from packages.utilities import check_attribute_type_set
 
 
@@ -58,12 +59,13 @@ class Box:
     ########################### SETTERS ###########################
     ###############################################################
     def set_biome(self, biome: Biome) -> None:
-        check_attribute_type_set(
-            attribute_to_check=biome,
-            type_to_check=Biome,
-            name_of_attribute_to_check="_biome",
-            object_destination=self
-        )
+        if DEV_MOD:
+            check_attribute_type_set(
+                attribute_to_check=biome,
+                type_to_check=Biome,
+                name_of_attribute_to_check="_biome",
+                object_destination=self
+            )
         self._biome = biome
 
     ###############################################################

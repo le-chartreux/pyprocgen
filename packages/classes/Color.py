@@ -15,7 +15,7 @@
 # + __str__()
 # ==========================================================
 
-from packages.settings import COLOR_RGB_MIN, COLOR_RGB_MAX
+from packages.settings import DEV_MOD, COLOR_RGB_MIN, COLOR_RGB_MAX
 from packages.utilities import check_attribute_type_set, check_number_between_to_set
 
 
@@ -72,51 +72,54 @@ class Color:
     ########################### SETTERS ###########################
     ###############################################################
     def set_red(self, red: int) -> None:
-        check_attribute_type_set(
-            attribute_to_check=red,
-            type_to_check=int,
-            name_of_attribute_to_check="_red",
-            object_destination=self
-        )
-        check_number_between_to_set(
-            number_to_check=red,
-            min_value=COLOR_RGB_MIN,
-            max_value=COLOR_RGB_MAX,
-            name_of_attribute_to_check="_red",
-            object_to_set=self
-        )
+        if DEV_MOD:
+            check_attribute_type_set(
+                attribute_to_check=red,
+                type_to_check=int,
+                name_of_attribute_to_check="_red",
+                object_destination=self
+            )
+            check_number_between_to_set(
+                number_to_check=red,
+                min_value=COLOR_RGB_MIN,
+                max_value=COLOR_RGB_MAX,
+                name_of_attribute_to_check="_red",
+                object_to_set=self
+            )
         self._red = red
 
     def set_green(self, green: int) -> None:
-        check_attribute_type_set(
-            attribute_to_check=green,
-            type_to_check=int,
-            name_of_attribute_to_check="_green",
-            object_destination=self
-        )
-        check_number_between_to_set(
-            number_to_check=green,
-            min_value=COLOR_RGB_MIN,
-            max_value=COLOR_RGB_MAX,
-            name_of_attribute_to_check="_green",
-            object_to_set=self
-        )
+        if DEV_MOD:
+            check_attribute_type_set(
+                attribute_to_check=green,
+                type_to_check=int,
+                name_of_attribute_to_check="_green",
+                object_destination=self
+            )
+            check_number_between_to_set(
+                number_to_check=green,
+                min_value=COLOR_RGB_MIN,
+                max_value=COLOR_RGB_MAX,
+                name_of_attribute_to_check="_green",
+                object_to_set=self
+            )
         self._green = green
 
     def set_blue(self, blue: int) -> None:
-        check_attribute_type_set(
-            attribute_to_check=blue,
-            type_to_check=int,
-            name_of_attribute_to_check="_blue",
-            object_destination=self
-        )
-        check_number_between_to_set(
-            number_to_check=blue,
-            min_value=COLOR_RGB_MIN,
-            max_value=COLOR_RGB_MAX,
-            name_of_attribute_to_check="_blue",
-            object_to_set=self
-        )
+        if DEV_MOD:
+            check_attribute_type_set(
+                attribute_to_check=blue,
+                type_to_check=int,
+                name_of_attribute_to_check="_blue",
+                object_destination=self
+            )
+            check_number_between_to_set(
+                number_to_check=blue,
+                min_value=COLOR_RGB_MIN,
+                max_value=COLOR_RGB_MAX,
+                name_of_attribute_to_check="_blue",
+                object_to_set=self
+            )
         self._blue = blue
 
     ###############################################################

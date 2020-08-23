@@ -20,6 +20,7 @@ from packages.classes.Color import Color
 from packages.classes.Tree import Tree
 
 from packages.settings import (
+    DEV_MOD,
     BIOME_NAME_LEN_MIN,
     BIOME_NAME_LEN_MAX,
     BIOME_PLUVIOMETRY_MIN,
@@ -134,19 +135,20 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_NAME_LEN_MIN <= len(name) <= BIOME_NAME_LEN_MAX
         # =============================
-        check_attribute_type_set(
-            attribute_to_check=name,
-            type_to_check=str,
-            name_of_attribute_to_check="_name",
-            object_destination=self
-        )
-        check_number_between_to_set(
-            number_to_check=len(name),
-            min_value=BIOME_NAME_LEN_MIN,
-            max_value=BIOME_NAME_LEN_MAX,
-            name_of_attribute_to_check="len(_name)",
-            object_to_set=self
-        )
+        if DEV_MOD:
+            check_attribute_type_set(
+                attribute_to_check=name,
+                type_to_check=str,
+                name_of_attribute_to_check="_name",
+                object_destination=self
+            )
+            check_number_between_to_set(
+                number_to_check=len(name),
+                min_value=BIOME_NAME_LEN_MIN,
+                max_value=BIOME_NAME_LEN_MAX,
+                name_of_attribute_to_check="len(_name)",
+                object_to_set=self
+            )
         self._name = name
 
     def set_pluviometry_min(self, pluviometry_min: float) -> None:
@@ -159,19 +161,20 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_PLUVIOMETRY_MIN <= pluviometry_min <= BIOME_PLUVIOMETRY_MAX
         # =============================
-        check_attribute_type_set(
-            attribute_to_check=pluviometry_min,
-            type_to_check=float,
-            name_of_attribute_to_check="_pluviometry_min",
-            object_destination=self
-        )
-        check_number_between_to_set(
-            number_to_check=pluviometry_min,
-            min_value=BIOME_PLUVIOMETRY_MIN,
-            max_value=BIOME_PLUVIOMETRY_MAX,
-            name_of_attribute_to_check="_pluviometry_min",
-            object_to_set=self
-        )
+        if DEV_MOD:
+            check_attribute_type_set(
+                attribute_to_check=pluviometry_min,
+                type_to_check=float,
+                name_of_attribute_to_check="_pluviometry_min",
+                object_destination=self
+            )
+            check_number_between_to_set(
+                number_to_check=pluviometry_min,
+                min_value=BIOME_PLUVIOMETRY_MIN,
+                max_value=BIOME_PLUVIOMETRY_MAX,
+                name_of_attribute_to_check="_pluviometry_min",
+                object_to_set=self
+            )
         self._pluviometry_min = pluviometry_min
 
     def set_pluviometry_max(self, pluviometry_max: float) -> None:
@@ -184,19 +187,20 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_PLUVIOMETRY_MIN <= pluviometry_max <= BIOME_PLUVIOMETRY_MAX
         # =============================
-        check_attribute_type_set(
-            attribute_to_check=pluviometry_max,
-            type_to_check=float,
-            name_of_attribute_to_check="_pluviometry_max",
-            object_destination=self
-        )
-        check_number_between_to_set(
-            number_to_check=pluviometry_max,
-            min_value=BIOME_PLUVIOMETRY_MIN,
-            max_value=BIOME_PLUVIOMETRY_MAX,
-            name_of_attribute_to_check="_pluviometry_max",
-            object_to_set=self
-        )
+        if DEV_MOD:
+            check_attribute_type_set(
+                attribute_to_check=pluviometry_max,
+                type_to_check=float,
+                name_of_attribute_to_check="_pluviometry_max",
+                object_destination=self
+            )
+            check_number_between_to_set(
+                number_to_check=pluviometry_max,
+                min_value=BIOME_PLUVIOMETRY_MIN,
+                max_value=BIOME_PLUVIOMETRY_MAX,
+                name_of_attribute_to_check="_pluviometry_max",
+                object_to_set=self
+            )
         self._pluviometry_max = pluviometry_max
 
     def set_temperature_min(self, temperature_min: float) -> None:
@@ -209,19 +213,20 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_TEMPERATURE_MIN <= temperature_min <= BIOME_TEMPERATURE_MAX
         # =============================
-        check_attribute_type_set(
-            attribute_to_check=temperature_min,
-            type_to_check=float,
-            name_of_attribute_to_check="_temperature_min",
-            object_destination=self
-        )
-        check_number_between_to_set(
-            number_to_check=temperature_min,
-            min_value=BIOME_TEMPERATURE_MIN,
-            max_value=BIOME_TEMPERATURE_MAX,
-            name_of_attribute_to_check="_temperature_min",
-            object_to_set=self
-        )
+        if DEV_MOD:
+            check_attribute_type_set(
+                attribute_to_check=temperature_min,
+                type_to_check=float,
+                name_of_attribute_to_check="_temperature_min",
+                object_destination=self
+            )
+            check_number_between_to_set(
+                number_to_check=temperature_min,
+                min_value=BIOME_TEMPERATURE_MIN,
+                max_value=BIOME_TEMPERATURE_MAX,
+                name_of_attribute_to_check="_temperature_min",
+                object_to_set=self
+            )
         self._temperature_min = temperature_min
 
     def set_temperature_max(self, temperature_max: float) -> None:
@@ -234,19 +239,20 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_TEMPERATURE_MIN <= temperature_max <= BIOME_TEMPERATURE_MAX
         # =============================
-        check_attribute_type_set(
-            attribute_to_check=temperature_max,
-            type_to_check=float,
-            name_of_attribute_to_check="_temperature_max",
-            object_destination=self
-        )
-        check_number_between_to_set(
-            number_to_check=temperature_max,
-            min_value=BIOME_TEMPERATURE_MIN,
-            max_value=BIOME_TEMPERATURE_MAX,
-            name_of_attribute_to_check="_temperature_max",
-            object_to_set=self
-        )
+        if DEV_MOD:
+            check_attribute_type_set(
+                attribute_to_check=temperature_max,
+                type_to_check=float,
+                name_of_attribute_to_check="_temperature_max",
+                object_destination=self
+            )
+            check_number_between_to_set(
+                number_to_check=temperature_max,
+                min_value=BIOME_TEMPERATURE_MIN,
+                max_value=BIOME_TEMPERATURE_MAX,
+                name_of_attribute_to_check="_temperature_max",
+                object_to_set=self
+            )
         self._temperature_max = temperature_max
 
     def set_ground_color(self, ground_color: Color) -> None:
@@ -256,7 +262,13 @@ class Biome:
         # UTILITÉ :
         # Vérifie la cohérence de ground_color puis la set
         # =============================
-        check_attribute_type_set(ground_color, Color, "_ground_color", self)
+        if DEV_MOD:
+            check_attribute_type_set(
+                attribute_to_check=ground_color,
+                type_to_check=Color,
+                name_of_attribute_to_check="_ground_color",
+                object_destination=self
+            )
         self._ground_color = ground_color
 
     def set_trees(self, trees: List[Tree]) -> None:
@@ -269,32 +281,32 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_PLUVIOMETRY_MIN <= pluviometry_max <= BIOME_PLUVIOMETRY_MAX
         # =============================
-        check_attribute_type_set(
-            attribute_to_check=trees,
-            type_to_check=list,
-            name_of_attribute_to_check="_trees",
-            object_destination=self
-        )
-        check_number_between_to_set(
-            number_to_check=len(trees),
-            min_value=BIOME_TREES_LEN_MIN,
-            max_value=BIOME_TREES_LEN_MAX,
-            name_of_attribute_to_check="len(_trees)",
-            object_to_set=self
-        )
-        # Vérification que tous les éléments sont instance de Tree :
-        i = 0
-        while i < len(trees) and isinstance(trees[i], Tree):
-            i += 1
-
-        if i == len(trees):
-            self._trees = trees
-        else:
-            raise Exception(
-                "Error: impossible to set _trees for a " + type(self).__name__ + ":" +
-                "\n_trees must be a List[Tree] but element number " + str(i) + " is a " +
-                type(trees[i]).__name__ + "."
+        if DEV_MOD:
+            check_attribute_type_set(
+                attribute_to_check=trees,
+                type_to_check=list,
+                name_of_attribute_to_check="_trees",
+                object_destination=self
             )
+            check_number_between_to_set(
+                number_to_check=len(trees),
+                min_value=BIOME_TREES_LEN_MIN,
+                max_value=BIOME_TREES_LEN_MAX,
+                name_of_attribute_to_check="len(_trees)",
+                object_to_set=self
+            )
+            # Vérification que tous les éléments sont instance de Tree :
+            i = 0
+            while i < len(trees) and isinstance(trees[i], Tree):
+                i += 1
+
+            if i != len(trees):
+                raise Exception(
+                    "Error: impossible to set _trees for a " + type(self).__name__ + ":" +
+                    "\n_trees must be a List[Tree] but element number " + str(i) + " is a " +
+                    type(trees[i]).__name__ + "."
+                )
+        self._trees = trees
 
     ###############################################################
     ########################## IN_RANGE ###########################
