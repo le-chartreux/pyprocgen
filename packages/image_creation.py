@@ -9,14 +9,15 @@
 # - write_image_body(board)
 # ==========================================================
 
-from io import TextIOWrapper
+from typing import TextIO
+
 from packages.short_class_import import BoardBox
 
 
 ###############################################################
 ##################### WRITE_IMAGE_HEADER ######################
 ###############################################################
-def write_image_header(destination_file: TextIOWrapper, height: int, width: int, seed: str):
+def write_image_header(destination_file: TextIO, height: int, width: int, seed: str):
     # =============================
     # INFORMATIONS :
     # -----------------------------
@@ -42,7 +43,7 @@ def write_image_header(destination_file: TextIOWrapper, height: int, width: int,
 ####################### WRITE_IMAGE_BODY ######################
 ###############################################################
 
-def write_image_body(destination_file: TextIOWrapper, board: BoardBox):
+def write_image_body(destination_file: TextIO, board: BoardBox):
     # =============================
     # INFORMATIONS :
     # -----------------------------

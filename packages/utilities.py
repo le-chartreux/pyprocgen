@@ -81,7 +81,7 @@ def is_integer(value) -> bool:
     try:
         int(value)
         return True
-    except ValueError:
+    except TypeError:
         return False
 
 

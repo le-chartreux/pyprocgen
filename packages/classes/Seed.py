@@ -51,7 +51,7 @@ class Seed:
             temperature_x: Optional[int] = None,
             temperature_y: Optional[int] = None,
             seed_in_string: Optional[str] = None
-    ):
+    ) -> None:
         # =============================
         # INFORMATIONS :
         # -----------------------------
@@ -177,7 +177,7 @@ class Seed:
                 name_of_attribute_to_check="_temperature_y",
                 object_to_set=self
             )
-        self._temperature_y = temperature_y
+            self._temperature_y = temperature_y
 
     ###############################################################
     ########################### IS_SEED ###########################
@@ -249,3 +249,4 @@ class Seed:
                 str(self.get_temperature_x()) + ":" +
                 str(self.get_temperature_y())
         )
+
