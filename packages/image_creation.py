@@ -7,33 +7,25 @@
 # CONTENU :
 # - write_image_header(destination_file, height, width, seed)
 # - write_image_body(board)
-# -----------------------------
-# PROGRAMMES UTILISATEURS :
-# - procedural_generation_2D.py
 # ==========================================================
 
-import os
-from packages.short_class_import import Box, Encyclopedia
+from io import TextIOWrapper
+from packages.short_class_import import BoardBox
 
 
 ###############################################################
 ##################### WRITE_IMAGE_HEADER ######################
 ###############################################################
-def write_image_header(destination_file, height: int, width: int, seed: str):
+def write_image_header(destination_file: TextIOWrapper, height: int, width: int, seed: str):
     # =============================
     # INFORMATIONS :
     # -----------------------------
     # UTILITÉ :
     # Écrit le header de destination_file
     # selon le modèle d'un header de fichier ppm.
-    # Si Generated_map.ppm existe déjà, il est
-    # supprimé, sinon il est créé.
     # -----------------------------
     # DEPEND DE :
     # - os
-    # -----------------------------
-    # UTILISE PAR :
-    # - procedural_generation_2D.py
     # =============================
 
     destination_file.write("P3\n")
@@ -50,27 +42,19 @@ def write_image_header(destination_file, height: int, width: int, seed: str):
 ####################### WRITE_IMAGE_BODY ######################
 ###############################################################
 
-def write_image_body(destination_file, board: list, encyclopedia: Encyclopedia):
+def write_image_body(destination_file: TextIOWrapper, board: BoardBox):
     # =============================
     # INFORMATIONS :
     # -----------------------------
     # UTILITÉ :
     # Place à la suite de destination_file la couleur
     # de chaque case de board
-    # -----------------------------
-    # DEPEND DE :
-    # - os
-    # - classes.Box
-    # - classes.Encyclopedia
-    # -----------------------------
-    # UTILISE PAR :
-    # - procedural_generation_2D.py
     # =============================
 
-    for line in range(len(board)):
+    for line in range(board.get_height()):
 
-        for column in range(len(board[0])):
-            color = board[line][column].get_color()
+        for column in range(board.get_width()):
+            color = board.get_element(x=column, y=line).get_color().get_rgb()
             destination_file.write(color)
             destination_file.write(" ")
 

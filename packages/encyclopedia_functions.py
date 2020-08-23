@@ -7,9 +7,6 @@
 # CONTENU :
 # - add_in_dict(dict, class)
 # - biomes_dict_creation()
-# -----------------------------
-# PROGRAMMES UTILISATEURS :
-# - procedural_generation_2D.py
 # ==========================================================
 from typing import Dict
 
@@ -42,22 +39,13 @@ def encyclopedia_creation() -> Encyclopedia:
     # -----------------------------
     # UTILITÉ :
     # Remplie le dictionnaire de l'encyclopédie puis la crée
-    # -----------------------------
-    # DÉPEND DE :
-    # - encyclopedia_functions.add_in_dict()
-    # - classes.Encyclopedia
-    # - classes.Biome
-    # - classes.Tree
-    # -----------------------------
-    # UTILISÉ PAR :
-    # - procedural_generation_2D.py
     # =============================
 
     dict_biomes = {}
 
     empty_tree = Tree(
         name="empty_tree",
-        spawn_probability=0,
+        spawn_probability=0.0,
         body=BoardColor(
             [
                 []
@@ -78,11 +66,9 @@ def encyclopedia_creation() -> Encyclopedia:
             [
                 [None, Color(106, 82, 18), None, None, Color(106, 82, 18)],
 
-                [Color(106, 82, 18), Color(106, 82, 18),
-                 None, Color(106, 82, 18), None],
+                [Color(106, 82, 18), Color(106, 82, 18), None, Color(106, 82, 18), None],
 
-                [None, None, Color(142, 93, 60), Color(
-                    142, 93, 60), Color(106, 82, 18)],
+                [None, None, Color(142, 93, 60), Color(142, 93, 60), Color(106, 82, 18)],
 
                 [None, Color(106, 82, 18), Color(142, 93, 60), None, None],
 
@@ -98,10 +84,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="desert_cool",
 
-            temperature_min=0,
-            temperature_max=1,
-            pluviometry_min=-4,
-            pluviometry_max=-3,
+            temperature_min=0.0,
+            temperature_max=1.0,
+            pluviometry_min=-4.0,
+            pluviometry_max=-3.0,
 
             ground_color=Color(193, 165, 133),
 
@@ -116,10 +102,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="desert_tropical",
 
-            temperature_min=2,
-            temperature_max=3,
-            pluviometry_min=-4,
-            pluviometry_max=-3,
+            temperature_min=2.0,
+            temperature_max=3.0,
+            pluviometry_min=-4.0,
+            pluviometry_max=-3.0,
 
             ground_color=Color(247, 210, 165),
 
@@ -134,10 +120,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="desert_warm",
 
-            temperature_min=1,
-            temperature_max=2,
-            pluviometry_min=-4,
-            pluviometry_max=-3,
+            temperature_min=1.0,
+            temperature_max=2.0,
+            pluviometry_min=-4.0,
+            pluviometry_max=-3.0,
 
             ground_color=Color(207, 151, 100),
 
@@ -159,8 +145,7 @@ def encyclopedia_creation() -> Encyclopedia:
             [
                 [Color(156, 152, 107), Color(156, 152, 107), None],
 
-                [Color(156, 152, 107), Color(
-                    118, 115, 98), Color(156, 152, 107)],
+                [Color(156, 152, 107), Color(118, 115, 98), Color(156, 152, 107)],
 
                 [None, Color(118, 115, 98), None]
             ]
@@ -174,8 +159,7 @@ def encyclopedia_creation() -> Encyclopedia:
             [
                 [None, Color(156, 152, 107), None],
 
-                [Color(156, 152, 107), Color(
-                    118, 115, 98), Color(156, 152, 107)],
+                [Color(156, 152, 107), Color(118, 115, 98), Color(156, 152, 107)],
 
                 [None, Color(118, 115, 98), None]
             ]
@@ -199,10 +183,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="desert_scub_cool",
 
-            temperature_min=0,
-            temperature_max=1,
-            pluviometry_min=-3,
-            pluviometry_max=-2,
+            temperature_min=0.0,
+            temperature_max=1.0,
+            pluviometry_min=-3.0,
+            pluviometry_max=-2.0,
 
             ground_color=Color(187, 158, 126),
 
@@ -219,10 +203,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="desert_scub_tropical",
 
-            temperature_min=2,
-            temperature_max=3,
-            pluviometry_min=-3,
-            pluviometry_max=-2,
+            temperature_min=2.0,
+            temperature_max=3.0,
+            pluviometry_min=-3.0,
+            pluviometry_max=-2.0,
 
             ground_color=Color(251, 224, 181),
 
@@ -239,10 +223,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="desert_scub_warm",
 
-            temperature_min=1,
-            temperature_max=2,
-            pluviometry_min=-3,
-            pluviometry_max=-2,
+            temperature_min=1.0,
+            temperature_max=2.0,
+            pluviometry_min=-3.0,
+            pluviometry_max=-2.0,
 
             ground_color=Color(193, 161, 122),
 
@@ -267,14 +251,14 @@ def encyclopedia_creation() -> Encyclopedia:
             [
                 [None, None, Color(121, 105, 56), None, None, None, None],
 
-                [None, None, None, Color(133, 103, 69), None, Color(
-                    133, 103, 69), Color(121, 105, 56)],
+                [None, None, None, Color(133, 103, 69), None, Color(133, 103, 69), Color(121, 105, 56)],
 
-                [Color(121, 105, 56), Color(133, 103, 69), Color(133, 103, 69),
-                 Color(133, 103, 69), Color(133, 103, 69), None, None],
+                [
+                    Color(121, 105, 56), Color(133, 103, 69), Color(133, 103, 69), Color(133, 103, 69),
+                    Color(133, 103, 69), None, None
+                ],
 
-                [None, Color(121, 105, 56), None, Color(
-                    133, 103, 69), None, None, None],
+                [None, Color(121, 105, 56), None, Color(133, 103, 69), None, None, None],
 
                 [None, None, None, Color(133, 103, 69), None, None, None],
 
@@ -288,17 +272,13 @@ def encyclopedia_creation() -> Encyclopedia:
         spawn_probability=0.01,
         body=BoardColor(
             [
-                [None, Color(121, 105, 56), None, Color(
-                    133, 103, 69), Color(121, 105, 56)],
+                [None, Color(121, 105, 56), None, Color(133, 103, 69), Color(121, 105, 56)],
 
-                [Color(121, 105, 56), Color(133, 103, 69),
-                 None, Color(133, 103, 69), None],
+                [Color(121, 105, 56), Color(133, 103, 69), None, Color(133, 103, 69), None],
 
-                [None, None, Color(
-                    133, 103, 69), None, None],
+                [None, None, Color(133, 103, 69), None, None],
 
-                [None, None, Color(
-                    133, 103, 69), None, None]
+                [None, None, Color(133, 103, 69), None, None]
             ]
         )
     )
@@ -308,23 +288,17 @@ def encyclopedia_creation() -> Encyclopedia:
         spawn_probability=0.005,
         body=BoardColor(
             [
-                [None, None, None,
-                 Color(121, 105, 56), None],
+                [None, None, None, Color(121, 105, 56), None],
 
-                [Color(121, 105, 56), None, None,
-                 Color(133, 103, 69), Color(121, 105, 56)],
+                [Color(121, 105, 56), None, None, Color(133, 103, 69), Color(121, 105, 56)],
 
-                [None, Color(133, 103, 69), Color(
-                    133, 103, 69), Color(133, 103, 69), None],
+                [None, Color(133, 103, 69), Color(133, 103, 69), Color(133, 103, 69), None],
 
-                [None, None, Color(
-                    133, 103, 69), None, None],
+                [None, None, Color(133, 103, 69), None, None],
 
-                [None, None, Color(
-                    133, 103, 69), None, None],
+                [None, None, Color(133, 103, 69), None, None],
 
-                [None, None, Color(
-                    133, 103, 69), None, None]
+                [None, None, Color(133, 103, 69), None, None]
             ]
         )
     )
@@ -346,10 +320,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="dry_forest_tropical",
 
-            temperature_min=2,
-            temperature_max=3,
-            pluviometry_min=0,
-            pluviometry_max=1,
+            temperature_min=2.0,
+            temperature_max=3.0,
+            pluviometry_min=0.0,
+            pluviometry_max=1.0,
 
             ground_color=Color(177, 148, 108),
 
@@ -367,10 +341,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="dry_forest_warm",
 
-            temperature_min=1,
-            temperature_max=2,
-            pluviometry_min=-1,
-            pluviometry_max=0,
+            temperature_min=1.0,
+            temperature_max=2.0,
+            pluviometry_min=-1.0,
+            pluviometry_max=0.0,
             ground_color=Color(167, 138, 104),
 
             trees=[
@@ -394,14 +368,11 @@ def encyclopedia_creation() -> Encyclopedia:
         spawn_probability=0.1,
         body=BoardColor(
             [
-                [None, Color(54, 62, 15), Color(34, 46, 10),
-                 Color(34, 46, 10), None],
+                [None, Color(54, 62, 15), Color(34, 46, 10), Color(34, 46, 10), None],
 
-                [Color(65, 71, 23), Color(34, 46, 10), Color(
-                    34, 46, 10), Color(34, 46, 10), None],
+                [Color(65, 71, 23), Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10), None],
 
-                [Color(34, 46, 10), Color(34, 46, 10), Color(
-                    34, 46, 10), Color(34, 46, 10), Color(34, 46, 10)],
+                [Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10)],
 
                 [None, None, Color(58, 45, 26), None, None],
 
@@ -415,17 +386,13 @@ def encyclopedia_creation() -> Encyclopedia:
         spawn_probability=0.05,
         body=BoardColor(
             [
-                [None, Color(34, 46, 10), Color(34, 46, 10),
-                 Color(34, 46, 10), None],
+                [None, Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10), None],
 
-                [Color(65, 71, 23), Color(34, 46, 10), Color(
-                    34, 46, 10), Color(34, 46, 10), Color(34, 46, 10)],
+                [Color(65, 71, 23), Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10)],
 
-                [None, Color(34, 46, 10), Color(34, 46, 10),
-                 Color(34, 46, 10), None],
+                [None, Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10), None],
 
-                [None, Color(34, 46, 10), Color(58, 45, 26),
-                 Color(34, 46, 10), None],
+                [None, Color(34, 46, 10), Color(58, 45, 26), Color(34, 46, 10), None],
 
                 [None, None, Color(58, 45, 26), None, None],
 
@@ -459,23 +426,17 @@ def encyclopedia_creation() -> Encyclopedia:
         spawn_probability=0.01,
         body=BoardColor(
             [
-                [None, None, Color(36, 49, 11),
-                 Color(34, 46, 10), None, None],
+                [None, None, Color(36, 49, 11), Color(34, 46, 10), None, None],
 
-                [Color(65, 71, 23), Color(34, 46, 10), Color(34, 46, 10),
-                 Color(54, 62, 15), Color(34, 46, 10), None],
+                [Color(65, 71, 23), Color(34, 46, 10), Color(34, 46, 10), Color(54, 62, 15), Color(34, 46, 10), None],
 
-                [Color(34, 46, 10), Color(59, 58, 12), Color(34, 46, 10),
-                 Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10)],
+                [Color(34, 46, 10), Color(59, 58, 12), Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10)],
 
-                [None, Color(48, 57, 13), Color(58, 45, 26),
-                 Color(58, 45, 26), Color(34, 46, 10), Color(54, 62, 15)],
+                [None, Color(48, 57, 13), Color(58, 45, 26), Color(58, 45, 26), Color(34, 46, 10), Color(54, 62, 15)],
 
-                [None, None, None,
-                 Color(58, 45, 26), None, None],
+                [None, None, None, Color(58, 45, 26), None, None],
 
-                [None, None, None,
-                 Color(58, 45, 26), None, None]
+                [None, None, None, Color(58, 45, 26), None, None]
             ]
         )
     )
@@ -503,17 +464,13 @@ def encyclopedia_creation() -> Encyclopedia:
             [
                 [None, Color(65, 71, 23), None, None, None],
 
-                [Color(54, 62, 15), Color(34, 46, 10), Color(
-                    34, 46, 10), Color(34, 46, 10), Color(54, 62, 15)],
+                [Color(54, 62, 15), Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10), Color(54, 62, 15)],
 
-                [Color(34, 46, 10), Color(34, 46, 10), Color(
-                    34, 46, 10), Color(34, 46, 10), Color(34, 46, 10)],
+                [Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10), Color(34, 46, 10)],
 
-                [Color(34, 46, 10), Color(34, 46, 10), Color(
-                    58, 45, 26), Color(34, 46, 10), Color(34, 46, 10)],
+                [Color(34, 46, 10), Color(34, 46, 10), Color(58, 45, 26), Color(34, 46, 10), Color(34, 46, 10)],
 
-                [Color(34, 46, 10), Color(34, 46, 10), Color(
-                    58, 45, 26), Color(34, 46, 10), Color(34, 46, 10)],
+                [Color(34, 46, 10), Color(34, 46, 10), Color(58, 45, 26), Color(34, 46, 10), Color(34, 46, 10)],
 
                 [None, None, Color(58, 45, 26), None, None],
 
@@ -539,10 +496,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="moist_forest_cool",
 
-            temperature_min=0,
-            temperature_max=1,
-            pluviometry_min=-1,
-            pluviometry_max=0,
+            temperature_min=0.0,
+            temperature_max=1.0,
+            pluviometry_min=-1.0,
+            pluviometry_max=0.0,
 
             ground_color=Color(78, 105, 36),
 
@@ -564,10 +521,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="moist_forest_tropical",
 
-            temperature_min=2,
-            temperature_max=3,
-            pluviometry_min=1,
-            pluviometry_max=2,
+            temperature_min=2.0,
+            temperature_max=3.0,
+            pluviometry_min=1.0,
+            pluviometry_max=2.0,
 
             ground_color=Color(93, 84, 51),
 
@@ -588,10 +545,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="moist_forest_warm",
 
-            temperature_min=1,
-            temperature_max=2,
-            pluviometry_min=0,
-            pluviometry_max=1,
+            temperature_min=1.0,
+            temperature_max=2.0,
+            pluviometry_min=0.0,
+            pluviometry_max=1.0,
 
             ground_color=Color(86, 104, 56),
 
@@ -618,14 +575,11 @@ def encyclopedia_creation() -> Encyclopedia:
         spawn_probability=0.15,
         body=BoardColor(
             [
-                [None, Color(68, 88, 39), Color(68, 88, 39),
-                 Color(68, 88, 39), None],
+                [None, Color(68, 88, 39), Color(68, 88, 39), Color(68, 88, 39), None],
 
-                [Color(68, 88, 39), Color(68, 88, 39), Color(
-                    68, 88, 39), Color(68, 88, 39), Color(68, 88, 39)],
+                [Color(68, 88, 39), Color(68, 88, 39), Color(68, 88, 39), Color(68, 88, 39), Color(68, 88, 39)],
 
-                [None, Color(68, 88, 39), Color(88, 107, 55),
-                 Color(68, 88, 39), Color(68, 88, 39)],
+                [None, Color(68, 88, 39), Color(88, 107, 55), Color(68, 88, 39), Color(68, 88, 39)],
 
                 [None, None, Color(111, 129, 74), Color(68, 88, 39), None],
 
@@ -647,14 +601,11 @@ def encyclopedia_creation() -> Encyclopedia:
         spawn_probability=0.03,
         body=BoardColor(
             [
-                [None, Color(68, 88, 39), Color(68, 88, 39),
-                 Color(68, 88, 39), None],
+                [None, Color(68, 88, 39), Color(68, 88, 39), Color(68, 88, 39), None],
 
-                [Color(68, 88, 39), Color(68, 88, 39), Color(
-                    68, 88, 39), Color(68, 88, 39), Color(68, 88, 39)],
+                [Color(68, 88, 39), Color(68, 88, 39), Color(68, 88, 39), Color(68, 88, 39), Color(68, 88, 39)],
 
-                [None, Color(68, 88, 39), Color(88, 107, 55),
-                 Color(68, 88, 39), Color(68, 88, 39)],
+                [None, Color(68, 88, 39), Color(88, 107, 55), Color(68, 88, 39), Color(68, 88, 39)],
 
                 [None, None, Color(111, 129, 74), None, None],
 
@@ -696,10 +647,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="rain_forest",
 
-            temperature_min=0,
-            temperature_max=1,
-            pluviometry_min=1,
-            pluviometry_max=2,
+            temperature_min=0.0,
+            temperature_max=1.0,
+            pluviometry_min=1.0,
+            pluviometry_max=2.0,
 
             ground_color=Color(89, 93, 66),
 
@@ -722,10 +673,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="rocks_and_ice",
 
-            temperature_min=-3,
-            temperature_max=-2,
-            pluviometry_min=-4,
-            pluviometry_max=-1,
+            temperature_min=-3.0,
+            temperature_max=-2.0,
+            pluviometry_min=-4.0,
+            pluviometry_max=-1.0,
 
             ground_color=Color(190, 220, 255),
 
@@ -746,10 +697,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="steppe",
 
-            temperature_min=0,
-            temperature_max=1,
-            pluviometry_min=-2,
-            pluviometry_max=-1,
+            temperature_min=0.0,
+            temperature_max=1.0,
+            pluviometry_min=-2.0,
+            pluviometry_max=-1.0,
 
             ground_color=Color(160, 173, 120),
 
@@ -829,10 +780,10 @@ def encyclopedia_creation() -> Encyclopedia:
         dict_biomes,
         Biome(
             name="steppe_woodland_thorn",
-            temperature_min=1,
-            temperature_max=2,
-            pluviometry_min=-2,
-            pluviometry_max=-1,
+            temperature_min=1.0,
+            temperature_max=2.0,
+            pluviometry_min=-2.0,
+            pluviometry_max=-1.0,
             ground_color=Color(160, 173, 120),
 
             trees=[
@@ -859,11 +810,9 @@ def encyclopedia_creation() -> Encyclopedia:
 
                 [None, None, Color(34, 58, 26), None, None],
 
-                [None, Color(34, 58, 26), Color(34, 58, 26),
-                 Color(34, 58, 26), None],
+                [None, Color(34, 58, 26), Color(34, 58, 26), Color(34, 58, 26), None],
 
-                [Color(34, 58, 26), Color(34, 58, 26), Color(88, 73, 50),
-                 Color(34, 58, 26), Color(34, 58, 26)],
+                [Color(34, 58, 26), Color(34, 58, 26), Color(88, 73, 50), Color(34, 58, 26), Color(34, 58, 26)],
 
                 [None, None, Color(88, 73, 50), None, None]
             ]
@@ -879,11 +828,9 @@ def encyclopedia_creation() -> Encyclopedia:
 
                 [None, None, Color(34, 58, 26), None, None],
 
-                [None, Color(34, 58, 26), Color(34, 58, 26),
-                 Color(34, 58, 26), None],
+                [None, Color(34, 58, 26), Color(34, 58, 26), Color(34, 58, 26), None],
 
-                [Color(34, 58, 26), Color(34, 58, 26),
-                 Color(88, 73, 50), Color(34, 58, 26), None],
+                [Color(34, 58, 26), Color(34, 58, 26), Color(88, 73, 50), Color(34, 58, 26), None],
 
                 [None, None, Color(88, 73, 50), None, None]
             ]
@@ -913,10 +860,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="taiga_desert",
 
-            temperature_min=-1,
-            temperature_max=0,
-            pluviometry_min=-4,
-            pluviometry_max=-3,
+            temperature_min=-1.0,
+            temperature_max=0.0,
+            pluviometry_min=-4.0,
+            pluviometry_max=-3.0,
             ground_color=Color(146, 126, 101),
 
             trees=[
@@ -931,10 +878,10 @@ def encyclopedia_creation() -> Encyclopedia:
         dict_biomes,
         Biome(
             name="taiga_dry",
-            temperature_min=-1,
-            temperature_max=0,
-            pluviometry_min=-3,
-            pluviometry_max=-2,
+            temperature_min=-1.0,
+            temperature_max=0.0,
+            pluviometry_min=-3.0,
+            pluviometry_max=-2.0,
             ground_color=Color(167, 175, 120),
 
             trees=[
@@ -950,10 +897,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="taiga_moist",
 
-            temperature_min=-1,
-            temperature_max=0,
-            pluviometry_min=-2,
-            pluviometry_max=-1,
+            temperature_min=-1.0,
+            temperature_max=0.0,
+            pluviometry_min=-2.0,
+            pluviometry_max=-1.0,
 
             ground_color=Color(86, 104, 56),
 
@@ -970,10 +917,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="taiga_rain",
 
-            temperature_min=-1,
-            temperature_max=0,
-            pluviometry_min=0,
-            pluviometry_max=1,
+            temperature_min=-1.0,
+            temperature_max=0.0,
+            pluviometry_min=0.0,
+            pluviometry_max=1.0,
 
             ground_color=Color(57, 102, 21),
 
@@ -990,10 +937,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="taiga_wet",
 
-            temperature_min=-1,
-            temperature_max=0,
-            pluviometry_min=-1,
-            pluviometry_max=0,
+            temperature_min=-1.0,
+            temperature_max=0.0,
+            pluviometry_min=-1.0,
+            pluviometry_max=0.0,
 
             ground_color=Color(75, 102, 44),
 
@@ -1038,8 +985,7 @@ def encyclopedia_creation() -> Encyclopedia:
             [
                 [None, Color(34, 58, 26), None, None],
 
-                [Color(34, 58, 26), Color(34, 58, 26),
-                 Color(34, 58, 26), Color(34, 58, 26)]
+                [Color(34, 58, 26), Color(34, 58, 26), Color(34, 58, 26), Color(34, 58, 26)]
             ]
         )
     )
@@ -1051,8 +997,7 @@ def encyclopedia_creation() -> Encyclopedia:
             [
                 [None, None, Color(34, 58, 26), None],
 
-                [Color(34, 58, 26), Color(34, 58, 26),
-                 Color(34, 58, 26), Color(34, 58, 26)]
+                [Color(34, 58, 26), Color(34, 58, 26), Color(34, 58, 26), Color(34, 58, 26)]
             ]
         )
     )
@@ -1064,10 +1009,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="tundra_dry",
 
-            temperature_min=-2,
-            temperature_max=-1,
-            pluviometry_min=-4,
-            pluviometry_max=-3,
+            temperature_min=-2.0,
+            temperature_max=-1.0,
+            pluviometry_min=-4.0,
+            pluviometry_max=-3.0,
 
             ground_color=Color(167, 175, 120),
 
@@ -1085,10 +1030,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="tundra_moist",
 
-            temperature_min=-2,
-            temperature_max=-1,
-            pluviometry_min=-3,
-            pluviometry_max=-2,
+            temperature_min=-2.0,
+            temperature_max=-1.0,
+            pluviometry_min=-3.0,
+            pluviometry_max=-2.0,
 
             ground_color=Color(167, 175, 120),
 
@@ -1106,10 +1051,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="tundra_rain",
 
-            temperature_min=-2,
-            temperature_max=-1,
-            pluviometry_min=-1,
-            pluviometry_max=0,
+            temperature_min=-2.0,
+            temperature_max=-1.0,
+            pluviometry_min=-1.0,
+            pluviometry_max=0.0,
 
             ground_color=Color(167, 175, 120),
 
@@ -1127,10 +1072,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="tundra_wet",
 
-            temperature_min=-2,
-            temperature_max=-1,
-            pluviometry_min=-2,
-            pluviometry_max=-1,
+            temperature_min=-2.0,
+            temperature_max=-1.0,
+            pluviometry_min=-2.0,
+            pluviometry_max=-1.0,
 
             ground_color=Color(75, 102, 44),
 
@@ -1154,32 +1099,26 @@ def encyclopedia_creation() -> Encyclopedia:
         spawn_probability=0.15,
         body=BoardColor(
             [
-                [None, Color(0, 69, 41), Color(0, 69, 41),
-                 Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41), None],
+                [None, Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41), None],
 
-                [Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41),
-                 Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41)],
+                [
+                    Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41), Color(0, 69, 41),
+                    Color(0, 69, 41), Color(0, 69, 41)
+                ],
 
-                [None, None, None, Color(88, 73, 50),
-                 None, None, None],
+                [None, None, None, Color(88, 73, 50), None, None, None],
 
-                [None, None, None, Color(88, 73, 50),
-                 None, None, None],
+                [None, None, None, Color(88, 73, 50), None, None, None],
 
-                [None, None, None, Color(88, 73, 50),
-                 None, None, None],
+                [None, None, None, Color(88, 73, 50), None, None, None],
 
-                [None, None, None, Color(88, 73, 50),
-                 None, None, None],
+                [None, None, None, Color(88, 73, 50), None, None, None],
 
-                [None, None, None, Color(88, 73, 50),
-                 Color(88, 73, 50), None, None],
+                [None, None, None, Color(88, 73, 50), Color(88, 73, 50), None, None],
 
-                [None, None, None, None,
-                 Color(88, 73, 50), None, None],
+                [None, None, None, None, Color(88, 73, 50), None, None],
 
-                [None, None, None, None,
-                 Color(88, 73, 50), None, None]
+                [None, None, None, None, Color(88, 73, 50), None, None]
             ]
         )
     )
@@ -1189,29 +1128,24 @@ def encyclopedia_creation() -> Encyclopedia:
         spawn_probability=0.1,
         body=BoardColor(
             [
-                [None, Color(124, 168, 21), Color(124, 168, 21),
-                 Color(124, 168, 21), Color(124, 168, 21), None],
+                [None, Color(124, 168, 21), Color(124, 168, 21), Color(124, 168, 21), Color(124, 168, 21), None],
 
-                [Color(124, 168, 21), Color(124, 168, 21), Color(124, 168, 21),
-                 Color(124, 168, 21), Color(124, 168, 21), Color(124, 168, 21)],
+                [
+                    Color(124, 168, 21), Color(124, 168, 21), Color(124, 168, 21), Color(124, 168, 21),
+                    Color(124, 168, 21), Color(124, 168, 21)
+                ],
 
-                [None, None, Color(225, 219, 185),
-                 None, None, None],
+                [None, None, Color(225, 219, 185), None, None, None],
 
-                [None, None, Color(225, 219, 185),
-                 None, None, None],
+                [None, None, Color(225, 219, 185), None, None, None],
 
-                [None, None, Color(225, 219, 185),
-                 None, None, None],
+                [None, None, Color(225, 219, 185), None, None, None],
 
-                [None, None, Color(225, 219, 185),
-                 None, None, None],
+                [None, None, Color(225, 219, 185), None, None, None],
 
-                [None, None, Color(225, 219, 185),
-                 None, None, None],
+                [None, None, Color(225, 219, 185), None, None, None],
 
-                [None, None, Color(225, 219, 185),
-                 None, None, None]
+                [None, None, Color(225, 219, 185), None, None, None]
             ]
         )
     )
@@ -1221,11 +1155,9 @@ def encyclopedia_creation() -> Encyclopedia:
         spawn_probability=0.05,
         body=BoardColor(
             [
-                [None, Color(19, 84, 20), Color(19, 84, 20),
-                 Color(19, 84, 20), None],
+                [None, Color(19, 84, 20), Color(19, 84, 20), Color(19, 84, 20), None],
 
-                [Color(19, 84, 20), Color(19, 84, 20), Color(
-                    19, 84, 20), Color(19, 84, 20), Color(19, 84, 20)],
+                [Color(19, 84, 20), Color(19, 84, 20), Color(19, 84, 20), Color(19, 84, 20), Color(19, 84, 20)],
 
                 [None, None, Color(46, 27, 23), None, None],
 
@@ -1247,10 +1179,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="tropical_forest_tropical",
 
-            temperature_min=2,
-            temperature_max=3,
-            pluviometry_min=3,
-            pluviometry_max=4,
+            temperature_min=2.0,
+            temperature_max=3.0,
+            pluviometry_min=3.0,
+            pluviometry_max=4.0,
 
             ground_color=Color(71, 94, 12),
 
@@ -1267,10 +1199,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="tropical_forest_warm",
 
-            temperature_min=1,
-            temperature_max=2,
-            pluviometry_min=2,
-            pluviometry_max=3,
+            temperature_min=1.0,
+            temperature_max=2.0,
+            pluviometry_min=2.0,
+            pluviometry_max=3.0,
 
             ground_color=Color(94, 124, 16),
 
@@ -1288,77 +1220,25 @@ def encyclopedia_creation() -> Encyclopedia:
 
     ########################### ARBRES ############################
 
-    very_dry_forest_tree_1 = Tree(
-        name="very_dry_forest_tree_1",
-        spawn_probability=0.055,
-        body=BoardColor(
-            [
-                [None, None, Color(121, 105, 56),
-                 None, None, None, None],
-
-                [None, None, None, Color(133, 103, 69),
-                 None, Color(133, 103, 69), Color(121, 105, 56)],
-
-                [Color(121, 105, 56), Color(133, 103, 69), Color(133, 103, 69),
-                 Color(133, 103, 69), Color(133, 103, 69), None, None],
-
-                [None, Color(121, 105, 56), None,
-                 Color(133, 103, 69), None, None, None],
-
-                [None, None, None,
-                 Color(133, 103, 69), None, None, None],
-
-                [None, None, None,
-                 Color(133, 103, 69), None, None, None]
-            ]
-        )
-    )
+    very_dry_forest_tree_1 = dry_forest_tree_1
 
     very_dry_forest_tree_2 = Tree(
         name="very_dry_forest_tree_2",
         spawn_probability=0.05,
         body=BoardColor(
             [
-                [None, Color(121, 105, 56), None,
-                 Color(133, 103, 69), Color(121, 105, 56)],
+                [None, Color(121, 105, 56), None, Color(133, 103, 69), Color(121, 105, 56)],
 
-                [Color(121, 105, 56), Color(133, 103, 69), Color(
-                    133, 103, 69), Color(133, 103, 69), None],
+                [Color(121, 105, 56), Color(133, 103, 69), Color(133, 103, 69), Color(133, 103, 69), None],
 
-                [None, None, Color(
-                    133, 103, 69), None, None],
+                [None, None, Color(133, 103, 69), None, None],
 
-                [None, None, Color(
-                    133, 103, 69), None, None]
+                [None, None, Color(133, 103, 69), None, None]
             ]
         )
     )
 
-    very_dry_forest_tree_3 = Tree(
-        name="very_dry_forest_tree_3",
-        spawn_probability=0.05,
-        body=BoardColor(
-            [
-                [None, None, None,
-                 Color(121, 105, 56), None],
-
-                [Color(121, 105, 56), None, None,
-                 Color(133, 103, 69), Color(121, 105, 56)],
-
-                [None, Color(133, 103, 69), Color(
-                    133, 103, 69), Color(133, 103, 69), None],
-
-                [None, None, Color(
-                    133, 103, 69), None, None],
-
-                [None, None, Color(
-                    133, 103, 69), None, None],
-
-                [None, None, Color(
-                    133, 103, 69), None, None]
-            ]
-        )
-    )
+    very_dry_forest_tree_3 = dry_forest_tree_3
 
     very_dry_forest_bush_1 = Tree(
         name="very_dry_forest_bush_1",
@@ -1377,10 +1257,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="very_dry_forest",
 
-            temperature_min=2,
-            temperature_max=3,
-            pluviometry_min=-1,
-            pluviometry_max=0,
+            temperature_min=2.0,
+            temperature_max=3.0,
+            pluviometry_min=-1.0,
+            pluviometry_max=0.0,
 
             ground_color=Color(191, 168, 124),
 
@@ -1404,11 +1284,9 @@ def encyclopedia_creation() -> Encyclopedia:
         spawn_probability=0.07,
         body=BoardColor(
             [
-                [None, Color(38, 127, 0), Color(38, 127, 0),
-                 Color(38, 127, 0), None],
+                [None, Color(38, 127, 0), Color(38, 127, 0), Color(38, 127, 0), None],
 
-                [Color(38, 127, 0), Color(38, 127, 0), Color(
-                    38, 127, 0), Color(38, 127, 0), Color(38, 127, 0)],
+                [Color(38, 127, 0), Color(38, 127, 0), Color(38, 127, 0), Color(38, 127, 0), Color(38, 127, 0)],
 
                 [None, None, Color(95, 80, 51), None, None],
 
@@ -1430,11 +1308,9 @@ def encyclopedia_creation() -> Encyclopedia:
         spawn_probability=0.1,
         body=BoardColor(
             [
-                [None, Color(96, 142, 8), Color(96, 142, 8),
-                 Color(96, 142, 8), None],
+                [None, Color(96, 142, 8), Color(96, 142, 8), Color(96, 142, 8), None],
 
-                [Color(96, 142, 8), Color(96, 142, 8), Color(
-                    96, 142, 8), Color(96, 142, 8), Color(96, 142, 8)],
+                [Color(96, 142, 8), Color(96, 142, 8), Color(96, 142, 8), Color(96, 142, 8), Color(96, 142, 8)],
 
                 [None, None, Color(103, 103, 17), None, None],
 
@@ -1456,11 +1332,9 @@ def encyclopedia_creation() -> Encyclopedia:
         spawn_probability=0.08,
         body=BoardColor(
             [
-                [None, Color(38, 127, 0), Color(38, 127, 0),
-                 Color(38, 127, 0), None],
+                [None, Color(38, 127, 0), Color(38, 127, 0), Color(38, 127, 0), None],
 
-                [Color(38, 127, 0), Color(38, 127, 0), Color(
-                    38, 127, 0), Color(38, 127, 0), Color(38, 127, 0)],
+                [Color(38, 127, 0), Color(38, 127, 0), Color(38, 127, 0), Color(38, 127, 0), Color(38, 127, 0)],
 
                 [None, None, Color(132, 115, 95), None, None],
 
@@ -1544,10 +1418,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="wet_forest_cool",
 
-            temperature_min=0,
-            temperature_max=1,
-            pluviometry_min=0,
-            pluviometry_max=1,
+            temperature_min=0.0,
+            temperature_max=1.0,
+            pluviometry_min=0.0,
+            pluviometry_max=1.0,
 
             ground_color=Color(128, 168, 104),
 
@@ -1563,10 +1437,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="wet_forest_tropical",
 
-            temperature_min=2,
-            temperature_max=3,
-            pluviometry_min=2,
-            pluviometry_max=3,
+            temperature_min=2.0,
+            temperature_max=3.0,
+            pluviometry_min=2.0,
+            pluviometry_max=3.0,
 
             ground_color=Color(128, 168, 104),
 
@@ -1582,10 +1456,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="wet_forest_warm",
 
-            temperature_min=1,
-            temperature_max=2,
-            pluviometry_min=1,
-            pluviometry_max=2,
+            temperature_min=1.0,
+            temperature_max=2.0,
+            pluviometry_min=1.0,
+            pluviometry_max=2.0,
 
             ground_color=Color(128, 168, 104),
 
@@ -1607,23 +1481,20 @@ def encyclopedia_creation() -> Encyclopedia:
         spawn_probability=0.06,
         body=BoardColor(
             [
-                [None, Color(39, 67, 0), Color(39, 67, 0),
-                 Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), None],
+                [None, Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), None],
 
-                [Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0),
-                 Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0)],
+                [
+                    Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0),
+                    Color(39, 67, 0), Color(39, 67, 0)
+                ],
 
-                [None, Color(138, 127, 99), None, Color(118, 98, 65),
-                 None, Color(138, 127, 99), None],
+                [None, Color(138, 127, 99), None, Color(118, 98, 65), None, Color(138, 127, 99), None],
 
-                [None, None, None, Color(118, 98, 65),
-                 None, Color(138, 127, 99), None],
+                [None, None, None, Color(118, 98, 65), None, Color(138, 127, 99), None],
 
-                [None, None, None, None,
-                 Color(118, 98, 65), None, None],
+                [None, None, None, None, Color(118, 98, 65), None, None],
 
-                [None, None, None, None,
-                 Color(118, 98, 65), None, None]
+                [None, None, None, None, Color(118, 98, 65), None, None]
             ]
         )
     )
@@ -1635,8 +1506,7 @@ def encyclopedia_creation() -> Encyclopedia:
             [
                 [None, Color(39, 67, 0), Color(39, 67, 0), None],
 
-                [Color(39, 67, 0), Color(39, 67, 0),
-                 Color(39, 67, 0), Color(39, 67, 0)],
+                [Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0)],
 
                 [Color(138, 127, 99), None, Color(118, 98, 65), None],
 
@@ -1652,26 +1522,22 @@ def encyclopedia_creation() -> Encyclopedia:
         spawn_probability=0.01,
         body=BoardColor(
             [
-                [None, Color(39, 67, 0), Color(39, 67, 0),
-                 Color(39, 67, 0), Color(39, 67, 0), None],
+                [None, Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), None],
 
-                [Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0),
-                 Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0)],
+                [
+                    Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0), Color(39, 67, 0),
+                    Color(39, 67, 0)
+                ],
 
-                [Color(138, 127, 99), None, Color(118, 98, 65),
-                 None, Color(138, 127, 99), None],
+                [Color(138, 127, 99), None, Color(118, 98, 65), None, Color(138, 127, 99), None],
 
-                [Color(138, 127, 99), None, Color(118, 98, 65),
-                 None, Color(138, 127, 99), None],
+                [Color(138, 127, 99), None, Color(118, 98, 65), None, Color(138, 127, 99), None],
 
-                [None, None, Color(118, 98, 65),
-                 None, None, None],
+                [None, None, Color(118, 98, 65), None, None, None],
 
-                [None, None, Color(118, 98, 65),
-                 None, None, None],
+                [None, None, Color(118, 98, 65), None, None, None],
 
-                [None, Color(118, 98, 65), None,
-                 None, None, None]
+                [None, Color(118, 98, 65), None, None, None, None]
             ]
         )
     )
@@ -1683,10 +1549,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="woodland_thorn",
 
-            temperature_min=2,
-            temperature_max=3,
-            pluviometry_min=-2,
-            pluviometry_max=-1,
+            temperature_min=2.0,
+            temperature_max=3.0,
+            pluviometry_min=-2.0,
+            pluviometry_max=-1.0,
 
             ground_color=Color(149, 163, 140),
 
@@ -1709,10 +1575,10 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="water",
 
-            temperature_min=0,
-            temperature_max=0,
-            pluviometry_min=0,
-            pluviometry_max=0,
+            temperature_min=0.0,
+            temperature_max=0.0,
+            pluviometry_min=0.0,
+            pluviometry_max=0.0,
 
             ground_color=Color(30, 144, 235),
 
@@ -1728,9 +1594,9 @@ def encyclopedia_creation() -> Encyclopedia:
             name="cyan_water_1",
 
             temperature_min=1.85,
-            temperature_max=2,
-            pluviometry_min=3,
-            pluviometry_max=4,
+            temperature_max=2.0,
+            pluviometry_min=3.0,
+            pluviometry_max=4.0,
 
             ground_color=Color(64, 164, 223),
 
@@ -1746,9 +1612,9 @@ def encyclopedia_creation() -> Encyclopedia:
             name="cyan_water_2",
 
             temperature_min=0.85,
-            temperature_max=1,
-            pluviometry_min=2,
-            pluviometry_max=3,
+            temperature_max=1.0,
+            pluviometry_min=2.0,
+            pluviometry_max=3.0,
 
             ground_color=Color(64, 164, 223),
 
@@ -1764,9 +1630,9 @@ def encyclopedia_creation() -> Encyclopedia:
             name="cyan_water_3",
 
             temperature_min=-0.25,
-            temperature_max=0,
-            pluviometry_min=1,
-            pluviometry_max=2,
+            temperature_max=0.0,
+            pluviometry_min=1.0,
+            pluviometry_max=2.0,
 
             ground_color=Color(64, 164, 223),
 
@@ -1782,9 +1648,9 @@ def encyclopedia_creation() -> Encyclopedia:
             name="cyan_water_4",
 
             temperature_min=-1.25,
-            temperature_max=-1,
-            pluviometry_min=0,
-            pluviometry_max=1,
+            temperature_max=-1.0,
+            pluviometry_min=0.0,
+            pluviometry_max=1.0,
 
             ground_color=Color(64, 164, 223),
 
@@ -1800,9 +1666,9 @@ def encyclopedia_creation() -> Encyclopedia:
             name="cyan_Water_5",
 
             temperature_min=-2.25,
-            temperature_max=-2,
-            pluviometry_min=-1,
-            pluviometry_max=0,
+            temperature_max=-2.0,
+            pluviometry_min=-1.0,
+            pluviometry_max=0.0,
 
             ground_color=Color(64, 164, 223),
 
@@ -1817,9 +1683,9 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="cyan_water_6",
 
-            temperature_min=1,
-            temperature_max=2,
-            pluviometry_min=3,
+            temperature_min=1.0,
+            temperature_max=2.0,
+            pluviometry_min=3.0,
             pluviometry_max=3.15,
 
             ground_color=Color(64, 164, 223),
@@ -1835,9 +1701,9 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="cyan_water_7",
 
-            temperature_min=0,
-            temperature_max=1,
-            pluviometry_min=2,
+            temperature_min=0.0,
+            temperature_max=1.0,
+            pluviometry_min=2.0,
             pluviometry_max=2.15,
 
             ground_color=Color(64, 164, 223),
@@ -1853,9 +1719,9 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="cyan_water_8",
 
-            temperature_min=-1,
-            temperature_max=0,
-            pluviometry_min=1,
+            temperature_min=-1.0,
+            temperature_max=0.0,
+            pluviometry_min=1.0,
             pluviometry_max=1.15,
 
             ground_color=Color(64, 164, 223),
@@ -1871,9 +1737,9 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="cyan_water_9",
 
-            temperature_min=-2,
-            temperature_max=-1,
-            pluviometry_min=0,
+            temperature_min=-2.0,
+            temperature_max=-1.0,
+            pluviometry_min=0.0,
             pluviometry_max=0.15,
 
             ground_color=Color(64, 164, 223),
@@ -1889,9 +1755,9 @@ def encyclopedia_creation() -> Encyclopedia:
         Biome(
             name="cyan_water_10",
 
-            temperature_min=-3,
-            temperature_max=-2,
-            pluviometry_min=-1,
+            temperature_min=-3.0,
+            temperature_max=-2.0,
+            pluviometry_min=-1.0,
             pluviometry_max=-0.85,
 
             ground_color=Color(64, 164, 223),
