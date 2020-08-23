@@ -109,7 +109,7 @@ class BoardColor(Board):
         # OU
         # - position non None et est un index valide
         # =============================
-        return cast(BoardColor.TYPE_OF_ELEMENTS, super(BoardColor, self).get_element())
+        return cast(BoardColor.TYPE_OF_ELEMENTS, super(BoardColor, self).get_element(x=x, y=y, position=position))
 
     ###############################################################
     ########################## GET_LINE ###########################
@@ -147,7 +147,7 @@ class BoardColor(Board):
         # OU
         # - position non None et est un index valide
         # =============================
-        super(BoardColor, self).set_element(value, x, y, position)
+        super(BoardColor, self).set_element(value=value, x=x, y=y, position=position)
 
     ###############################################################
     ##################### CREATE_EMPTY_BOARD ######################

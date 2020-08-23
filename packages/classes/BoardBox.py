@@ -109,7 +109,7 @@ class BoardBox(Board):
         # OU
         # - position non None et est un index valide
         # =============================
-        return cast(self.TYPE_OF_ELEMENTS, super(BoardBox, self).get_element())
+        return cast(self.TYPE_OF_ELEMENTS, super(BoardBox, self).get_element(x=x, y=y, position=position))
 
     ###############################################################
     ########################## GET_LINE ###########################
@@ -147,7 +147,7 @@ class BoardBox(Board):
         # OU
         # - position non None et est un index valide
         # =============================
-        super(BoardBox, self).set_element(value, x, y, position)
+        super(BoardBox, self).set_element(value=value, x=x, y=y, position=position)
 
     ###############################################################
     ##################### CREATE_EMPTY_BOARD ######################
