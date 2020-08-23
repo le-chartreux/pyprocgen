@@ -12,6 +12,7 @@
 # + SETTERS
 # + get_color()
 # + get_hexadecimal()
+# + set_biome()
 # + __str__()
 # ==========================================================
 
@@ -112,6 +113,12 @@ class Encyclopedia:
                 "Error: impossible to get a biome from a " + type(self).__name__ + "._biomes: " +
                 "\nno biome machs with the given name (" + name + ")."
             )
+
+    ###############################################################
+    ########################### SET_BIOME #########################
+    ###############################################################
+    def set_biome(self, biome: Biome, biome_name: str) -> None:
+        self.get_biomes()[biome_name] = biome
 
     ###############################################################
     ########################### GET_TREES #########################
