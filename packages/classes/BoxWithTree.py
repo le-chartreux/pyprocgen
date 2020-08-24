@@ -20,7 +20,7 @@ from packages.classes.Color import Color
 from packages.classes.Position import Position
 from packages.classes.Tree import Tree
 
-from packages.settings import DEV_MOD
+from packages.settings import DEBUG_MOD
 from packages.utilities import check_attribute_type_set
 
 
@@ -69,7 +69,7 @@ class BoxWithTree(Box):
     ########################### SETTERS ###########################
     ###############################################################
     def set_tree(self, tree: Tree) -> None:
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=tree,
                 type_to_check=Tree,
@@ -79,7 +79,7 @@ class BoxWithTree(Box):
         self._tree = tree
 
     def set_position_in_tree(self, position_in_tree: Position) -> None:
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=position_in_tree,
                 type_to_check=Position,

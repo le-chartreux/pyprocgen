@@ -18,7 +18,7 @@ from __future__ import annotations
 from typing import Optional
 import random
 
-from packages.settings import DEV_MOD, SEED_ELEMENT_MIN, SEED_ELEMENT_MAX
+from packages.settings import DEBUG_MOD, SEED_ELEMENT_MIN, SEED_ELEMENT_MAX
 from packages.utilities import check_attribute_type_set, check_number_between_to_set
 
 
@@ -67,7 +67,7 @@ class Seed:
         # - SEED_ELEMENT_MIN <= (pluviometry_x, pluviometry_y, temperature_x, temperature_y) <= SEED_ELEMENT_MAX
         # =============================
         if isinstance(seed_in_string, str):
-            if DEV_MOD:
+            if DEBUG_MOD:
                 if not Seed.is_seed(seed_in_string):
                     raise Exception(
                         "Error: trying to set a " + type(self).__name__ +
@@ -106,7 +106,7 @@ class Seed:
         if pluviometry_x is None:
             self._pluviometry_x = random.randint(SEED_ELEMENT_MIN, SEED_ELEMENT_MAX)
         else:
-            if DEV_MOD:
+            if DEBUG_MOD:
                 check_attribute_type_set(
                     attribute_to_check=pluviometry_x,
                     type_to_check=int,
@@ -126,7 +126,7 @@ class Seed:
         if pluviometry_y is None:
             self._pluviometry_y = random.randint(SEED_ELEMENT_MIN, SEED_ELEMENT_MAX)
         else:
-            if DEV_MOD:
+            if DEBUG_MOD:
                 check_attribute_type_set(
                     attribute_to_check=pluviometry_y,
                     type_to_check=int,
@@ -146,7 +146,7 @@ class Seed:
         if temperature_x is None:
             self._temperature_x = random.randint(SEED_ELEMENT_MIN, SEED_ELEMENT_MAX)
         else:
-            if DEV_MOD:
+            if DEBUG_MOD:
                 check_attribute_type_set(
                     attribute_to_check=temperature_x,
                     type_to_check=int,
@@ -166,7 +166,7 @@ class Seed:
         if temperature_y is None:
             self._temperature_y = random.randint(SEED_ELEMENT_MIN, SEED_ELEMENT_MAX)
         else:
-            if DEV_MOD:
+            if DEBUG_MOD:
                 check_attribute_type_set(
                     attribute_to_check=temperature_y,
                     type_to_check=int,
@@ -195,7 +195,7 @@ class Seed:
         # de la forme a + ":" + b + ":" + c + ":" + d
         # avec a,b,c,d str(integers)
         # =============================
-        if DEV_MOD:
+        if DEBUG_MOD:
             if not isinstance(string, str):
                 raise Exception(
                     "Error: impossible to check if a string is a Seed:" +

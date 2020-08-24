@@ -20,7 +20,7 @@ from packages.classes.Color import Color
 from packages.classes.Tree import Tree
 
 from packages.settings import (
-    DEV_MOD,
+    DEBUG_MOD,
     BIOME_NAME_LEN_MIN,
     BIOME_NAME_LEN_MAX,
     BIOME_PLUVIOMETRY_MIN,
@@ -135,7 +135,7 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_NAME_LEN_MIN <= len(name) <= BIOME_NAME_LEN_MAX
         # =============================
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=name,
                 type_to_check=str,
@@ -161,7 +161,7 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_PLUVIOMETRY_MIN <= pluviometry_min <= BIOME_PLUVIOMETRY_MAX
         # =============================
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=pluviometry_min,
                 type_to_check=float,
@@ -187,7 +187,7 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_PLUVIOMETRY_MIN <= pluviometry_max <= BIOME_PLUVIOMETRY_MAX
         # =============================
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=pluviometry_max,
                 type_to_check=float,
@@ -213,7 +213,7 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_TEMPERATURE_MIN <= temperature_min <= BIOME_TEMPERATURE_MAX
         # =============================
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=temperature_min,
                 type_to_check=float,
@@ -239,7 +239,7 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_TEMPERATURE_MIN <= temperature_max <= BIOME_TEMPERATURE_MAX
         # =============================
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=temperature_max,
                 type_to_check=float,
@@ -262,7 +262,7 @@ class Biome:
         # UTILITÉ :
         # Vérifie la cohérence de ground_color puis la set
         # =============================
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=ground_color,
                 type_to_check=Color,
@@ -281,7 +281,7 @@ class Biome:
         # PRÉCONDITIONS :
         # - BIOME_PLUVIOMETRY_MIN <= pluviometry_max <= BIOME_PLUVIOMETRY_MAX
         # =============================
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=trees,
                 type_to_check=list,

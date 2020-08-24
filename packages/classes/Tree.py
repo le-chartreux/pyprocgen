@@ -16,7 +16,7 @@
 
 from packages.classes.BoardColor import BoardColor
 
-from packages.settings import DEV_MOD
+from packages.settings import DEBUG_MOD
 from packages.utilities import check_attribute_type_set, check_number_between_to_set
 
 
@@ -74,7 +74,7 @@ class Tree:
     ############################ SETTERS ##########################
     ###############################################################
     def set_body(self, body: BoardColor) -> None:
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=body,
                 type_to_check=BoardColor,
@@ -84,7 +84,7 @@ class Tree:
         self._body = body
 
     def set_name(self, name: str) -> None:
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=name,
                 type_to_check=str,
@@ -94,7 +94,7 @@ class Tree:
         self._name = name
 
     def set_spawn_probability(self, spawn_probability: float) -> None:
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=spawn_probability,
                 type_to_check=float,

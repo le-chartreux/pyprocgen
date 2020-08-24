@@ -26,7 +26,7 @@ from __future__ import annotations
 from typing import List, Optional
 
 from packages.classes.Position import Position
-from packages.settings import DEV_MOD
+from packages.settings import DEBUG_MOD
 from packages.utilities import check_attribute_type_set
 
 
@@ -72,7 +72,7 @@ class Board:
     def set_elements(self, elements: List[List[TYPE_OF_ELEMENTS]]) -> None:
         # Vérification que éléments est bien un List[List[TYPE_OF_ELEMENTS]]
         # Vérification que éléments est bien un List
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=elements,
                 type_to_check=list,
@@ -139,7 +139,7 @@ class Board:
         # PRÉCONDITIONS :
         # - 0 < line < len(elements)
         # =============================
-        if DEV_MOD:
+        if DEBUG_MOD:
             if not isinstance(element, self.TYPE_OF_ELEMENTS.__args__):
                 raise Exception(
                     "Error: impossible to add an element in a " + type(self).__name__ + "._elements:" +
@@ -162,7 +162,7 @@ class Board:
         if line is None:
             self.get_elements().append([])
         else:
-            if DEV_MOD:
+            if DEBUG_MOD:
                 # Vérification que line: List[TYPE_OF_ELEMENTS]
                 # Vérification que line: List
                 if isinstance(line, list):
@@ -207,7 +207,7 @@ class Board:
         # - position non None et est un index valide
         # =============================
         if x is not None and y is not None:  # La position est demandée avec x et y
-            if DEV_MOD:
+            if DEBUG_MOD:
                 if isinstance(x, int) and isinstance(y, int):  # Vérification que x et y sont des int
                     # Vérification que x et y sont des index valides
                     if not (0 <= x < self.get_width() and 0 <= y < self.get_height()):
@@ -231,7 +231,7 @@ class Board:
                     )
             return self.get_elements()[y][x]
         elif position is not None:  # La position est demandée avec position
-            if DEV_MOD:
+            if DEBUG_MOD:
                 # Vérification que position est un index valide
                 if not (0 <= position.get_x() < self.get_width() and 0 <= position.get_y() < self.get_height()):
                     raise Exception(
@@ -263,7 +263,7 @@ class Board:
     # - 0 <= line_number < len(self._elements)
     # =============================
     def get_line(self, line_number: int) -> List[TYPE_OF_ELEMENTS]:
-        if DEV_MOD:
+        if DEBUG_MOD:
             if isinstance(line_number, int):
                 if not (0 <= line_number < self.get_height()):
                     raise Exception(
@@ -320,7 +320,7 @@ class Board:
         # - position non None et est un index valide
         # =============================
         if x is not None and y is not None:  # La position est demandée avec x et y
-            if DEV_MOD:
+            if DEBUG_MOD:
                 if isinstance(x, int) and isinstance(y, int):  # Vérification que x et y sont des int
                     # Vérification que x et y sont des index valides
                     if not (0 <= x < self.get_width() and 0 <= y < self.get_height()):
@@ -344,7 +344,7 @@ class Board:
                     )
             self.get_elements()[y][x] = value
         elif position is not None:  # La position est demandée avec position
-            if DEV_MOD:
+            if DEBUG_MOD:
                 # Vérification que position est un index valide
                 if not (0 <= position.get_x() < self.get_width() and 0 <= position.get_y() < self.get_height()):
                     raise Exception(

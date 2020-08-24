@@ -15,7 +15,7 @@
 # + __str__()
 # ==========================================================
 
-from packages.settings import DEV_MOD, COLOR_RGB_MIN, COLOR_RGB_MAX
+from packages.settings import DEBUG_MOD, COLOR_RGB_MIN, COLOR_RGB_MAX
 from packages.utilities import check_attribute_type_set, check_number_between_to_set
 
 
@@ -72,7 +72,7 @@ class Color:
     ########################### SETTERS ###########################
     ###############################################################
     def set_red(self, red: int) -> None:
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=red,
                 type_to_check=int,
@@ -89,7 +89,7 @@ class Color:
         self._red = red
 
     def set_green(self, green: int) -> None:
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=green,
                 type_to_check=int,
@@ -106,7 +106,7 @@ class Color:
         self._green = green
 
     def set_blue(self, blue: int) -> None:
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=blue,
                 type_to_check=int,

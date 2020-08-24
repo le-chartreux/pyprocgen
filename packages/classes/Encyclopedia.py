@@ -21,7 +21,7 @@ from typing import Dict, List
 from packages.classes.Tree import Tree
 from packages.classes.Biome import Biome
 
-from packages.settings import DEV_MOD
+from packages.settings import DEBUG_MOD
 from packages.utilities import check_attribute_type_set
 
 
@@ -68,7 +68,7 @@ class Encyclopedia:
     ########################### SETTERS ###########################
     ###############################################################
     def set_name(self, name: str) -> None:
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=name,
                 type_to_check=str,
@@ -78,7 +78,7 @@ class Encyclopedia:
         self._name = name
 
     def set_biomes(self, biomes: Dict[str, Biome]):
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=biomes,
                 type_to_check=dict,
@@ -108,7 +108,7 @@ class Encyclopedia:
         # UTILITÉ :
         # Renvoie le biome correspondant
         # =============================
-        if DEV_MOD:
+        if DEBUG_MOD:
             if isinstance(name, str):
                 try:
                     self.get_biomes()[name]
@@ -128,7 +128,7 @@ class Encyclopedia:
     ########################### SET_BIOME #########################
     ###############################################################
     def set_biome(self, biome: Biome, biome_name: str) -> None:
-        if DEV_MOD:
+        if DEBUG_MOD:
             check_attribute_type_set(
                 attribute_to_check=biome,
                 type_to_check=Biome,
