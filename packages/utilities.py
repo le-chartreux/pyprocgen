@@ -5,13 +5,68 @@
 # Vrac d'utilitaires qui ne sont pas propres à ce projet
 # -----------------------------
 # CONTENU :
-# - is_integer(value)
-# - is_float(value)
-# - print_progression(text, progression)
-# -----------------------------
-# PROGRAMMES UTILISATEURS :
-# - procedural_generation_2D.py
+# + check_attribute_type_set()
+# + check_number_between_to_set()
+# + is_integer(value)
+# + is_float(value)
+# + print_progression(text, progression)
 # ==========================================================
+
+from typing import Union, Optional
+
+
+###############################################################
+################ CHECK_ATTRIBUTE_TYPE_SET #####################
+###############################################################
+def check_attribute_type_set(
+        attribute_to_check: object,
+        type_to_check: type,
+        name_of_attribute_to_check: str,
+        object_destination: object
+) -> None:
+    # =============================
+    # INFORMATIONS :
+    # -----------------------------
+    # UTILITÉ :
+    # Regarde si object_to_check est instance de type_to_check, et lève une exception si non
+    # =============================
+    if not isinstance(attribute_to_check, type_to_check):
+        raise Exception(
+            "Error: impossible to set " + name_of_attribute_to_check + " for a " +
+            type(object_destination).__name__ + ":" +
+            "\n" + name_of_attribute_to_check + " must be a " + type_to_check.__name__ + " but a " +
+            type(attribute_to_check).__name__ + " is given."
+        )
+
+
+###############################################################
+############### CHECK_NUMBER_BETWEEN_TO_SET ###################
+###############################################################
+def check_number_between_to_set(
+        number_to_check: Union[int, float],
+        min_value: Union[int, float],
+        max_value: Union[int, float],
+        name_of_attribute_to_check: str,
+        object_to_set: object,
+        strict_between: Optional[bool] = False
+) -> None:
+    # =============================
+    # INFORMATIONS :
+    # -----------------------------
+    # UTILITÉ :
+    # Regarde si min_value <= number_to_check <= max_value, et lève une exception si non
+    # =============================
+    if not (
+            (strict_between and min_value < number_to_check < max_value) or
+            (not strict_between and min_value <= number_to_check <= max_value)
+    ):
+        raise Exception(
+            "Error: impossible to set " + name_of_attribute_to_check + " for a " + type(object_to_set).__name__ + ":" +
+            "\n " + name_of_attribute_to_check + " must be between " + str(min_value) + " and " +
+            str(max_value) + " but " + str(number_to_check) + " is given." +
+            "\nChange the relative constant in packages/settings.py to allow."
+        )
+
 
 ###############################################################
 ######################### IS_INTEGER ##########################
@@ -22,13 +77,11 @@ def is_integer(value) -> bool:
     # -----------------------------
     # UTILITÉ :
     # Regarde si value est un entier
-    # -----------------------------
-    # UTILISÉ PAR :
-    # - procedural_generation_2D.py
     # =============================
     try:
-        return int(value) == float(value)
-    except:
+        int(value)
+        return True
+    except TypeError:
         return False
 
 
@@ -41,14 +94,11 @@ def is_float(value) -> bool:
     # -----------------------------
     # UTILITÉ :
     # Regarde si value est un float
-    # -----------------------------
-    # UTILISÉ PAR :
-    # - procedural_generation_2D.py
     # =============================
     try:
         float(value)
         return True
-    except:
+    except ValueError:
         return False
 
 
@@ -65,9 +115,6 @@ def print_progress(text: str, progression: float):
     # -----------------------------
     # PRECONDITIONS :
     # - progression compris entre 0 et 1
-    # -----------------------------
-    # UTILISE PAR :
-    # - procedural_generation_2D.py
     # =============================
 
     progress10 = int(progression * 30)

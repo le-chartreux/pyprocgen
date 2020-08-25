@@ -8,124 +8,120 @@
 # - generate_trees(board)
 # - possible_to_place_tree(board, encyclopedia, x, y)
 # - put_tree(board, encyclopedia, x, y)
-# -----------------------------
-# PROGRAMMES UTILISATEURS :
-# - procedural_generation_2D.py
 # ==========================================================
 
 import random
-from packages.short_class_import import Box, Tree, Encyclopedia
+
+from packages.short_class_import import BoardBox, BoxWithTree, Tree, Position
 
 
 ###############################################################
 ####################### GENERATE_TREES ########################
 ###############################################################
-def generate_trees(board: list, encyclopedia: Encyclopedia) -> list:
+def generate_trees(board: BoardBox) -> None:
     # =============================
     # INFORMATIONS :
     # -----------------------------
     # UTILITÉ :
-    # Place les arbres dans board
+    # Place les arbres dans board (ne calcule que pour la moitié supérieure)
     # -----------------------------
     # PRECONDITIONS :
-    # - encyclopedia a un dictionnaire de
-    #   biomes comprend une liste d'au moins un arbre par biome
-    # -----------------------------
-    # DÉPEND DE :
-    # - classes.Box
-    # - classes.Tree
-    # - classes.Encyclopedia
-    # - random
-    # - trees_generation.possible_to_place_tree()
-    # - trees_generation.put_tree()
-    # -----------------------------
-    # UTILISÉ PAR :
-    # - procedural_generation_2D.py
+    # - encyclopedia._biomes comprend une liste d'au moins un arbre par biome
     # =============================
-    width = len(board[0])
+    width = board.get_width()
     # Car on ne traite que les arbres de la premiere partie :
-    height = int(len(board) / 2)
+    height = int(board.get_height() / 2)
 
     for line in range(height):
 
         for column in range(width):
 
-            if board[line][column].biome_name != "tree":
+            box = board.get_element(x=column, y=line)
+
+            if box.get_biome().get_name() != "tree":
 
                 # Creation d'une liste à ordre aléatoire des arbres possibles
-                trees_list = list(
-                    encyclopedia.biomes[board[line][column].biome_name].trees
-                )
-
+                trees_list = box.get_biome().get_trees()
                 random.shuffle(trees_list)
 
+                # Essaye de placer un arbre en essayant tous les éléments de trees_list dans l'ordre jusqu'à en trouver
+                # un qu'il est possible de placer ou arriver à la fin
                 counter = 0
-                placed = False
 
-                while counter < len(trees_list) and not placed:
-
-                    if (
-                        possible_to_place_tree(
-                            board,
-                            trees_list[counter],
-                            column,
-                            line
+                while (
+                        counter < len(trees_list) and
+                        not (
+                                possible_to_place_tree(
+                                        board=board,
+                                        tree=trees_list[counter],
+                                        x=column,
+                                        y=line
+                                    ) and
+                                random.random() < trees_list[counter].get_spawn_probability()
                         )
-                        and random.random() < trees_list[counter].spawn_probability
-                    ):
-
-                        put_tree(
-                            board,
-                            encyclopedia,
-                            trees_list[counter],
-                            column,
-                            line
-                        )
-
-                        placed = True
+                ):
 
                     counter += 1
 
-    return board
+                if counter != len(trees_list):
+                    put_tree(
+                        board=board,
+                        tree=trees_list[counter],
+                        x=column,
+                        y=line
+                    )
+
+
+###############################################################
+###################### ADAPT_TREE_HEIGHT ######################
+###############################################################
+def adapt_tree_height(tree_height: int, board_height: int, y: int) -> int:
+    # =============================
+    # INFORMATIONS :
+    # -----------------------------
+    # UTILITÉ :
+    # Réduit la hauteur de l'arbre dans le cas où il sortirait de board en hauteur
+    # =============================
+    if y + tree_height > board_height:
+        tree_height = board_height - y
+    return tree_height
+
+
+###############################################################
+####################### ADAPT_TREE_WIDTH ######################
+###############################################################
+def adapt_tree_width(tree_width: int, board_width: int, x: int) -> int:
+    # =============================
+    # INFORMATIONS :
+    # -----------------------------
+    # UTILITÉ :
+    # Réduit la largeur de l'arbre dans le cas où il sortirait de board en largeur
+    # =============================
+    if x + tree_width > board_width:
+        tree_width = board_width - x
+    return tree_width
 
 
 ###############################################################
 ################### POSSIBLE_TO_PLACE_TREE ####################
 ###############################################################
-def possible_to_place_tree(board: list, tree: Tree, x: int, y: int):
+def possible_to_place_tree(board: BoardBox, tree: Tree, x: int, y: int):
     # =============================
     # INFORMATIONS :
     # -----------------------------
     # UTILITÉ :
     # Renvoie si il est possible de placer l'arbre
-    # -----------------------------
-    # DEPEND DE :
-    # - classes.Box
-    # - classes.Tree
-    # - random
-    # -----------------------------
-    # UTILISE PAR :
-    # - trees_creation.generate_trees()
     # =============================
-
-    if x >= len(board[0]) or y >= len(board):
-        print("Warning from p_trees_generation.possible_to_place_tree:")
+    if x >= board.get_width() or y >= board.get_height():
+        print("Warning from trees_generation.possible_to_place_tree():")
         print("Attempting to look if a tree can be put outside the board.")
         return False
-
-    type_of_source_box = board[y][x].biome_name
-
-    tree_height = tree.get_height()
-    tree_width = tree.get_width()
+    type_of_source_box = board.get_element(x=x, y=y).get_biome()
 
     # Traitement des cas où l'arbre est en bordure d'image :
-    # on coupe le modèle à la bordure (pour ne pas placer de case en dehors du tableau)
-
-    if y + tree_height > len(board):
-        tree_height = len(board) - y
-
-    if x + tree_width > len(board[0]):
-        tree_width = len(board[0]) - x
+    # on coupe le modèle à la bordure (pour ne pas essayer d'accèder à une case en dehors du tableau)
+    tree_height = adapt_tree_height(tree_height=tree.get_height(), board_height=board.get_height(), y=y)
+    tree_width = adapt_tree_width(tree_width=tree.get_width(), board_width=board.get_width(), x=x)
 
     line = 0
     column = 0
@@ -136,9 +132,11 @@ def possible_to_place_tree(board: list, tree: Tree, x: int, y: int):
         while column < tree_width and possible:
 
             possible = (
-                board[y + line][x + column].biome_name == type_of_source_box
-                and board[y + line][x + column].tree_name == ""
+                    not isinstance(board.get_element(x=(x + column), y=(y + line)), BoxWithTree) and
+                    board.get_element(x=(x + column), y=(y + line)).get_biome() == type_of_source_box
+
             )
+
             column += 1
 
         line += 1
@@ -150,51 +148,30 @@ def possible_to_place_tree(board: list, tree: Tree, x: int, y: int):
 ###############################################################
 ######################### PUT_TREE ############################
 ###############################################################
-def put_tree(board: list, encyclopedia: Encyclopedia, tree: Tree, x, y):
+def put_tree(board: BoardBox, tree: Tree, x: int, y: int):
     # =============================
     # INFORMATIONS :
     # -----------------------------
     # UTILITÉ :
     # Place un arbre depuis le point board[y][x]
-    # -----------------------------
-    # DÉPEND DE :
-    # - classes.Box
-    # - classes.Tree
-    # - classes.Encyclopedia
-    # -----------------------------
-    # UTILISÉ PAR :
-    # - trees_creation.generate_trees()
     # =============================
 
-    if x >= len(board[0]) or y >= len(board):
-        print("Warning from p_trees_generation.put_tree:")
-        print("  Attempting to put a tree outside the board: ")
-        print("    X:", x)
-        print("    Y:", y)
-        print("    Width of the board:", len(board[0]))
-        print("    Height of the board:", len(board))
+    # Traitement des cas où l'arbre est en bordure d'image :
+    # on coupe le modèle à la bordure (pour ne pas essayer d'accèder à une case en dehors du tableau)
+    tree_height = adapt_tree_height(tree_height=tree.get_height(), board_height=board.get_height(), y=y)
+    tree_width = adapt_tree_width(tree_width=tree.get_width(), board_width=board.get_width(), x=x)
 
-    else:
+    # Placement de l'arbre
+    for line in range(tree_height):
 
-        tree_height = tree.get_height()
-        tree_width = tree.get_width()
+        for column in range(tree_width):
 
-        # Traitement des cas où l'arbre est en bordure d'image :
-        # on coupe le modèle à la bordure (pour ne pas placer de case en dehors du tableau)
+            if tree.get_body().get_element(x=column, y=line) is not None:
 
-        if y + tree_height > len(board):
-            tree_height = len(board) - y
-
-        if x + tree_width > len(board[0]):
-            tree_width = len(board[0]) - x
-
-        # Placement de l'arbre
-        for line in range(tree_height):
-
-            for column in range(tree_width):
-
-                if tree.body[line][column] != None:
-
-                    board[y + line][x + column].tree_name = tree.name
-                    board[y + line][x + column].position_in_tree_x = column
-                    board[y + line][x + column].position_in_tree_y = line
+                old_box = board.get_element(x=(x + column), y=(y + line))
+                new_box = BoxWithTree(
+                    biome=old_box.get_biome(),
+                    tree=tree,
+                    position_in_tree=Position(x=column, y=line)
+                )
+                board.set_element(value=new_box, x=(x + column), y=(y + line))

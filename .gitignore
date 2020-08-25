@@ -1,2 +1,9 @@
 *.ppm
 .vscode/
+Supprimerait .idea/.gitignore
+Supprimerait .idea/dictionaries/
+Supprimerait .idea/inspectionProfiles/
+Supprimerait .idea/misc.xml
+Supprimerait .idea/modules.xml
+Supprimerait .idea/pyprocgen.iml
+Supprimerait .idea/vcs.xml
