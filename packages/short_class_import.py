@@ -1,5 +1,4 @@
 from packages.classes.Biome import Biome
-from packages.classes.Board import Board
 from packages.classes.BoardBox import BoardBox
 from packages.classes.BoardColor import BoardColor
 from packages.classes.Box import Box
