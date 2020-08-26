@@ -4,7 +4,7 @@ Just a procedural map generator made in Python3 for fun.
 
 ## EXAMPLE OF MAP GENERATED:
 
-![Example of map generated - if not show look at concept-art/example_of_map.png](concept-art/example_of_map.png)
+!Example of map generated - if not show look at concept-art/example_of_map.png](concept-art/example_of_map.png)
 
 ## WHAT IT DOES:
 
@@ -33,4 +33,4 @@ For now it only creates a .ppm picture of a map with procedural generation using
 
 ## SPECIAL THANKS:
 
-To [mindstorm38](https://github.com/mindstorm38) for his help about classes and Perlin Noise.
+To [mindstorm38](https://github.com/mindstorm38), [icanwalkonwater](https://github.com/icanwalkonwater) and 0xfada for their help about a lot of things, this project probably wouldn't be nice without them.
