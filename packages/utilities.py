@@ -7,9 +7,8 @@
 # CONTENU :
 # + check_attribute_type_set()
 # + check_number_between_to_set()
-# + is_integer(value)
-# + is_float(value)
-# + print_progression(text, progression)
+# + is_integer()
+# + print_progression()
 # ==========================================================
 
 from typing import Union, Optional
@@ -71,34 +70,17 @@ def check_number_between_to_set(
 ###############################################################
 ######################### IS_INTEGER ##########################
 ###############################################################
-def is_integer(value) -> bool:
+def is_integer(value: str) -> bool:
     # =============================
     # INFORMATIONS :
     # -----------------------------
     # UTILITÉ :
-    # Regarde si value est un entier
+    # Regarde si value est convertible en un entier
     # =============================
     try:
         int(value)
         return True
     except TypeError:
-        return False
-
-
-###############################################################
-######################### IS_FLOAT ############################
-###############################################################
-def is_float(value) -> bool:
-    # =============================
-    # INFORMATIONS :
-    # -----------------------------
-    # UTILITÉ :
-    # Regarde si value est un float
-    # =============================
-    try:
-        float(value)
-        return True
-    except ValueError:
         return False
 
 
