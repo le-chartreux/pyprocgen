@@ -133,8 +133,7 @@ def possible_to_place_tree(board: BoardBox, tree: Tree, x: int, y: int):
 
             possible = (
                     not isinstance(board.get_element(x=(x + column), y=(y + line)), BoxWithTree) and
-                    board.get_element(x=(x + column), y=(y + line)).get_biome() == type_of_source_box
-
+                    tree in board.get_element(x=(x + column), y=(y + line)).get_biome().get_trees()
             )
 
             column += 1
