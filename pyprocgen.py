@@ -174,7 +174,7 @@ if place_trees:
 
         if print_progress_opt:
             print_progress(
-                text="Creation of the map :        ",
+                text="Creation of the map : ",
                 progression=((chunk_number + 1) * chunk_height) / height
             )
 
@@ -186,7 +186,7 @@ if place_trees:
     write_image_body(destination_file, last_chunk)
 
     if print_progress_opt:
-        print_progress("Creation of the map :        ", 1.0)
+        print_progress("Creation of the map : ", 1.0)
 
 
 ###############################################################
@@ -215,7 +215,7 @@ else:
 
         if print_progress_opt:
             print_progress(
-                "Creation of the map :        ", (line_number + 1) / height)
+                "Creation of the map : ", (line_number + 1) / height)
 
 
 ###############################################################
