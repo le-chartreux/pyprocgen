@@ -1,5 +1,6 @@
 *.ppm
 .vscode/
+.idea/
 Supprimerait .idea/.gitignore
 Supprimerait .idea/dictionaries/
 Supprimerait .idea/inspectionProfiles/
