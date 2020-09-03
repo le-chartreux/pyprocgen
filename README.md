@@ -4,7 +4,7 @@ Just a procedural map generator made in Python3 for fun.
 
 ## EXAMPLE OF MAP GENERATED:
 
-!Example of map generated - if not show look at concept-art/example_of_map.png](concept-art/example_of_map.png)
+![Example of map generated - if not show look at concept-art/example_of_map.png](concept-art/example_of_map.png)
 
 ## WHAT IT DOES:
 
