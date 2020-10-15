@@ -110,16 +110,15 @@ def possible_to_place_tree(board: BoardBox, tree: Tree, x: int, y: int):
     # INFORMATIONS :
     # -----------------------------
     # UTILITÉ :
-    # Renvoie si il est possible de placer l'arbre
+    # Renvoie s'il est possible de placer l'arbre
     # =============================
     if x >= board.get_width() or y >= board.get_height():
         print("Warning from trees_generation.possible_to_place_tree():")
         print("Attempting to look if a tree can be put outside the board.")
         return False
-    type_of_source_box = board.get_element(x=x, y=y).get_biome()
 
     # Traitement des cas où l'arbre est en bordure d'image :
-    # on coupe le modèle à la bordure (pour ne pas essayer d'accèder à une case en dehors du tableau)
+    # on coupe le modèle à la bordure (pour ne pas essayer d'accéder à une case en dehors du tableau)
     tree_height = adapt_tree_height(tree_height=tree.get_height(), board_height=board.get_height(), y=y)
     tree_width = adapt_tree_width(tree_width=tree.get_width(), board_width=board.get_width(), x=x)
 
@@ -156,7 +155,7 @@ def put_tree(board: BoardBox, tree: Tree, x: int, y: int):
     # =============================
 
     # Traitement des cas où l'arbre est en bordure d'image :
-    # on coupe le modèle à la bordure (pour ne pas essayer d'accèder à une case en dehors du tableau)
+    # on coupe le modèle à la bordure (pour ne pas essayer d'accéder à une case en dehors du tableau)
     tree_height = adapt_tree_height(tree_height=tree.get_height(), board_height=board.get_height(), y=y)
     tree_width = adapt_tree_width(tree_width=tree.get_width(), board_width=board.get_width(), x=x)
 

@@ -68,8 +68,8 @@ class BoardColor:
     ###############################################################
     def set_elements(self, elements: List[List[Optional[Color]]]) -> None:
         if DEBUG_MOD:
-            # Vérification que éléments est bien un List[List[Optional[Color]]] :
-            # Vérification que éléments est bien un List
+            # Vérification que elements est bien un List[List[Optional[Color]]] :
+            # Vérification que elements est bien un List
             check_attribute_type_set(
                 attribute_to_check=elements,
                 type_to_check=list,
@@ -79,7 +79,7 @@ class BoardColor:
 
             # Vérification que elements est bien un List de quelque chose
             if len(elements) == 0:
-                raise Exception(
+                raise TypeError(
                     "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
                     "\n_elements must be a List[List[Optional[Color]], but an empty list is given."
                 )
@@ -109,13 +109,13 @@ class BoardColor:
                         line += 1
 
                 if line != len(elements):
-                    raise Exception(
+                    raise TypeError(
                         "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
                         "\n_elements must be a List[List[Optional[Color]] " +
                         "but at least one List[List]'s element is a " + type(elements[line][column]).__name__ + "."
                     )
             else:
-                raise Exception(
+                raise TypeError(
                     "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
                     "\n_elements must be a List[List[Optional[Color]]] " +
                     "but at least one List's element is not a List."
@@ -139,13 +139,12 @@ class BoardColor:
         # PRÉCONDITIONS :
         # - 0 < line < len(elements)
         # =============================
-        if DEBUG_MOD:
-            if element is not None or not isinstance(element, Color):
-                raise Exception(
-                    "Error: impossible to add an element in a " + type(self).__name__ + "._elements:" +
-                    "\n_elements is a List[List[Optional[Color]]], but a " +
-                    type(element).__name__ + " is given."
-                )
+        if DEBUG_MOD and (element is not None or not isinstance(element, Color)):
+            raise TypeError(
+                "Error: impossible to add an element in a " + type(self).__name__ + "._elements:" +
+                "\n_elements is a List[List[Optional[Color]]], but a " +
+                type(element).__name__ + " is given."
+            )
         self.get_line(line).append(element)
 
     ###############################################################
@@ -171,14 +170,14 @@ class BoardColor:
                     while i < len(line) and (line[i] is None or isinstance(line[i], Color)):
                         i += 1
                     if i != len(line):  # line n'est pas un List[Optional[Color]]
-                        raise Exception(
+                        raise TypeError(
                             "Error: impossible to add a line in a " + type(self).__name__ + "_elements:" +
                             "\nlines must be List[Optional[Color]] but at least one element is a " +
                             type(line[i]).__name__ + "."
                         )
 
                 else:  # line n'est pas un List
-                    raise Exception(
+                    raise TypeError(
                         "Error: impossible to add a line in a " + type(self).__name__ + "_elements:" +
                         "\nline must be a List[Optional[Color]], but a " +
                         type(line).__name__ + " is given."
@@ -212,7 +211,7 @@ class BoardColor:
                     # Vérification que x et y sont des index valides
                     if not (0 <= x < self.get_width() and 0 <= y < self.get_height()):
                         # x et/ou y ne sont pas des index valide
-                        raise Exception(
+                        raise IndexError(
                             "Error: impossible to get an element of a " + type(self).__name__ + "._elements:" +
                             "\nIndex out of range:" +
                             "\nWidth of the " + type(self).__name__ + " is " + str(self.get_width()) +
@@ -222,11 +221,11 @@ class BoardColor:
                             "\n(since lists start at zero in Python, max_index = len(list) - 1)"
                         )
                 elif not isinstance(x, int):
-                    raise Exception(
+                    raise TypeError(
                         "Error: trying to get an element but asked x is a " + type(x).__name__ + ", must be an int."
                     )
                 elif not isinstance(y, int):
-                    raise Exception(
+                    raise TypeError(
                         "Error: trying to get an element but asked y is a " + type(y).__name__ + ", must be an int."
                     )
             return self.get_elements()[y][x]
@@ -234,7 +233,7 @@ class BoardColor:
             if DEBUG_MOD:
                 # Vérification que position est un index valide
                 if not (0 <= position.get_x() < self.get_width() and 0 <= position.get_y() < self.get_height()):
-                    raise Exception(
+                    raise IndexError(
                         "Error: impossible to get an element of a " + type(self).__name__ + "._elements:" +
                         "\nIndex out of range:" +
                         "\nWidth of the " + type(self).__name__ + " is " + str(self.get_width()) +
@@ -245,7 +244,7 @@ class BoardColor:
                     )
             return self.get_elements()[position.get_y()][position.get_x()]
         else:  # La position n'est pas demandée
-            raise Exception(
+            raise AttributeError(
                 "Error: trying to get an element from a " + type(self).__name__ + "._elements, " +
                 "but no positional argument is given."
             )
@@ -266,12 +265,17 @@ class BoardColor:
         if DEBUG_MOD:
             if isinstance(line_number, int):
                 if not (0 <= line_number < self.get_height()):
-                    raise Exception(
+                    raise IndexError(
                         "Error: trying to get a line from a " + type(self).__name__ +
                         "._elements but index is out of range:" +
                         "requested .elements[" + str(line_number) + "] but len(elements) = " + str(self.get_height()) +
                         "."
                     )
+            else:
+                raise TypeError(
+                    "Error: trying to get a line but asked line number is a " + type(line_number).__name__ +
+                    ", must be an int."
+                )
         return self.get_elements()[line_number]
 
     ###############################################################
@@ -325,7 +329,7 @@ class BoardColor:
                     # Vérification que x et y sont des index valides
                     if not (0 <= x < self.get_width() and 0 <= y < self.get_height()):
                         # x et/ou y ne sont pas des index valide
-                        raise Exception(
+                        raise IndexError(
                             "Error: impossible to set an element of a " + type(self).__name__ + "._elements:" +
                             "\nIndex out of range:" +
                             "\nWidth of the " + type(self).__name__ + " is " + str(self.get_width()) +
@@ -335,11 +339,11 @@ class BoardColor:
                             "\n(since lists start at zero in Python, max_index = len(list) - 1)"
                         )
                 elif not isinstance(x, int):
-                    raise Exception(
+                    raise TypeError(
                         "Error: trying to get an element but asked x is a " + type(x).__name__ + ", must be an int."
                     )
                 elif not isinstance(y, int):
-                    raise Exception(
+                    raise TypeError(
                         "Error: trying to get an element but asked y is a " + type(y).__name__ + ", must be an int."
                     )
             self.get_elements()[y][x] = value
@@ -347,7 +351,7 @@ class BoardColor:
             if DEBUG_MOD:
                 # Vérification que position est un index valide
                 if not (0 <= position.get_x() < self.get_width() and 0 <= position.get_y() < self.get_height()):
-                    raise Exception(
+                    raise IndexError(
                         "Error: impossible to set an element of a " + type(self).__name__ + "._elements: " +
                         "\nIndex out of range:" +
                         "\nWidth of the " + type(self).__name__ + " is " + str(self.get_width()) +
@@ -358,7 +362,7 @@ class BoardColor:
                     )
             self.get_elements()[position.get_y()][position.get_x()] = value
         else:  # La position n'est pas demandée
-            raise Exception(
+            raise AttributeError(
                 "Error: impossible to get an element from a " + type(self).__name__ + "._elements: " +
                 "No positional argument is given."
             )

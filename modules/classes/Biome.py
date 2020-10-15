@@ -84,7 +84,7 @@ class Biome:
         # - la couleur de son sol
         # - une liste des arbres qui y poussent
         # -----------------------------
-        # PRÉCONDITIONS :
+        # PRÉCONDITIONS (uniquement si DEBUG_MOD) :
         # - BIOME_NAME_LEN_MIN <= len(name) <= BIOME_NAME_LEN_MAX
         # - Les temperatures & pluviometries concordent avec leurs minimums et maximums
         # =============================
@@ -132,7 +132,7 @@ class Biome:
         # UTILITÉ :
         # Vérifie la cohérence de name puis le set
         # -----------------------------
-        # PRÉCONDITIONS :
+        # PRÉCONDITIONS (uniquement si DEBUG_MOD) :
         # - BIOME_NAME_LEN_MIN <= len(name) <= BIOME_NAME_LEN_MAX
         # =============================
         if DEBUG_MOD:
@@ -156,9 +156,9 @@ class Biome:
         # INFORMATIONS :
         # -----------------------------
         # UTILITÉ :
-        # Vérifie la cohérence de pluviometry_min puis la set
+        # Vérifie la cohérence de pluviometry_min puis l'assigne
         # -----------------------------
-        # PRÉCONDITIONS :
+        # PRÉCONDITIONS (uniquement si DEBUG_MOD) :
         # - BIOME_PLUVIOMETRY_MIN <= pluviometry_min <= BIOME_PLUVIOMETRY_MAX
         # =============================
         if DEBUG_MOD:
@@ -182,9 +182,9 @@ class Biome:
         # INFORMATIONS :
         # -----------------------------
         # UTILITÉ :
-        # Vérifie la cohérence de pluviometry_max puis la set
+        # Vérifie la cohérence de pluviometry_max puis l'assigne
         # -----------------------------
-        # PRÉCONDITIONS :
+        # PRÉCONDITIONS (uniquement si DEBUG_MOD) :
         # - BIOME_PLUVIOMETRY_MIN <= pluviometry_max <= BIOME_PLUVIOMETRY_MAX
         # =============================
         if DEBUG_MOD:
@@ -208,9 +208,9 @@ class Biome:
         # INFORMATIONS :
         # -----------------------------
         # UTILITÉ :
-        # Vérifie la cohérence de temperature_min puis la set
+        # Vérifie la cohérence de temperature_min puis l'assigne
         # -----------------------------
-        # PRÉCONDITIONS :
+        # PRÉCONDITIONS (uniquement si DEBUG_MOD) :
         # - BIOME_TEMPERATURE_MIN <= temperature_min <= BIOME_TEMPERATURE_MAX
         # =============================
         if DEBUG_MOD:
@@ -234,9 +234,9 @@ class Biome:
         # INFORMATIONS :
         # -----------------------------
         # UTILITÉ :
-        # Vérifie la cohérence de temperature_max puis la set
+        # Vérifie la cohérence de temperature_max puis l'assigne
         # -----------------------------
-        # PRÉCONDITIONS :
+        # PRÉCONDITIONS (uniquement si DEBUG_MOD) :
         # - BIOME_TEMPERATURE_MIN <= temperature_max <= BIOME_TEMPERATURE_MAX
         # =============================
         if DEBUG_MOD:
@@ -260,7 +260,7 @@ class Biome:
         # INFORMATIONS :
         # -----------------------------
         # UTILITÉ :
-        # Vérifie la cohérence de ground_color puis la set
+        # Vérifie la cohérence de ground_color puis l'assigne
         # =============================
         if DEBUG_MOD:
             check_attribute_type_set(
@@ -276,9 +276,9 @@ class Biome:
         # INFORMATIONS :
         # -----------------------------
         # UTILITÉ :
-        # Vérifie la cohérence de pluviometry_max puis la set
+        # Vérifie la cohérence de pluviometry_max puis l'assigne
         # -----------------------------
-        # PRÉCONDITIONS :
+        # PRÉCONDITIONS (uniquement si DEBUG_MOD) :
         # - BIOME_PLUVIOMETRY_MIN <= pluviometry_max <= BIOME_PLUVIOMETRY_MAX
         # =============================
         if DEBUG_MOD:
@@ -301,7 +301,7 @@ class Biome:
                 i += 1
 
             if i != len(trees):
-                raise Exception(
+                raise TypeError(
                     "Error: impossible to set _trees for a " + type(self).__name__ + ":" +
                     "\n_trees must be a List[Tree] but element number " + str(i) + " is a " +
                     type(trees[i]).__name__ + "."

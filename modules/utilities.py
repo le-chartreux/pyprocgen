@@ -30,7 +30,7 @@ def check_attribute_type_set(
     # Regarde si object_to_check est instance de type_to_check, et lève une exception si non
     # =============================
     if not isinstance(attribute_to_check, type_to_check):
-        raise Exception(
+        raise TypeError(
             "Error: impossible to set " + name_of_attribute_to_check + " for a " +
             type(object_destination).__name__ + ":" +
             "\n" + name_of_attribute_to_check + " must be a " + type_to_check.__name__ + " but a " +
@@ -59,7 +59,7 @@ def check_number_between_to_set(
             (strict_between and min_value < number_to_check < max_value) or
             (not strict_between and min_value <= number_to_check <= max_value)
     ):
-        raise Exception(
+        raise ValueError(
             "Error: impossible to set " + name_of_attribute_to_check + " for a " + type(object_to_set).__name__ + ":" +
             "\n " + name_of_attribute_to_check + " must be between " + str(min_value) + " and " +
             str(max_value) + " but " + str(number_to_check) + " is given." +

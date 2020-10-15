@@ -85,14 +85,14 @@ class Encyclopedia:
                 name_of_attribute_to_check="_biomes",
                 object_destination=self
             )
-            #  Vérification que tous les éléments de biomes sont instance de Biome
+            # Vérification que tous les éléments de biomes sont instance de Biome
             iterator = iter(biomes)
             value = next(iterator, None)
             while value is not None and isinstance(biomes[value], Biome):
                 value = next(iterator, None)
 
             if value is not None:
-                raise Exception(
+                raise TypeError(
                     "Error: impossible to set _biomes for a " + type(self).__name__ + ":" +
                     "\n_biomes must be a Dict[str, Biome] but at least one item is a " + type(value).__name__ + "."
                 )
@@ -113,12 +113,12 @@ class Encyclopedia:
                 try:
                     self.get_biomes()[name]
                 except KeyError:
-                    raise Exception(
+                    raise KeyError(
                         "Error: impossible to get a biome from a " + type(self).__name__ + "._biomes: " +
                         "\nno biome machs with the given name (" + name + ")."
                     )
             else:
-                raise Exception(
+                raise TypeError(
                     "Error: impossible to get a biome from a " + type(self).__name__ + "._biomes: " +
                     "\nkey must be a str, but a " + type(name).__name__ + " is given."
                 )

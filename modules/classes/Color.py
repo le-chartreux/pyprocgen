@@ -44,7 +44,7 @@ class Color:
         # INFORMATIONS :
         # -----------------------------
         # UTILITÉ :
-        # Crée un objet Color, caractérisé par:
+        # Crée un objet Color, caractérisé par :
         # - red
         # - green
         # - blue

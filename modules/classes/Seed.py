@@ -67,12 +67,11 @@ class Seed:
         # - SEED_ELEMENT_MIN <= (pluviometry_x, pluviometry_y, temperature_x, temperature_y) <= SEED_ELEMENT_MAX
         # =============================
         if isinstance(seed_in_string, str):
-            if DEBUG_MOD:
-                if not Seed.is_seed(seed_in_string):
-                    raise Exception(
-                        "Error: trying to set a " + type(self).__name__ +
-                        " from a str, but the str hasn't shape of a str(Seed)."
-                    )
+            if DEBUG_MOD and not Seed.is_seed(seed_in_string):
+                raise ValueError(
+                    "Error: trying to set a " + type(self).__name__ +
+                    " from a str, but the str hasn't shape of a str(Seed)."
+                )
             splitted_string = seed_in_string.split(":")
             self._pluviometry_x = int(splitted_string[0])  # Pas besoin d'utiliser les SETTERS puisque tout est
             self._pluviometry_y = int(splitted_string[1])  # déjà check avec is_seed
@@ -193,14 +192,13 @@ class Seed:
         # UTILITÉ :
         # Vérifie que seed_in_string est bien
         # de la forme a + ":" + b + ":" + c + ":" + d
-        # avec a,b,c,d str(integers)
+        # avec a, b,c,d str(integers)
         # =============================
-        if DEBUG_MOD:
-            if not isinstance(string, str):
-                raise Exception(
-                    "Error: impossible to check if a string is a Seed:" +
-                    "\nstring must be str, but a " + type(string).__name__ + " is given."
-                )
+        if DEBUG_MOD and not isinstance(string, str):
+            raise TypeError(
+                "Error: impossible to check if a string is a Seed:" +
+                "\nstring must be str, but a " + type(string).__name__ + " is given."
+            )
 
         colon_counter = 0
         position_counter = 0
