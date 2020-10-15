@@ -16,10 +16,10 @@
 
 from typing import List
 
-from packages.classes.Color import Color
-from packages.classes.Tree import Tree
+from modules.classes.Color import Color
+from modules.classes.Tree import Tree
 
-from packages.settings import (
+from modules.settings import (
     DEBUG_MOD,
     BIOME_NAME_LEN_MIN,
     BIOME_NAME_LEN_MAX,
@@ -30,7 +30,7 @@ from packages.settings import (
     BIOME_TREES_LEN_MIN,
     BIOME_TREES_LEN_MAX
 )
-from packages.utilities import check_attribute_type_set, check_number_between_to_set
+from modules.utilities import check_attribute_type_set, check_number_between_to_set
 
 
 class Biome:

@@ -12,7 +12,7 @@
 
 import random
 
-from packages.short_class_import import BoardBox, BoxWithTree, Tree, Position
+from modules.short_class_import import BoardBox, BoxWithTree, Tree, Position
 
 
 ###############################################################

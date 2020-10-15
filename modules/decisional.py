@@ -10,10 +10,10 @@
 # - choice_biome()
 # ==========================================================
 
-from packages.short_class_import import Box, Biome, Encyclopedia, Seed
-from packages.perlin_noise import SimplexNoise
+from modules.short_class_import import Box, Biome, Encyclopedia, Seed
+from modules.perlin_noise import SimplexNoise
 
-from packages.settings import (
+from modules.settings import (
     BIOME_PLUVIOMETRY_MAX,
     BIOME_TEMPERATURE_MAX,
     DECISIONAL_NUMBER_OF_ITERATIONS_NOISE,

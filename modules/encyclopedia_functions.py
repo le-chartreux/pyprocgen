@@ -10,7 +10,7 @@
 # ==========================================================
 from typing import Dict
 
-from packages.short_class_import import Biome, BoardColor, Color, Encyclopedia, Tree
+from modules.short_class_import import Biome, BoardColor, Color, Encyclopedia, Tree
 
 
 ###############################################################

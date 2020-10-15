@@ -11,7 +11,7 @@
 
 from typing import TextIO
 
-from packages.short_class_import import BoardBox
+from modules.short_class_import import BoardBox
 
 
 ###############################################################

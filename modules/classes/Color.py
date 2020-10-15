@@ -15,8 +15,8 @@
 # + __str__()
 # ==========================================================
 
-from packages.settings import DEBUG_MOD, COLOR_RGB_MIN, COLOR_RGB_MAX
-from packages.utilities import check_attribute_type_set, check_number_between_to_set
+from modules.settings import DEBUG_MOD, COLOR_RGB_MIN, COLOR_RGB_MAX
+from modules.utilities import check_attribute_type_set, check_number_between_to_set
 
 
 class Color:

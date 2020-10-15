@@ -2,7 +2,7 @@
 # INFORMATIONS SUR CE PACKAGE :
 # -----------------------------
 # UTILITÉ DE SON CONTENU :
-# Définir la classe BoardBox, un tableau de Box en 2D
+# Définir la classe BoardColor, un tableau de Color en 2D
 # -----------------------------
 # CONTENU :
 # + __slots__
@@ -24,14 +24,14 @@
 from __future__ import annotations
 from typing import List, Optional
 
-from packages.classes.Box import Box
-from packages.classes.Position import Position
+from modules.classes.Color import Color
+from modules.classes.Position import Position
 
-from packages.settings import DEBUG_MOD
-from packages.utilities import check_attribute_type_set
+from modules.settings import DEBUG_MOD
+from modules.utilities import check_attribute_type_set
 
 
-class BoardBox:
+class BoardColor:
     ###############################################################
     ########################## __SLOTS__ ##########################
     ###############################################################
@@ -42,33 +42,33 @@ class BoardBox:
     ###############################################################
     ############################ HINTS ############################
     ###############################################################
-    _elements: List[List[Optional[Box]]]
+    _elements: List[List[Optional[Color]]]
 
     ###############################################################
     ########################### __INIT__ ##########################
     ###############################################################
-    def __init__(self, elements: Optional[List[List[Optional[Box]]]] = None) -> None:
+    def __init__(self, elements: Optional[List[List[Color]]] = None) -> None:
         # =============================
         # INFORMATIONS :
         # -----------------------------
         # UTILITÉ :
-        # Crée un objet BoardBox, caractérisé par :
-        # - ses éléments (une liste de liste de Box)
+        # Crée un objet BoardColor, caractérisé par :
+        # - ses éléments (une liste de liste de Color)
         # =============================
         self.set_elements(elements)
 
     ###############################################################
     ########################### GETTERS ###########################
     ###############################################################
-    def get_elements(self) -> List[List[Optional[Box]]]:
+    def get_elements(self) -> List[List[Optional[Color]]]:
         return self._elements
 
     ###############################################################
     ########################### SETTERS ###########################
     ###############################################################
-    def set_elements(self, elements: List[List[Optional[Box]]]) -> None:
+    def set_elements(self, elements: List[List[Optional[Color]]]) -> None:
         if DEBUG_MOD:
-            # Vérification que éléments est bien un List[List[Optional[Box]]] :
+            # Vérification que éléments est bien un List[List[Optional[Color]]] :
             # Vérification que éléments est bien un List
             check_attribute_type_set(
                 attribute_to_check=elements,
@@ -81,14 +81,14 @@ class BoardBox:
             if len(elements) == 0:
                 raise Exception(
                     "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
-                    "\n_elements must be a List[List[Optional[Box]], but an empty list is given."
+                    "\n_elements must be a List[List[Optional[Color]], but an empty list is given."
                 )
             # Vérification que elements est bien un List[List]
             i = 0
             while i < len(elements) and isinstance(elements[i], list):
                 i += 1
             if i == len(elements):
-                # Vérification que elements est bien un List[List[Optional[Box]
+                # Vérification que elements est bien un List[List[Optional[Color]
                 line = 0
                 column = 0
                 while (
@@ -100,7 +100,7 @@ class BoardBox:
                             column < len(elements[line])
                             and (
                                     elements[line][column] is None or
-                                    isinstance(elements[line][column], Box)
+                                    isinstance(elements[line][column], Color)
                             )
                     ):
                         column += 1
@@ -111,13 +111,13 @@ class BoardBox:
                 if line != len(elements):
                     raise Exception(
                         "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
-                        "\n_elements must be a List[List[Optional[Box]] " +
+                        "\n_elements must be a List[List[Optional[Color]] " +
                         "but at least one List[List]'s element is a " + type(elements[line][column]).__name__ + "."
                     )
             else:
                 raise Exception(
                     "Error: impossible to set _elements for a " + type(self).__name__ + ":" +
-                    "\n_elements must be a List[List[Optional[Box]]] " +
+                    "\n_elements must be a List[List[Optional[Color]]] " +
                     "but at least one List's element is not a List."
                 )
         self._elements = elements
@@ -127,7 +127,7 @@ class BoardBox:
     ###############################################################
     def add_element(
             self,
-            element: Optional[Box],
+            element: Optional[Color],
             line: int
     ) -> None:
         # =============================
@@ -140,10 +140,10 @@ class BoardBox:
         # - 0 < line < len(elements)
         # =============================
         if DEBUG_MOD:
-            if element is not None or not isinstance(element, Box):
+            if element is not None or not isinstance(element, Color):
                 raise Exception(
                     "Error: impossible to add an element in a " + type(self).__name__ + "._elements:" +
-                    "\n_elements is a List[List[Optional[Box]]], but a " +
+                    "\n_elements is a List[List[Optional[Color]]], but a " +
                     type(element).__name__ + " is given."
                 )
         self.get_line(line).append(element)
@@ -151,7 +151,7 @@ class BoardBox:
     ###############################################################
     ########################### ADD_LINE ##########################
     ###############################################################
-    def add_line(self, line: Optional[List[Optional[Box]]] = None) -> None:
+    def add_line(self, line: Optional[List[Optional[Color]]] = None) -> None:
         # =============================
         # INFORMATIONS :
         # -----------------------------
@@ -163,24 +163,24 @@ class BoardBox:
             self.get_elements().append([])
         else:
             if DEBUG_MOD:
-                # Vérification que line: List[Optional[Box]]
+                # Vérification que line: List[Optional[Color]]
                 # Vérification que line: List
                 if isinstance(line, list):
-                    # Vérification que line: List[Optional[Box]]
+                    # Vérification que line: List[Optional[Color]]
                     i = 0
-                    while i < len(line) and (line[i] is None or isinstance(line[i], Box)):
+                    while i < len(line) and (line[i] is None or isinstance(line[i], Color)):
                         i += 1
-                    if i != len(line):  # line n'est pas un List[Optional[Box]]
+                    if i != len(line):  # line n'est pas un List[Optional[Color]]
                         raise Exception(
                             "Error: impossible to add a line in a " + type(self).__name__ + "_elements:" +
-                            "\nlines must be List[Optional[Box]] but at least one element is a " +
+                            "\nlines must be List[Optional[Color]] but at least one element is a " +
                             type(line[i]).__name__ + "."
                         )
 
                 else:  # line n'est pas un List
                     raise Exception(
                         "Error: impossible to add a line in a " + type(self).__name__ + "_elements:" +
-                        "\nline must be a List[Optional[Box]], but a " +
+                        "\nline must be a List[Optional[Color]], but a " +
                         type(line).__name__ + " is given."
                     )
             else:
@@ -194,7 +194,7 @@ class BoardBox:
             x: Optional[int] = None,
             y: Optional[int] = None,
             position: Optional[Position] = None
-    ) -> Optional[Box]:
+    ) -> Optional[Color]:
         # =============================
         # INFORMATIONS :
         # -----------------------------
@@ -253,7 +253,7 @@ class BoardBox:
     ###############################################################
     ########################## GET_LINE ###########################
     ###############################################################
-    def get_line(self, line_number: int) -> List[Optional[Box]]:
+    def get_line(self, line_number: int) -> List[Optional[Color]]:
         # =============================
         # INFORMATIONS :
         # -----------------------------
@@ -303,7 +303,7 @@ class BoardBox:
     ###############################################################
     def set_element(
             self,
-            value: Optional[Box],
+            value: Optional[Color],
             x: Optional[int] = None,
             y: Optional[int] = None,
             position: Optional[Position] = None
@@ -378,12 +378,12 @@ class BoardBox:
     ##################### CREATE_EMPTY_BOARD ######################
     ###############################################################
     @classmethod
-    def create_empty_board(cls, width: int, height: int) -> BoardBox:
+    def create_empty_board(cls, width: int, height: int) -> BoardColor:
         # =============================
         # INFORMATIONS :
         # -----------------------------
         # UTILITÉ :
-        # Crée un BoardBox rempli de None, de dimension height x width
+        # Crée un BoardColor rempli de None, de dimension height x width
         # =============================
         board = cls()
         board._elements = []

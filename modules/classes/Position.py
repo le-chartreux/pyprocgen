@@ -14,8 +14,8 @@
 # + __str__()
 # ==========================================================
 
-from packages.settings import DEBUG_MOD
-from packages.utilities import check_attribute_type_set
+from modules.settings import DEBUG_MOD
+from modules.utilities import check_attribute_type_set
 
 
 class Position:

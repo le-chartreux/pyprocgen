@@ -9,13 +9,13 @@
 import time
 import sys
 
-from packages.short_class_import import BoardBox, Seed
+from modules.short_class_import import BoardBox, Seed
 
-from packages.decisional import generate_box
-from packages.encyclopedia_functions import encyclopedia_creation
-from packages.image_creation import write_image_header, write_image_body
-from packages.trees_generation import generate_trees
-from packages.utilities import is_integer, print_progress
+from modules.decisional import generate_box
+from modules.encyclopedia_functions import encyclopedia_creation
+from modules.image_creation import write_image_header, write_image_body
+from modules.trees_generation import generate_trees
+from modules.utilities import is_integer, print_progress
 
 
 ###############################################################

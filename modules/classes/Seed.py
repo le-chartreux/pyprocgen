@@ -18,8 +18,8 @@ from __future__ import annotations
 from typing import Optional
 import random
 
-from packages.settings import DEBUG_MOD, SEED_ELEMENT_MIN, SEED_ELEMENT_MAX
-from packages.utilities import check_attribute_type_set, check_number_between_to_set
+from modules.settings import DEBUG_MOD, SEED_ELEMENT_MIN, SEED_ELEMENT_MAX
+from modules.utilities import check_attribute_type_set, check_number_between_to_set
 
 
 class Seed:

@@ -18,11 +18,11 @@
 
 from typing import Dict, List
 
-from packages.classes.Tree import Tree
-from packages.classes.Biome import Biome
+from modules.classes.Tree import Tree
+from modules.classes.Biome import Biome
 
-from packages.settings import DEBUG_MOD
-from packages.utilities import check_attribute_type_set
+from modules.settings import DEBUG_MOD
+from modules.utilities import check_attribute_type_set
 
 
 class Encyclopedia:

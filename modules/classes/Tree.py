@@ -14,10 +14,10 @@
 # + get_width
 # ==========================================================
 
-from packages.classes.BoardColor import BoardColor
+from modules.classes.BoardColor import BoardColor
 
-from packages.settings import DEBUG_MOD
-from packages.utilities import check_attribute_type_set, check_number_between_to_set
+from modules.settings import DEBUG_MOD
+from modules.utilities import check_attribute_type_set, check_number_between_to_set
 
 
 class Tree:
