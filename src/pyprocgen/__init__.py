@@ -1,3 +1,5 @@
 """Public package of pyprocgen."""
 
-__all__ = []
+from _pyprocgen.world import World
+
+__all__ = ["World"]
