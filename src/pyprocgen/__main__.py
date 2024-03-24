@@ -13,4 +13,4 @@ def cli() -> None:
 
 @app.command()
 def version() -> None:
-    print("2.0.0")
+    print("2.0.0")  # todo
