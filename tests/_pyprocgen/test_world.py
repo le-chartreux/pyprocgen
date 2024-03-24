@@ -6,19 +6,23 @@ from _pyprocgen.world import World
 
 
 def test___init__() -> None:
-    altitude_noise = PerlinNoise()
     temperature_noise = PerlinNoise()
     humidity_noise = PerlinNoise()
-    _ = World(altitude_noise, temperature_noise, humidity_noise)
+    _ = World(temperature_noise, humidity_noise)
 
 
 def test_get_block(world: World) -> None:
-    assert world.get_block(0, 0) == Block.AIR
+    assert world.get_block_from_coordinates(0, 0) == Block.DIRT
+
+
+def test_from_seed() -> None:
+    world1 = World.from_seed(10)
+    world2 = World.from_seed(10)
+    block1 = world1.get_block_from_coordinates(10, -5)
+    block2 = world2.get_block_from_coordinates(10, -5)
+    assert block1 == block2
 
 
 @pytest.fixture()
 def world() -> World:
-    altitude_noise = PerlinNoise()
-    temperature_noise = PerlinNoise()
-    humidity_noise = PerlinNoise()
-    return World(altitude_noise, temperature_noise, humidity_noise)
+    return World.from_seed(0)
