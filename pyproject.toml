@@ -49,6 +49,12 @@ skip_gitignore = true
 strict = true
 
 
+[[tool.mypy.overrides]]
+# perlin-noise does not have stubs for now
+module = "perlin_noise.*"
+ignore_missing_imports = true
+
+
 [tool.ruff]
 lint.select = [
     "A", # flake8-builtins (redefinition of bultins)
