@@ -3,6 +3,7 @@ from typing import Self
 from perlin_noise import PerlinNoise
 
 from _pyprocgen.block import Block
+from _pyprocgen.climate import Climate
 
 
 class World:
@@ -17,9 +18,14 @@ class World:
         self._humidity_noise = humidity_noise
 
     def get_block_from_coordinates(self, x: int, y: int) -> Block:
+        """Get the block at the given coordinates."""
+        return self.get_climate_from_coordinates(x, y).get_block()
+
+    def get_climate_from_coordinates(self, x: int, y: int) -> Climate:
+        """Get the climate at the given coordinates."""
         temperature = self._get_temperature(x, y)
         humidity = self._get_humidity(x, y)
-        return Block.from_climate(temperature, humidity)
+        return Climate.from_temperature_and_humidity(temperature, humidity)
 
     def _get_temperature(self, x: int, y: int) -> float:
         """Compute temperature in Celsius."""
@@ -34,4 +40,5 @@ class World:
 
     @classmethod
     def from_seed(cls, seed: int) -> Self:
+        """Generate a World from a unique seed."""
         return cls(PerlinNoise(seed=seed), PerlinNoise(seed=seed + 1500))
